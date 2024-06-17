@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오디오 태그</title>
+</head>
+<body>
+    <!-- 해당 브라우저가 mp3를 지원을 한다면 아래와 같이 한줄만 코딩하면 끝나지만 지원을 안한다면 source태그를 이용해서 type을 지정하고 여러 확장자들의 파일을 나열해 대체품을 찾으면된다. -->
+    <audio src="media/Herlock.mp3" autoplay controls></audio>
+    <audio autoplay controls>
+        <source src="media/Iwatodai.mp3" type = "audio/mp3">
+    </audio>
+    
+</body>
+</html>

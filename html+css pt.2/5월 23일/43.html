@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Sizing</title>
+    <style>
+        #size{
+            /* 박스 모델의 너비를 컨텐츠 영역으로 지정 */
+            /* content-box의 박스 모델 너비 공식 = (마진 + 보더 + 패딩)*2 + width값 */
+            box-sizing: content-box;
+            width : 300px;
+            height : 150px;
+            margin : 20px;
+            padding : 30px;
+            border : 2px solid red;
+        }
+
+        #size2{
+            /* 박스 모델의 너비를 보더 영역으로 지정 */
+            /* border-box의 박스 모델 너비 공식 = (마진*2) + width값 */
+            box-sizing: border-box;
+            width : 300px;
+            height : 150px;
+            margin : 20px;
+            padding : 30px;
+            border : 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id = "size">박스 사이징(content)</div>
+    <div id = "size2">박스 사이징(border)</div>
+    <div id = "size3">박스 사이징</div>
+
+</body>
+</html>

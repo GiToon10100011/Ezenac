@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹의 색상 표기법</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+        body{
+            /* background 관련 속성들은 하위 요소에게 상속되지 않는다. */
+            font-family : "Noto Sans KR";
+            background-color: #222;
+        }
+
+        #text{
+            color : rgb(0, 255, 255);
+        }
+
+        #text2{
+            color : rgba(0, 255, 255, 0.1);
+        }
+        #text3{
+            color : yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id = "text">Example</h1>
+    <h1 id = "text2">Example2</h1>
+    <h1 id = "text3">Example3</h1>
+    <h1 id = "text4">Example4</h1>
+
+</body>
+</html>

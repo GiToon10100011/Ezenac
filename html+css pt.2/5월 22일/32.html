@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리 스타일 1</title>
+    <style>
+        div{
+            width : 200px;
+            height : 100px;
+            display: inline-block;
+            margin : 15px;
+            border-width: 5px;
+        }
+
+        .box{
+            border-style: solid;
+        }
+        
+        .box2{
+            border-style: dotted;
+        }
+
+        .box3{
+            border-style: dashed;
+        }
+
+        .box4{
+            /* 창에 조각한 것 처럼 보이고 입체적임 */
+            border-style: groove;
+        }
+
+        .box5{
+            /* 창에서 튀어나온 것처럼 표시 */
+            border-style: ridge;
+        }
+
+    </style>
+</head>
+<body>
+    <div class = "box"></div>
+    <div class = "box2"></div>
+    <div class = "box3"></div>
+    <div class = "box4"></div>
+    <div class = "box5"></div>
+</body>
+</html>

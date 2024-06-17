@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고정 그리드 레이아웃</title>
+    <style>
+        #wrapper{
+            width : 960px;
+            margin : 0 auto;
+        }
+
+        header{
+            width : 960px;
+            height : 120px;
+            background-color: #006cfa;
+            border-bottom : 1px solid;
+        }
+
+        .header{
+            font-size : 40px;
+            color : white;
+            text-align: center;
+            line-height: 120px;
+        }
+
+        .content{
+            float : left;
+            width : 600px;
+            height : 400px;
+            padding : 15px;
+            background-color: #00ff90;
+        }
+
+        .right{
+            float : right;
+            width : 300px;
+            height : 400px;
+            padding : 15px;
+            background-color: #00ff90;
+        }
+
+        .footer{
+            clear : both;
+            height: 120px;
+            background-color: #c35;
+        }
+    </style>
+</head>
+<body>
+    <!-- body의 모든 요소를 wrapper로 묶음 (상위 요소로 지정))-->
+    <!-- 고정 그리드 레이아웃은 단위가 px이기 때문에 브라우저 크기가 확대/축소됨에 따라 내용이 안보이는 경우가 있다. 이에 따라 고정 그리드 레이아웃은 특정 기기 하나만 호환을 시키고자 할 때 사용하며 레이아웃 잡기가 상당히 수월하다. -->
+    <div id = "wrapper">
+        <header>
+            <h1 class= "header">고정 그리드 레이아웃</h1>
+        </header>
+        <section class = "content">
+            <h4>본문 입니다.</h4>
+        </section>
+        <aside class = "right">
+            <h4>사이드 바</h4>
+        </aside>
+        <footer class = "footer">
+            <h4>푸터</h4>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition-delay</title>
+    <style>
+        #ex{
+            position : relative;
+            width : 500px;
+            height : 150px;
+            margin : 0 auto;
+            border : 1px solid #aaa;
+            border-radius: 30px;
+            padding : 20px;
+        }
+
+        #ex:hover .box{
+            transform : rotate(720deg);
+            margin-left: 420px;
+        }
+
+        .box{
+            font-size: 15px;
+            position: relative;
+            width : 60px;
+            height : 60px;
+            margin-bottom : 10px;
+            background-color: #eee;
+        }
+
+        .box p{
+            text-align: center;
+            padding-top : 4px;
+        }
+
+        #no-delay{
+            transition-duration: 2s;
+            border : 1px solid #ff6a00;
+        }
+
+        #delay{
+            transition-duration: 2s;
+            /* 변형이 이루어지는 시간을 지연시킴. */
+            transition-delay: 1s;
+            border : 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div id = "ex">
+        <div id = "no-delay" class = "box"><p>지연없음</p></div>
+        <div id = "delay" class = "box"><p>지연됨</p></div>
+    </div>
+</body>
+</html>

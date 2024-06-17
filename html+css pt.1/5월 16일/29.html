@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>id 선택자 2(id선택자의 중복)</title>
+    <style>
+        #select{
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- id선택자는 동일한 id를 사용을 하면 결과는 브라우저에 따라 달라지겠지만, 아래와 같은 방법은 권장되지 않는다. 실행이 아예 안되는 건 아님. -->
+    <h1 id = "select">ID 선택자 1</h1>
+    <h1 id = "select">ID 선택자 2</h1>
+    <h1 id = "select">ID 선택자 3</h1>
+</body>
+</html>

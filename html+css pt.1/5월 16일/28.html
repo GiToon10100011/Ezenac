@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>id 선택자 1</title>
+    <style>
+        /* id선택자에게 css를 적용하고자 하면 #아이디값 : 값 형태로 지정을 해줘야한다. */
+        #header {
+            width : 800px;
+            padding : 0;
+            background-color: red;
+        }
+
+        #wrap {
+            width : 800px;
+            padding : 0;
+            background-color: red;
+
+            /* overflow 속성
+            visible : 기본값으로 내용이 더 길어도 그래도 내용이 보이는 값
+            hidden : 내용이 브라우저 길이보다 넘치면 잘린다. 자른 부분은 보이지 않는다.
+            scroll : 내용이 넘치지 않아도 항상 스크롤바가 보이게끔 함.
+            auto : 내용이 잘릴 때만 스크롤이 보이게끔 함.  */
+
+            overflow : visible;
+        }
+
+        #aside {
+            width : 300px;
+            float : left;
+            padding : 0;
+            background-color: blue;
+            color : white;
+        }
+
+        #content {
+            width : 500px;
+            /* float속성은 레이아웃 배치를 할때 간격을 띄우는 역할을 함. */
+            float : left;
+            padding : 0;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 아래는 공간분할을 하면서 id선택자를 4개를 부여함. id 선택자는 최대한 적게 사용하는것이 가독성이 좋다. -->
+    <div id = "header">
+        <h1>header 영역</h1>
+    </div>
+    
+    <div id = "wrap">
+
+        <div id = "aside">
+            <h1>aside 영역</h1>
+        </div>
+
+        <div id = "content">
+            <h1>content 영역</h1>
+        </div>
+
+    </div>
+</body>
+</html>

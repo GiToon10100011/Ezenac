@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition-timing-function</title>
+    <style>
+        #ex div{
+            float: left;
+            width : 100px;
+            height : 50px;
+            margin : 5px 10px;
+            padding :  5px;
+            color : white;
+            background-color: blue;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #ex:hover div{
+            height : 400px;
+
+        }
+
+        #ex .ease{
+            transition-duration : 2s;
+            /* ease값은 처음에는 천천히 시작하다 점점 빨라지고 마지막에 다시 천천히 끝낸다. 기본값임. */
+            transition-timing-function: ease;
+        }
+
+        #ex .linear{
+            transition-duration : 2s;
+            /* linear값은 처음부터 끝까지 일정한 속도로 진행한다. */
+            transition-timing-function: linear;
+        }
+
+        #ex .ease-in{
+            transition-duration : 2s;
+            /* ease-in값은 시작 부분만 느리게 한다.*/
+            transition-timing-function: ease-in;
+        }
+
+        #ex .ease-out{
+            transition-duration : 2s;
+            /* ease-out은 끝부분만 느리게 한다. */
+            transition-timing-function: ease-out;
+        }
+
+        #ex .ease-in-out{
+            transition-duration : 2s;
+            /* ease-in-out값은 느리게 시작하고 느리게 끝난다.*/
+            transition-timing-function: ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div id = "ex">
+        <div class = "ease">ease</div>
+        <div class = "linear">linear</div>
+        <div class = "ease-in">ease-in</div>
+        <div class = "ease-out">ease-out</div>
+        <div class = "ease-in-out">ease-in-out</div>
+    </div>
+</body>
+</html>

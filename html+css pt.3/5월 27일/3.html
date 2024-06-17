@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동영상 자막삽입</title>
+</head>
+<body>
+    <video controls muted>
+        <!-- type 속성은 호스팅 서버에 올릴때 필요하다. -->
+        <source src = "media/Herlock.mp4" type = "video/mp4">
+        <source src = "media/Herlock.webm" type = "video/webm">
+        <source src = "media/Herlock.ogv" type = "video/ogg">
+        <!-- 자막 만드는 방법은 Herlock.vtt 파일을 참고하자 . vtt파일을 직접 제작하는거 말고도 인터넷에 캡션메이커를 검색하면 자막을 만들 수 있는 사이트들도 존재한다.-->
+        <track src = "media/Herlock.vtt" srclang = "ko" label = "Korean" default>
+    </video>
+</body>
+</html>

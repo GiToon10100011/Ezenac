@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 3</title>
+    <style>
+        .box{
+            margin-top: 50px;
+            margin-left: 100px;
+            padding : 20px;
+            height : 60px;
+            animation-name: moving;
+            animation-duration: 2s;
+            /* animation-direction의 normal값은 애니메이션을 끝까지 실행하면 원래 있던 위치로 돌아가게한다. 기본값이다.
+            alternate값은 애니메이션을 끝까지 실행하면 왔던 방향으로 되돌아가면서 애니메이션을 실행한다.  */
+            animation-direction: alternate;
+            /* 애니메이션 무한반복 */
+            animation-iteration-count: infinite;
+
+        }
+        @keyframes moving {
+            from{
+                width : 200px;
+                background-color: #faef7c;
+                opacity: 0.5;
+                transform: scale(0.5) rotate(15deg);
+            }
+
+            to{
+                width : 400px;
+                background-color: #f00;
+                opacity: 1;
+                transform: scale(1) rotate(0deg);   
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class = "box">
+        <h3>Animation</h3>
+    </div>
+</body>
+</html>

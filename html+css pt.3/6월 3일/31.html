@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가변 이미지 3</title>
+</head>
+<body>
+    <!-- picture태그는 source태그와 함께 사용해서 화면 해상도뿐만 아니라 화면 너비에 따라 다른 이미지 파일을 표시할 수 있다. -->
+    <picture>
+        <!-- 브라우저 창의 너비가 1024이상이면 지정한 이미지를 띄움 -->
+        <!-- media속성은 srcset에 지정한 이미지를 표시하기 위한 조건을 나타내준다. -->
+        <source srcset = "images/Persona4.jpg" media="(min-width : 1024px)">
+        <source srcset = "images/Persona5.jpg" media="(min-width : 768px)">
+        <source srcset = "images/Persona3.jpg" media="(min-width : 320px)">
+        <img src = "images/Persona3.jpg" style = "width : 100%;">
+    </picture>
+</body>
+</html>

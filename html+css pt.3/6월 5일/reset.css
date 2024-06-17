@@ -1,0 +1,61 @@
+body{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    line-height: 1;
+}
+
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, fieldset, form, legend, article, nav, section, aside, footer, ul, li, ol, time, img, label, header{
+    margin : 0;
+    padding : 0;
+    border : 0;
+    outline : 0;
+    font-size: 100%;
+    /* 수직정렬. inline 또는 table-cell box에서만 수직정렬이 적용됨. baseline은 글자의 아랫부분을 기준으로 정렬을 시킴.*/
+    vertical-align: baseline;
+    /* 다른 배경색과의 충돌을 없애기 위해 초기화 할때 배경색을 투명하게 함. */
+    background-color: transparent;
+}
+
+article, aside, footer, header, nav, section{
+    display : block;
+}
+
+nav ul li{
+    list-style-type: none;
+}
+
+a{
+    margin : 0;
+    padding : 0;
+    font-size : 100%;
+    vertical-align : baseline;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+}
+
+hr{
+    display: block;
+    height : 2px;
+    /* hr안보이게 함 */
+    border: 0;
+    margin : 0;
+    padding : 0;
+}
+
+input, textarea{
+    width : 100%;
+    margin : 0;
+    padding : 0;
+    border : 0;
+    border-bottom: 1px solid #757575;
+    color : #cf2d2d;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    vertical-align: top;
+    font-size: 12px;
+    border-radius : 0;
+    box-sizing: content-box;
+}
+

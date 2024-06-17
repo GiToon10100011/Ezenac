@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원형 그라데이션</title>
+    <style>
+    div{
+        width : 500px;
+        height : 300px;
+        margin : 10px;
+        border : 1px solid grey;
+    }
+
+    .circle1{
+        /* 시작점을 10% 10%부분부터 그라데이션이 적용 */
+        background: radial-gradient(10% 10%, white, yellow, red);
+    }
+
+    .circle2{
+        background: radial-gradient(circle at 40% 40%, white, yellow, red);
+    }
+    </style>
+</head>
+<body>
+    <div class = "circle1"></div>
+    <div class = "circle2"></div>
+</body>
+</html>

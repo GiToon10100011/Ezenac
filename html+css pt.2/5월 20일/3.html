@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글꼴 관련 스타일 3</title>
+    <style>
+        p{
+            font-style: normal;
+        }
+
+        #Brazil{
+            /* oblique값은 기존에 만들어진 글꼴을 바탕으로 하여 기울림체로만 표시를 한다. */
+            font-style: oblique ;
+        }
+
+        #kor{
+            /* italic 값은 글꼴을 만들때 부터 같이 고안되어서 만들어진 값  따라서 oblique가 아닌 italic을 사용하는것이 권장됨.*/
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>2002년 월드컵 순위</h1>
+    <p id = "Brazil"> 1위 : Brazil </p>
+    <p> 2위 : Germany</p>
+    <p> 3위 : Turkey</p>
+    <p id = "kor"> 4위 : Korea</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 2</title>
+    <style>
+        div{
+            width : 100px;
+            height : 100px;
+            float : left;
+            margin : 50px;
+            
+        }
+
+        #box{
+            background-color: #0f0;
+            border : 1px solid;
+            animation-name: shape;
+            animation-duration: 2s;
+        }
+
+        #box2{
+            background-color: #00f;
+            border : 1px solid;
+            animation-name: rotate;
+            animation-duration: 2s;
+        }
+        
+        @keyframes shape {
+            from{
+                border : 1px solid;
+
+            }
+
+            to{
+                border : 1px solid;
+                border-radius: 50%;
+            }
+        }
+
+        @keyframes rotate {
+            from{
+                transform: rotate(0deg)
+            }
+
+            to{
+                transform: rotate(45deg)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id = "box"></div>
+    <div id = "box2"></div>
+</body>
+</html>

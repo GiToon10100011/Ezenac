@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition 2</title>
+    <style>
+        .tr:hover{
+            width : 200px;
+            height : 200px;
+            background-color: #ff6e5f;
+            transform : rotate(180deg);
+        }
+
+        .tr{
+            width : 100px;
+            height : 100px;
+            background-color: blue;
+            border : 1px solid;
+            /* 트랜지션을 적용할 속성을 지정함. */
+            transition-property: background-color, transform, width, height;
+            /* 트랜지션의 진행 시간을 지정함. */
+            transition-duration: 2s, 3s;
+        }
+    </style>
+</head>
+<body>
+    <div class = "tr"><h1>ㅎㅇ</h1></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video 태그</title>
+    <style>
+        body{
+            margin-top: 20px;
+            margin-left: 20px;;
+        }
+    </style>
+</head>
+<body>
+    <!-- controls 속성을 빼면 동영상에 우클릭을 해서 컨트롤 표시를 클릭하면 컨트롤바가 등장한다. -->
+    <video controls width = "600px" height = "500px" muted poster = "images/Persona3.jpg" width = "400px" height = "250px"> 
+        <source src = "media/Persona.mp4" type = "video/mp4">
+        <source src = "media/Persona.webm" type = "video/webm">
+        <!-- 이 영상을 보기 위해서는 html5를 지원하는 브라우저가 필요함 -->
+    </video>
+</body>
+</html>

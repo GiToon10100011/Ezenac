@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform-origin</title>
+    <style>
+        .origin{
+            width : 260px;
+            height : 368px;
+            border : 1px solid;
+            float : left;
+            margin : 40px;
+            /* 정확한 비교를 위해 너비랑 높이를 사진 원본의 픽셀과 맞추는 것이 좋다 */
+        }
+
+        .Persona{
+            transform: rotateZ(10deg);
+        }
+
+        .ltop .Persona{
+        /* 회전할때의 기준점을 설정해줌. */
+            transform-origin: left top;
+        }
+
+        .rtop .Persona{
+            transform-origin: right top;
+        }
+
+        .lbottom .Persona{
+            transform-origin: left bottom;
+        }
+
+        .rbottom .Persona{
+            transform-origin: right bottom;
+        }
+    </style>
+</head>
+<body>
+    <div class = "origin">
+        <div class = "ltop">
+            <img src = "images/Persona3.jpg" class = "Persona">
+        </div>
+    </div>
+
+    <div class = "origin">
+        <div class = "rtop">
+            <img src = "images/Persona3.jpg" class = "Persona">
+        </div>
+    </div>
+
+    <div class = "origin">
+        <div class = "lbottom">
+            <img src = "images/Persona3.jpg" class = "Persona">
+        </div>
+    </div>
+
+    <div class = "origin">
+        <div class = "rbottom">
+            <img src = "images/Persona3.jpg" class = "Persona">
+        </div>
+    </div>
+</body>
+</html>

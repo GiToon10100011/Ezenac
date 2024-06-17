@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문단 관련 스타일 4</title>
+    <style>
+         #text{
+            border : 1px solid tan;
+            width : 300px;
+            /* 줄바꿈 없음 */
+            white-space: nowrap;
+            /* 넘치는 부분을 감춤 */
+            overflow: hidden;
+            /* 말줄임표 */
+            text-overflow: ellipsis;
+         }
+
+         #text:hover{
+            /* 커서를 올렸을 때 넘쳤던 내용을 보이게함  */
+            overflow : visible;
+         }
+    </style>
+</head>
+<body>
+     <h1>텍스트 정렬</h1>
+    <h2>아무개</h2>
+    <p id = "text">이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵이러쿵 저러쿵</p>  
+</body>
+</html>

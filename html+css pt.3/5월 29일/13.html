@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>backface-visibility</title>
+    <style>
+        h1{
+            font-size: 60px;
+        }
+
+        div{
+            width : 200px;
+            height : 200px;
+        }
+
+        .container{
+            border : 1px solid;
+            perspective: 300px;
+            margin-top: 50px;
+            margin-left : 100px;
+            float : left;
+        }
+
+        .box{
+            background-color: blue;
+            transform : rotateY(140deg);
+        }
+
+        #back1{
+            /* backface-visibility속성은 y축을 기준으로 90도가 초과되면 뒷면의 공개여부를 결정짓는다. */
+            color: aliceblue;
+            backface-visibility: hidden;
+        }
+
+        #back2{
+            color : aliceblue;
+            backface-visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <div class = "box" id = "back1">
+            <h1>Back</h1>
+        </div>
+    </div>
+
+    <div class = "container">
+        <div class = "box" id = "back2">
+            <h1>Back</h1>
+        </div>
+    </div>
+
+</body>
+</html>

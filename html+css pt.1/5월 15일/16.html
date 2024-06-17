@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 태그의 기본</title>
+</head>
+<body>
+    <!-- action 속성은 내가 아래처럼 회원가입 페이지에서 정보를 다 입력하고 제출을 할때 나오는 페이지를 지정해준다.  -->
+    <form action = "#" method = "post">
+        <!-- 클라이언트가 입력하는 입력 양식 text는 사용자가 직접 입력하는 부분이기 때문에 value부분은 필요없다-->
+        <!-- name은 페이지 이동할때 이동한 페이지에서 참조하는 값이므로 라디오 버튼이나 체크박스 등이 아닐 경우에는 같게 하면 안된다.  -->
+        아이디 : <input type = "text" name = "text"> <br>
+        비밀번호 : <input type = "password" name = "password"> <br>
+        <!-- radio 버튼은 오로지 1개만 선택할 수 있도록 name속성을 반드시 같게 해야함. -->
+        <!-- value 값은 이동한 페이지에서 참조하는 실제 값 -->
+        성별 남 <input type = "radio" name = "gender" value = "man"> 
+        성별 여 <input type = "radio" name = "gender" value = "woman"> <br>
+
+        <!-- checkbox는 다중 선택이 가능한 입력 양식이며 반드시 name이 동일해야한다.  -->
+        취미: 독서<input type = "checkbox" name = "hobby" value = "reading">
+        게임<input type = "checkbox" name = "hobby" value = "gaming">
+        운동<input type = "checkbox" name = "hobby" value = "workout">
+        음악<input type = "checkbox" name = "hobby" value = "music"> <br>
+
+        파일을 업로드하세요. <input type = "file" name = "file"> <br>
+
+        <!-- 사용자에게 보이지 않는 입력양식이며 보통 접속일시, 회원가입일시를 전달 받을 때 사용한다. -->
+        <input type = "hidden" name = "hidden" value = "12:10"> <br>
+
+        <input type = "button" value = "딸깍"> <br>
+        <input type = "reset" value = "태초마을"> <br>
+        <input type = "submit" value = "제출"> <br>
+        <!-- input에서는 image는 많이 쓰진 않음 -->
+        <input type = "image" src = "./images/herlock.webp">
+
+    </form>
+</body>
+</html>

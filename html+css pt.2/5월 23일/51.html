@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z-index</title>
+    <style>
+        div #wrap{
+            position: relative;
+        }
+
+        div .b{
+            position : absolute;
+            width : 100px;
+            height : 100px;
+            border : 1px solid;
+            font-size : 25px;
+
+        }
+
+        /* z-index로 순서를 바꿔줌 */
+        
+        #box{
+            left : 110px;
+            top : 10px;
+            background-color: red;
+            z-index: 1;
+        }
+
+        #box2{
+            left : 70px;
+            top : 110px;
+            background-color: blue;
+            z-index: 3;
+        }
+
+        #box3{
+            left : 110px;
+            top : 90px;
+            background-color: greenyellow;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div id = "wrap">
+        <div id = "box" class = "b">1</div>
+        <div id = "box2" class = "b">2</div>
+        <div id = "box3" class = "b">3</div>
+    </div>
+</body>
+</html>

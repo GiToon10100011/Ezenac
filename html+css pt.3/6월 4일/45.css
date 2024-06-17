@@ -1,0 +1,108 @@
+#container{
+    width : 100%;
+}
+
+header{
+    width : 100%;
+}
+
+header h1{
+    /* 48px */
+    font-size: 3em;
+    text-align: center;
+}
+
+#list{
+    width : 100%;
+}
+
+#list > div{
+    position : relative;
+    height : 400px;
+    border : 1px solid;
+    margin : 15px;
+}
+
+#Gengar, #Gardevoir, #Luxray, #Decidueye, #Metagross{
+    width : 100%;
+}
+
+#list h2{
+    position : absolute;
+    padding : 5px;
+    font-size: 2em;
+    color : white;
+    text-shadow: 3px 3px 5px black;
+    right: 13%;
+    bottom : 50px;
+}
+
+#Gengar{
+    background: url(images/Gengar.png) no-repeat center;
+    background-size: cover;
+}
+
+#Gardevoir{
+    background: url(images/Gardevoir.jpg) no-repeat center;
+    background-size: cover;
+}
+
+#Luxray{
+    background: url(images/Luxray.png) no-repeat center;
+    background-size: cover;
+}
+
+#Decidueye{
+    background: url(images/Decidueye.png) no-repeat center;
+    background-size: cover;
+}
+
+#Metagross{
+    background: url(images/Metagross.png) no-repeat center;
+    background-size: cover;
+}
+
+footer{
+    width : 100%;
+    background: #373737 ;
+    height : 200px;
+}
+
+footer p{
+    font-size: 1.2em;
+    color : #eee;
+    text-align: center;
+    line-height: 200px;
+}
+
+/* 미디어 쿼리 사용시 띄어쓰기 주의할것 and 뒤에 반드시 띄어쓰기 필요 */
+@media all and (min-width : 768px){
+    #list{
+        display : flex;
+        -ms-flex-wrap : wrap;
+        -webkit-flex-wrap : wrap;
+        flex-wrap : wrap;
+        /* 화면 양쪽에 바짝 붙이게 함 */
+        justify-content: space-between;
+    }
+
+    #Gengar, #Gardevoir, #Luxray, #Decidueye{
+        width : 49%;
+    }
+
+    #Metagross{
+        width : 100%;
+    }
+}
+
+@media all and (min-width : 1024px){
+    #Gengar, #Gardevoir, #Luxray, #Decidueye, #Metagross{
+        width : 33%;
+    }
+
+    #Metagross{
+        margin-left: 0.5%;
+        /* 2배 크기로 늘림 */
+        flex : 2 2 0
+    }
+}

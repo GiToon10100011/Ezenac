@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 선택자 5</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+
+        li{
+            display : inline;
+            float : left;
+            margin : 10px;
+        }
+
+        a{
+            padding : 5px 20px;
+            font-size: 14px;
+            color : blue;
+            text-decoration: none;
+        }
+
+        /* ^= 선택자는 지정한 특정 문자열 값으로 시작하면 모두 선택해준다. ^은 캐럿이라고 불림. */
+        a[title ^= "eng"]{
+            background: url(images/herlock.webp) no-repeat left center;
+        }
+
+        a[title ^= "jap"]{
+            background: url(images/herlock.webp) no-repeat left center;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>외국어 서비스</li>
+        <li><a href = "#" title = "1english">영어</a></li>
+        <li><a href = "#" title = "japanese">일본어</a></li>
+        <li><a href = "#" title = "france">불어</a></li>
+    </ul>
+</body>
+</html>

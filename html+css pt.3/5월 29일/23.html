@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>애니메이션 4</title>
+    <style>
+        .box{
+            margin : 60px;
+            width : 60px;
+            height : 60px;
+            /* animation-name: rotate;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite; */
+            /* 여러 애니메이션을 적용할때 쉼표로 구분 */
+            animation : rotate 1.5s infinite alternate, background 1.5s infinite alternate;
+
+        }
+        @keyframes rotate {
+            from{
+                transform: perspective(100px) rotateY(0deg) rotateX(0deg);
+            }
+
+            50%{
+                transform: perspective(100px) rotateY(0deg) rotateX(-180deg);
+            }
+
+            to{
+                transform: perspective(100px) rotateY(-180deg) rotateX(-180deg);  
+            }
+        }
+
+        @keyframes background{
+            from{
+                background-color: red;
+            }
+
+            50%{
+                background-color: green;
+            }
+
+            to{
+                background-color: blue;
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class = "box">
+    </div>
+</body>
+</html>

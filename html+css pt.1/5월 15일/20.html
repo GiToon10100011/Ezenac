@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fieldset & legend 태그</title>
+</head>
+<body>
+    <form>
+        <!-- fieldset은 width속성이 안되므로 style속성을 사용해서 스타일을 지정해줘야한다. -->
+        <fieldset style = "width : 300px; border : 1 solid; color: blue;">
+            <!-- 제목부분 -->
+            <legend><b>로그인</b></legend>
+            <table>
+                <tr>
+                    <td><label for = "id">아이디</label></td>
+                    <td><input id = "id" type = "text"></td>
+                </tr>
+
+                <tr>
+                    <td><label for = "pw">비밀번호</label></td>
+                    <td><input id = "pw" type = "text"></td>
+                </tr>
+
+                <tr>
+                    <td colspan = "2" align = "right"><input type = "submit" value = "로그인">
+                    <input type = "submit" value = "취소">
+                    </td>
+                </tr>
+
+            </table>
+            
+        </fieldset>
+    </form>
+</body>
+</html>

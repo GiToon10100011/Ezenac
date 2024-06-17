@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스 선택자 2</title>
+    <style>
+        /* 같은 클래스 선택자를 지닌다 하더라도 .클래스 선택자명 앞에 태그가 오면 그 태그에만 스타일이 적용된다. */
+        h2.bluetext{
+            color : blue;
+        }
+
+        p{
+            font-size: 15px;
+            margin-left : 20px;
+        }
+
+        .redtext{
+            color : red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>블루베리 연구</h1>
+    <h2 class = "bluetext">블루베리의 항산화 효능</h2>
+    <p class = "bluetext">블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리블루베리</p>
+    <p>맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다맛있다</p>
+
+    <h2>블루베리의 노화</h2>
+    <p><span class = "redtext">아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫</span>아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫아늙싫</p>
+</body>
+</html>

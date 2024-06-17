@@ -1,0 +1,558 @@
+/* 모바일용 CSS */
+/* 기본 CSS */
+
+.container{
+    /* promo, display, contact, history영역은 90% 너비로 지정되게 함 */
+    width : 90%;
+    max-width: 1132px;
+    margin : 0 auto;
+}
+
+/* ::before , ::after은 지정한 선택자 앞/뒤의 요소에 컨텐츠를 추가하는 것이다. 특정 요소의 내용 앞이나 뒤에 지정한 내용을 넣을 수 있다. 텍스트나 이미지 등을 추가할 수 있다.  */
+/* 이와 같은 가상 선택자에 content속성이 필수로 들어간다. block이나 inline-block형태에만 적용됨. */
+.cfixed::after, .container::after{
+    display : block;
+    content : "";
+    clear : both;
+}
+
+.blind{
+    position : absolute;
+    width : 0;
+    height : 0;
+    line-height: 0;
+    text-indent : -9999px;
+    overflow : hidden;
+}
+
+/* 수평선 CSS */
+.divider{
+    width : 90%;
+    max-width: 1132px;
+    margin : 0 auto;
+    margin-top: 77px;
+    background-color: #eee;
+}
+
+.m-divider{
+    width : 20px;
+    margin : 0 auto;
+    margin-top : 77px;
+    background-color: #cf2d2d;
+}
+
+/* 헤더 영역 css */
+.header{
+    position : relative;
+    padding : 18px 5px;
+}
+
+.header .logo{
+    float : left;
+}
+
+.header .logo a{
+    font-size: 26px;
+    color : #cf2d2d;
+    font-weight: normal;
+}
+
+/* ul CSS */
+.header .gnb {
+    display: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* 모바일용이기에 none값을 줌. */
+    position : absolute;
+    top : 100%;
+    left : 0;
+    width : 100%;
+    background-color: #cf2d2d;
+}
+
+.header .gnb li{
+    border-bottom : 1px solid #303f9f;
+}
+
+.header .gnb li a{
+    display: block;
+    padding : 14px 0 14px 5%;
+    font-size: 14px;
+    color : #fff;
+}
+
+/* 토글이란 용어는 오직 두 가지 상태에서 스위치를 한번 누르면 어떤 값이 되고 다시 누르면 원래 상태로 되돌아올때를 보통 의미한다. */
+.header .menu-toggle-btn{
+    float : right;
+    width : 20px;
+    margin-top : 4px;
+    /* cursor 속성을 이용하면 해당 태그 위에 위치하는 마우스 커서의 모양을 바꿀 수 있다. */
+    /* auto, default, pointer(손가락), wait(로딩) 등과 같은 값들이 있다. */
+    cursor : pointer;
+}
+
+.header .menu-toggle-btn span{
+    display : block;
+    height : 2px;
+    background-color: #cf2d2d;
+}
+
+/* span태그의 2번째 요소에 마진을 5px를 상하로 부여함. */
+.header .menu-toggle-btn span:nth-child(2){
+    margin : 5px 0;
+}
+
+/* 슬라이더 영역 CSS */
+.slider img{
+    display: block;
+    width :  100%;
+    /* 상위요소만큼만 줄어들거나 확대시킴 */
+    max-width: 100%;
+    height : auto;
+}
+
+/* 디스플레이 영역 CSS */
+.display-section{
+    margin-top: 60px;
+    text-align: center;
+}
+
+/* WE ARE 영역 CSS */
+
+.display-section .title{
+    margin-bottom :  30px;
+}
+
+.display-section .desc{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color : #616161;
+    line-height: 2em;
+}
+
+/* Promo 영역 CSS */
+.promotion-section{
+    margin-top : 68px;
+}
+
+.promotion-section .promo-list li{
+    margin-top: 50px;
+    text-align: center;
+    list-style-type: none;
+}
+
+/* 첫번째는 여백 필요없으므로 지워줌 */
+.promotion-section .promo-list li:first-child{
+    margin-top : 0;
+}
+
+.promotion-section .promo-list li img{
+    height: 52px;
+}
+
+.promotion-section .promo-list li h3{
+    margin : 30px 0 20px 0;
+    color : #cf2d2d;
+    font-weight: normal;
+}
+
+.promotion-section .promo-list li p{
+    font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color : #616161;
+    line-height: 1.5em;
+}
+
+/* work 영역 CSS */
+.work-section{
+    margin-top : 75px;
+}
+
+.work-section .title{
+    width :  90%;
+    max-width: 1132px;
+    /* 중앙정렬을 하려면 0 auto */
+    margin: 0 auto;
+    margin-bottom : 45px;
+    text-align: center;
+}
+
+.work-section .work-list li{
+    width :  100%;
+
+}
+
+/* 배경과 글자들이 위치할 기준을 설정하귀 위한 relative값 */
+.work-section .work-list li a{
+    display : block;
+    position : relative;
+    width :  100%;
+    height : 100%;
+}
+
+.work-section .work-list li a:before{
+    /* 절대적인 위치에 블럭 레벨 요소로 왼쪽 상단부터 나타냄. 
+    요소가 겹치는 순서를 지정하기 위해 z-index사용 */
+    display: block;
+    position :  absolute;
+    top : 0;
+    left : 0;
+    z-index: 10;
+    width :  100%;
+    height : 100%;
+    background-color: #cf2d2d;
+    content : "";
+    opacity: 0.0;
+    /* 해당하는 모든 요소에 트랜지션 적용 */
+    transition-property: all;
+    transition: 0.5s;
+}
+
+/* :hover:before를 통해 상위요소(li)에 hover이벤트가 발생시 li에 특정 스타일을 적용시킴 */
+.work-section .work-list li a:hover:before{
+    opacity: 0.8
+}
+
+.work-section .work-list li .info{
+    /* 왼쪽 상단 23px떨어진 곳에 위치를 시킴. 
+    겹치는 부분을 대비해 z-index를 20을 부여 */
+    position : absolute;
+    top : 0;
+    left : 23px;
+    z-index: 20;
+    opacity: 0.0;
+    transition: all;
+    transition-duration: 0.3s;
+}
+
+.work-section .work-list li a:hover .info{
+    transform: translateY(23px);
+    opacity: 1.0;
+}
+
+.work-section .work-list li .info h3{
+    margin-bottom: 8px;
+    font-size: 32px;
+    color : #fff;
+    font-weight: normal;
+}
+
+.work-section .work-list li .info span{
+    font-size: 12px;
+    color : white;
+    font-weight: light;
+    font-family: monospace;
+}
+
+.work-section .work-list li img{
+    display: block;
+    width : 100%;
+    max-width: 100%;
+    height : auto;
+}
+
+/* history영역 CSS */
+.history-section{
+    margin-top : 75px;
+}
+
+.history-section .title{
+    margin-bottom : 45px;
+    text-align: center;
+}
+
+.history-section .history-list li{
+    width : 100%;
+    margin-top : 45px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.history-section .history-list li:first-child{
+    margin-top : 0;
+}
+
+.history-section .history-list li img{
+    display: block;
+    width : 100%;
+    max-width: 100%;
+    height : auto;
+}
+
+.history-section .history-list li time{
+    display: block;
+    margin : 10px 0;
+    font-size: 12px;
+    color : #9e9e9e;
+}
+
+.history-section .history-list li h3{
+    color : #424242;
+    font-weight: normal;
+    line-height: 1.5em;
+}
+
+/* contact부분 CSS */
+.contact-section{
+    margin-top : 100px;
+}
+
+.contact-section .title{
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.contact-section .form-box .form input{
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.contact-section .form-box .form .text-area textarea{
+    height : 170px;
+}
+
+.contact-section .form-box .send{
+    margin-top : 35px;
+    text-align: right;
+}
+
+.contact-section .form-box .send button{
+    padding : 15px;
+    margin : 0;
+    font-size: 12px;
+    color : #fff;
+    background-color: #cf2d2d;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor : pointer;
+}
+
+/* footer영역 CSS */
+
+.footer{
+    margin-top : 105px;    
+}
+
+.footer iframe{
+    width : 100%;
+    height : 320px;
+}
+
+.footer p{
+    margin : 20px 0;
+    color : #cf2d2d;
+    text-align: center;
+}
+
+/* 태블릿용 CSS */
+@media all and (min-width : 768px) {
+    /* 기본 CSS */
+    .divider{
+        margin-top : 125px;
+    }
+
+    .m-divider{
+        margin-top : 125px;
+    }
+
+    /* 헤더 영역 CSS */
+    .header{
+        /* 요소를 문서의 흐름에 맞추어 배치하는 값 */
+        position : static;
+        padding : 28px 52px;
+    }
+
+    .header .gnb{
+        /* !important는 중요한 스타일이라고 알림. 어느 스타일보다 최우선적으로 적용해야할 스타일 */
+        display: block !important;
+        position : static;
+        float : right;
+        margin-top : 5px;
+        background: none;
+    }
+
+    .header .gnb li{
+        float : right;
+        margin-left: 20px;
+        border-bottom: 0;
+    }
+
+    .header .gnb li a{
+        padding : 0;
+        font-size: 16px;
+        color : #cf2d2d;
+    }
+
+    .header .menu-toggle-btn{
+        display: none !important;
+    }
+
+    .display-section{
+        margin-top : 95px;
+    }
+
+    /* promo영역 CSS */
+    .promotion-section{
+        margin-top : 110px;
+    }
+
+    .promotion-section .promo-list li{
+        float : left;
+        /* (175/768)*100 = 22.7864% */
+        width : 22.7864%;
+        /* (20/768)*100 = 2.60416667% */
+        margin-left: 2.60416667%;
+        margin-top : 0;
+    }
+
+    .promotion-section .promo-list li:first-child{
+        margin-left : 0;
+    }
+
+    /* work영역 CSS */
+    .work-section{
+        margin-top : 120px;
+    }
+
+    .work-section .title{
+        margin-bottom: 75px;
+    }
+
+    .work-section .work-list li{
+        float : left;
+        width : 50%;
+    }
+
+    .work-section .work-list li .info{
+        left : 37px;
+    }
+    
+    .work-section .work-list li:hover .info{
+        transform: translateY(37px);
+    }
+
+    /* history 영역 CSS */
+    .history-section{
+        margin-top : 125px;
+    }
+
+    .history-section .title{
+        margin-bottom: 75px;
+    }
+
+    .history-section .history-list li{
+        float : left;
+        /* (242/768)*100 */
+        width : 31.59722222%;
+        margin-left : 2.064166667%;
+        margin-top : 0;
+    }
+
+    .history-section .history-list li:first-child{
+        margin-left: 0;
+    }
+
+    /* contact영역 CSS */
+    .contact-section{
+        margin-top : 175px;
+    }
+
+    .contact-section .title{
+        margin-bottom: 75px;
+    }
+
+    .contact-section .form-box .form, .contact-section .form-box .text-area{
+        float : left;
+        width : 48.6979%;
+    }
+
+    .contact-section .form-box .form{
+        margin-right : 2.604166667%;
+    }
+
+    .contact-section .form-box .form input:first-child{
+        margin-bottom : 0;
+    }
+
+    /* footer 영역 CSS */
+    .footer iframe{
+        height : 430px;
+    }
+
+    .footer p{
+        margin : 35px 0;
+    }
+}
+
+/* pc용 CSS */
+@media all and (min-width : 1132px) {
+    /* .display-section{
+        text-align: center;
+    }
+
+    .display-section .title{
+        float : left;
+        margin-bottom: 0;
+    }
+
+    .display-section .desc{
+        position : relative;
+        float: right;
+        padding-left : 20px;
+        color : #616161;
+        line-height: 2.0em;
+    }
+
+    .display-section .desc:before{
+        display : block;
+        position : absolute;
+        top : 9px;
+        left : 0;
+        width : 2px;
+        height : 44px;
+        background-color: #e0e0e0;
+        content : "";
+    } */
+
+    .promotion-section .promo-list li{
+        width : 23.67491166%;
+        margin-left : 1.76678%;
+    }
+
+    .work-section .title{
+        text-align: left;
+    }
+
+    .work-section .work-list li{
+        width : 25%;
+    }
+
+    .history-section .title{
+        float : left;
+        margin-bottom: 0;
+    }
+
+    .history-section .history-list{
+        float : right;
+        width : 74.5583%;
+    }
+
+    .history-section .history-list li{
+        width : 31.7535%;
+        margin-left : 2.3696%;
+    }
+
+    .contact-section .title{
+        float : left;
+        margin-bottom: 0;
+    }
+
+    .contact-section .form-box{
+        float : right;
+        width : 74.5583%;
+    }
+
+    .contact-section .form-box .form{
+        margin-right: 2.3696%;
+    }
+    .contact-section .form-box .form, .contact-section .form-box .text-area{
+        width : 48.8151%;
+    }
+}
+

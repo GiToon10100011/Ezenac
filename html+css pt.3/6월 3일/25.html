@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가변 그리드 레이아웃</title>
+    <style>
+        #wrapper{
+            width : 96%;
+            margin : 0 auto;
+        }
+
+        header{
+            /* 상위 요소가 96%이지만 96%와 동일하게 가져가고 싶다면 100%로 지정해야함. */
+            width : 100%;
+            height : 120px;
+            background-color: #006cfa;
+            border-bottom : 1px solid;
+        }
+
+        .header{
+            font-size : 32px;
+            color : white;
+            text-align: center;
+            line-height: 120px;
+        }
+
+        /* 각 요소의 너비를 구하는 공식 -> (요소의 너비/컨텐츠 전체를 감싸는 요소의 너비)*100 */
+        .content{
+            float : left;
+            /* (600/960)*100 */
+            width : 62.5%;
+            height : 400px;
+            /* 소수점은 3자리나 4자리까지만 표시하는게 좋음 */
+            padding : 1.5625%;
+            background-color: #00ff90;
+        }
+
+        .right{
+            float : right;
+            width : 31.25%;
+            height : 400px;
+            padding : 1.5625%;
+            background-color: #00ff90;
+        }
+
+        .footer{
+            clear : both;
+            height: 100%;
+            background-color: #c35;
+        }
+    </style>
+</head>
+<body>
+    <!-- body의 모든 요소를 wrapper로 묶음 (상위 요소로 지정))-->
+    <div id = "wrapper">
+        <header>
+            <h1 class= "header">가변 그리드 레이아웃</h1>
+        </header>
+        <section class = "content">
+            <h4>본문 입니다.</h4>
+        </section>
+        <aside class = "right">
+            <h4>사이드 바</h4>
+        </aside>
+        <footer class = "footer">
+            <h4>푸터</h4>
+        </footer>
+    </div>
+</body>
+</html>

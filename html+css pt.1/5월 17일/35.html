@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 선택자 4</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+
+        li{
+            display : inline;
+            float : left;
+            margin : 10px;
+        }
+
+        a{
+            padding : 5px 20px;
+            font-size: 14px;
+            color : blue;
+            text-decoration: none;
+        }
+
+        /* |= 선택자는 특정 값이 포함된 속성에 스타일을 적용시킨다. ~=와 다르게 하이픈(-)로 연결되어있는 단어라도 스타일을 적용시킬 수 있다. 단, 하이픈만 적용됨. 또한, 하이픈만을 기준으로 선택하므로 띄어쓰기를 할 경우 스타일이 적용되지 않는다.*/
+        a[title |= "us"]{
+            background: url(images/herlock.webp) no-repeat left center;
+        }
+
+        a[title |= "jp"]{
+            background: url(images/herlock.webp) no-repeat left center;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>외국어 서비스</li>
+        <li><a href = "#" title = "us">영어</a></li>
+        <li><a href = "#" title = "us-english">영어</a></li>
+        <li><a href = "#" title = "jp">일본어</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 선택자 1</title>
+    <style>
+        /* 아래의 속성 선택자는 a태그에서 href라는 속성이 있는 곳만 배경색을 입힘. 속성 선택자는 태그[속성]과 같은 형식으로 사용된다. */
+        ul{
+            list-style-type: none;
+        }
+
+        li{
+            width : 105px;
+            /* 인라인 형태는 옆으로 붙게끔 한다. */
+            display: inline;
+            float : left;
+            margin : 10px;
+        }
+        
+        a[href]{
+            background-color: yellow;
+        }
+
+        a{
+            /* padding에서 첫번째 인자는 양옆, 두번째 인자는 위아래를 지칭한다.*/
+            padding : 5px 20px;
+            font-size: 14px;
+            color : blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li><a>메인 메뉴 : </a></li>
+        <li><a href = "#"">떡볶이</a></li>
+        <li><a href = "#"">비빔밥</a></li>
+        <li><a href = "#"">제육덮밥</a></li>
+    </ul>
+
+</body>
+</html>

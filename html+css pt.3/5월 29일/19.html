@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform 다중적용</title>
+    <style>
+        div{
+            width : 100px;
+            height : 100px;
+            margin : 100px;
+            background-color: #0094ff;
+        }
+
+        .box{
+            transition : 2s ease-in;
+        }
+
+        .box:hover{
+            /* transform: rotate(180deg);
+            perspective : 120px;
+            transform: scale(2); */
+            /* transform의 속성을 한꺼번에 부여 */
+            transform:scale(2) perspective(120px) rotateX(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class = "box"></div>
+</body>
+</html>

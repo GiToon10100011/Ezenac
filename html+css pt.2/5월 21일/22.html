@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경 이미지 2</title>
+    <style>
+        div{
+            width : 500px;
+            height : 500px;
+            border : double red;
+            margin-bottom : 20px;
+        }
+
+        .bg{
+            background-image: url(images/persona.jpeg);
+            /* 반복 시키지 않는다.  */
+            background-repeat : no-repeat;
+            /* 이미지의 시작위치를 왼쪽 최상으로 지정 */
+            background-position: left top;
+            /* auto값은 원래 배경 이미지의 크기대로 표시를 함. */
+            background-size: auto;
+        }
+
+        .bg2{
+            background-image: url(images/persona.jpeg);
+            /* 반복 시키지 않는다.  */
+            background-repeat : no-repeat;
+            /* 이미지의 시작위치를 왼쪽 최상으로 지정 */
+            background-position: left top;
+            /* px값을 주게되면 너비 높이가 모두 지정되었기에 사이즈만큼 표시함. */
+            background-size: 200px 150px; 
+        }
+
+        .bg3{
+            background-image: url(images/persona.jpeg);
+            /* 반복 시키지 않는다.  */
+            background-repeat : no-repeat;
+            /* 이미지의 시작위치를 왼쪽 최상으로 지정 */
+            background-position: left top;
+            /* %값은 상대적으로 부모요소의 크기에 따라 결정이 됨*/
+            background-size: 60% 40%;
+        }
+
+        .bg4{
+            background-image: url(images/persona.jpeg);
+            /* 반복 시키지 않는다.  */
+            background-repeat : no-repeat;
+            /* 이미지의 시작위치를 왼쪽 최상으로 지정 */
+            background-position: left top;
+            /* contain값은 배경 이미지가 모두 표시되도록 축소/확대를 한다.  */
+            background-size: contain;
+        }
+
+        .bg5{
+            background-image: url(images/persona.jpeg);
+            /* 반복 시키지 않는다.  */
+            background-repeat : no-repeat;
+            /* 이미지의 시작위치를 왼쪽 최상으로 지정 */
+            background-position: left top;
+            /* cover값은 배경 이미지가 크다면 배경 이미지를 확대하거나 축소를 하면서 모두 표시가 되도록 한다. */
+            background-size: cover;
+        }
+
+        .bg6{
+            background-image: url(images/persona.jpeg);
+            /* 반복 시키지 않는다.  */
+            background-repeat : no-repeat;
+            /* 이미지의 시작위치를 왼쪽 최상으로 지정 */
+            background-position: left top;
+            /* 100% 100%를 주게 되면 원본 사진이 전부 보이긴하지만 원이미지의 비율을 깨버린다. */
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class = "bg"></div>
+    <div class = "bg2"></div>
+    <div class = "bg3"></div>
+    <div class = "bg4"></div>
+    <div class = "bg5"></div>
+    <div class = "bg6"></div>
+</body>
+</html>

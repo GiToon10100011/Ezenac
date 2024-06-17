@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어 쿼리를 이용한 페이지 제작(mobile,tablet,pc)</title>
+    <style>
+        *{
+            margin : 0;
+            padding : 0;
+            box-sizing: border-box;
+        }
+
+        header{
+            width : 100%;
+            background-color: #000;
+        }
+
+        nav ul{
+            height: 50px;
+            margin : 0;
+            list-style-type: none;
+            background-color: #000;
+            color : white;
+        }
+
+        nav ul li{
+            float : left;
+            margin : 5px 15px;
+            padding : 10px;
+            font-size: 0.8em;
+        }
+
+        /* 모바일 페이지를 만들기 위해 310px로 지정 */
+        #container, nav{
+            width : 310px;
+            margin : 0 auto;
+        }
+
+        #intro{
+            /* 310px */
+            width : 100%;
+            margin-bottom: 20px;
+        }
+
+        #intro img{
+            max-width: 100%;
+        }
+
+        #desc{
+            width : 100%;
+            padding : 10px;
+        }
+
+        footer{
+            width : 100%;
+            height : 60px;
+            padding : 20px;
+            background-color: #37001c;
+            color : white;
+        }
+
+        footer p {
+            text-align: center;
+        }
+
+        /* 태블릿 전용으로 만들기 위한 미디어 쿼리 */
+        @media all and (min-width : 768px) {
+            #container, nav{
+                /* 태블릿 너비인 768px에 맞춰 적당히 너비를 지정 */
+                width : 750px;
+                margin : 0 auto;
+            }
+
+            #intro{
+                /* 768px */
+                width : 100%;
+            }
+
+            #intro img{
+                width : 200px;
+                margin: 20px;
+            }
+
+            #desc{
+                width : 100%;
+                padding : 0;
+                margin : 10px auto;
+            }
+
+            footer{
+                height : 150px;
+                background: url(images/Banner.jpg) no-repeat center;
+            }
+
+            footer p{
+                line-height: 150px;
+            }
+        }
+
+         /* pc 전용으로 만들기 위한 미디어 쿼리 */
+         @media all and (min-width : 1024px) {
+            #container, nav{
+                /* 태블릿 너비인 768px에 맞춰 적당히 너비를 지정 */
+                width : 1000px;
+                margin : 0 auto;
+            }
+
+            #intro img{
+                float : left;
+            }
+
+            #desc{
+                width : 250px;
+                height : 200px;
+                padding : 5px;
+                border : 1px dotted #ccc;
+                display : inline-block;
+            }
+
+            footer{
+                clear : both;
+                height : 200px;
+                background: url(images/Banner.jpg) no-repeat center;
+                background-size: cover;
+            }
+
+            footer p{
+                line-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </nav>
+    </header>
+    <div class = "container">
+        <section id = "intro">
+            <img src = "images/Persona3.jpg">
+            <img src = "images/Persona4.jpg">
+            <img src = "images/Persona5.jpg">
+        </section>
+        <section id = "desc" class = "text">
+            <p>whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat</p>
+        </section> 
+
+        <footer>
+            <p>footer whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat</p>
+        </footer>
+    </div>
+</body>
+</html>

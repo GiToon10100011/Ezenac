@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexbox 6</title>
+    <style>
+
+        .wrapper{
+            width : 500px;
+            height : 150px;
+            margin : 0 auto 20px;
+            display: flex;
+            flex-wrap: wrap;
+            border : 2px solid
+        }
+
+        .wrapper div{
+            width : 200px;
+            border : 2px solid;
+            background-color: #ccc;;
+        }
+
+        #container{
+            align-content: flex-start;
+        }
+
+        #container2{
+            align-content: flex-end;
+        }
+
+        #container3{
+            align-content: center;
+        }
+
+        #container4{
+            /* 교차축에 공간을 주면서 배치가 됨. */
+            align-content: space-between;
+        }
+
+        #container5{
+            align-content: space-around;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        p{
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>align content</h1>
+    <div id = "container" class = "wrapper">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+
+    <h1>align content 2</h1>
+    <div id = "container2" class = "wrapper">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+
+    <h1>align content 3</h1>
+    <div id = "container3" class = "wrapper">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+
+    <h1>align content 4</h1>
+    <div id = "container4" class = "wrapper">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+
+    <h1>align content 5</h1>
+    <div id = "container5" class = "wrapper">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+</body>
+</html>

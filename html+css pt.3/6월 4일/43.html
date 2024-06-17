@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexbox 5</title>
+    <style>
+        #container{
+            width : 500px;
+            height : 100px;
+            margin : 0 auto 20px;
+            /* flexbox를 박스 레벨 요소로 지정 */
+            display: flex;
+            /* 교차 축의 중앙을 기준으로 배치 */
+            /* stretch가 기본값으로 교차축에 맞게끔 높플렉스 항목을 확장한다. */
+            align-items: center;
+        }
+
+        #container div{
+            width : 100px;
+            border : 2px solid;
+            background-color: #ccc;
+        }
+
+
+        /* 플렉스 항목의 배치의 순서를 바꿈. 값이 0일때는 소스에 입력한 순서대로 배치됨. */
+        #box{
+            /* box에 해당하는 웹 요소만 교차축의 시작점에 배치를 시킴 */
+            align-self : flex-start;
+        }
+
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div id = "box"><h1>1</h1></div>
+        <div id = "box2"><h1>2</h1></div>
+        <div id = "box3"><h1>3</h1></div>
+    </div>
+</body>
+</html>

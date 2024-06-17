@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 선택자 3</title>
+    <style>
+
+        ul{
+            list-style-type: none;
+        }
+
+        li{
+            display : inline;
+            float : left;
+            margin : 10px;
+        }
+
+        a{
+            padding : 5px 20px;
+            font-size : 14px;
+            color : blue;
+            /* a태그에 설정되어 있는 내용을 제거(밑줄 같은 거) */
+            text-decoration: none;
+        }
+
+        .flat{
+            background: blue;
+            color : white;
+        }
+
+        /* ~는 틸드라고 부른다. */
+        /* [속성 ~= 값] 선택자를 사용하면 여러 속성 값 중에 해당 값이 포함되어 있는 요소들만 스타일을 적용시킨다. */
+        [class ~= "button"]{
+            border : 2px solid black;
+
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href = "#">메뉴 1 </a></li>
+        <li><a href = "#">메뉴 2</a></li>
+        <li><a href = "#" class = "button">비빔밥</a></li>
+        <!-- 스타일을 적용시키려면 button이라고 동일하게 적어야한다. ~= 선택자는 띄어쓰기를 기준으로 단어를 인식하기 때문에 하이픈으로 연결된 단어를 전부 하나의 언어로 인식하여 스타일 적용이 되지 않는다. -->
+        <!-- <li><a href = "#" class = "flat-button">제육덮밥</a></li> -->
+        <li><a href = "#" class = "flat button">제육덮밥</a></li>
+    </ul>
+
+    
+</body>
+</html>
