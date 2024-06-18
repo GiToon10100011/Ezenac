@@ -13,6 +13,7 @@
   font-family: "Nexon Lv1 Gothic";
   src: url("./Fonts/NEXON\ Lv1\ Gothic\ OTF\ Bold.woff") format("woff");
   font-weight: 700;
+  /* font family로 이름을 같게 설정해도 weight값에 따라 폰트 부여가 달라짐. */
 }
 
 /* 변수 선언 */
@@ -30,6 +31,7 @@
 
   /* emmet : bz: */
   box-sizing: border-box;
+  
 }
 
 a {
