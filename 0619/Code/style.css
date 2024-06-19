@@ -1,0 +1,916 @@
+/* reset css import */
+@import url("reset.css");
+
+/* ==== Desktop ==== */
+
+/* common */
+#app_container {
+  width: 100%;
+}
+
+/* navigation */
+#navigation_heading {
+  width: 100%;
+  height: 60px;
+  background: var(--bg-color-white);
+  /* 위치를 고정시킴. */
+  position: fixed;
+  z-index: 100;
+}
+
+/* script 조건식을 위해 지정 */
+#navigation_heading.active {
+  background: var(--bg-color-black);
+}
+
+#navigation {
+  width: var(--main-width);
+  height: 60px;
+  display: flex;
+  /* 요소를 양쪽 정렬시킴 */
+  justify-content: space-between;
+  /* 요소들을 수직정렬 */
+  align-items: center;
+  /* 상하는 0, 좌 우측 값은 자동으로 균일하게 맞춰주도록 설정 */
+  margin: 0 auto;
+}
+
+#navigation.active {
+  background: var(--bg-color-black);
+}
+
+#logo {
+  font-family: "Bree Serif", serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#logo.active {
+  color: var(--bg-color-white);
+}
+
+.gnbDesktop {
+  /* 줄바꿈을 하지 않겠다고 설정함으로써 화면크기에 따라 flexible하게 변함. */
+  display: flex;
+  /* 요소사이의 여백 설정  */
+  gap: 40px;
+}
+
+.gnbMobile {
+  display: none;
+}
+
+.gnbDesktop.active {
+  color: var(--bg-color-white);
+}
+
+.gnbDesktop li a {
+  position: relative;
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+.gnbDesktop li a::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: crimson;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+}
+
+.trigger {
+  display: none;
+}
+
+/* slider */
+#slide {
+  width: 100%;
+  line-height: 40px;
+  /* 상대값 위치를 주면 후손들은 아무리 절대 위치를 주더라도 부모 요소의 밖을 나갈 수 없다. */
+  position: relative;
+}
+
+.slide_text {
+  width: 1000px;
+  /* 국룰 정렬 방법 */
+  transform: translate(-50%, -20%);
+  /* 영향 받지않는 절대위치 부여 */
+  position: absolute;
+  /* 이걸로 먼저 가운데로 설정을 한 후 페이지를 보고 translate값을 주면 되나? */
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+}
+
+.slide_text_inner {
+  /* z-index: 2; */
+  width: 568px;
+  display: flex;
+  flex-direction: column;
+  /* 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
+  /* flex에서는 간격을 gap으로 준다. */
+  gap: 18px;
+}
+
+.slide_title {
+  color: var(--bg-color-white);
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.slide_btn {
+  width: 212px;
+  height: 52px;
+  font-size: 18px;
+  /* =corner radius */
+  border-radius: 50px;
+  border: 1px solid transparent;
+  /* 버튼 같은 form 태그는 자기 고유의 양식을 가지고 있어 따로 font family를 지정해줘야함. */
+  font-family: "Nexon Lv1 Gothic";
+  background: var(--bg-color-white);
+  opacity: 80%;
+  cursor: pointer;
+  transition: all 0.3s;
+  /* nesting 기능 */
+  &:hover {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+}
+
+.slide_container {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  z-index: -1;
+}
+
+.slide_container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  z-index: 0;
+}
+
+.slide_container li {
+  width: 100%;
+  height: 100%;
+}
+
+.slide_container .slide_img {
+  width: 100%;
+  height: 100%;
+  /* 부모 요소의 액자(가설)안에 요소를 딱 넣어서 비율을 일정하게 하겠다 */
+  object-fit: cover;
+}
+
+/* 0618 내용 */
+.slide_container_arrow {
+  z-index: 1;
+  width: var(--main-width);
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  /* space-between은 양쪽 정렬 */
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.slide_container_arrow .slide_container_btn.right {
+  opacity: 70%;
+  margin-top: 200px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 8px;
+  border-radius: 100%;
+  transform: translateX(-10px);
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 1);
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--bg-color-white);
+    border-radius: 100%;
+    transform: translateX(0);
+  }
+}
+
+.slide_container_arrow .slide_container_btn.left {
+  opacity: 70%;
+  margin-top: 200px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 8px;
+  border-radius: 100%;
+  transform: translateX(10px);
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 1);
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--bg-color-white);
+    border-radius: 100%;
+    transform: translateX(0);
+  }
+}
+
+.slide_container_arrow .slide_container_btn i {
+  font-size: 26px;
+}
+
+.slide_pager {
+  width: var(--main-width);
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.slide_pager span {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  text-indent: -9999px;
+}
+
+.slide_pager span.active {
+  background: rgba(255, 255, 255, 1);
+}
+
+/*main*/
+#main {
+  margin: 0 auto;
+  /* emmet : df */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--main-width);
+  height: 620px;
+  background: var(--bg-color-white);
+}
+
+.main_text {
+  width: 422px;
+  /* 여기서 flex를 줘서 문장간의 간격을 줄 수 있게끔 만든다.  */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.main_info {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.main_desc {
+  display: flex;
+  /* emmet : fd 하고 아래키 */
+  flex-direction: column;
+  /* emmet : lh */
+  line-height: 180%;
+}
+
+/* 항상 순서에 맞게 스타일 지정하자 */
+.main_slide {
+  position: relative;
+}
+
+/* 필터 씌우기 */
+
+.main_slide::before {
+  /* 전후문자 선택자를 사용할때 필수불가결적으로 빠지면 안되는 요소가 content이다. 이는 그냥 국룰이며 값도 그냥 공백을 넣어도 된다.  */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 80%는 끝나는 지점을 말하는건가? */
+  background: radial-gradient(circle, transparent, rgba(255, 255, 255, 1) 80%);
+  /* 100% 100%의 너비 높이에 배경을 가득 채우겠다는 뜻 */
+  background-size: cover;
+  z-index: 1;
+}
+
+.main_slide ul {
+  display: flex;
+  /* emmet : jc */
+  justify-content: space-between;
+  width: 680px;
+  position: relative;
+}
+
+.main_slide ul li {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 특정 태그가 특정 클래스를 가지고 있는거에만 스타일 적용하고 싶으면  태그선택자 바로옆에 공백없이 클래스명으로 지정해줄 수 있다.  */
+.main_slide ul li.active {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  z-index: 2;
+  /* 0에 근접할수록 투명해짐(opacity) */
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
+}
+
+.card_img {
+  width: 240px;
+  height: 240px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card_img.first {
+  background: url(img/denmark.png);
+}
+
+.card_img.second {
+  background: url(img/jeju.png);
+}
+
+.card_img.third {
+  background: url(img/usa.png);
+}
+
+.card_info {
+  background: var(--bg-color-white);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  width: 100%;
+  height: 160px;
+}
+
+.card_info_national {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.card_info_desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-bottom: 1px solid;
+  padding-bottom: 18px;
+}
+
+.card_info_price {
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.main_slide_arrow {
+  display: flex;
+  /* 한국 카드 보다 더 앞에 나오게 하기 위해 3을 부여함(1 -> 2 -> 3 순서대로 아래쪽 -> 위쪽으로 쌓여서 웹페이지에 나타남) */
+  z-index: 3;
+  position: absolute;
+  /* left right 값을따로 주기 위해서 여기서 left50%값을 주지 않음. */
+  top: 50%;
+  cursor: pointer;
+}
+
+.main_slide_arrow .slide_arrow.left {
+  position: absolute;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  color: var(--bg-color-black);
+  text-align: center;
+  padding-top: 8px;
+  transform: translateX(10px);
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 1);
+  transition: all 0.3s;
+  &:hover {
+    color: var(--bg-color-black);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
+  }
+  /* 위치확인용 */
+  /* border: 1px solid #f00; */
+}
+
+.main_slide_arrow .slide_arrow.right {
+  position: absolute;
+  left: 640px;
+  width: 40px;
+  height: 40px;
+  color: var(--bg-color-black);
+  text-align: center;
+  padding-top: 8px;
+  transform: translateX(-10px);
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 1);
+  transition: all 0.3s;
+  &:hover {
+    color: var(--bg-color-black);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
+  }
+  /* 위치확인용 */
+  /* border: 1px solid #f00; */
+}
+
+.main_slide_arrow .slide_arrow i {
+  font-size: 26px;
+}
+
+.main_slide_pager {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: -8%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.main_slide_pager span {
+  width: 50px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  /* 숫자를 안보이게함. html태그내의 내용을 지워도 되지만 그럴경우 첨보는 사람이 볼때 비어있는 태그가 이상하게 보이므로 코드의 재사용성이 떨어짐. 다음과 같은 방법으로 없애는걸 권장 */
+  text-indent: -9999px;
+}
+
+/* active상태인 요소에만 진하게 표시해줌 */
+.main_slide_pager span.active {
+  background: rgba(0, 0, 0, 1);
+}
+
+/* detail 부분 */
+#detail {
+  background: var(--bg-color-white);
+  width: var(--main-width);
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* ul내의 요소들을 가로로 늘여놓고 싶으면 flex값을 부여하자. */
+#detail ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+}
+
+#detail ul li {
+  width: 390px;
+}
+
+#detail .detail_img {
+  width: 390px;
+  height: 320px;
+}
+
+.detail_img.first {
+  background: url(./img/detail_1.png);
+}
+
+.detail_img.second {
+  background: url(./img/detail_2.png);
+}
+
+.detail_img.third {
+  background: url(./img/detail_3.png);
+}
+
+.detail_info {
+  padding: 10px;
+}
+
+.detail_info_title {
+  font-size: 18px;
+  /* 2개는 상하, 좌우, 4개는 꼭짓점이면 왼쪽 위, 변기준이면 위에서부터 시계방향 3개는 나머지 값 대칭으로 즉, 오른쪽을 0으로 했으므로 왼쪽도 0이 됨.  */
+  margin: 20px 0 16px;
+}
+
+.detail_info_desc {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+/* membership 부분 */
+#membership {
+  width: var(--main-width);
+  height: 880px;
+  /* 박스를 가운데 정렬해줌. */
+  margin: 0 auto;
+  display: flex;
+  /* 세로로 늘여놓음 */
+  flex-direction: column;
+  /* 수직 정렬 */
+  justify-content: center;
+  /* 수평 정렬 */
+  align-items: center;
+  gap: 50px;
+  background: var(--bg-color-white);
+}
+
+.membership_heading {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+}
+
+.membership_menu {
+  display: flex;
+  gap: 10px;
+}
+
+.membership_type {
+  width: 390px;
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.membership_img {
+  width: 390px;
+  height: 200px;
+}
+
+/* url내에 큰따옴표 안에 경로 넣어야 정석이긴함. */
+
+/* background size의 cover은 내가 지정한 상위요소의 가로 길이를 기준으로 꽉 차도록 하고, contain은 세로 기준으로 꽉 차도록 한다.  */
+
+.membership_type.basic .membership_img {
+  background: url(./img/membership_basic.png) center/cover no-repeat;
+}
+
+.membership_type.premium .membership_img {
+  background: url(./img/membership_premium.png) center/cover no-repeat;
+}
+
+.membership_info {
+  text-align: center;
+  padding: 30px;
+  width: 100%;
+  height: 350px;
+  background: var(--bg-color-white);
+}
+
+.membership_title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.membership_price {
+  margin: 20px 0;
+  /* nesting 기능(앞으로는 선택자 안에 선택자를 사용할 수도 있음!) */
+  span {
+    font-size: 50px;
+    font-weight: 700;
+    margin-left: 10px;
+  }
+}
+
+.membership_desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 60px;
+  line-height: 160%;
+  margin-bottom: 44px;
+}
+
+.membership_btn {
+  font-size: 14px;
+  padding: 18px 50px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  /* transition: background 0.3s, color 0.3s; 이게 정석 */
+  transition: all 0.3s;
+  background: var(--bg-color-black);
+  color: var(--bg-color-white);
+  cursor: pointer;
+  &:hover {
+    border: 1px solid black;
+    background: var(--bg-color-white);
+    color: var(--bg-color-black);
+  }
+}
+
+.membership_type_pager {
+  display: none;
+}
+
+/* footer 부분 */
+#footer {
+  width: 100%;
+  height: 330px;
+  position: relative;
+}
+
+.footer_text_inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* translate 사용할때 쉼표 사용하기 */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  /* emmet : jcc */
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  z-index: 1;
+}
+
+.footer_title {
+  color: var(--bg-color-white);
+  text-align: center;
+  /* 아래의 font-처럼 같은 접두사로 시작하는거는 쌍으로 같이 항상 쓰는 습관을 들이자. (코드 가독성) 접두사 그자체인 속성을 보통 첨에 두고 그 이후로 -붙은 애들 나열*/
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.footer_btn {
+  font-size: 24px;
+  padding: 24px 40px;
+  font-family: "Nexon Lv1 Gothic";
+  border: 1px solid transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: var(--bg-color-white);
+  opacity: 80%;
+  &:hover {
+    background: var(--bg-color-black);
+    color: var(--bg-color-white);
+    border: 1px solid var(--bg-color-white);
+  }
+}
+
+/* 전후선택자의 일종의 부모 역할을 함. */
+.footer_container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url("./img/footer.png") center/cover no-repeat;
+  z-index: -1;
+}
+
+.footer_container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  z-index: 0;
+}
+
+/* 0619일자 내용 추가 */
+
+/* ==== Mobile ==== */
+
+/* 미디어 쿼리(어떠한 미디어 사이즈에 따라 스타일을 적용 시켜줌) */
+
+/* 1190px~390px 사이의 너비는 미디어 쿼리의 스타일을 적용하겠다는 뜻  */
+
+@media screen and (max-width: 1190px) and (min-width: 390px) {
+  /* navigation */
+  #navigation {
+    /* width 100%를 줌으로써 현재 보고 있는 디바이스의 너비 만큼 요소의 너비들을 맞춰줌. */
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .gnbDesktop {
+    display: none;
+  }
+
+  .gnbMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-end;
+    padding-top: 80px;
+    padding-right: 10px;
+    position: fixed;
+    top: 0;
+    /* right:0은 오른쪽으로 딱 붙임 (left : 0 은 왼쪽으로) */
+    /* -300을 줘서 평상시엔 안보이게 함. */
+    right: -300px;
+    width: 300px;
+    /* vh, viewport height는 매체의 전체 높이를 뜻함. */
+    height: 100vh;
+    background: var(--bg-color-white);
+    transition: all 0.3s;
+  }
+
+  .gnbMobile.active{
+    background: var(--bg-color-black);
+    color : var(--bg-color-white);
+  }
+
+  .gnbMobile.open{
+    right : 0;
+  }
+
+  .gnbMobile li a{
+    font-size: 22px;
+  }
+
+  /* 위에서 제작한 기본 스타일을 배제하지 않으므로 아래 처럼 display block의 값을 주지 않으면 너비를 줄여도 버튼이 나오지 않음.(우선순위는 애초에 위에 작성한 메인스타일을 따라감. 미디어 쿼리 스타일은 부가적인 요소라고 간주)  */
+  .trigger {
+    display: block;
+    width: 30px;
+    height: 20px;
+    position: relative;
+  }
+
+  .trigger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--bg-color-black);
+    position: absolute;
+  }
+
+  .trigger span.active {
+    background: var(--bg-color-white);
+  }
+
+  .trigger span:nth-child(1) {
+    top: 0;
+    left: 0;
+  }
+
+  .trigger span:nth-child(2) {
+    /* 모서리의 위치가 50%이기에 우리가 생각하는 50%가 아님, 그래서 transform으로 다시 본인의 절반만큼 위로 올려주는거임 */
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .trigger span:nth-child(3) {
+    bottom: 0;
+    left: 0;
+  }
+
+  .trigger.active span:nth-child(1) {
+    /* 모서리의 위치가 50%이기에 우리가 생각하는 50%가 아님, 그래서 transform으로 다시 본인의 절반만큼 위로 올려주는거임 */
+    top: 50%;
+    left: 0;
+    /* rotate에서 양수는 무조건 시계방향 */
+    transform: rotate(45deg);
+  }
+
+  .trigger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .trigger.active span:nth-child(3) {
+    top: 50%;
+    left: 0;
+    transform: rotate(-45deg);
+  }
+
+  /* slide */
+  .slide_text {
+    width: 100%;
+  }
+
+  .slide_text_inner {
+    width: 100%;
+  }
+
+  .slide_text_inner .slide_title {
+    width: 390px;
+    font-size: 28px;
+  }
+
+  /* main */
+  #main {
+    flex-direction: column;
+    width: 100%;
+    height: 660px;
+    margin: 100px auto;
+  }
+
+  .main_text {
+    align-items: center;
+  }
+
+  .main_info {
+    text-align: center;
+    font-size: 26px;
+  }
+
+  .main_desc {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* detail */
+  #detail {
+    width: 100%;
+  }
+
+  #detail ul {
+    /* 세로로 요소를 늘여놓음 */
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* membership */
+  #membership {
+    width: 100%;
+    height: 840px;
+    padding-bottom: 40px;
+  }
+
+  .membership_heading {
+    font-size: 24px;
+  }
+
+  .membership_menu {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .membership_type {
+    width: 100%;
+    border: none;
+  }
+
+  .membership_type.premium {
+    display: none;
+  }
+
+  .membership_type_pager {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: -4%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+  }
+
+  .membership_type_pager span {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    text-indent: -9999px;
+  }
+
+  .membership_type_pager span.active {
+    background: rgba(0, 0, 0, 1);
+  }
+
+  /* footer */
+
+  /* #footer{
+    width: 100%;
+  } */
+
+  .footer_title {
+    width: 390px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .footer_btn {
+    font-size: 16px;
+    padding: 10px 40px;
+    text-align: center;
+  }
+}
