@@ -101,10 +101,11 @@ let jsonData;
 fetch("./data.json")
   .then((response) => response.json())
   .then((jsonData) => {
-    // 구조 분해 할당
+    // 구조 분해 할당 -> 배열이나 객체의 속성을 해체해서 그 값을 개별 변수에 담을 수 있게함.
     const [firstData, ...otherData] = jsonData.data;
     console.log(firstData);
 
+    // innerText는 js의 자체 속성으로, 텍스트 컨텐츠를 반환 혹은 설정시킬 수 있다. 
     contentTitle.innerText = firstData.title;
     contentDesc.innerText = firstData.desc;
     // forEach의 두번째 인자값은 0~n번까지 순차적으로 바뀌는 숫자 값으로, 참조 변수이다. (이름을 바꿔도 무관함.)
@@ -127,11 +128,14 @@ const slideImg = document.querySelector("#background_img");
 
 // 언제나 바꿔칠 수 있도록 호이스팅, 재선언, 등이 가능한 let을 사용
 let i = 0;
+// 슬라이드 쇼의 타이머를 저장할 변수
 let slideInterval;
 let isTransitioning = false;
 
 const updateSlide = (i) => {
   slideImg.style.backgroundImage = `radial-gradient(circle, transparent, rgba(0, 0, 0, 0.7)),url(./img/${bgImgs[i]})`;
+  contentTitle.innerText = jsonData[i].title;
+  contentDesc.innerText = jsonData[i].desc;
 };
 
 // startSlideShow가 호출될 때 마다 slideInterval이 생성됨. 이때문에 전에 있던 slideInterval을 제대로 지워줄 필요가 있음. 또한 resetSlideShow를 통해 슬라이드를 2번 시작하게 됨.
