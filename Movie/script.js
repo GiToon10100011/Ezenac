@@ -100,22 +100,25 @@ let jsonData;
 // then은 fetch(json파일을 잘 찾아왔다고 가정)가 잘되면 그럼 이걸 해줘라는 뜻
 fetch("./data.json")
   .then((response) => response.json())
-  .then((jsonData) => {
+  .then((data) => {
     // 구조 분해 할당 -> 배열이나 객체의 속성을 해체해서 그 값을 개별 변수에 담을 수 있게함.
-    const [firstData, ...otherData] = jsonData.data;
+    jsonData = data.data;
     console.log(firstData);
-
-    // innerText는 js의 자체 속성으로, 텍스트 컨텐츠를 반환 혹은 설정시킬 수 있다. 
+    const [firstData, ...otherData] = data.data;
     contentTitle.innerText = firstData.title;
     contentDesc.innerText = firstData.desc;
+    updateSlide(0);
+    // innerText는 js의 자체 속성으로, 텍스트 컨텐츠를 반환 혹은 설정시킬 수 있다. 
+    // contentTitle.innerText = firstData.title;
+    // contentDesc.innerText = firstData.desc;
     // forEach의 두번째 인자값은 0~n번까지 순차적으로 바뀌는 숫자 값으로, 참조 변수이다. (이름을 바꿔도 무관함.)
     items.forEach((item, index) => {
       item.addEventListener("click", (e) => {
         // preventDefault로 a태그의 기본적인 속성인 어디로 넘어가게 하는걸 막아줌
         e.preventDefault();
 
-        const { title, desc } = jsonData.data[index];
-        console.log(title, desc);
+        updateSlide(index);
+        // console.log(title, desc);
 
         bgImg.style.backgroundImage = `radial-gradient(circle, transparent, rgba(0, 0, 0, 0.7)), url(./img/${bgImgs[index]})`;
         contentTitle.innerText = title;
