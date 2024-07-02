@@ -21,6 +21,7 @@
 .left_gnb {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .left_gnb_first {
@@ -34,8 +35,9 @@
 }
 
 #logo img {
-  width: 180px;
-  height: 100px;
+  width: 140px;
+  height: 90px;
+  cursor: pointer;
 }
 
 .category_title {
@@ -53,6 +55,9 @@
 
 .topNav > li {
   position: relative;
+  &:hover > a{
+    color : rgb(196, 0, 13);
+  }
 }
 
 /* 다른 li요소들과 중복되지 않도록 >로 직계자손만을 선택하게 함 */
@@ -71,22 +76,23 @@
   width: 160px;
   height: 200px;
   position: absolute;
-  bottom: 0;
+  bottom: -8px;
   left: 50%;
   transform: translate(-50%, 100%);
   text-align: center;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   padding: 15px 0 8px;
   opacity: 0;
   overflow: hidden;
+  z-index: 10;
 }
 
 .topNav > li .lnb a {
   /* inline요소는 margin이나 padding을 부여할 수 없으므로 후천적으로 block요소가 되도록 함 */
   display: inline-block;
-  color: #000;
+  color: #fff;
   margin: 20px 0;
   &:hover {
     color: #e70017;
@@ -173,18 +179,35 @@
   /* x축으로는 하나도 이동하지 않고 y축을 20% 이동시킴. */
   background-position: 0 20%;
   transition: all 0.3s;
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, transparent, rgba(0, 0, 0, 1));
+  }
 }
 
 /* top_banner */
 #top_banner {
   width: 100%;
   height: 60px;
+  position: relative;
   background: rgb(196, 0, 13);
+  opacity: 80%;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  transition : opacity 0.3s;
+  cursor: pointer;
+  &:hover{
+    opacity: 1;
+  }
 }
 
 #top_banner .badge {
@@ -249,11 +272,15 @@
 }
 
 .top_contents_title {
+  z-index: 11;
+  position: relative;
   margin: 10px 0;
   font-size: 32px;
 }
 
 .top_contents_desc {
+  z-index: 11;
+  position: relative;
   font-size: 18px;
   width: 500px;
 }
@@ -267,10 +294,16 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+  transition: all 0.3s;
+  overflow: hidden;
   li {
     position: relative;
+    transition: all 0.3s;
     z-index: 1;
+    opacity: 1;
+    
     img{
+      transition: all 0.3s;
       width: 200px;
       height: 285px;
     }
@@ -284,7 +317,6 @@
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 10;
   opacity: 0;
   transition: all 0.5s;
   span {
@@ -300,9 +332,13 @@
     font-size: 16px;
     color: white;
     opacity: 1;
-    z-index: 100;
     b {
       font-size: 18px;
+      color: rgb(211, 0, 14);
     }
   }
+}
+
+.expand_card{
+  position: absolute;
 }

@@ -89,7 +89,7 @@ const bgImgs = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
 const bgImg = document.querySelector("#background_img");
 
 // Template Literal 문법
-bgImg.style.backgroundImage = `radial-gradient(circle, transparent, rgba(0, 0, 0, 0.7)), url(./img/${bgImgs[0]})`;
+bgImg.style.backgroundImage = `url(./img/${bgImgs[0]})`;
 
 const topContents = document.querySelector("#top_contents");
 const contentTitle = topContents.querySelector(".top_contents_title");
@@ -102,13 +102,13 @@ fetch("./data.json")
   .then((response) => response.json())
   .then((data) => {
     // 구조 분해 할당 -> 배열이나 객체의 속성을 해체해서 그 값을 개별 변수에 담을 수 있게함.
+    const [firstData, ...otherData] = data.data;
     jsonData = data.data;
     console.log(firstData);
-    const [firstData, ...otherData] = data.data;
     contentTitle.innerText = firstData.title;
     contentDesc.innerText = firstData.desc;
     updateSlide(0);
-    // innerText는 js의 자체 속성으로, 텍스트 컨텐츠를 반환 혹은 설정시킬 수 있다. 
+    // innerText는 js의 자체 속성으로, 텍스트 컨텐츠를 반환 혹은 설정시킬 수 있다.
     // contentTitle.innerText = firstData.title;
     // contentDesc.innerText = firstData.desc;
     // forEach의 두번째 인자값은 0~n번까지 순차적으로 바뀌는 숫자 값으로, 참조 변수이다. (이름을 바꿔도 무관함.)
@@ -120,7 +120,7 @@ fetch("./data.json")
         updateSlide(index);
         // console.log(title, desc);
 
-        bgImg.style.backgroundImage = `radial-gradient(circle, transparent, rgba(0, 0, 0, 0.7)), url(./img/${bgImgs[index]})`;
+        bgImg.style.backgroundImage = `url(./img/${bgImgs[index]})`;
         contentTitle.innerText = title;
         contentDesc.innerText = desc;
       });
@@ -136,7 +136,7 @@ let slideInterval;
 let isTransitioning = false;
 
 const updateSlide = (i) => {
-  slideImg.style.backgroundImage = `radial-gradient(circle, transparent, rgba(0, 0, 0, 0.7)),url(./img/${bgImgs[i]})`;
+  slideImg.style.backgroundImage = `url(./img/${bgImgs[i]})`;
   contentTitle.innerText = jsonData[i].title;
   contentDesc.innerText = jsonData[i].desc;
 };
@@ -162,3 +162,13 @@ const resetSlideShow = () => {
 };
 
 startSlideShow();
+
+items.forEach((item, index) => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault();
+    const { title, description } = jsonData.data[index];
+    bgImg.style.backgroundImage = `url(./img/${bgImgs[index]})`;
+    contentTit.innerText = title;
+    contentDesc.innerText = description;
+  });
+});
