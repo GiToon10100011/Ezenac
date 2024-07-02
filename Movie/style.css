@@ -295,7 +295,7 @@
   justify-content: center;
   gap: 10px;
   transition: all 0.3s;
-  overflow: hidden;
+  /* overflow: hidden; */
   li {
     position: relative;
     transition: all 0.3s;

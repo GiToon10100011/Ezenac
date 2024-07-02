@@ -165,6 +165,8 @@ startSlideShow();
 
 items.forEach((item, index) => {
   item.addEventListener("click", (e) => {
+    // 사용자가 카드를 눌렀을때 정보를 볼 수 있도록 멈추게함.
+    stopSlideShow();
     e.preventDefault();
     const { title, description } = jsonData.data[index];
     bgImg.style.backgroundImage = `url(./img/${bgImgs[index]})`;
