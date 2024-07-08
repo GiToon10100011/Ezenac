@@ -25,3 +25,5 @@ maleBtn.addEventListener("click", (e) => {
   maleBtn.querySelector("i").classList.toggle("filledB");
   femaleBtn.querySelector("i").classList.remove("filledA");
 });
+
+

@@ -1,76 +1,158 @@
 @import url("./reset.css");
 
-/* wrapper */
-#wrapper {
-  position: relative;
-  padding: 30px;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.8)),
-    url("./img/bg.jpg") center/cover no-repeat;
-}
+@keyframes animate {
+  0%,100%{
+    transform: translateY(-40px);
+  }
 
-/* login */
-#login {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-/* 특정 속성을 지닌 태그를 지정해주는 속성선택자 */
-#login input[type="submit"] {
-  font-size: 18px;
-  padding: 8px 45px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #fff;
-  transition: all 0.3s;
-  &:hover {
-    border: 1px solid #fff;
-    background: #000;
-    color: #fff;
+  50%{
+    transform: translateY(40px);
   }
 }
 
-#logo {
-  width: 300px;
-  height: 54px;
-  background: url("./img/bi_1.png") center/cover no-repeat;
-  margin: 70px auto 34px;
-  /* margin: 70px auto 34px;
+body {
+  overflow: hidden;
+}
+/* wrapper */
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 30px;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+}
+
+.color {
   position: absolute;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%); */
+  filter: blur(150px);
+  &:nth-child(1) {
+    top: -350px;
+    width: 900px;
+    height: 800px;
+    background: #ff359b;
+  }
+  &:nth-child(2) {
+    bottom: -150px;
+    left: 100px;
+    width: 600px;
+    height: 600px;
+    background: #fffd87;
+  }
+  &:nth-child(3) {
+    bottom: 50px;
+    right: 100px;
+    width: 800px;
+    height: 400px;
+    background: #00d2ff;
+  }
+}
+
+.square{
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  animation : animate 10s linear infinite;
+  animation-delay: calc(-1s*var(--i));
+  &:nth-child(1){
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+  }
+  &:nth-child(2){
+    top: 150px;
+    left: -100px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+  }
+  &:nth-child(3){
+    bottom: 50px;
+    right: -60px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+  }
+  &:nth-child(4){
+    bottom: -80px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+  }
+  &:nth-child(5){
+    top: -80px;
+    left: 140px;
+    width: 60px;
+    height: 60px;
+  }
 }
 
 #logon {
-  width: 463px;
-  height: 650px;
-  background: radial-gradient(rgba(35, 37, 39, 0.7), rgba(35, 37, 39, 0.9)),
-    url("./img/middle.png") center/cover no-repeat;
-  margin: 0 auto 50px;
+  width: 500px;
+  height: 680px;
   padding: 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::placeholder {
+  color: white;
 }
 
 .inner_contents {
-  color: #fff;
   font-size: 14px;
+  color: white;
+  input,
+  select {
+    letter-spacing: 0.8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  }
 }
 
 .title {
   width: 423px;
-  text-align: center;
   margin-bottom: 30px;
   font-weight: bold;
   font-size: 22px;
+  letter-spacing: 1px;
+  color: white;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100px;
+    height: 4px;
+    background: white;
+  }
 }
 
 #calendar {
@@ -80,17 +162,25 @@
 }
 
 select {
-  width: 141px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  width: 140px;
   height: 40px;
   font-size: 16px;
-  background: #000;
-  color: #bdbebe;
   padding-left: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  option{
+    color: #666;
+  }
+  outline: none;
   &:first-child {
-    border-radius: 8px 0 0 8px;
+    border-radius: 35px 0 0 35px;
   }
   &:last-child {
-    border-radius: 0px 8px 8px 0px;
+    border-radius: 0px 35px 35px 0px;
   }
 }
 
@@ -100,10 +190,7 @@ select {
   height: 40px;
   margin: 10px 0 30px;
   padding-left: 12px;
-  border: 1px solid #707070;
-  border-radius: 8px;
   font-size: 16px;
-  background: #000;
   color: white;
   &:focus {
     outline: none;
@@ -115,10 +202,7 @@ select {
   height: 40px;
   margin: 10px 0 30px;
   padding-left: 12px;
-  border: 1px solid #707070;
-  border-radius: 8px;
   font-size: 16px;
-  background: #000;
   color: white;
   &:focus {
     outline: none;
@@ -128,20 +212,25 @@ select {
 #gender_btn {
   margin: 10px 0 30px;
   display: flex;
+
   button {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
     height: 50px;
-    background-color: #000;
     color: #bdbebe;
-    border: 1px solid #707070;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
     &:first-child {
-      border-radius: 8px 0 0 8px;
+      border-radius: 35px 0 0 35px;
       /* 겹쳐서 보더를 하나만 있는 것처럼 주작 */
       border-right: transparent;
     }
     &:last-child {
-      border-radius: 0px 8px 8px 0px;
+      border-radius: 0px 35px 35px 0px;
     }
     i {
       display: inline-block;
@@ -152,14 +241,10 @@ select {
       border: 2px solid transparent;
       border-radius: 100%;
       &.filledA {
-        border: 2px solid #dc143c;
-        background-color: #dc143c;
-        color: white;
+        color: #ff359b;
       }
       &.filledB {
-        border: 2px solid #007bff;
-        background-color: #007bff;
-        color: white;
+        color: #00d2ff;
       }
     }
   }
@@ -175,64 +260,25 @@ select {
   }
 }
 
+a{
+  border-bottom: 1px solid white;
+}
+
 .btn input[type="submit"] {
   width: 100%;
   height: 40px;
-  background: #919293;
-  border: 1px solid transparent;
-  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s;
+  font-weight: 600;
   &:hover {
-    border: 1px solid #919293;
-    background-color: #000;
-  }
-}
-
-/* footer */
-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h3 {
-    color: #fff;
-  }
-  #items {
-    display: flex;
-    gap: 10px;
-    margin-top: 40px;
-    .inner_item {
-      background-color: #000;
-      color: white;
-      width: 200px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid;
-      border-radius: 8px;
-      padding: 10px;
-      &:hover {
-        cursor: pointer;
-        background-color: white;
-        color: black;
-        border: 1px solid black;
-        transition: 0.3s all;
-      }
-      i {
-        font-size: 38px;
-      }
-      .inner_item_title {
-        font-size: 12px;
-      }
-      .inner_item_body {
-        font-size: 22px;
-      }
-    }
+    background-color: white;
+    color: #666;
+    font-weight: 600;
   }
 }
 
