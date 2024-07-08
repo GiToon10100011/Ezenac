@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roblox</title>
+    <title>Registration Form</title>
 
     <!-- fontawesome -->
     <script
@@ -24,11 +24,11 @@
       </div>
       <!-- <legend>가입하시고 즐겨보세요!</legend> -->
       <section id="logon">
-        <div class="square" style = "--i:0;"></div>
-        <div class="square" style = "--i:1;"></div>
-        <div class="square" style = "--i:2;"></div>
-        <div class="square" style = "--i:3;"></div>
-        <div class="square" style = "--i:4;"></div>
+        <div class="square" style="--i: 0"></div>
+        <div class="square" style="--i: 1"></div>
+        <div class="square" style="--i: 2"></div>
+        <div class="square" style="--i: 3"></div>
+        <div class="square" style="--i: 4"></div>
         <form action="https://localhost:25565" method="GET">
           <article class="inner_contents title">
             <h2>Welcome!</h2>
@@ -213,16 +213,13 @@
               <option value="31">31일</option>
             </select>
           </div>
+          <div id="error_birth" class="error"></div>
           <!-- <input type="text" name="" id="">
       </form> -->
           <article class="inner_contents username">
             <label for="user">Username</label>
-            <input
-              type="text"
-              name="user"
-              id="user"
-              placeholder="Username"
-            />
+            <input type="text" name="user" id="user" placeholder="Username" />
+            <div id="error_user" class="error"></div>
           </article>
 
           <article class="inner_contents userPW">
@@ -233,6 +230,7 @@
               id="PW"
               placeholder="Must have at least 8 characters"
             />
+            <div id="error_pw" class="error"></div>
           </article>
 
           <article class="inner_contents gender">Gender(Optional)</article>
@@ -248,16 +246,23 @@
             <div>
               <div>
                 <input type="checkbox" name="auth" id="auth" />
-                <label for="auth">I have read and agreed to the <a href="https://www.youtube.com/watch?v=BbeeuzU5Qc8&pp=ygUMam9zaCBodXRjaGVy">Terms and Conditions.</a></label>
+                <label for="auth"
+                  >I have read and agreed to the
+                  <a
+                    href="https://www.youtube.com/watch?v=BbeeuzU5Qc8&pp=ygUMam9zaCBodXRjaGVy"
+                    >Terms and Conditions.</a
+                  ></label
+                >
               </div>
               <div>
                 <input type="checkbox" name="private" id="private" />
                 <label for="private">I Agree to <b>Privacy Policy</b></label>
               </div>
+              <div id="error_terms" class="error"></div>
             </div>
           </article>
           <article class="inner_contents btn">
-            <input type="submit" value="Create Account" />
+            <input type="submit" value="Create Account" id="signup_button" />
           </article>
         </form>
       </section>

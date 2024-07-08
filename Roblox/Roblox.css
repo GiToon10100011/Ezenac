@@ -1,17 +1,22 @@
 @import url("./reset.css");
 
 @keyframes animate {
-  0%,100%{
+  0%,
+  100% {
     transform: translateY(-40px);
   }
 
-  50%{
+  50% {
     transform: translateY(40px);
   }
 }
 
 body {
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 /* wrapper */
 #wrapper {
@@ -50,7 +55,7 @@ body {
   }
 }
 
-.square{
+.square {
   position: absolute;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
@@ -60,35 +65,35 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
-  animation : animate 10s linear infinite;
-  animation-delay: calc(-1s*var(--i));
-  &:nth-child(1){
+  animation: animate 10s linear infinite;
+  animation-delay: calc(-1s * var(--i));
+  &:nth-child(1) {
     top: -50px;
     right: -60px;
     width: 100px;
     height: 100px;
   }
-  &:nth-child(2){
+  &:nth-child(2) {
     top: 150px;
     left: -100px;
     width: 120px;
     height: 120px;
     z-index: 2;
   }
-  &:nth-child(3){
+  &:nth-child(3) {
     bottom: 50px;
     right: -60px;
     width: 80px;
     height: 80px;
     z-index: 2;
   }
-  &:nth-child(4){
+  &:nth-child(4) {
     bottom: -80px;
     left: 100px;
     width: 50px;
     height: 50px;
   }
-  &:nth-child(5){
+  &:nth-child(5) {
     top: -80px;
     left: 140px;
     width: 60px;
@@ -96,9 +101,16 @@ body {
   }
 }
 
+.error {
+  width: 100%;
+  color: #ff359b;
+  font-size: 11px;
+  padding : 5px 0 10px 0 ;
+}
+
 #logon {
   width: 500px;
-  height: 680px;
+  height: 760px;
   padding: 20px;
   border-radius: 10px;
   display: flex;
@@ -158,7 +170,7 @@ body {
 #calendar {
   display: flex;
   justify-content: space-around;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 10px 0;
 }
 
 select {
@@ -172,7 +184,7 @@ select {
   padding-left: 10px;
   background: rgba(255, 255, 255, 0.2);
   color: white;
-  option{
+  option {
     color: #666;
   }
   outline: none;
@@ -188,7 +200,7 @@ select {
 .username #user {
   width: 100%;
   height: 40px;
-  margin: 10px 0 30px;
+  margin: 10px 0 10px;
   padding-left: 12px;
   font-size: 16px;
   color: white;
@@ -200,7 +212,7 @@ select {
 .userPW #PW {
   width: 100%;
   height: 40px;
-  margin: 10px 0 30px;
+  margin: 10px 0 10px;
   padding-left: 12px;
   font-size: 16px;
   color: white;
@@ -260,7 +272,7 @@ select {
   }
 }
 
-a{
+a {
   border-bottom: 1px solid white;
 }
 
