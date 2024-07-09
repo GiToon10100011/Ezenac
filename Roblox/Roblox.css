@@ -35,23 +35,23 @@ body {
   filter: blur(150px);
   &:nth-child(1) {
     top: -350px;
-    width: 900px;
-    height: 800px;
-    background: #ff359b;
+    width: 1400px;
+    height: 1000px;
+    background: #cdb4db;
   }
   &:nth-child(2) {
     bottom: -150px;
     left: 100px;
     width: 600px;
     height: 600px;
-    background: #fffd87;
+    background: #ffafcc;
   }
   &:nth-child(3) {
     bottom: 50px;
     right: 100px;
     width: 800px;
     height: 400px;
-    background: #00d2ff;
+    background: #a2d2ff;
   }
 }
 
@@ -105,7 +105,7 @@ body {
   width: 100%;
   color: #ff359b;
   font-size: 11px;
-  padding : 5px 0 10px 0 ;
+  padding: 5px 0 10px 0;
 }
 
 #logon {
