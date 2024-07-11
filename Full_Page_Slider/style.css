@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Raleway;
+  font-family: Montserrat;
 }
 
 .tab_inner{
@@ -13,53 +13,53 @@
   input[type = "radio"]{
     display: none;
     &#tab1:checked ~ .btn label[for = "tab1"]{
-      color: crimson;
+      color: rgb(214, 100, 199);
     }
     &#tab2:checked ~ .btn label[for = "tab2"]{
-      color: crimson;
+      color: rgb(214, 100, 199);
     }
     &#tab3:checked ~ .btn label[for = "tab3"]{
-      color: crimson;
+      color: rgb(214, 100, 199);
     }
     &#tab4:checked ~ .btn label[for = "tab4"]{
-      color: crimson;
+      color: rgb(214, 100, 199);
     }
     &#tab5:checked ~ .btn label[for = "tab5"]{
-      color: crimson;
+      color: rgb(214, 100, 199);
     }
     &#tab1:checked ~ .tabs .items{
       left: 0;
       & > div:nth-child(1) h1{
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
     &#tab2:checked ~ .tabs .items{
       left: -100%;
       & > div:nth-child(2) h1{
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
     &#tab3:checked ~ .tabs .items{
       left: -200%;
       & > div:nth-child(3) h1{
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
     &#tab4:checked ~ .tabs .items{
       left: -300%;
       & > div:nth-child(4) h1{
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
     &#tab5:checked ~ .tabs .items{
       left: -400%;
       & > div:nth-child(5) h1{
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
   }
@@ -83,14 +83,15 @@
         height: 100vh;
         h1{
           position: absolute;
+          left: 10%;
           top: 20%;
           font-size: 80px;
           color: white;
-          font-weight: normal;
+          font-weight: 700;
           transition: all 0.6s;
           transition-delay: 0.3s;
           opacity: 0;
-          transform: translateY(-100%);
+          transform: translateX(-100%);
         }
         &:nth-child(1){
           background : url("./images/photo-01.png") center/cover no-repeat;
@@ -101,7 +102,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, gold, transparent);
+            background: linear-gradient(140deg, rgb(151, 151, 151), transparent);
           }
         }
         &:nth-child(2){
@@ -113,7 +114,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, violet, transparent);
+            background: linear-gradient(135deg, rgb(151, 151, 151), transparent);
           }
         }
         &:nth-child(3){
@@ -125,7 +126,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, dodgerblue, transparent);
+            background: linear-gradient(135deg, rgb(151, 151, 151), transparent);
           }
         }
         &:nth-child(4){
@@ -137,7 +138,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, tomato, transparent);
+            background: linear-gradient(135deg, rgb(151, 151, 151), transparent);
           }
         }
         &:nth-child(5){
@@ -149,7 +150,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, greenyellow, transparent);
+            background: linear-gradient(135deg, rgb(151, 151, 151), transparent);
           }
         }
       }
@@ -164,7 +165,7 @@
     height: 50px;
     line-height: 50px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     label{
       color: white;
       margin: 15px;
