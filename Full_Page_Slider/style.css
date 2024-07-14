@@ -9,107 +9,18 @@
 
 /* Virtual_Classes */
 
-.slide1{
-  left: 0;
+.content{
   opacity: 1;
+  transform: translateX(0);
 }
 
-.slide2{
-  left: -100%;
-  opacity: 1;
-}
-
-.slide3{
-  left: -200%;
-  opacity: 1;
-}
-
-.slide4{
-  left: -300%;
-  opacity: 1;
-}
-
-.slide5{
-  left: -400%;
-  opacity: 1;
+.active{
+  color: rgb(214, 100, 199);
 }
 
 .tab_inner{
   height: 100vh;
   position: relative;
-  input[type = "radio"]{
-    display: none;
-    &#tab1:checked ~ .btn label[for = "tab1"]{
-      color: rgb(214, 100, 199);
-    }
-    &#tab2:checked ~ .btn label[for = "tab2"]{
-      color: rgb(214, 100, 199);
-    }
-    &#tab3:checked ~ .btn label[for = "tab3"]{
-      color: rgb(214, 100, 199);
-    }
-    &#tab4:checked ~ .btn label[for = "tab4"]{
-      color: rgb(214, 100, 199);
-    }
-    &#tab5:checked ~ .btn label[for = "tab5"]{
-      color: rgb(214, 100, 199);
-    }
-    &#tab1:checked ~ .tabs .items{
-      left: 0;
-      & > div:nth-child(1) h1{
-        opacity: 1;
-        transform: translateX(0);
-      }
-      & > div:nth-child(1) button{
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    &#tab2:checked ~ .tabs .items{
-      left: -100%;
-      & > div:nth-child(2) h1{
-        opacity: 1;
-        transform: translateX(0);
-      }
-      & > div:nth-child(2) button{
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    &#tab3:checked ~ .tabs .items{
-      left: -200%;
-      & > div:nth-child(3) h1{
-        opacity: 1;
-        transform: translateX(0);
-      }
-      & > div:nth-child(3) button{
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    &#tab4:checked ~ .tabs .items{
-      left: -300%;
-      & > div:nth-child(4) h1{
-        opacity: 1;
-        transform: translateX(0);
-      }
-      & > div:nth-child(4) button{
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    &#tab5:checked ~ .tabs .items{
-      left: -400%;
-      & > div:nth-child(5) h1{
-        opacity: 1;
-        transform: translateX(0);
-      }
-      & > div:nth-child(5) button{
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
   
   .tabs{
     overflow: hidden;
@@ -233,8 +144,8 @@
     line-height: 50px;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
-    label{
-      color: white;
+    color: white;
+    span{
       margin: 15px;
       cursor: pointer;
       transition: all 0.3s;
