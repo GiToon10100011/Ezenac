@@ -9,6 +9,26 @@ body {
   margin: 0 auto;
 }
 
+/* IntroVid */
+.intro_video{
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  transition: all 0.6s;
+  z-index: 1000000;
+  video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &.active{
+    opacity: 0;
+  }
+}
+
 /* Header */
 header {
   position: fixed;
@@ -31,6 +51,9 @@ header {
         em {
           color: #bbb;
         }
+        &:hover em{ 
+          
+        }
       }
     }
   }
@@ -41,6 +64,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .logo{
+      a{
+        img{
+          width: 160px;
+        }
+      }
+    }
     .gnb {
       display: flex;
       gap: 10px;

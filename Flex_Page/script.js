@@ -1,3 +1,15 @@
+// IntroVid
+// const intro = document.querySelector(".intro_video");
+
+// const introVid = intro.querySelector("video");
+
+// introVid.addEventListener("ended", () => {
+//   intro.classList.add("active");
+//   setTimeout(() => {
+//     intro.style.display = "none";
+//   }, 600)
+// })
+
 // Header
 
 const header = document.querySelector("header");
