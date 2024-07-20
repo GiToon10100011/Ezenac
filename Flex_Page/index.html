@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="./Libraries/Slick_Sliders/slick.css" />
     <link rel="stylesheet" href="./Libraries/Slick_Sliders/slick-theme.css" />
     <script defer src="Libraries/Slick_Sliders/slick.js"></script>
+    <!-- scrollTo -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"
+    ></script>
     <!-- FontAwesome -->
     <script
       src="https://kit.fontawesome.com/a7e457e146.js"
@@ -57,8 +62,8 @@
             <li><a href="#">home</a></li>
             <li><a href="#about">about</a></li>
             <li><a href="#ranking">ranking</a></li>
-            <li><a href="#testimonial">testimonial</a></li>
-            <li><a href="#blog">blog</a></li>
+            <li><a href="#product">product</a></li>
+            <li><a href="#characters">characters</a></li>
           </ul>
         </nav>
         <div class="trigger">
@@ -70,7 +75,7 @@
       <main class="intro">
         <div class="inner">
           <div class="heading">
-            <h1>The World's Best Cities</h1>
+            <h1>The World's Best Games</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
               quidem at repudiandae numquam consectetur distinctioctetur.
@@ -82,7 +87,7 @@
         <div class="inner">
           <div class="about_contents">
             <div class="desc">
-              <h2>About The Best Cities in the world</h2>
+              <h2>About The Best Games in the world</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
                 pariatur est odit ipsum ex illo optio. Rem accusamus iure qui,
@@ -92,10 +97,10 @@
                 nemo commodi distinctio voluptates vitae quod accusamus totam.
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
-              <a href="#none">Visit place information</a>
+              <a href="#none">Check for more information</a>
             </div>
             <div class="photo">
-              <img src="./images/about-img-01.jpg" alt="about01" />
+              <img src="./images/about1.jpg" alt="about01" />
             </div>
           </div>
         </div>
@@ -103,15 +108,15 @@
       <section id="ranking" class="ranking">
         <div class="inner">
           <div class="ranking_contents">
-            <h2>The World's 25 Best Cities of 2024</h2>
+            <h2>The World's Best Games of All Time</h2>
             <div class="items">
               <div class="item">
                 <div class="up-image">
-                  <img src="./images/best-city-01.jpg" alt="city01" />
+                  <img src="./images/N_ranking1.avif" alt="ranking01" />
                 </div>
                 <div class="down-desc">
-                  <span class="badge must">Must go</span>
-                  <h3>London, England</h3>
+                  <span class="badge must">Must Play</span>
+                  <h3>The Legend of Zelda, TotK</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Praesentium atque asperiores, aut, error itaque neque rem,
@@ -119,17 +124,17 @@
                     esse eveniet optio labore excepturi incidunt culpa?
                   </p>
                   <a class="btn-explore" href="#none"
-                    >Explore <img src="./images/icon-arrow.png" alt="arrow"
+                    >Learn More <img src="./images/icon-arrow.png" alt="arrow"
                   /></a>
                 </div>
               </div>
               <div class="item">
                 <div class="up-image">
-                  <img src="./images/best-city-02.jpg" alt="city02" />
+                  <img src="./images/N_ranking2.avif" alt="ranking02" />
                 </div>
                 <div class="down-desc">
-                  <span class="badge good">Good to go</span>
-                  <h3>New York City, United States</h3>
+                  <span class="badge good">Available Now</span>
+                  <h3>Super Mario Odyssey</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Praesentium atque asperiores, aut, error itaque neque rem,
@@ -137,17 +142,17 @@
                     esse eveniet optio labore excepturi incidunt culpa?
                   </p>
                   <a class="btn-explore" href="#none"
-                    >Explore <img src="./images/icon-arrow.png" alt="arrow"
+                    >Learn More <img src="./images/icon-arrow.png" alt="arrow"
                   /></a>
                 </div>
               </div>
               <div class="item">
                 <div class="up-image">
-                  <img src="./images/best-city-03.jpg" alt="city03" />
+                  <img src="./images/N_ranking3.avif" alt="ranking03" />
                 </div>
                 <div class="down-desc">
-                  <span class="badge good">Good to go</span>
-                  <h3>France, Paris</h3>
+                  <span class="badge good">Available Now</span>
+                  <h3>Splatoon 3</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Praesentium atque asperiores, aut, error itaque neque rem,
@@ -155,7 +160,7 @@
                     esse eveniet optio labore excepturi incidunt culpa?
                   </p>
                   <a class="btn-explore" href="#none"
-                    >Explore <img src="./images/icon-arrow.png" alt="arrow"
+                    >Learn More <img src="./images/icon-arrow.png" alt="arrow"
                   /></a>
                 </div>
               </div>
@@ -163,65 +168,107 @@
           </div>
         </div>
       </section>
-      <section id="testimonial" class="testimonial">
+      <section id="product" class="product">
         <div class="inner">
-          <div class="testimonial_contents">
-            <h2>What <b>our Customers</b> are Saying</h2>
-            <hr />
+          <div class="product_contents">
+            <h2><b>Console</b></h2>
+            <p>Browse other console systems and bundles.</p>
             <div class="myslider">
               <div>
-                <p class = "client">
-                  <img src="./images/client-01.jpg" alt="">
-                  <span>
-                    <b>Coding Works</b>Seoul, Korea
+                <p class="console">
+                  <img src="./images/N_console1.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
                   </span>
                 </p>
-                <p class = "comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis assumenda expedita voluptates possimus dolorem inventore ducimus, laborum nostrum excepturi! Deleniti doloribus nostrum inventore soluta officiis omnis fuga, voluptas reiciendis quidem?</p>
               </div>
               <div>
-                <p class = "client">
-                  <img src="./images/client-02.jpg" alt="client2">
-                  <span>
-                    <b>Kate Whitney</b>Los Angeles, US
+                <p class="console">
+                  <img src="./images/N_console2.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
                   </span>
                 </p>
-                <p class = "comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis assumenda expedita voluptates possimus dolorem inventore ducimus, laborum nostrum excepturi! Deleniti doloribus nostrum inventore soluta officiis omnis fuga, voluptas reiciendis quidem?</p>
               </div>
               <div>
-                <p class = "client">
-                  <img src="./images/client-03.jpg" alt="client3">
-                  <span>
-                    <b>Kelly Muvils</b>New York, US
+                <p class="console">
+                  <img src="./images/N_console3.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
                   </span>
                 </p>
-                <p class = "comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis assumenda expedita voluptates possimus dolorem inventore ducimus, laborum nostrum excepturi! Deleniti doloribus nostrum inventore soluta officiis omnis fuga, voluptas reiciendis quidem?</p>
               </div>
               <div>
-                <p class = "client">
-                  <img src="./images/client-04.jpg" alt="client4">
-                  <span>
-                    <b>Oliver</b>California, US
+                <p class="console">
+                  <img src="./images/N_console4.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
                   </span>
                 </p>
-                <p class = "comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis assumenda expedita voluptates possimus dolorem inventore ducimus, laborum nostrum excepturi! Deleniti doloribus nostrum inventore soluta officiis omnis fuga, voluptas reiciendis quidem?</p>
               </div>
               <div>
-                <p class = "client">
-                  <img src="./images/client-05.jpg" alt="client5">
-                  <span>
-                    <b>Sophia</b>London, UK
+                <p class="console">
+                  <img src="./images/N_console5.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
                   </span>
                 </p>
-                <p class = "comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis assumenda expedita voluptates possimus dolorem inventore ducimus, laborum nostrum excepturi! Deleniti doloribus nostrum inventore soluta officiis omnis fuga, voluptas reiciendis quidem?</p>
               </div>
               <div>
-                <p class = "client">
-                  <img src="./images/client-06.jpg" alt="client6">
-                  <span>
-                    <b>Charlotte</b>Washington, US
+                <p class="console">
+                  <img src="./images/N_console6.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
                   </span>
                 </p>
-                <p class = "comment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis assumenda expedita voluptates possimus dolorem inventore ducimus, laborum nostrum excepturi! Deleniti doloribus nostrum inventore soluta officiis omnis fuga, voluptas reiciendis quidem?</p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console7.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console8.avif" alt="" />
+                  <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
               </div>
             </div>
           </div>
@@ -229,90 +276,69 @@
       </section>
       <section class="callaction">
         <div class="callaction_heading">
-          <h2>The Most Simple & <b>Powerful Way</b> <br> to book <b>your trip</b></h2>
-          <a href="#none">get early access</a>
+          <h2>
+            Check out our <b>Recent Releases</b> <br />
+            on our <b>Website</b>
+          </h2>
+          <a href="#none">Yeah, Take me there</a>
         </div>
       </section>
-      <section id="blog" class="blog">
+      <section id="characters" class="characters">
         <div class="inner">
-          <div class="blog_contents">
-            <div class="blog_header">
-              <h6>feature article</h6>
-              <h2>Can americans visit mexico right now?</h2>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate quibusdam unde natus consectetur optio veritatis quae beatae
-              </p>
-              <a class = "btn-explore" href="#none">Read More <img src="./images/icon-arrow.png" alt="arrow"></a>
-            </div>
-            <hr class="divider">
-            <div class="post_content">
-              <div class="recent_post_items">
-                <h6>most recent</h6>
-                <div class="post_item">
-                  <div class = "post_image">
-                    <img src="./images/most-recent-01.jpg" alt="recent01">
-                  </div>
-                  <div class = "post_desc">
-                    <h3>world ocean travel</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque illum ratione numquam modi quasi ducimus commodi.
-                      <span>July 16, 2024</span>
-                    </p>
-                  </div>
+          <div class="characters_contents">
+            <hr class="divider" />
+            <h1>Characters</h1>
+            <div class="items">
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character1.avif" alt="character1">
                 </div>
-                <hr class="divider">
-                <div class="post_item">
-                  <div class = "post_image">
-                    <img src="./images/most-recent-02.jpg" alt="recent02">
-                  </div>
-                  <div class = "post_desc">
-                    <h3>come to south korea</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque illum ratione numquam modi quasi ducimus commodi.
-                      <span>June 25, 2024</span>
-                    </p>
-                  </div>
-                </div>
-                <hr class="divider">
-                <div class="post_item">
-                  <div class = "post_image">
-                    <img src="./images/most-recent-03.jpg" alt="recent03">
-                  </div>
-                  <div class = "post_desc">
-                    <h3>vietnam & cambodia</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque illum ratione numquam modi quasi ducimus commodi.
-                      <span>October 3, 2024</span>
-                    </p>
-                  </div>
-                </div>
+                <span class="characterTitle">Lorem ipsum</span>
               </div>
-              <div class="shared_post_items">
-                <h6>most shared</h6>
-                <div class="post_item">
-                  <div class = "post_image">
-                    <img src="./images/most-shared-01.jpg" alt="shared01">
-                  </div>
-                  <div class = "post_desc">
-                    <h3>events in nyc</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                      <span>December 25, 2024</span>
-                    </p>
-                  </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character2.avif" alt="character2">
                 </div>
-                <div class="post_item">
-                  <div class = "post_image">
-                    <img src="./images/most-shared-02.jpg" alt="shared02">
-                  </div>
-                  <div class = "post_desc">
-                    <h3>festivals</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                      <span>May 19, 2024</span>
-                    </p>
-                  </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character3.avif" alt="character3">
                 </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character4.avif" alt="character4">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character5.avif" alt="character5">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character6.avif" alt="character6">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character7.avif" alt="character7">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character8.avif" alt="character8">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+            </div>    
+            <hr class="divider" />
               </div>
             </div>
           </div>
@@ -330,21 +356,21 @@
       <footer>
         <div class="inner">
           <div class="footer_content">
-            <ul class = "community">
+            <ul class="community">
               <li>Community</li>
               <li><a href="#none">Subscribe</a></li>
               <li><a href="#none">Give a Gift</a></li>
               <li><a href="#none">Customer Service FAQ</a></li>
               <li><a href="#none">Access Your Subscription</a></li>
             </ul>
-            <ul class = "network">
+            <ul class="network">
               <li>Network</li>
               <li><a href="#none">Privacy Policy</a></li>
               <li><a href="#none">Terms Of Service</a></li>
               <li><a href="#none">Advertise</a></li>
               <li><a href="#none">Jobs</a></li>
             </ul>
-            <ul class = "help">
+            <ul class="help">
               <li>Help Us Preserve This Project</li>
               <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
               <li>Copyright &copy; 2024 EZEN. All rights reserved</li>
