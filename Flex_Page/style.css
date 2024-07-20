@@ -41,7 +41,7 @@ body {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .intro_video.active {
   opacity: 0;
@@ -85,7 +85,9 @@ header nav {
   align-items: center;
 }
 header nav .logo a img {
-  width: 160px;
+  width: 180px;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 header nav .gnb {
   display: flex;
@@ -122,7 +124,8 @@ header.active nav {
 /* Intro */
 .intro {
   height: 100vh;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent), url("./images/Intro1.jpg") center/cover no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent),
+    url("./images/Intro1.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   text-align: center;
@@ -213,7 +216,7 @@ header.active nav {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .ranking .ranking_contents .items .item .down-desc {
   padding: 25px;
@@ -329,7 +332,7 @@ header.active nav {
 .product .product_contents .myslider div .console img {
   border-radius: 14px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -386,7 +389,11 @@ header.active nav {
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, rgba(223, 10, 10, 0.5), rgba(167, 0, 78, 0.8));
+  background: linear-gradient(
+    to right,
+    rgba(223, 10, 10, 0.5),
+    rgba(167, 0, 78, 0.8)
+  );
   width: 100%;
   height: 100%;
 }
@@ -426,7 +433,7 @@ header.active nav {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: all 0.3s;
 }
 .characters .characters_contents .items .item .characterTitle {
@@ -439,43 +446,51 @@ header.active nav {
   margin: 50px 0;
 }
 
-/* Festival */
-.festival {
+/* Sns */
+.sns {
   width: 100%;
-  height: 270px;
-  background: #333;
+  padding: 30px;
+  background: #e60012;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.festival .festival_heading {
+.sns .sns_heading {
+  display: flex;
+  justify-content: space-between;
   text-align: center;
 }
-.festival .festival_heading h3 {
+.sns .sns_heading .sns_logo img {
+  position: relative;
+  width: 195px;
+  filter: brightness(100);
+}
+.sns .sns_heading .sns_logo img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+.sns .sns_heading h3 {
   color: white;
   font-size: 26px;
   font-weight: 300;
   margin-bottom: 30px;
 }
-.festival .festival_heading h3 span {
+.sns .sns_heading h3 span {
   font-weight: 500;
 }
-.festival .festival_heading .btns a {
-  display: inline-block;
-  width: 200px;
-  background: #fff;
-  padding: 6px;
-  border-radius: 5px;
-  margin: 5px;
-  font-size: 16px;
+.sns .sns_heading .btns {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
-.festival .festival_heading .btns a:nth-child(1) {
-  background: #fac53b;
+.sns .sns_heading .btns i {
   color: white;
-}
-.festival .festival_heading .btns a:nth-child(2) {
-  background: #ededed;
-  color: black;
+  font-size: 40px;
 }
 
 /* Footer */
@@ -667,19 +682,29 @@ footer .footer_content ul.help li:last-child {
   .characters .characters_contents .post_content .shared_post_items .post_item {
     flex-direction: column;
   }
-  .characters .characters_contents .post_content .recent_post_items .post_item .post_image,
-  .characters .characters_contents .post_content .shared_post_items .post_item .post_image {
+  .characters
+    .characters_contents
+    .post_content
+    .recent_post_items
+    .post_item
+    .post_image,
+  .characters
+    .characters_contents
+    .post_content
+    .shared_post_items
+    .post_item
+    .post_image {
     width: 100%;
     border-radius: 7px;
   }
-  /* Festival */
-  .festival {
+  /* Sns */
+  .sns {
     padding: 15px;
   }
-  .festival .festival_heading h3 {
+  .sns .sns_heading h3 {
     font-size: 24px;
   }
-  .festival .festival_heading .btns a {
+  .sns .sns_heading .btns a {
     width: 100%;
     margin-bottom: 10px;
   }

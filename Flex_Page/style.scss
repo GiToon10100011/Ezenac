@@ -2,6 +2,8 @@
 
 $color: (
   nintendo: #e60012,
+  playstation : #030098,
+  xbox : #0f7c0f
 );
 
 body {
@@ -52,6 +54,7 @@ header {
       a {
         color: #ddd;
         margin-right: 10px;
+        
         &:hover {
           text-decoration: underline;
         }
@@ -71,7 +74,8 @@ header {
     .logo {
       a {
         img {
-          width: 160px;
+          width: 180px;
+          object-fit: cover;
         }
       }
     }
@@ -191,7 +195,7 @@ header {
         overflow: hidden;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
         transition: all 0.3s;
-        &:hover{
+        &:hover {
           transform: scale(1.05);
         }
         .up-image {
@@ -258,13 +262,13 @@ header {
     }
     .myslider {
       width: 100%;
-      .slick-list{
+      .slick-list {
         margin: 0;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
       }
-      .slick-track{
+      .slick-track {
         margin: 0;
         display: flex;
         flex-direction: row;
@@ -290,10 +294,10 @@ header {
           text-align: left;
           transition: all 0.3s;
           cursor: pointer;
-          &:hover{
+          &:hover {
             transform: translateY(-10%);
           }
-          &:hover span:first-of-type{
+          &:hover span:first-of-type {
             color: map-get($map: $color, $key: nintendo);
           }
           span {
@@ -305,7 +309,7 @@ header {
               color: #333;
               transition: all 0.3s;
             }
-            &:nth-of-type(2){
+            &:nth-of-type(2) {
               margin-bottom: 10px;
             }
             width: 100%;
@@ -325,12 +329,12 @@ header {
             align-items: center;
             width: 100%;
             margin-top: 20px;
-            span{
+            span {
               margin: 0;
               font-weight: normal;
               font-size: 18px;
             }
-            i{
+            i {
               color: map-get($map: $color, $key: nintendo);
               font-size: 22px;
             }
@@ -365,7 +369,7 @@ header {
       font-size: 18px;
       border-radius: 5px;
       transition: all 0.3s;
-      &:hover{
+      &:hover {
         background: white;
         color: black;
       }
@@ -392,34 +396,34 @@ header {
   .characters_contents {
     width: 100%;
     height: 100%;
-    & > h1{
+    & > h1 {
       color: #333;
       margin-bottom: 20px;
     }
-    .items{
+    .items {
       width: 100%;
       height: 100%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       justify-content: center;
       grid-gap: 20px;
-      .item{
+      .item {
         cursor: pointer;
-        &:hover .img_container img{
+        &:hover .img_container img {
           transform: scale(1.1);
         }
-        .img_container{
+        .img_container {
           background: map-get($map: $color, $key: nintendo);
           border-radius: 20px;
           overflow: hidden;
-          img{
+          img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: all 0.3s;
           }
         }
-        .characterTitle{
+        .characterTitle {
           display: inline-block;
           margin-top: 10px;
         }
@@ -433,15 +437,33 @@ header {
   }
 }
 
-/* Festival */
-.festival {
+/* Sns */
+.sns {
   width: 100%;
-  height: 270px;
-  background: #333;
+  padding: 30px;
+  background: map-get($map: $color, $key: nintendo);
   display: flex;
   justify-content: center;
   align-items: center;
-  .festival_heading {
+  .sns_heading {
+    display: flex;
+    justify-content: space-between;
+    .sns_logo {
+      img {
+        position: relative;
+        width: 195px;
+        filter: brightness(100);
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #000;
+        }
+      }
+    }
     text-align: center;
     h3 {
       color: white;
@@ -453,22 +475,12 @@ header {
       }
     }
     .btns {
-      a {
-        display: inline-block;
-        width: 200px;
-        background: #fff;
-        padding: 6px;
-        border-radius: 5px;
-        margin: 5px;
-        font-size: 16px;
-        &:nth-child(1) {
-          background: #fac53b;
-          color: white;
-        }
-        &:nth-child(2) {
-          background: #ededed;
-          color: black;
-        }
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      i {
+        color: white;
+        font-size: 40px;
       }
     }
   }
@@ -534,7 +546,7 @@ footer {
     opacity: 1;
     bottom: 50px;
   }
-  &:hover{
+  &:hover {
     transform: translateY(-10%);
   }
 }
@@ -709,10 +721,10 @@ footer {
     }
   }
 
-  /* Festival */
-  .festival {
+  /* Sns */
+  .sns {
     padding: 15px;
-    .festival_heading {
+    .sns_heading {
       h3 {
         font-size: 24px;
       }
