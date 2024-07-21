@@ -1,15 +1,14 @@
-
 // IntroVid
 const intro = document.querySelector(".intro_video");
 
 const introVid = intro.querySelector("video");
 
 introVid.addEventListener("ended", () => {
-    intro.classList.add("active");
-    setTimeout(() => {
-        intro.style.display = "none";
-  }, 600)
-})
+  intro.classList.add("active");
+  setTimeout(() => {
+    intro.style.display = "none";
+  }, 600);
+});
 
 // Changing Modes
 const all = document.querySelectorAll("*");
@@ -27,12 +26,11 @@ const colors = ["#e60012", "#030098", "#0f7c0f"];
 
 let colorStyle = [];
 
-
 all.forEach((el) => {
   const colorS = getComputedStyle(el);
   if (colorS.color === colors[0]) {
     colorStyle.push(el);
-  } 
+  }
 });
 
 console.log(colorStyle);
@@ -46,14 +44,9 @@ modes.forEach((mode, index) => {
     introVid.play();
 
     logo.setAttribute("src", `./images/${logos[index]}`);
-
-    all.forEach((element) => {
-      const computedStyle = getComputedStyle(element);
-      if (computedStyle.color !== colors[index]) {
-        colorStyle.forEach((c) => {
-          c.style.color = colors[index];
-        })
-      }
+    
+    colorStyle.forEach((c) => {
+      c.style.color = colors[index];
     });
   });
 });
