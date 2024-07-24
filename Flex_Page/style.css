@@ -101,7 +101,7 @@ header nav .gnb li a {
   transition: all 0.3s;
 }
 header nav .gnb li a:hover {
-  color: #e60012;
+  color: rgb(230, 0, 18);
 }
 header .trigger {
   display: none;
@@ -164,7 +164,7 @@ header.active nav {
   margin: 30px 0 40px;
 }
 .about .about_contents div.desc a {
-  color: #e60012;
+  color: rgb(230, 0, 18);
   font-weight: bold;
 }
 .about .about_contents div.desc a:hover {
@@ -228,7 +228,7 @@ header.active nav {
   color: white;
 }
 .ranking .ranking_contents .items .item .down-desc .badge.must {
-  background: #e60012;
+  background: rgb(230, 0, 18);
 }
 .ranking .ranking_contents .items .item .down-desc .badge.good {
   background: #4b5cce;
@@ -242,7 +242,7 @@ header.active nav {
   margin-bottom: 16px;
 }
 .ranking .ranking_contents .items .item .down-desc .btn-explore {
-  color: #e60012;
+  color: rgb(230, 0, 18);
   font-weight: 500;
 }
 .ranking .ranking_contents .items .item .down-desc .btn-explore img {
@@ -254,7 +254,7 @@ header.active nav {
 
 /* Product */
 .product {
-  background: #e60012;
+  background: rgb(230, 0, 18);
   padding: 100px 0;
 }
 .product .product_contents {
@@ -309,7 +309,7 @@ header.active nav {
   transform: translateY(-10%);
 }
 .product .product_contents .myslider div .console:hover span:first-of-type {
-  color: #e60012;
+  color: rgb(230, 0, 18);
 }
 .product .product_contents .myslider div .console span {
   width: 100%;
@@ -348,7 +348,7 @@ header.active nav {
   font-size: 18px;
 }
 .product .product_contents .myslider div .console .category i {
-  color: #e60012;
+  color: rgb(230, 0, 18);
   font-size: 22px;
 }
 
@@ -373,7 +373,7 @@ header.active nav {
   margin-bottom: 50px;
 }
 .callaction .callaction_heading a {
-  background: #e60012;
+  background: rgb(230, 0, 18);
   padding: 10px 20px;
   font-size: 18px;
   border-radius: 5px;
@@ -420,7 +420,7 @@ header.active nav {
   transform: scale(1.1);
 }
 .characters .characters_contents .items .item .img_container {
-  background: #e60012;
+  background: rgb(230, 0, 18);
   border-radius: 20px;
   overflow: hidden;
 }
@@ -445,7 +445,7 @@ header.active nav {
 .sns {
   width: 100%;
   padding: 30px;
-  background: #e60012;
+  background: rgb(230, 0, 18);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -530,7 +530,7 @@ footer .footer_content ul.help li:last-child {
   height: 50px;
   border-radius: 50%;
   transition: all 0.3s;
-  background: linear-gradient(45deg, #e60012, #fec1c1);
+  background: linear-gradient(45deg, rgb(230, 0, 18), #fec1c1);
   color: white;
   font-size: 26px;
   text-align: center;

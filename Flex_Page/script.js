@@ -22,15 +22,17 @@ const vids = ["Intro1.mp4", "Intro2.mp4", "Intro3.mp4"];
 
 const logo = document.querySelector(".logo a img");
 const logos = ["Logo1.png", "Logo2.png", "Logo3.png"];
-const colors = ["#e60012", "#030098", "#0f7c0f"];
+const colors = ["rgb(230, 0, 18)", "rgb(3, 0, 152)", "rgb(15, 124, 15)"];
 
 let colorStyle = [];
 
 all.forEach((el) => {
   const colorS = getComputedStyle(el);
+  console.log(colorS.color);
   if (colorS.color === colors[0]) {
     colorStyle.push(el);
   }
+  console.log(colorStyle);
 });
 
 console.log(colorStyle);
@@ -44,7 +46,7 @@ modes.forEach((mode, index) => {
     introVid.play();
 
     logo.setAttribute("src", `./images/${logos[index]}`);
-    
+
     colorStyle.forEach((c) => {
       c.style.color = colors[index];
     });
