@@ -6,8 +6,16 @@ $color: (
   xbox: rgb(15, 124, 15),
 );
 
-.hover {
+.hoverNintendo {
   color: map-get($map: $color, $key: nintendo) !important;
+}
+
+.hoverPs {
+  color: map-get($map: $color, $key: playstation) !important;
+}
+
+.hoverXbox {
+  color: map-get($map: $color, $key: xbox) !important;
 }
 
 body {
@@ -167,6 +175,8 @@ header {
         flex: 2;
         img {
           width: 100%;
+          height: 300px;
+          object-fit: cover;
           border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
         }
       }
@@ -368,8 +378,8 @@ header {
       border-radius: 5px;
       transition: all 0.3s;
       &:hover {
-        background: black;
-        color: white;
+        background: black !important;
+        color: white !important;
       }
     }
   }

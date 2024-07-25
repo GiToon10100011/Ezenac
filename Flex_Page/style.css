@@ -17,8 +17,16 @@ a {
   color: inherit;
 }
 
-.hover {
+.hoverNintendo {
   color: rgb(230, 0, 18) !important;
+}
+
+.hoverPs {
+  color: rgb(3, 0, 152) !important;
+}
+
+.hoverXbox {
+  color: rgb(15, 124, 15) !important;
 }
 
 body {
@@ -176,6 +184,9 @@ header.active nav {
 }
 .about .about_contents div.photo img {
   width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 40% 60% 65% 35%/40% 45% 55% 60%;
 }
 
@@ -378,8 +389,8 @@ header.active nav {
   transition: all 0.3s;
 }
 .callaction .callaction_heading a:hover {
-  background: black;
-  color: white;
+  background: black !important;
+  color: white !important;
 }
 .callaction::before {
   content: "";

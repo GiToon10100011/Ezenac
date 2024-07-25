@@ -45,29 +45,49 @@ const vids = ["Intro1.mp4", "Intro2.mp4", "Intro3.mp4"];
 
 // Logos
 const logo = document.querySelector(".logo a img");
+const footerLogo = document.querySelector(".sns_logo img");
 const logos = ["Logo1.png", "Logo2.png", "Logo3.png"];
 
 //Main Background
 const mainBg = document.querySelector(".intro");
 const mainBgs = ["Intro1.jpg", "Intro2.jpg", "Intro3.jpg"];
 
+// About Image
+const aboutImg = document.querySelector(".photo img");
+const aboutImgs = ["about1.jpg", "about2.jpg", "about3.jpg"];
+
+// Ranking Images
+const rankingImg = document.querySelectorAll(".up-image img");
+const rankingImgs = {
+  nintendo: {
+    img: ["N_ranking1.avif", "N_ranking2.avif", "N_ranking3.avif"],
+  },
+  ps: {
+    img: ["P_ranking1.jpg", "P_ranking2.jpg", "P_ranking3.jpg"],
+  },
+  xbox: {
+    img: ["X_ranking1.jpg", "X_ranking2.jpg", "X_ranking3.jpg"],
+  },
+};
+const rankingImgsKeys = ["nintendo", "ps", "xbox"];
+
 // PointColors
 const colors = ["rgb(230, 0, 18)", "rgb(3, 0, 152)", "rgb(15, 124, 15)"];
+const classes = ["hoverNintendo", "hoverPs", "hoverXbox"];
 
 // gnb MouseoverEvent
 gnbA.forEach((a) => {
   a.addEventListener("mouseover", () => {
-    a.classList.add("hover")
+    a.classList.add(classes[0]);
   });
-})
+});
 
 //gnb MouseoutEvent
 gnbA.forEach((a) => {
   a.addEventListener("mouseout", () => {
-    a.classList.remove("hover")
+    a.classList.remove(classes[0]);
   });
-})
-
+});
 
 let colorStyle = [];
 let backgroundStyle = [];
@@ -81,16 +101,15 @@ all.forEach((el) => {
     colorStyle.push(el);
   }
 
-  if(bgColor.backgroundColor === colors[0]){
+  if (bgColor.backgroundColor === colors[0]) {
     backgroundStyle.push(el);
   }
 });
 
-console.log(colorStyle);
-
 // ChangeModesEvent
 modes.forEach((mode, index) => {
   mode.addEventListener("click", () => {
+    console.log(index);
     // VideoEvent
     introVid.setAttribute("src", `./images/${vids[index]}`);
     introVid.load();
@@ -98,18 +117,41 @@ modes.forEach((mode, index) => {
     intro.classList.remove("active");
     introVid.play();
 
-    // Change HeaderLogo
+    // Change Logos
     logo.setAttribute("src", `./images/${logos[index]}`);
+    footerLogo.setAttribute("src", `./images/${logos[index]}`);
+
+    // Change Images
+    aboutImg.setAttribute("src", `./images/${aboutImgs[index]}`);
+    rankingImg.forEach((img, i) => {
+      const test = rankingImgsKeys[index]
+      img.setAttribute("src", `./images/${rankingImgs[test].img[i]}`);
+      console.log(rankingImgs[0]);
+    });
 
     // Change Backgrounds
     mainBg.style.background = `linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent), url(./images/${mainBgs[index]}) center/cover no-repeat`;
 
-    // Change the appended array Elements Color
+    // Change the appended array Elements' Color
     colorStyle.forEach((c) => {
       c.style.color = colors[index];
     });
     backgroundStyle.forEach((c) => {
       c.style.backgroundColor = colors[index];
+    });
+
+    gnbA.forEach((a) => {
+      a.addEventListener("mouseover", () => {
+        classes.forEach((cl, i) => {
+          if (i !== index) {
+            a.classList.remove(cl);
+          }
+        });
+        a.classList.add(classes[index]);
+      });
+      a.addEventListener("mouseout", () => {
+        a.classList.remove(classes[index]);
+      });
     });
   });
 });
@@ -176,6 +218,3 @@ $(".myslider").slick({
     },
   ],
 });
-
-
-
