@@ -1,3 +1,24 @@
+// Trigger
+const trigger = document.querySelector(".trigger");
+const gnb = document.querySelector(".gnb");
+const gnbA = gnb.querySelectorAll("a");
+
+trigger.addEventListener("click", () => {
+  trigger.classList.toggle("active");
+  gnb.classList.toggle("active");
+});
+
+gnbA.forEach((a) => {
+  a.addEventListener("click", () => {
+    trigger.classList.remove("active");
+    gnb.classList.remove("active");
+  });
+});
+
+$(".Top, .gnb a").click(function () {
+  $.scrollTo(this.hash || 0, 600);
+});
+
 // IntroVid
 const intro = document.querySelector(".intro_video");
 
@@ -16,39 +37,79 @@ const all = document.querySelectorAll("*");
 const lnb = document.querySelector(".lnb");
 const modes = lnb.querySelectorAll("li");
 
+// Set arrayIndex
 let initialCount = 0;
 
+// Videos
 const vids = ["Intro1.mp4", "Intro2.mp4", "Intro3.mp4"];
 
+// Logos
 const logo = document.querySelector(".logo a img");
 const logos = ["Logo1.png", "Logo2.png", "Logo3.png"];
+
+//Main Background
+const mainBg = document.querySelector(".intro");
+const mainBgs = ["Intro1.jpg", "Intro2.jpg", "Intro3.jpg"];
+
+// PointColors
 const colors = ["rgb(230, 0, 18)", "rgb(3, 0, 152)", "rgb(15, 124, 15)"];
 
-let colorStyle = [];
+// gnb MouseoverEvent
+gnbA.forEach((a) => {
+  a.addEventListener("mouseover", () => {
+    a.classList.add("hover")
+  });
+})
 
+//gnb MouseoutEvent
+gnbA.forEach((a) => {
+  a.addEventListener("mouseout", () => {
+    a.classList.remove("hover")
+  });
+})
+
+
+let colorStyle = [];
+let backgroundStyle = [];
+
+// Append all selected Elements
 all.forEach((el) => {
-  const colorS = getComputedStyle(el);
-  console.log(colorS.color);
-  if (colorS.color === colors[0]) {
+  const fontColor = getComputedStyle(el);
+
+  const bgColor = getComputedStyle(el);
+  if (fontColor.color === colors[0]) {
     colorStyle.push(el);
   }
-  console.log(colorStyle);
+
+  if(bgColor.backgroundColor === colors[0]){
+    backgroundStyle.push(el);
+  }
 });
 
 console.log(colorStyle);
 
+// ChangeModesEvent
 modes.forEach((mode, index) => {
   mode.addEventListener("click", () => {
+    // VideoEvent
     introVid.setAttribute("src", `./images/${vids[index]}`);
     introVid.load();
     intro.style.display = "block";
     intro.classList.remove("active");
     introVid.play();
 
+    // Change HeaderLogo
     logo.setAttribute("src", `./images/${logos[index]}`);
 
+    // Change Backgrounds
+    mainBg.style.background = `linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent), url(./images/${mainBgs[index]}) center/cover no-repeat`;
+
+    // Change the appended array Elements Color
     colorStyle.forEach((c) => {
       c.style.color = colors[index];
+    });
+    backgroundStyle.forEach((c) => {
+      c.style.backgroundColor = colors[index];
     });
   });
 });
@@ -116,23 +177,5 @@ $(".myslider").slick({
   ],
 });
 
-// Trigger
-const trigger = document.querySelector(".trigger");
-const gnb = document.querySelector(".gnb");
-const gnbA = gnb.querySelectorAll("a");
 
-trigger.addEventListener("click", () => {
-  trigger.classList.toggle("active");
-  gnb.classList.toggle("active");
-});
 
-gnbA.forEach((a) => {
-  a.addEventListener("click", () => {
-    trigger.classList.remove("active");
-    gnb.classList.remove("active");
-  });
-});
-
-$(".Top, .gnb a").click(function () {
-  $.scrollTo(this.hash || 0, 600);
-});

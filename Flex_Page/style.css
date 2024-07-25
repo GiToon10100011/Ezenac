@@ -17,6 +17,10 @@ a {
   color: inherit;
 }
 
+.hover {
+  color: rgb(230, 0, 18) !important;
+}
+
 body {
   font-family: Montserrat;
 }
@@ -99,9 +103,6 @@ header nav .gnb li {
 header nav .gnb li a {
   color: white;
   transition: all 0.3s;
-}
-header nav .gnb li a:hover {
-  color: rgb(230, 0, 18);
 }
 header .trigger {
   display: none;
@@ -248,8 +249,8 @@ header.active nav {
 .ranking .ranking_contents .items .item .down-desc .btn-explore img {
   transition: all 0.3s;
 }
-.ranking .ranking_contents .items .item .down-desc .btn-explore:hover img {
-  margin-left: 15px;
+.ranking .ranking_contents .items .item .down-desc .btn-explore:hover {
+  text-decoration: underline;
 }
 
 /* Product */
@@ -307,9 +308,6 @@ header.active nav {
 }
 .product .product_contents .myslider div .console:hover {
   transform: translateY(-10%);
-}
-.product .product_contents .myslider div .console:hover span:first-of-type {
-  color: rgb(230, 0, 18);
 }
 .product .product_contents .myslider div .console span {
   width: 100%;
@@ -380,15 +378,15 @@ header.active nav {
   transition: all 0.3s;
 }
 .callaction .callaction_heading a:hover {
-  background: white;
-  color: black;
+  background: black;
+  color: white;
 }
 .callaction::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, rgba(223, 10, 10, 0.5), rgba(167, 0, 78, 0.8));
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
   width: 100%;
   height: 100%;
 }
