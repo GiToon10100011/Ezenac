@@ -152,8 +152,6 @@ all.forEach((el) => {
 // ChangeModesEvent
 modes.forEach((mode, index) => {
   mode.addEventListener("click", () => {
-    console.log(index);
-    // VideoEvent
     introVid.setAttribute("src", `./images/${vids[index]}`);
     introVid.load();
     intro.style.display = "block";
@@ -171,40 +169,32 @@ modes.forEach((mode, index) => {
     rankingImg.forEach((img, i) => {
       img.setAttribute("src", `./images/${multipleImgsText[keys].img[i]}`);
     });
-    productImg.forEach((img, i) => {
-      img.setAttribute(
-        "src",
-        `./images/${multipleImgsText[keys].productImgs[i]}`
-      );
-    });
+
+    console.log(multipleImgsText[keys].productImgs.length);
+    for (let i = 0; i < multipleImgsText[keys].productImgs.length; i++) {
+      $(".myslider div .console img").attr("src", `./images/${multipleImgsText[keys].productImgs[i]}`);
+      
+    }
+
+    console.log($(".console img[0]"));
+
+    // let consoleImgsIndex = [];
+    
+    // $(".console-img").each(function(i) {
+    //   if(i < 8){
+    //     consoleImgsIndex.push(i);
+    //   }
+      
+      // $(this).attr("src", `./images/${multipleImgsText[keys].productImgs[i]}`);
+      // console.log(this);
+      // console.log(index);
+      // console.log(i);
+      
+    // });
 
     rankingTxt.forEach((text, i) => {
       text.innerText = multipleImgsText[keys].rankingText[i];
     });
-
-    // Function to update slider images
-    const updateSliderImages = (consoleType) => {
-      const newImages = multipleImgsText[consoleType].productImgs;
-
-      // Remove all slides
-      $(".myslider").slick("slickRemove", null, null, true);
-
-      // Add new slides
-      newImages.forEach((img) => {
-        $(".myslider").slick(
-          "slickAdd",
-          `<div class="console"><img src="./images/${img}" alt="Product Image"></div>`
-        );
-      });
-
-      // Apply styles to the newly added slides
-      $(".myslider .console img").css({
-        border: "2px solid red",
-        padding: "10px",
-      });
-    };
-
-    updateSliderImages(keys);
 
     // Change Backgrounds
     mainBg.style.background = `linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent), url(./images/${mainBgs[index]}) center/cover no-repeat`;
