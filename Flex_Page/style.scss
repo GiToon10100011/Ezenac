@@ -538,8 +538,7 @@ footer {
   transition: all 0.3s;
   background: linear-gradient(
     45deg,
-    map-get($map: $color, $key: nintendo),
-    #fec1c1
+    gray, white
   );
   color: white;
   font-size: 26px;

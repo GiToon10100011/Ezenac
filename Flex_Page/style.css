@@ -539,7 +539,7 @@ footer .footer_content ul.help li:last-child {
   height: 50px;
   border-radius: 50%;
   transition: all 0.3s;
-  background: linear-gradient(45deg, rgb(230, 0, 18), #fec1c1);
+  background: linear-gradient(45deg, gray, white);
   color: white;
   font-size: 26px;
   text-align: center;

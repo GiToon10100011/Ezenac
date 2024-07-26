@@ -56,20 +56,33 @@ const mainBgs = ["Intro1.jpg", "Intro2.jpg", "Intro3.jpg"];
 const aboutImg = document.querySelector(".photo img");
 const aboutImgs = ["about1.jpg", "about2.jpg", "about3.jpg"];
 
-// Ranking Images
+// Multiple Images & Text
 const rankingImg = document.querySelectorAll(".up-image img");
-const rankingImgs = {
+const rankingTxt = document.querySelectorAll(".down-desc h3");
+
+const productImg = document.querySelectorAll(".myslider div .console img");
+
+const multipleImgsTextKeys = ["nintendo", "ps", "xbox"];
+const multipleImgsText = {
   nintendo: {
     img: ["N_ranking1.avif", "N_ranking2.avif", "N_ranking3.avif"],
+    rankingText: ["The Legend of Zelda, TotK", "Super Mario Odyssey", "Splatoon 3"],
+    productImgs: ["N_console1.avif", "N_console2.avif", "N_console3.avif", "N_console4.avif", "N_console5.avif", "N_console6.avif", "N_console7.avif", "N_console8.avif"]
   },
   ps: {
     img: ["P_ranking1.jpg", "P_ranking2.jpg", "P_ranking3.jpg"],
+    rankingText: ["Horizon Zero Dawn", "Marvel Spiderman 2", "Uncharted 4"],
+    productImgs: ["P_console1.webp", "P_console2.webp", "P_console3.webp", "P_console4.webp", "P_console5.webp", "P_console6.webp", "P_console7.webp", "P_console8.webp"]
   },
   xbox: {
     img: ["X_ranking1.jpg", "X_ranking2.jpg", "X_ranking3.jpg"],
+    rankingText: ["Halo Infiinite", "Forza Horizon 5", "Minecraft"],
+    productImgs: ["X_console1.jpg", "X_console2.jpg", "X_console3.jpg", "X_console4.jpg", "X_console5.jpg", "X_console6.jpg", "X_console7.jpg", "X_console8.jpg"]
   },
 };
-const rankingImgsKeys = ["nintendo", "ps", "xbox"];
+
+
+// Multiple Texts
 
 // PointColors
 const colors = ["rgb(230, 0, 18)", "rgb(3, 0, 152)", "rgb(15, 124, 15)"];
@@ -121,13 +134,20 @@ modes.forEach((mode, index) => {
     logo.setAttribute("src", `./images/${logos[index]}`);
     footerLogo.setAttribute("src", `./images/${logos[index]}`);
 
-    // Change Images
+    // Change Images & Text
+    const keys = multipleImgsTextKeys[index];
+
     aboutImg.setAttribute("src", `./images/${aboutImgs[index]}`);
     rankingImg.forEach((img, i) => {
-      const test = rankingImgsKeys[index]
-      img.setAttribute("src", `./images/${rankingImgs[test].img[i]}`);
-      console.log(rankingImgs[0]);
+      img.setAttribute("src", `./images/${multipleImgsText[keys].img[i]}`);
     });
+    productImg.forEach((img, i) => {
+      img.setAttribute("src", `./images/${multipleImgsText[keys].productImgs[i]}`);
+    })
+
+    rankingTxt.forEach((text, i) => {
+      text.innerText = multipleImgsText[keys].rankingText[i];
+    })
 
     // Change Backgrounds
     mainBg.style.background = `linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent), url(./images/${mainBgs[index]}) center/cover no-repeat`;
@@ -218,3 +238,12 @@ $(".myslider").slick({
     },
   ],
 });
+
+$(".myslider").on('init', function(event, slick){
+  $('.myslider .console img').css({
+    'border': '2px solid red',
+    'padding': '10px'
+  });
+});
+
+
