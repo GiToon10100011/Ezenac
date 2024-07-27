@@ -5,6 +5,8 @@ const gnbA = gnb.querySelectorAll("a");
 
 trigger.addEventListener("click", () => {
   trigger.classList.toggle("active");
+  trigger.classList.toggle("color");
+  trigger.classList.toggle("move");
   gnb.classList.toggle("active");
 });
 
@@ -81,6 +83,16 @@ const multipleImgsText = {
       "N_console7.avif",
       "N_console8.avif",
     ],
+    characterImgs: [
+      "N_character1.avif",
+      "N_character2.avif",
+      "N_character3.avif",
+      "N_character4.avif",
+      "N_character5.avif",
+      "N_character6.avif",
+      "N_character7.avif",
+      "N_character8.avif",
+    ],
   },
   ps: {
     img: ["P_ranking1.jpg", "P_ranking2.jpg", "P_ranking3.jpg"],
@@ -94,6 +106,16 @@ const multipleImgsText = {
       "P_console6.webp",
       "P_console7.webp",
       "P_console8.webp",
+    ],
+    characterImgs: [
+      "P_character1.png",
+      "P_character2.png",
+      "P_character3.png",
+      "P_character4.png",
+      "P_character5.png",
+      "P_character6.png",
+      "P_character7.png",
+      "P_character8.png",
     ],
   },
   xbox: {
@@ -109,14 +131,34 @@ const multipleImgsText = {
       "X_console7.jpg",
       "X_console8.jpg",
     ],
+    characterImgs: [
+      "X_character1.png",
+      "X_character2.png",
+      "X_character3.png",
+      "X_character4.png",
+      "X_character5.png",
+      "X_character6.png",
+      "X_character7.png",
+      "X_character8.png",
+    ],
   },
 };
+
+const callActionbg = document.querySelector(".callaction");
+const callActionBgs = [
+  "callaction01.jpg",
+  "callaction02.jpg",
+  "callaction03.jpg",
+];
+
+const characterImg = document.querySelectorAll(".item .img_container img");
 
 // Multiple Texts
 
 // PointColors
 const colors = ["rgb(230, 0, 18)", "rgb(3, 0, 152)", "rgb(15, 124, 15)"];
 const classes = ["hoverNintendo", "hoverPs", "hoverXbox"];
+const productTitles = document.querySelectorAll(".product_title");
 
 // gnb MouseoverEvent
 gnbA.forEach((a) => {
@@ -170,35 +212,41 @@ modes.forEach((mode, index) => {
       img.setAttribute("src", `./images/${multipleImgsText[keys].img[i]}`);
     });
 
-    console.log(multipleImgsText[keys].productImgs.length);
+    console.log(multipleImgsText[keys].productImgs);
     for (let i = 0; i < multipleImgsText[keys].productImgs.length; i++) {
-      $(".myslider div .console img").attr("src", `./images/${multipleImgsText[keys].productImgs[i]}`);
-      
+      console.log($(`.myslider div .console img[${i}]`));
+      $(`.myslider div .console img[${i}]`).attr(
+        "src",
+        `./images/${multipleImgsText[keys].productImgs[i]}`
+      );
     }
 
-    console.log($(".console img[0]"));
-
     // let consoleImgsIndex = [];
-    
+
     // $(".console-img").each(function(i) {
     //   if(i < 8){
     //     consoleImgsIndex.push(i);
     //   }
-      
-      // $(this).attr("src", `./images/${multipleImgsText[keys].productImgs[i]}`);
-      // console.log(this);
-      // console.log(index);
-      // console.log(i);
-      
+
+    // $(this).attr("src", `./images/${multipleImgsText[keys].productImgs[i]}`);
+    // console.log(this);
+    // console.log(index);
+    // console.log(i);
+
     // });
 
     rankingTxt.forEach((text, i) => {
       text.innerText = multipleImgsText[keys].rankingText[i];
     });
 
+    characterImg.forEach((img, i) => {
+      img.setAttribute("src" , `./images/${multipleImgsText[keys].characterImgs[i]}`)
+    })
+
     // Change Backgrounds
     mainBg.style.background = `linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent), url(./images/${mainBgs[index]}) center/cover no-repeat`;
 
+    callActionbg.style.background = `url(./images/${callActionBgs[index]}) center/cover no-repeat`;
     // Change the appended array Elements' Color
     colorStyle.forEach((c) => {
       c.style.color = colors[index];
@@ -234,9 +282,13 @@ window.addEventListener("scroll", () => {
   if (scroll > 50) {
     header.classList.add("active");
     Top.classList.add("active");
+    trigger.classList.add("color");
+    trigger.classList.add("move");
   } else {
     header.classList.remove("active");
     Top.classList.remove("active");
+    trigger.classList.remove("color");
+    trigger.classList.remove("move");
   }
 });
 

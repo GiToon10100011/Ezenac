@@ -388,7 +388,7 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+    background: rgba($color: #000000, $alpha: 0.5);
     width: 100%;
     height: 100%;
   }
@@ -422,7 +422,7 @@ header {
           overflow: hidden;
           img {
             width: 100%;
-            height: 100%;
+            height: 300px;
             object-fit: cover;
             transition: all 0.3s;
           }
@@ -536,10 +536,7 @@ footer {
   height: 50px;
   border-radius: 50%;
   transition: all 0.3s;
-  background: linear-gradient(
-    45deg,
-    gray, white
-  );
+  background: linear-gradient(45deg, gray, white);
   color: white;
   font-size: 26px;
   text-align: center;
@@ -555,13 +552,20 @@ footer {
 }
 
 @media screen and (max-width: 770px) {
-  /* Header */
+  .intro_video {
+    video {
+      object-fit: cover;
+    }
+  }
 
+  /* Header */
   header {
     .banner {
-      display: none;
+      display: block;
     }
     nav {
+      display: flex;
+      align-items: center;
       width: 100%;
       padding: 0 20px;
       .gnb {
@@ -590,17 +594,18 @@ footer {
       }
     }
     .trigger {
+      z-index: 1000000;
       display: block;
       width: 30px;
       height: 18px;
       position: absolute;
-      top: 25px;
+      top: 78px;
       right: 20px;
       span {
         position: absolute;
         width: 100%;
         height: 1px;
-        background: #000;
+        background: #fff;
         transition: all 0.3s;
         &:nth-child(1) {
           top: 0;
@@ -611,6 +616,12 @@ footer {
         &:nth-child(3) {
           top: 100%;
         }
+      }
+      &.color span {
+        background: #000;
+      }
+      &.move {
+        top: 50px;
       }
       &.active span:nth-child(1) {
         top: 50%;
@@ -695,31 +706,9 @@ footer {
 
   /* Characters */
   .characters {
-    .characters_contents {
-      .characters_header {
-        text-align: center;
-        h2 {
-          font-size: 36px;
-        }
-        p {
-          font-size: 20px;
-        }
-        .btn-explore {
-          margin-top: 15px;
-        }
-      }
-      .post_content {
-        flex-direction: column;
-        .recent_post_items,
-        .shared_post_items {
-          .post_item {
-            flex-direction: column;
-            .post_image {
-              width: 100%;
-              border-radius: 7px;
-            }
-          }
-        }
+    .characters_contents{
+      .items {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   }
