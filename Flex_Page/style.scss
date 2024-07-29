@@ -87,7 +87,8 @@ header {
       a {
         img {
           width: 180px;
-          object-fit: cover;
+          height: 68px;
+          object-fit: contain;
         }
       }
     }
@@ -601,6 +602,7 @@ footer {
       position: absolute;
       top: 78px;
       right: 20px;
+      cursor: pointer;
       span {
         position: absolute;
         width: 100%;
@@ -715,8 +717,11 @@ footer {
 
   /* Sns */
   .sns {
+    flex-direction: column;
     padding: 15px;
     .sns_heading {
+      flex-direction: column;
+      gap: 20px;
       h3 {
         font-size: 24px;
       }

@@ -98,8 +98,9 @@ header nav {
 }
 header nav .logo a img {
   width: 180px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 68px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 header nav .gnb {
   display: flex;
@@ -599,6 +600,7 @@ footer .footer_content ul.help li:last-child {
     position: absolute;
     top: 78px;
     right: 20px;
+    cursor: pointer;
   }
   header .trigger span {
     position: absolute;
@@ -685,7 +687,12 @@ footer .footer_content ul.help li:last-child {
   }
   /* Sns */
   .sns {
+    flex-direction: column;
     padding: 15px;
+  }
+  .sns .sns_heading {
+    flex-direction: column;
+    gap: 20px;
   }
   .sns .sns_heading h3 {
     font-size: 24px;
