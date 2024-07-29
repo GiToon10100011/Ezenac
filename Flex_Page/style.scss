@@ -307,7 +307,10 @@ header {
           transition: all 0.3s;
           cursor: pointer;
           &:hover {
-            transform: translateY(-10%);
+            transform: translateY(-5%);
+          }
+          &:hover span:first-child{
+            color: map-get($map: $color, $key: nintendo);
           }
           span {
             &:first-of-type {

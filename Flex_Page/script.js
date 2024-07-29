@@ -212,15 +212,25 @@ modes.forEach((mode, index) => {
       img.setAttribute("src", `./images/${multipleImgsText[keys].img[i]}`);
     });
 
-    console.log(multipleImgsText[keys].productImgs);
-    for (let i = 0; i < multipleImgsText[keys].productImgs.length; i++) {
-      console.log($(`.myslider div .console img[${i}]`));
-      $(`.myslider div .console img[${i}]`).attr(
-        "src",
-        `./images/${multipleImgsText[keys].productImgs[i]}`
-      );
-    }
+    $(".myslider").slick("slickRemove", null, null, true);
 
+    productImg.forEach((img, i) => {
+      $(".myslider").slick(
+        "slickAdd",
+        `<div>
+                  <p class="console">
+                    <img src="./images/${multipleImgsText[keys].productImgs[i]}" alt="" class = "console-img"/>
+                    <span class = "product_title" style = "&:hover{color : ${colors[index]}};">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                    <span>24/07/20</span>
+                    <span><b>$349.99</b></span>
+                    <span class="category">
+                      <span>| Hardware</span>
+                      <i class="fa-regular fa-heart" style = "color : ${colors[index]};"></i>
+                    </span>
+                  </p>
+                </div>`
+      );
+    });
     // let consoleImgsIndex = [];
 
     // $(".console-img").each(function(i) {
@@ -240,8 +250,11 @@ modes.forEach((mode, index) => {
     });
 
     characterImg.forEach((img, i) => {
-      img.setAttribute("src" , `./images/${multipleImgsText[keys].characterImgs[i]}`)
-    })
+      img.setAttribute(
+        "src",
+        `./images/${multipleImgsText[keys].characterImgs[i]}`
+      );
+    });
 
     // Change Backgrounds
     mainBg.style.background = `linear-gradient(135deg, rgba(0, 0, 0, 0.5), transparent), url(./images/${mainBgs[index]}) center/cover no-repeat`;
@@ -307,7 +320,7 @@ $(".myslider").slick({
   slidesToScroll: 3,
   autoplay: true,
   autoplaySpeed: 3000,
-  adaptiveHeight: true,
+  // adaptiveHeight: true,
   pauseOnHover: true,
   responsive: [
     {
