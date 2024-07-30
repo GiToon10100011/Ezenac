@@ -321,9 +321,6 @@ header.active nav {
 .product .product_contents .myslider div .console:hover {
   transform: translateY(-5%);
 }
-.product .product_contents .myslider div .console:hover span:first-child {
-  color: rgb(230, 0, 18);
-}
 .product .product_contents .myslider div .console span {
   width: 100%;
 }

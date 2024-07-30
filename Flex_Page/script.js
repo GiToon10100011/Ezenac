@@ -159,6 +159,7 @@ const characterImg = document.querySelectorAll(".item .img_container img");
 const colors = ["rgb(230, 0, 18)", "rgb(3, 0, 152)", "rgb(15, 124, 15)"];
 const classes = ["hoverNintendo", "hoverPs", "hoverXbox"];
 const productTitles = document.querySelectorAll(".product_title");
+const sliderDiv = document.querySelectorAll(".console");
 
 // gnb MouseoverEvent
 gnbA.forEach((a) => {
@@ -171,6 +172,26 @@ gnbA.forEach((a) => {
 gnbA.forEach((a) => {
   a.addEventListener("mouseout", () => {
     a.classList.remove(classes[0]);
+  });
+});
+
+// Slider Mouseover Event
+$(".console").each((index, div) => {
+  $(div).on("mouseover", function () {
+    $(this)
+      .find(".product_title")
+      .each((i, title) => {
+        $(title).css("color", colors[0]);
+      });
+  });
+
+  // Slider Mouseout Event
+  $(div).on("mouseout", function () {
+    $(this)
+      .find(".product_title")
+      .each((i, title) => {
+        $(title).css("color", "#000");
+      });
   });
 });
 
@@ -220,7 +241,7 @@ modes.forEach((mode, index) => {
         `<div>
                   <p class="console">
                     <img src="./images/${multipleImgsText[keys].productImgs[i]}" alt="" class = "console-img"/>
-                    <span class = "product_title" style = "&:hover{color : ${colors[index]}};">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                    <span class = "product_title" >Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
                     <span>24/07/20</span>
                     <span><b>$349.99</b></span>
                     <span class="category">
@@ -230,6 +251,26 @@ modes.forEach((mode, index) => {
                   </p>
                 </div>`
       );
+    });
+
+    // Slider Mouseover Event
+    $(".console").each((sliderIndex, div) => {
+      $(div).on("mouseover", function () {
+        $(this)
+          .find(".product_title")
+          .each((i, title) => {
+            $(title).css("color", colors[index]);
+          });
+      });
+
+      // Slider Mouseout Event
+      $(div).on("mouseout", function () {
+        $(this)
+          .find(".product_title")
+          .each((i, title) => {
+            $(title).css("color", "#000");
+          });
+      });
     });
     // let consoleImgsIndex = [];
 

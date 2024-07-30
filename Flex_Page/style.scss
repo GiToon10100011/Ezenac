@@ -309,9 +309,6 @@ header {
           &:hover {
             transform: translateY(-5%);
           }
-          &:hover span:first-child{
-            color: map-get($map: $color, $key: nintendo);
-          }
           span {
             &:first-of-type {
               margin-top: 30px;
@@ -711,7 +708,7 @@ footer {
 
   /* Characters */
   .characters {
-    .characters_contents{
+    .characters_contents {
       .items {
         grid-template-columns: repeat(2, 1fr);
       }
