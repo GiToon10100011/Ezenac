@@ -1,0 +1,150 @@
+@import "./reset.scss";
+
+// variable
+$main-color: #55b2d4;
+$point-color : #ffe400;
+
+// mixin
+@mixin button {
+  border: none;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: #f6f6f6;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background: $point-color;
+  }
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & > div:nth-child(2) {
+    position: relative;
+    width: 100%;
+    height: 158px;
+    background: url("./contents/bg_1.jpg") center -90px / cover no-repeat;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+  & > div:nth-child(3) {
+    position: relative;
+    width: 100%;
+    height: 158px;
+    background: url("./contents/bg_2.jpg") center -90px / cover no-repeat;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .wrapper_header {
+    width: 100%;
+    height: 30px;
+    .contents_title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .title {
+        color: $main-color;
+        font: bold 16px/1 arial;
+      }
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+    .divider {
+      width: 100%;
+      border-top: 1px solid gray;
+      margin: 4px 0;
+    }
+  }
+  .game_container {
+    width: 100%;
+    height: 158px;
+    border-radius: 15px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 8px gray;
+    color: white;
+    overflow: hidden;
+    * {
+      position: relative;
+    }
+    .game_title {
+      font: 700 16px/1 arial;
+    }
+    .game_subtitle {
+      color: white;
+      font: normal 14px/1 arial;
+    }
+    .word_text {
+      input[type="text"] {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        outline: none;
+        background: transparent;
+        padding: 0 0 4px 4px;
+        color: white;
+        &:focus {
+          outline: none;
+          &::placeholder {
+            opacity: 0;
+          }
+        }
+        &::placeholder {
+          transition: all 0.3s;
+          opacity: 1;
+          color: #ddd;
+        }
+      }
+      input[type="submit"] {
+        @include button;
+      }
+    }
+    .word_result{
+      color: $point-color;
+      font-weight: 800;
+    }
+    .game_lotto_number{
+      color: #000;
+      background: $point-color;
+      border-radius: 20px;
+      padding: 2px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      span{
+        color: white;
+        text-shadow: 0 0 8px rgba($color : #000, $alpha : 0.5);
+      }
+    }
+    .wrapper_lotto_btn{
+      @include button;
+    }
+  }
+}
