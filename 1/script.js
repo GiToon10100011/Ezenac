@@ -12,7 +12,10 @@ const numbers = numbersStr.map((number) => {
 });
 
 //4. 숫자 배열 중 some()함수를 사용하여 배열의 요소에 100이 넘는 숫자가 있는지 모두 검사하여 있다면 100이하의 숫자를 입력하라는 경고문을 출력하고 페이지를 강제로 새로고침한다.
-if (numbers.some((number) => number >= 100)) {
+if (numbers.some((num) => isNaN(num))) {
+  alert("숫자를 입력해주세요.");
+  window.location.reload();
+} else if (numbers.some((number) => number >= 100)) {
   alert("100이하의 숫자를 입력해주세요");
   window.location.reload();
 } else {
