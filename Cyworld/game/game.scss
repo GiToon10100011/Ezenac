@@ -1,4 +1,4 @@
-@import "./reset.scss";
+@import "../reset.scss";
 
 // variable
 $main-color: #55b2d4;
@@ -34,7 +34,7 @@ body {
     position: relative;
     width: 100%;
     height: 158px;
-    background: url("./contents/bg_1.jpg") center -90px / cover no-repeat;
+    background: url("../contents/bg_1.jpg") center -90px / cover no-repeat;
     &::before {
       content: "";
       position: absolute;
@@ -49,7 +49,7 @@ body {
     position: relative;
     width: 100%;
     height: 158px;
-    background: url("./contents/bg_2.jpg") center -90px / cover no-repeat;
+    background: url("../contents/bg_2.jpg") center -90px / cover no-repeat;
     &::before {
       content: "";
       position: absolute;

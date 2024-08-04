@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -14,15 +15,40 @@ a {
 }
 
 .background {
-  background: url("./contents/bg_2.jpg");
+  background: url("./contents/background.webp") center -4%/cover no-repeat;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.background video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 90%;
+}
+.background h1 {
+  width: 100%;
+  font-size: 200px;
+  position: absolute;
+  z-index: 2;
+  left: -90px;
+  top: 20px;
+  font-weight: 900;
+  transform: rotate(90deg);
+  transform-origin: 10%;
+  font-style: italic;
+  font-family: "Orbitron";
+}
+.background h1 span {
+  color: #747474;
+}
 .background .outerbox {
-  background: url("./contents/outerbox.png") center/cover no-repeat;
+  border-radius: 10px;
+  background: #fff;
   width: 808px;
   height: 544px;
   position: relative;
@@ -30,6 +56,16 @@ a {
 .background .outerbox .wrapper {
   display: flex;
   padding: 36px;
+}
+
+.triangle {
+  position: absolute;
+  width: 200px;
+  height: 90px;
+  border-left: 200px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 100px solid rgba(255, 255, 255, 0.8); /* Triangle color */
+  transform: scale(0.5) rotate(10deg);
 }
 
 .wrapper_left {

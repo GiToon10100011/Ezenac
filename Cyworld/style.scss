@@ -15,16 +15,50 @@ $size: (
   medium: 14px,
 );
 
+$family: (
+  pop: "Poppins",
+  rale: "Raleway",
+  orb: "Orbitron",
+  exo: "Exo 2",
+  bebas: "Bebas Neue",
+  monts: "Montserrat",
+);
+
 // common
 .background {
-  background: url("./contents/bg_2.jpg");
+  video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 90%;
+  }
+  h1 {
+    width: 100%;
+    font-size: 200px;
+    position: absolute;
+    z-index: 2;
+    left: -90px;
+    top: 20px;
+    font-weight: 900;
+    transform: rotate(90deg);
+    transform-origin: 10%;
+    font-style: italic;
+    font-family: map-get($map: $family, $key: orb);
+    // scale(1) translate(0px, 0px) skew(30deg, 0deg)
+    span {
+      color: #747474;
+    }
+  }
+  background: url("./contents/background.webp") center -4% / cover no-repeat;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   .outerbox {
-    background: url("./contents/outerbox.png") center/cover no-repeat;
+    border-radius: 10px;
+    background: #fff;
     width: 808px;
     height: 544px;
     position: relative;
@@ -33,6 +67,16 @@ $size: (
       padding: 36px;
     }
   }
+}
+
+.triangle {
+  position: absolute;
+  width: 200px;
+  height: 90px;
+  border-left: 200px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 100px solid rgba(255, 255, 255, 0.8); /* Triangle color */
+  transform: scale(0.5) rotate(10deg);
 }
 
 // wrapper_left
