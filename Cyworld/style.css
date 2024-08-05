@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -14,8 +15,33 @@ a {
   color: inherit;
 }
 
+@keyframes heading {
+  from {
+    transform: translateX(50%) scale(1);
+  }
+  to {
+    transform: translateX(50%) scale(1.05);
+  }
+}
+@keyframes bounce {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+body {
+  overflow: hidden;
+}
+
 .background {
-  background: url("./contents/background.webp") center -4%/cover no-repeat;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("./contents/background.webp") center -4%/cover no-repeat;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -28,27 +54,122 @@ a {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.background video:first-child {
+  z-index: 6;
+}
+.background video:nth-child(2) {
+  z-index: 5;
+}
+.background video:last-child {
   opacity: 90%;
 }
+.background .logoBox {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  left: 21.2%;
+  top: 2.5%;
+}
+.background .logoBox img {
+  opacity: 0;
+  position: absolute;
+  z-index: 10;
+  width: 110px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.3s;
+  transition-delay: 6.6s;
+}
+.background .logoBox img.active {
+  opacity: 1;
+}
+.background .logoBox::before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 20.5px;
+  left: 20.8px;
+  z-index: 9;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  border: 2px solid #55b2e4;
+  animation: bounce alternate infinite 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-delay: 7s;
+}
+.background .logoBox::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 20.5px;
+  left: 20.8px;
+  z-index: 9;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: bounce alternate infinite 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-delay: 7.2s;
+}
 .background h1 {
+  opacity: 0;
   width: 100%;
   font-size: 200px;
   position: absolute;
   z-index: 2;
-  left: -90px;
-  top: 20px;
+  top: 0;
+  left: 0;
   font-weight: 900;
-  transform: rotate(90deg);
-  transform-origin: 10%;
+  transform-origin: left;
+  transform: translate(4%, -54%) rotate(90deg);
   font-style: italic;
   font-family: "Orbitron";
+  transition: all 0.3s;
+  transition-delay: 1.5s;
+}
+.background h1.active {
+  opacity: 1;
 }
 .background h1 span {
   color: #747474;
 }
+.background .menus {
+  white-space: nowrap;
+  opacity: 0;
+  width: 0;
+  right: 0;
+  transform: translateX(50%);
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-delay: 1.5s;
+  animation: heading alternate infinite 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-delay: 3s;
+}
+.background .menus.active {
+  width: 440px;
+  right: 50%;
+  opacity: 1;
+}
+.background .menus hr {
+  width: 30px;
+  border: 1px transparent;
+  background: #0000d6;
+}
+.background .menus h4 {
+  font-size: 100px;
+  line-height: 1;
+  letter-spacing: -3px;
+  font-weight: 900;
+  font-family: "Raleway";
+  color: #fff;
+  position: relative;
+}
 .background .outerbox {
   border-radius: 10px;
-  background: #fff;
+  background: transparent;
   width: 808px;
   height: 544px;
   position: relative;
@@ -68,6 +189,17 @@ a {
   transform: scale(0.5) rotate(10deg);
 }
 
+.wrapper {
+  transform: scale(0);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+.wrapper.active {
+  transform: scale(1);
+}
+
 .wrapper_left {
   width: 203px;
   height: 472px;
@@ -83,7 +215,7 @@ a {
   justify-content: center;
 }
 .wrapper_left .wrapper_left_header .visitors {
-  color: crimson;
+  color: #0000d6;
 }
 .wrapper_left .wrapper_left_body {
   display: flex;
@@ -146,7 +278,6 @@ a {
 .wrapper_right .wrapper_right_header {
   display: flex;
   justify-content: space-between;
-  color: #55b2e4;
 }
 .wrapper_right .wrapper_right_header .right_header_title {
   font-weight: bold;
@@ -181,7 +312,6 @@ a {
 .navigation .navigation_item {
   width: 100%;
   height: 33px;
-  background: #55b2e4;
   color: #fff;
   text-align: center;
   line-height: 33px;
