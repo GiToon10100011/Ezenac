@@ -1,10 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-ul, li, ol {
+ul,
+li,
+ol {
   list-style: none;
 }
 
@@ -17,6 +21,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .wrapper {
@@ -26,6 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: rgba(255, 255, 255, 0.2);
 }
 .wrapper .wrapper_header {
   width: 100%;
@@ -40,7 +46,6 @@ body {
   gap: 10px;
 }
 .contents_title .title {
-  color: #55b2e4;
   font: bold 14px "arial";
 }
 .contents_title .subtitle {

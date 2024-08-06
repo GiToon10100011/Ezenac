@@ -1,30 +1,6 @@
 // reset
 @import "./reset.scss";
 
-// Built-in
-$color: (
-  accent-color: #0000d6,
-  bg-dark-color: #000,
-  bg-light-color: #fff,
-  bg-grey-color: #808080,
-  light-theme-color: #55b2e4,
-);
-
-$size: (
-  small: 13px,
-  medium: 14px,
-);
-
-$family: (
-  pop: "Poppins",
-  rale: "Raleway",
-  orb: "Orbitron",
-  exo: "Exo 2",
-  bebas: "Bebas Neue",
-  monts: "Montserrat",
-  anton: "Anton",
-);
-
 @keyframes heading {
   from {
     transform: translateX(50%) scale(1);
@@ -39,15 +15,21 @@ $family: (
     opacity: 1;
     transform: scale(1);
   }
-  to {
+  50% {
     opacity: 1;
     transform: scale(1.2);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(0.8);
   }
 }
 
 // common
 body {
   overflow: hidden;
+  color: white;
 }
 
 .background {
@@ -65,37 +47,38 @@ body {
     &:nth-child(2) {
       z-index: 5;
     }
-    &:last-child {
-      opacity: 90%;
+    &.lastVideo {
+      opacity: 88%;
     }
   }
   .logoBox {
-    position: relative;
+    position: absolute;
     width: 110px;
     height: 110px;
-    left: 21.2%;
-    top: 2.5%;
+    left: 50%;
+    top: 52.6%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
     img {
       opacity: 0;
       position: absolute;
       z-index: 10;
       width: 110px;
       object-fit: cover;
-      transition: all 0.3s;
-      transition-delay: 6.6s;
+      cursor: pointer;
       &.active {
-        opacity: 1;
+        opacity: 0;
       }
     }
     &::before {
       content: "";
       opacity: 0;
       position: absolute;
-      top: 20.5px;
-      left: 20.8px;
+      top: 0;
+      left: 0;
       z-index: 9;
-      width: 60%;
-      height: 60%;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       border: 2px solid map-get($map: $color, $key: light-theme-color);
       animation: bounce alternate infinite 1s
@@ -106,11 +89,12 @@ body {
       content: "";
       opacity: 0;
       position: absolute;
-      top: 20.5px;
-      left: 20.8px;
+      top: 0;
+      left: 0;
       z-index: 9;
-      width: 60%;
-      height: 60%;
+      width: 100%;
+      height: 100%;
+      transform: scale(1.1);
       border-radius: 50%;
       border: 2px solid #fff;
       animation: bounce alternate infinite 1s
@@ -119,7 +103,7 @@ body {
     }
   }
   h1 {
-    opacity: 0;
+    opacity: 1;
     width: 100%;
     font-size: 200px;
     position: absolute;
@@ -128,51 +112,18 @@ body {
     left: 0;
     font-weight: 900;
     transform-origin: left;
-    transform: translate(4%, -54%) rotate(90deg);
+    transform: translate(-100%, -54%) rotate(90deg);
     font-style: italic;
     font-family: map-get($map: $family, $key: orb);
-    transition: all 0.3s;
-    transition-delay: 1.5s;
+    transition: all 1s ease-out;
+    color: black;
     // scale(1) translate(0px, 0px) skew(30deg, 0deg)
     &.active {
       opacity: 1;
+      transform: translate(4%, -54%) rotate(90deg);
     }
     span {
       color: #747474;
-    }
-  }
-  .menus {
-    white-space: nowrap;
-    opacity: 0;
-    width: 0;
-    right: 0;
-    transform: translateX(50%);
-    position: absolute;
-    display: flex;
-    gap: 10px;
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transition-delay: 1.5s;
-    animation: heading alternate infinite 1s
-      cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation-delay: 3s;
-    &.active {
-      width: 440px;
-      right: 50%;
-      opacity: 1;
-    }
-    hr {
-      width: 30px;
-      border: 1px transparent;
-      background: #0000d6;
-    }
-    h4 {
-      font-size: 100px;
-      line-height: 1;
-      letter-spacing: -3px;
-      font-weight: 900;
-      font-family: map-get($map: $family, $key: rale);
-      color: #fff;
-      position: relative;
     }
   }
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
@@ -193,16 +144,6 @@ body {
       padding: 36px;
     }
   }
-}
-
-.triangle {
-  position: absolute;
-  width: 200px;
-  height: 90px;
-  border-left: 200px solid transparent;
-  border-right: 60px solid transparent;
-  border-top: 100px solid rgba(255, 255, 255, 0.8); /* Triangle color */
-  transform: scale(0.5) rotate(10deg);
 }
 
 .wrapper {
@@ -240,7 +181,7 @@ body {
     width: 100%;
     height: 100%;
     padding: 18px;
-    border: 1px solid map-get($color, bg-grey-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     .left_body_header {
       width: 100%;
@@ -310,7 +251,7 @@ body {
   .wrapper_right_body {
     width: 100%;
     height: 445px;
-    border: 1px solid map-get($map: $color, $key: bg-grey-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: map-get($map: $size, $key: medium) / 2;
     background: map-get($map: $color, $key: bg-light-color);
     iframe {
@@ -341,7 +282,7 @@ body {
     line-height: 33px;
     border-radius: 0 10px 10px 0;
     font-size: map-get($map: $size, $key: medium);
-    border: 1px solid map-get($map: $color, $key: bg-dark-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: all 0.3s;
     &.active {
