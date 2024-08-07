@@ -15,7 +15,6 @@ const outerBox = document.querySelector(".outerbox");
 const wrapper = outerBox.querySelector(".wrapper");
 
 bgVideo1.addEventListener("play", () => {
-  menus.classList.add("active");
   gek.classList.add("active");
 });
 
