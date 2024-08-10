@@ -55,8 +55,8 @@ body {
     position: absolute;
     width: 110px;
     height: 110px;
-    left: 50%;
-    top: 52.6%;
+    left: 49.9%;
+    top: 52.5%;
     transform: translate(-50%, -50%);
     z-index: 11;
     img {
@@ -153,17 +153,9 @@ body {
   background: rgba($color: #fff, $alpha: 0.2);
   border: 1px solid rgba($color: #fff, $alpha: 0.2);
   border-radius: 8px;
+  backdrop-filter: blur(20px);
   &.active {
     transform: scale(1);
-  }
-  &::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(20%);
   }
 }
 

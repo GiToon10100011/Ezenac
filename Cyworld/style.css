@@ -75,8 +75,8 @@ body {
   position: absolute;
   width: 110px;
   height: 110px;
-  left: 50%;
-  top: 52.6%;
+  left: 49.9%;
+  top: 52.5%;
   transform: translate(-50%, -50%);
   z-index: 11;
 }
@@ -163,18 +163,11 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
 }
 .wrapper.active {
   transform: scale(1);
-}
-.wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  filter: blur(20%);
 }
 
 .wrapper_left {
