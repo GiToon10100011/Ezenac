@@ -23,7 +23,8 @@
       <div class="logoBox"><img src="./contents/gekkoukan.png" alt="" /></div>
       <h1 class="heading"><span>01</span>MAIN</h1>
       <div class="clock">
-        <span class="time"></span>
+        <span class="date">2024/08/12/Mon</span>
+        <span class="time">09:50:17</span>
       </div>
       <div class="outerbox">
         <main class="wrapper">
@@ -61,7 +62,7 @@
               </div>
               <div class="left_body_footer">
                 <div class="wrapper_feel">
-                  <div class="feel_title">오늘의 기분</div>
+                  <div class="feel_title">#MOOD</div>
                   <form
                     action="http://localhost:3000"
                     method="post"
@@ -86,7 +87,12 @@
               </div>
             </div>
             <div class="wrapper_right_body">
-              <iframe id="contentFrame" src="./home/home.html"></iframe>
+              <iframe
+                id="contentFrame"
+                allowtransparency="true"
+                maketransparency="true"
+                src="./home/home.html"
+              ></iframe>
             </div>
           </section>
           <section class="navigation">

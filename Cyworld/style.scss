@@ -26,6 +26,10 @@
   }
 }
 
+html{
+  background: transparent !important;
+}
+
 // common
 body {
   overflow: hidden;
@@ -133,15 +137,31 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  .clock {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-family: map-get($map: $family, $key: orb);
+    font-weight: 600;
+    gap: 10px;
+    opacity: 88%;
+    .time{
+      font-size: 30px;
+    }
+  }
   .outerbox {
     border-radius: 10px;
     background: transparent;
     width: 808px;
-    height: 544px;
+    height: 560px;
     position: relative;
     .wrapper {
+      height: 100%;
       display: flex;
-      padding: 36px;
     }
   }
 }
@@ -152,8 +172,9 @@ body {
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   background: rgba($color: #fff, $alpha: 0.2);
   border: 1px solid rgba($color: #fff, $alpha: 0.2);
-  border-radius: 8px;
+  border-radius: 30px;
   backdrop-filter: blur(20px);
+  box-shadow: 0 0 50px rgba($color: map-get($color, accent-color), $alpha: 0.6);
   &.active {
     transform: scale(1);
   }
@@ -161,11 +182,13 @@ body {
 
 // wrapper_left
 .wrapper_left {
+  padding: 20px;
   width: 203px;
-  height: 472px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  backdrop-filter: blur(150px);
+  box-shadow: 4px 0 10px rgba($color: #000000, $alpha: 0.2);
   .wrapper_left_header {
     font-size: map-get($size, small);
     width: 100%;
@@ -173,6 +196,7 @@ body {
     display: flex;
     justify-content: center;
     .visitors {
+      order: 2;
       color: map-get($color, accent-color);
     }
   }
@@ -183,7 +207,6 @@ body {
     width: 100%;
     height: 100%;
     padding: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     .left_body_header {
       width: 100%;
@@ -192,11 +215,11 @@ body {
       align-items: center;
       .left_body_header_gray {
         width: 148px;
-        height: 133px;
-        background: url("./contents/iu.jpg") center/cover no-repeat;
+        height: 148px;
+        background: url("./contents/persona.jpg") center/cover no-repeat;
+        border-radius: 50%;
       }
       .left_body_header_line {
-        border-top: 1px dotted map-get($color, bg-dark-color);
         margin: 12px 0;
         width: 90%;
       }
@@ -235,7 +258,7 @@ body {
 .wrapper_right {
   width: 524px;
   height: 472px;
-  padding: 0 5px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -253,14 +276,12 @@ body {
   .wrapper_right_body {
     width: 100%;
     height: 445px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: map-get($map: $size, $key: medium) / 2;
-    background: map-get($map: $color, $key: bg-light-color);
     iframe {
       width: 100%;
       height: 100%;
       border-radius: map-get($map: $size, $key: medium) / 2;
       border: none;
+      background: transparent !important;
     }
   }
 }
