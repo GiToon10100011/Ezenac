@@ -1,0 +1,2 @@
+//ecimg.cafe24img.com/pg1108b74246837003/tyler10034/Chef/slide1.png
+//ecimg.cafe24img.com/pg1108b74246837003/tyler10034/Chef/${pics[i]}

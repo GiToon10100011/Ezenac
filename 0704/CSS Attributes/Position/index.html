@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    body > div{
+      width: 400px;
+      height: 100px;
+      border: 3px solid;
+      position: relative;
+      overflow: scroll;
+    }
+    main{
+      width: 300px;
+      height: 4000px;
+      background: tomato;
+      position: relative;
+      div{
+        width: 200px;
+        height: 100px;
+        border: 1px solid;
+        background: yellow;
+        text-align: center;
+        line-height: 100px;
+        &:nth-child(2){
+          background: cyan;
+          opacity: 0.8;
+          /*position: relative;
+          relative도 위치 좌표값을 가질 수 있음.
+          left: 48px;
+          top: 28px;*/
+          /*position: absolute;
+          bottom: 8px;
+          right: 16px;*/
+          /*position: fixed;
+          bottom: 8px;
+          right: 16px;*/
+          position: sticky;
+          top: 0;
+        }
+        &:nth-child(3){
+          background: cyan;
+          opacity: 0.8;
+          /*position: relative;
+          relative도 위치 좌표값을 가질 수 있음.
+          left: 48px;
+          top: 28px;*/
+          /*position: absolute;
+          bottom: 8px;
+          right: 16px;*/
+          /*position: fixed;
+          bottom: 8px;
+          right: 16px;*/
+          position: sticky;
+          top: 10px;
+        }
+      }
+    }
+
+    /*absolute에서 가장 마지막에 입력한게 제일 먼저 나옴 LIFO*/
+    .box{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      &.red{
+        background: #f00;
+        top: 10px;
+        left: 10px;
+        z-index: 3;
+      }
+      &.green{
+        background: #0f0;
+        top: 50px;
+        left: 50px;
+        z-index: 2;
+      }
+      &.blue{
+        background: #00f;
+        top: 90px;
+        left: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </main>
+
+  <div>
+    <div class="box red">r</div>
+    <div class="box green">g</div>
+    <div class="box blue">b</div>
+  </div>
+</body>
+</html>

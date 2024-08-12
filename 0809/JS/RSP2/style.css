@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body .container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+body .container .block {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+body .container .btns {
+  display: flex;
+  gap: 18px;
+}
+body .container .btns button {
+  width: 70px;
+  height: 70px;
+  border: none;
+  font-size: 1.4rem;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  color: white;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+body .container .btns button:hover {
+  color: transparent;
+}
+body .container .btns button.red {
+  background: crimson;
+}
+body .container .btns button.red:hover {
+  background: url("./math_img_1.png") center/cover no-repeat;
+}
+body .container .btns button.blue {
+  background: dodgerblue;
+}
+body .container .btns button.blue:hover {
+  background: url("./math_img_2.png") center/cover no-repeat;
+}
+body .container .btns button.green {
+  background: greenyellow;
+}
+body .container .btns button.green:hover {
+  background: url("./math_img_3.png") center/cover no-repeat;
+}
+body .container .result {
+  font-size: 2rem;
+  font-weight: bold;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="script.js"></script>
+    <style>
+      *{
+        margin: 0 auto;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+        height: 100vh;
+        .container {
+          width: 1200px;
+          .heading{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .img{
+              width: 40%;
+              img{
+                
+                width: 280px;
+              }
+            }
+            .desc{
+              width: 60%;
+              h1{
+                margin-bottom: 10px;
+              }
+              p{
+                margin: 20px 0;
+              }
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <div class="img">
+          <img src="IMG_7391 (1).jpg" alt="">
+        </div>
+        <div class = "desc">
+          <h1>공개수배</h1>
+          <h2>신상정보 : 염동훈 / 78세</h2>
+          <p>
+            이젠의 즐라탄..넘치는 힘을 주체하지못하고 남의 사물함 파손?!
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum eum id sapiente placeat iure, ipsa qui officia similique accusamus tempora! Ipsum dolorum vero fuga aspernatur quod repudiandae nulla? Illo, quo!
+            Est laudantium in accusamus eius voluptatum nesciunt ratione unde enim ab placeat, accusantium dicta voluptate autem odio rem mollitia error. Nobis perspiciatis iure tempore alias excepturi corporis odit, quis quod.
+          </p>
+          <button id = "order">자세히 보기</button>
+          <div class="orderInfo"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

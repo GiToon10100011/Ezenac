@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission</title>
+  <link rel="stylesheet" href="Mission.css">
+</head>
+<body>
+  <div id = "container">
+    <fieldset>
+      <legend>학사정보 조회서비스</legend>
+      <form action="https://localhost:3000" mtehod = "get">
+        <div>
+          <label for="year">입학년도</label>
+          <input type="text" name = "year" id = "year" placeholder="년도월일 입력">
+        </div>
+        <div>
+          <label for="id">이름</label>
+          <input type="text" name = "id" id = "id" placeholder="본명 입력">
+        </div>
+        <div>
+          <label for="num">학번</label>
+          <input type="text" name = "num" id = "num" placeholder="6자리 숫자 입력">
+        </div>
+        <div>
+          <label for="subject">학과</label>
+          <input type="text" name = "subject" id = "subject" placeholder="예) 컴퓨터공학전공">
+        </div>
+        <div>
+      </form>
+    </fieldset>
+    <input type="submit" value = "조회하기" id = "btn">
+  </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        text-align: center;
+        grid-template-areas: "header header header" "image image image" "banner content aside" "footer footer footer";
+        align-items: center;
+        div {
+          border: 1px solid;
+          &.header {
+            height: 100px;
+            line-height: 100px;
+            background: khaki;
+            grid-area: header;
+          }
+          &.image {
+            grid-area: image;
+            img {
+              height: 600px;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+          &.banner {
+            line-height: 600px;
+            height: 100%;
+            width: 300px;
+            border: 1px solid;
+            grid-area: banner;
+          }
+          &.content {
+            height: 100%;
+            text-align: left;
+            grid-area: content;
+          }
+          &.aside {
+            line-height: 600px;
+            height: 100%;
+            width: 300px;
+            grid-area: aside;
+          }
+          &.footer {
+            line-height: 100px;
+            height: 100px;
+            background: khaki;
+            grid-area: footer;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">Header</div>
+      <div class="image">
+        <img src="./images/welcome-image.jpg" alt="" />
+      </div>
+      <div class="banner">Banner</div>
+      <div class="content">
+        <h1>This is Main Content</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          porro fugiat quibusdam doloremque excepturi modi repudiandae explicabo
+          quam nemo maiores, ratione voluptates quo tempore asperiores delectus
+          ea nihil hic atque! Praesentium soluta nam distinctio in
+          exercitationem modi quidem atque mollitia! Facilis magni velit minima
+          iste sequi ipsa laboriosam suscipit eveniet magnam sapiente quod
+          beatae aperiam exercitationem perspiciatis quas, blanditiis quasi. Nam
+          quas qui consequuntur dolorum voluptate eveniet aperiam adipisci
+          suscipit ipsa? Temporibus quod fugit doloremque dolores consequuntur
+          vitae, asperiores nisi debitis aliquam doloribus ea officia adipisci
+          aperiam ullam reiciendis dolorum. Ea unde odit voluptatibus! Saepe
+          vero, magnam, suscipit mollitia labore est accusantium ad modi
+          deserunt cum perspiciatis expedita praesentium ex cupiditate officia
+          omnis delectus voluptatum, ut harum! Nulla, distinctio iste!
+          Reiciendis quibusdam quod libero commodi quam amet. Maxime rem nemo
+          odio, cupiditate architecto dolorum incidunt quae. Quasi dolores
+          laboriosam rem quibusdam nulla sed voluptate in impedit libero
+          quisquam. Fuga, distinctio. Dolorem beatae quibusdam labore iure
+          adipisci distinctio veniam aliquid exercitationem. Quis repudiandae
+          nostrum non voluptate nihil ducimus, quidem magni distinctio quae
+          doloremque repellendus explicabo deserunt impedit, modi officia quia
+          beatae. Ullam nobis voluptate dolor pariatur, perspiciatis, hic
+          molestiae dolores deleniti doloremque consequuntur labore modi?
+          Inventore ullam ex, sint asperiores, aliquam necessitatibus, iure eius
+          culpa numquam porro dolores unde omnis animi! Quisquam iure similique
+          repellat maiores quasi. Neque est, fugit, eveniet voluptas at sint
+          autem itaque dolores quasi, corporis voluptates inventore maxime.
+          Unde, sed placeat. Porro incidunt natus voluptates ipsum vitae. Quos
+          excepturi maxime alias natus repellat magnam ab explicabo illo soluta
+          corrupti vel sequi, hic recusandae, voluptatem voluptas quo
+          perferendis accusantium quibusdam. Itaque saepe obcaecati illum esse
+          ducimus velit similique. Nulla reprehenderit dolores, inventore
+          expedita, rem optio ad fugiat, nobis obcaecati quasi eos rerum!
+          Quibusdam labore similique mollitia asperiores delectus commodi optio
+          aspernatur, harum vel iste inventore velit debitis nesciunt?
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas non at quod enim ex corrupti nihil fugit nemo eos! Nisi, sint! Dolorem illo recusandae, doloremque quidem sunt quaerat accusamus magni? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum illo facere cumque doloribus quia qui repellat, sit ipsa assumenda unde laboriosam quis, culpa quam odio consequuntur deleniti iste harum ea?
+          Veritatis accusamus, nam rerum ipsam neque cum praesentium. Dolores quae nostrum sint doloremque excepturi quaerat est voluptas mollitia aperiam qui, beatae, nulla debitis nesciunt cum eligendi? A ullam nam velit.
+          Vitae, natus voluptatibus vel dignissimos laudantium et deserunt. Nam, alias? Nemo, temporibus debitis. Alias mollitia, culpa blanditiis, quae facilis iste labore aut magnam odio accusamus assumenda soluta, vero quisquam veritatis.
+          Saepe adipisci repellendus velit labore, omnis minima numquam assumenda, repellat esse nesciunt nam molestias excepturi odit maiores rerum dolorem dignissimos, facere commodi dolores exercitationem est quia distinctio fuga! Officia, itaque.
+        </p>
+      </div>
+      <div class="aside">Aside</div>
+      <div class="footer">Footer</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+      .container {
+        display: flex;
+        gap: 10px;
+        .box {
+          width: 500px;
+          height: 500px;
+          margin: 10px;
+          padding: 10px;
+          &.item1 {
+            background-color: teal;
+            box-sizing: border-box;
+            /* border-width: 5px;
+          border-style: solid;
+          border-color: crimson;*/
+            border: 5px solid crimson;
+            border-radius: 50%;
+          }
+          &.item2 {
+            background-color: tomato;
+            box-sizing: content-box;
+          }
+        }
+      }
+
+      h1 {
+        /*font-size: 16rem;
+        font-weight: bold;
+        font-style: italic;
+        font-family: "Montserrat";
+        line-height: 1.5;*/
+        font : italic 16rem/1.5 "Montserrat";
+        font-weight: 700;
+      }
+
+
+
+    </style>
+    
+  </head>
+  <body>
+    <main class="container">
+      <div class="box item1">box 1</div>
+      <div class="box item2">box 2</div>
+    </main>
+    <hr />
+    <h1>I am Montserrat.</h1>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+@import url(./reset.css);
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: none;
+}
+
+.gallery {
+  display: flex;
+  height: 100vh;
+  &:hover li{
+    flex: 1;
+  }
+  li {
+    border-right: 5px solid;
+    /* n분의 1씩 (1/5) 영역 분배를 함. 이때, flex의 값은 n */
+    flex: 1;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    /* center을 2개준 것은 x축 y축 둘다 center을 적용시킴. 원래 BACKGROUND SIZE(cover, contain...)를 빼면 이렇게 하는게 정석임. */
+    &:nth-child(1) {
+      background: url("./images/artistic-image-01.jpg") center center no-repeat;
+    }
+    &:nth-child(2) {
+      background: url("./images/artistic-image-02.jpg") center center no-repeat;
+    }
+    &:nth-child(3) {
+      background: url("./images/artistic-image-03.jpg") center center no-repeat;
+    }
+    &:nth-child(4) {
+      background: url("./images/artistic-image-04.jpg") center center no-repeat;
+    }
+    &:nth-child(5) {
+      background: url("./images/artistic-image-05.jpg") center center no-repeat;
+    }
+    &:last-child {
+      border-right: none;
+    }
+    &:hover{
+      /* 커서를 올린애는 영역의 3/5를 차지하게 함 */
+      flex : 3;
+      filter: grayscale(1);
+    }
+    .content{
+      background: #000;
+      color: #fff;
+      width: 100%;
+      height: 250px;
+      /* position: absolute;
+      top: 0;
+      left: 0; */
+      padding: 20px;
+      margin-top: 110vh;
+      transition: all 0.7s;
+      position: relative;
+      /* position값은 기본값이 static이므로 따로 부여하지 않는이상 나오지 않는다 따라서 부여하지 않은 요소들을 찾아와서 position값을 주면 ::before에 zindex를 주지 않더라도 앞으로 나오게 된다.애초부터 before은 전에 나오는건데 얘가 먼저 나오는게 이상하잖아 */
+      h2{
+        position: relative;
+        text-align: center;
+      }
+      p{
+        position: relative;
+        margin: 6px 0;
+      }
+      .sns{
+        text-align: center;
+      }
+      &::before{
+        content: "";
+        position: absolute;
+        width: 110%;
+        height: 80px;
+        left: 0;
+        top: -10px;
+        background: #000;
+        /* 비틀게함 이런식으로 대각선을 만들면 됨 */
+        transform: rotate(-4deg) scale(1.3);
+      }
+    }
+    &:hover .content{
+      margin-top: 80vh;
+      /* 선딜을 부여 */
+      transition-delay: 0.3s;
+    }
+  }
+}

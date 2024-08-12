@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    p{
+      /*css의 증감시켜주는 속성*/
+      /*값으로 이름을 지어줌*/
+      counter-increment: cnt;
+    }
+
+    p::before{
+      content: counter(cnt) ".";
+    }
+    
+    p::after{
+      content: "- " attr(data-page) " page";
+    }
+
+
+    /*반응문자선택자*/
+    p::selection{
+      background-color: #000;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Lorem Ipsum</h1>
+  <p data-page = "52">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem delectus tempore, quo blanditiis, iure, sit reprehenderit suscipit distinctio est illum accusamus deserunt repudiandae dolorum incidunt expedita ex saepe beatae in.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda rem id exercitationem officiis saepe alias mollitia perferendis accusantium error nisi quos quibusdam, architecto beatae illum perspiciatis eaque. Veritatis, officiis corrupti!
+  </p>
+  <p data-page = "273">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores quibusdam itaque sequi libero ea aut, temporibus, esse reiciendis obcaecati totam impedit quaerat exercitationem porro cumque, fuga necessitatibus quisquam velit hic.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda saepe vel voluptate nulla ea labore iste corporis libero nam? Maxime praesentium architecto soluta eveniet sint vero commodi obcaecati possimus tempore?
+    Repudiandae ea, cumque debitis nostrum itaque quas iure, modi ipsa ad suscipit obcaecati commodi in? Dolor esse, magnam perspiciatis fuga sapiente recusandae sit ratione vel rem aperiam explicabo blanditiis officia.
+    Nobis necessitatibus recusandae voluptas corporis doloribus! Error, vel veniam delectus eius dicta modi est at provident consequuntur ipsam ex incidunt adipisci nobis neque molestias quo? Veritatis aut in facere illo.
+  </p>
+
+  <h2>Lorem Ipsum</h2>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur autem nesciunt expedita cupiditate dicta quidem ea ipsam officia vero iure impedit consequuntur debitis perferendis repudiandae tempora tempore recusandae, fuga voluptatum!</p>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur autem nesciunt expedita cupiditate dicta quidem ea ipsam officia vero iure impedit consequuntur debitis perferendis repudiandae tempora tempore recusandae, fuga voluptatum!</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat iste dignissimos, a, dicta sunt illum maxime, aliquid necessitatibus nostrum quis consectetur deleniti deserunt laboriosam vero commodi repellat adipisci saepe. Quam.</p>
+</body>
+</html>

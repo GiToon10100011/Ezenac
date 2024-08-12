@@ -1,0 +1,114 @@
+/* reset css import */
+@import url("reset.css");
+
+/* common */
+#app_container {
+  width: 100%;
+}
+
+/* navigation */
+#navigation_heading {
+  width: 100%;
+  height: 60px;
+  background: var(--bg-color-white);
+}
+
+#navigation {
+  width: var(--main-width);
+  height: 60px;
+  display: flex;
+  /* 요소를 양쪽 정렬시킴 */
+  justify-content: space-between;
+  /* 요소들을 수직정렬 */
+  align-items: center;
+  /* 상하는 0, 좌 우측 값은 자동으로 균일하게 맞춰주도록 설정 */
+  margin: 0 auto;
+}
+
+#logo {
+  font-family: "Bree Serif", serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.gnb {
+  /* 줄바꿈을 하지 않겠다고 설정함으로써 화면크기에 따라 flexible하게 변함. */
+  display: flex;
+  /* 요소사이의 여백 설정  */
+  gap: 40px;
+}
+
+/* slider */
+#slide {
+  width: 100%;
+  line-height: 40px;
+  /* 상대값 위치를 주면 후손들은 아무리 절대 위치를 주더라도 부모 요소의 밖을 나갈 수 없다. */
+  position: relative;
+}
+
+.slide_text {
+  width: var(--main-width);
+  /* 국룰 정렬 방법 */
+  transform: translate(-50%, -20%);
+  /* 영향 받지않는 절대위치 부여 */
+  position: absolute;
+  /* 이걸로 먼저 가운데로 설정을 한 후 페이지를 보고 translate값을 주면 되나? */
+  top: 50%;
+  left: 50%;
+}
+
+.slide_text_inner {
+  width: 568px;
+  display: flex;
+  flex-direction: column;
+  /* 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
+  /* flex에서는 간격을 gap으로 준다. */
+  gap: 18px;
+}
+
+.slide_title {
+  color: var(--bg-color-white);
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.slide_btn {
+  width: 212px;
+  height: 52px;
+  font-size: 18px;
+  /* =corner radius */
+  border-radius: 50px;
+  border: 1px solid transparent;
+  /* 버튼 같은 form 태그는 자기 고유의 양식을 가지고 있어 따로 font family를 지정해줘야함. */
+  font-family: "Nexon Lv1 Gothic";
+  background-color: var(--bg-color-white);
+  opacity: 70%;
+  cursor: pointer;
+  transition: all 0.3s;
+  /* nesting 기능 */
+  &:hover {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+}
+
+.slide_container {
+  width: 100%;
+  height: 500px;
+}
+
+.slide_container li {
+  width: 100%;
+  height: 100%;
+}
+
+.slide_container .slide_img {
+  width: 100%;
+  height: 100%;
+  /* 부모 요소의 액자(가설)안에 요소를 딱 넣어서 비율을 일정하게 하겠다 */
+  object-fit: cover;
+}

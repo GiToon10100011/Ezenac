@@ -1,0 +1,34 @@
+/* reset */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.text_box{
+  /* rem -> root element */
+  font-size: 2rem; 
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blinker{
+  /* 29.97개의 사진이 모여 1초의 영상이 만들어진다. 이때, 사진 하나를 프레임이라 한다.*/
+  /* blink는 내가 임의로 지정한 애니메이션의 이름이다. */
+  animation: blink 0.5s infinite;
+}
+
+/* animation blink를 정의함.  */
+/* 원래는 키프레임을 사용하고 animation을 후에 적는 것이 정석임. */
+@keyframes blink {
+  0%{
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0;
+  }
+}

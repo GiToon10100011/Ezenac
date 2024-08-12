@@ -1,0 +1,103 @@
+body{
+  width: 100%;
+  height: 100%;
+}
+
+header{
+  width : 100%;
+  height : 60px;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap : 20px;
+}
+
+#gnb{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#lnb{
+  display: inline-flex;
+  padding : 0;
+}
+
+#header{
+  width : 100%;
+  height : 60px;
+}
+
+.fa-user{
+  color : black;
+}
+
+#badge_heading{
+  background: #222;
+  height : 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#badge_heading .badge{
+  border-radius: 30px;
+  width : 73px;
+  height : 39px;
+  background: #e92130;
+  text-align: center;
+  vertical-align: center;
+  color : white;
+}
+
+#badge_heading .bts_desc{
+  color : white;
+  padding-left: 20px;
+}
+
+.background{
+  width: 100%;
+  height : 774px;
+  background: url("../img/bg.png");
+  position: relative;
+}
+
+.lnb2{
+  position: absolute;
+  top: 0;
+  display: flex;
+  left : 50%;
+  transform: translateX(-50%);
+}
+
+.lnb2 li{
+  color : white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+p{
+  position: absolute;
+  left : 120px;
+  top : 90px;
+  color : white;
+  border: 1px solid;
+}
+
+p .title{
+  font-weight: bold;
+  font-size: 36px;
+}

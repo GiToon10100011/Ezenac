@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.btn{
+  width: 200px;
+  padding: 7px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .btns{
+    .order{
+      @extend .btn;
+      background: violet;
+    }
+  }
+}
+
+
+

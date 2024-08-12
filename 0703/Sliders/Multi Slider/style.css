@@ -1,0 +1,54 @@
+/* reset */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, li, ol{
+  list-style: none;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.slide_wrapper {
+  width: 660px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  .slides{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    &.animated{
+      transition: all 0.3s ease-out;
+    }
+    li{
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+      &:not(:last-child){
+        margin-right: 30px;
+      }
+    }
+  }
+}
+
+.controls{
+  margin-top: 50px;
+  text-align: center;
+  span{
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html 문법-2</title>
+    <style>
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background: #0f0;
+      }
+
+      tfoot {
+        background: #ff0;
+      }
+
+      th,
+      td {
+        height: 80px;
+      }
+
+      tr > th {
+        width: 200px;
+        text-align: center;
+      }
+
+      tr > td {
+        width: 150px;
+        text-align: center;
+      }
+
+      tr > td:last-child {
+        width: 300px;
+        text-align: center;
+      }
+
+      .third {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ol tag</h1>
+    <ol>
+      <li>
+        Facebook
+        <ul>
+          <li>menu 1</li>
+          <li>menu 2</li>
+          <li>menu 3</li>
+        </ul>
+      </li>
+      <li>Twitter</li>
+      <li>Tiktok</li>
+    </ol>
+    <h1>ul tag</h1>
+    <ul>
+      <li>
+        Facebook
+        <ul>
+          <li>menu 1</li>
+          <li>menu 2</li>
+          <li>menu 3</li>
+          <li>menu 4</li>
+          <li>menu 5</li>
+        </ul>
+      </li>
+      <li>Twitter</li>
+      <li>Tiktok</li>
+    </ul>
+
+    <table>
+      <tr>
+        <th colspan="2">Header 1</th>
+        <th>Header 2</th>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td></td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td></td>
+        <td>3</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th>이름</th>
+        <th></th>
+        <th>연락처</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>주소</td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td>자기소개</td>
+        <td colspan="3"></td>
+      </tr>
+    </table>
+
+    <figure>
+      <figcaption>
+        <p>
+          국내에서 자주 사용하는 <mark><b>모던 브라우저</b></mark
+          >리스트
+        </p>
+      </figcaption>
+      <table class="third">
+        <tr>
+          <th>브라우저</th>
+          <th>제조업체</th>
+          <th>다운로드</th>
+        </tr>
+        <tr>
+          <th>크롬(Chrome)</th>
+          <td>Google</td>
+          <td>
+            <a href="https://google.com">https://google.com</a>
+          </td>
+        </tr>
+        <tr>
+          <th>파이어폭스(Firefox)</th>
+          <td>Mozilla</td>
+          <td>
+            <a href="https://www.mozilla.com">https://www.mozilla.com</a>
+          </td>
+        </tr>
+        <tr>
+          <th>엣지(Edge)</th>
+          <td>Mircosoft</td>
+          <td>
+            <a href="https://www.microsoft.com">https://www.microsoft.com</a>
+          </td>
+        </tr>
+      </table>
+    </figure>
+
+    <!-- 정석적인 테이블 작성법 -->
+
+    <table>
+      <colgroup>
+        <col span="2" style="background: #f00" />
+        <col style = "background : #00f">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan = "3">Table Data</td>
+          <td colspan = "2">Table Data</td>
+        </tr>
+        <tr>
+          <td>Table Data</td>
+          <td>Table Data</td>
+          <td>Table Data</td>
+        </tr>
+        <tr>
+          <td>Table Data</td>
+          <td>Table Data</td>
+          <td>Table Data</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Table Data</td>
+          <td>Table Data</td>
+          <td>Table Data</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

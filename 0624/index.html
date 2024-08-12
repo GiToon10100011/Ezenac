@@ -1,0 +1,224 @@
+<!-- Boilerplate 코테에서 하드코딩을 하라고 지시할 수도 있으니 알아둘 필요는 있음. -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Html 5</title>
+    <style>
+      a {
+        text-decoration: none;
+        /*상위요소의 색을 상속시킴*/
+        color: inherit;
+      }
+
+      /*
+      padding값을 주게되면 좌표값(coords)의 영향을 받음
+      img {
+        padding-top: 100px;
+      }*/
+
+      .container{
+        width: 100%;
+        /*vh는 현재 보이는 높이*/
+        height: 100vh;
+        position: relative;
+        iframe{
+          width: 100%;
+          height: 100%;
+        }
+        &::before{
+          /*항상 잘 작동되는지 확인하기 위해 1이라는 임의의 값을 content안에 넣기*/
+          content : "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.4);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Title -->
+    <h1><a href="https://www.naver.com" target="_blank">Hello HTML5</a></h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />Sunt
+      aspernatur quod quasi ullam soluta minima facere velit optio, eligendi
+      nisi rem provident sed enim, harum illum libero similique voluptate
+      distinctio.
+    </p>
+    <hr />
+    <img src="" alt="" />
+    <h2>Hello HTML</h2>
+    <div>
+      <a href="https://www.naver.com">Naver</a>
+      <a href="https://www.coupang.com">Coupang</a>
+    </div>
+    <h3>Hello HTML</h3>
+    <h4>Hello HTML</h4>
+    <h5>Hello HTML</h5>
+    <h6>Hello HTML</h6>
+
+    <a href="#Alpha">Move to Alpha</a>
+    <a href="#Beta">Move to Beta</a>
+    <a href="#Gamma">Move to Gamma</a>
+    <hr />
+    <h1 id="Alpha">Alpha</h1>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis
+      laborum, natus quidem voluptas ipsum fugit nulla minima, quo provident
+      sapiente non ipsam quisquam nobis, esse expedita suscipit quam fuga
+      doloremque! Iusto provident officiis totam repellat eos in nam
+      perspiciatis dolore veniam ab est tenetur aspernatur, unde quam mollitia
+      laborum optio porro harum laudantium! Nisi nostrum, et deleniti nesciunt
+      aut facilis? Reprehenderit ducimus quod, eveniet consectetur a quas. Totam
+      enim, quaerat deserunt numquam iusto voluptatum. Totam, obcaecati. Non
+      exercitationem, sequi assumenda consectetur magni ipsa reiciendis earum
+      similique quidem maiores! Magnam, maiores. Vero accusamus sapiente
+      quisquam non expedita velit in error, maiores eligendi, nostrum temporibus
+      a, natus ducimus obcaecati fugiat neque assumenda illo quam soluta minus
+      dicta recusandae necessitatibus. Reiciendis, enim provident! Quisquam
+      voluptatem esse, debitis at molestiae accusantium! Ullam eum error tenetur
+      odio odit distinctio dignissimos nam, inventore voluptate dolore
+      consequuntur vel id harum consequatur magni veniam unde quasi mollitia
+      repellat. Dignissimos ea itaque nihil quo necessitatibus repudiandae
+      nobis. Ex nostrum aliquid quas natus modi veniam eaque nihil fugit
+      sapiente sint eligendi, laboriosam repudiandae quod pariatur magni
+      officiis voluptas? Officiis, facilis! Ducimus rem aut quisquam earum
+      laborum distinctio provident sapiente molestias sequi. Quibusdam illum in
+      quas sit corporis optio minus porro rem. Modi tempore consectetur
+      blanditiis, provident at delectus. Quos, veritatis? Eaque hic alias quia
+      voluptates suscipit sint aliquam inventore laudantium! Praesentium debitis
+      voluptates ipsam qui, rem maxime modi earum labore delectus adipisci
+      cumque voluptas dignissimos necessitatibus nobis laudantium. Magni, sed.
+    </p>
+    <h1 id="Beta">Beta</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi pariatur
+      modi in delectus, blanditiis numquam ipsam ullam, vero, hic perspiciatis
+      quo neque expedita iure libero ratione mollitia at cupiditate aliquam.
+      Velit dolore quia dolor suscipit explicabo et, doloremque nesciunt maxime
+      autem officiis! Fugiat repudiandae repellat aliquid esse voluptates vitae
+      eius praesentium debitis laboriosam dicta iure, maxime tempora corrupti
+      sit eaque! Totam dolores tempore asperiores iusto provident soluta
+      consequuntur inventore corrupti debitis nobis quod eaque eius voluptas
+      repellat magnam explicabo molestiae eligendi, a, nostrum sint. Doloribus
+      labore ipsa ipsum perferendis nesciunt! Fuga beatae enim itaque nisi quae
+      cumque ipsum impedit perferendis, non adipisci rerum esse sapiente
+      repellendus sequi, dolores quam consectetur dolorem? Magnam recusandae
+      reiciendis repudiandae ad laborum iure veniam ducimus. Debitis non quas
+      optio id! Ut, adipisci? Sit dolore ratione quisquam asperiores debitis,
+      adipisci soluta iusto tenetur dolorem ex provident itaque accusamus
+      repudiandae nam molestiae repellat explicabo nostrum? Ullam, quo?
+      Doloremque officiis ex corrupti temporibus asperiores ratione consequuntur
+      sit dicta maxime sapiente assumenda, praesentium ut odio nemo eligendi!
+      Sint perferendis voluptatibus quisquam ad aspernatur corporis repellat
+      neque tenetur, voluptatum molestiae. Nulla recusandae rerum sed culpa
+      error ipsum, incidunt maiores, dicta fuga optio eos. Nisi explicabo saepe
+      quae, ab ducimus voluptatum. Recusandae, quaerat explicabo impedit non
+      distinctio ea ut laudantium quae. Quos quasi, dicta ratione eum molestias,
+      quidem sapiente autem quod at alias nesciunt nam dolore sed reprehenderit
+      consectetur iusto harum quaerat cupiditate doloribus fugit rerum
+      temporibus laboriosam. Saepe, dolorum omnis! Ullam alias repudiandae
+      ratione aspernatur, eum commodi! Dolor quis ipsa eveniet iste eos
+      voluptatem sequi, maiores quisquam a impedit, expedita incidunt veniam
+      aliquid? Rem laboriosam optio ut dolor deserunt fugiat? Dicta aperiam eum
+      explicabo quae voluptatum perferendis quam ad! Nesciunt id soluta non
+      iusto ab veritatis! Excepturi omnis quis quas, incidunt minus distinctio
+      necessitatibus dolor, rerum accusantium, iste suscipit harum.
+    </p>
+    <h1 id="Gamma">Gamma</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+      necessitatibus quae, accusantium, quia repellat fuga deserunt obcaecati
+      quam inventore architecto unde? Totam, quaerat quia commodi natus
+      consequuntur modi tempora perferendis! Minus illo placeat odio molestiae,
+      saepe architecto excepturi sint ab rerum veniam, quas, reprehenderit
+      veritatis? Ab iste eligendi corrupti quae voluptas quas aperiam, facilis,
+      possimus explicabo neque repellendus. Inventore, eveniet. Labore
+      voluptatum quas quasi dolores quidem? Aspernatur illo facilis alias
+      voluptate inventore minus nisi itaque voluptates numquam reprehenderit
+      earum, eveniet unde quae enim, doloremque quaerat? Nobis harum deserunt
+      expedita magnam. Vitae dolorum, illo, enim reiciendis placeat quis nobis
+      repellat ex eligendi natus illum possimus, libero et maiores veniam id
+      quas est harum fuga aperiam doloribus accusantium facere veritatis.
+      Deleniti, obcaecati! Iusto ad illum natus expedita pariatur eligendi
+      cumque quam officia, sed ducimus doloribus libero est vero facere
+      perferendis alias tempora! Quo possimus sint ad rerum dolores culpa
+      assumenda nemo dolor? Dolore unde repellendus, at sapiente, voluptates hic
+      vel qui pariatur corrupti consequatur a! Quasi soluta fugit alias, quos
+      nisi ipsam, beatae praesentium, esse harum iusto ut fugiat aspernatur rem
+      dicta. Ab nesciunt quasi, magni eligendi nobis alias tenetur repellendus
+      eaque animi reiciendis, placeat porro non deleniti aperiam maxime,
+      molestiae sequi cupiditate ea et accusantium provident culpa? Beatae
+      incidunt ipsum ducimus. Quis debitis veritatis porro deserunt in pariatur
+      harum laboriosam similique quas nisi, ab minus distinctio dolores non
+      quibusdam nam animi, dolore excepturi asperiores consectetur, placeat
+      quisquam assumenda quam. Ducimus, beatae. Enim provident ullam omnis ut
+      delectus voluptates cupiditate eum, reiciendis quidem et quod suscipit
+      molestiae sit ex nihil. Dignissimos sint aliquam doloremque nam alias
+      molestias itaque cupiditate eaque esse consequuntur. Eum excepturi earum
+      exercitationem placeat nemo est, corrupti voluptates perspiciatis, vero
+      unde in dolorum ducimus beatae nesciunt fugiat nobis reiciendis
+      accusantium consequatur ipsa animi eaque officiis autem tenetur dolore!
+      Illo! Dolorum voluptate ratione dolorem aliquam maxime tempora repellendus
+      dicta blanditiis, laudantium dolor, explicabo accusantium quod mollitia.
+      Natus officiis saepe ut atque quo! Quos natus similique accusamus a,
+      libero quam rem. Iusto eos laboriosam cum consectetur illo dolorem
+      assumenda facilis id natus quos hic nam qui, aspernatur quibusdam tempore
+      animi ex ipsum, blanditiis nihil velit suscipit magni culpa placeat.
+      Delectus, cumque?
+    </p>
+    <br />
+    <a href="#top">홈으로</a>
+    <br />
+    <img src="./nike.jpeg" alt="nike" usemap="#eventmap" />
+    <map name="eventmap">
+      <area
+        shape="rect"
+        coords="137,194,289,285"
+        href="https://www.nike.com"
+        alt="Nike"
+        target="_blank"
+      />
+      <area
+        shape="rect"
+        coords="303,593,407,825"
+        href="https://www.naver.com"
+        alt="Naver"
+        target="_blank"
+      />
+
+      <area
+        target="_blank"
+        alt=""
+        title=""
+        href=""
+        coords="137,194,177"
+        shape="circle"
+      />
+      <area
+        target="_blank"
+        alt=""
+        title=""
+        href="http://coupang.com"
+        coords="488,242,54"
+        shape="circle"
+      />
+    </map>
+
+    <!-- <audio src="./music.mp4" controls muted autoplay></audio> -->
+    <!-- 아래처럼 audio/video를 밖에 놓고 안에 source태그를 넣는 경우가 실무에서는 많음(근데 사실상 상관없음) -->
+    <audio controls>
+      <source src="./music.mp4" type="audio/mp4" />
+    </audio>
+    <video controls>
+      <source src="./video.mp4" type="video/mp4" />
+    </video>
+    <div class="container">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nFYwcndNuOY?si=FxXTUnpxYkiWgCJg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </body>
+</html>

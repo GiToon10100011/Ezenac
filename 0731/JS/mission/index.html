@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+    <style>
+      body{
+        width: 100%;
+        height: 100vh;
+      }
+      main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+          width: 200px;
+        }
+        .content {
+          width: 260px;
+          height: 300px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          label{
+            font-size: 20px;
+          }
+          input[type = "text"]{
+            width: 120px;
+            padding: 5px 10px;
+          }
+          button{
+            width: 200px; 
+            padding: 10px 20px;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="./sale-badge-tag-3d-icon-render-illustration-png.webp" alt="" />
+      <div class="content">
+        <div class="first">
+          <label for="price">원래가격</label>
+          <input type="text" name="price" id="price" /> 원
+        </div>
+        <div class="second">
+          <label for="discount">할인률</label>
+          <input type="text" name="discount" id="discount" /> %
+        </div>
+        <button>할인 가격 계산하기</button>
+      </div>
+    </main>
+  </body>
+</html>

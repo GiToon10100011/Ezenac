@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+$color: (
+  bg-color: #000,
+  default-color: #fff,
+  bg-item-color: #111,
+  bg-item-border: #eee,
+  item-color: #74b9ff,
+);
+
+$item-size: 100px;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: map-get($color, bg-color);
+  .icons {
+    display: flex;
+    gap: 20px;
+    li {
+      label {
+        div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: map-get($color, default-color);
+          width: $item-size;
+          height: $item-size;
+          background-color: map-get($color, bg-item-color);
+          border-radius: $item-size / 10;
+          border: ($item-size/33) solid map-get($color, bg-item-border);
+          transition: all 0.3s;
+          cursor: pointer;
+          span {
+            font-size: $item-size / 2;
+            transition: all 0.3s;
+          }
+        }
+      }
+      input[type="checkbox"] {
+        display: none;
+        &:checked + div {
+          border: none;
+          box-shadow: 0 0 ($item-size/10) map-get($color, item-color);
+        }
+        &:checked + div span {
+          text-shadow: 0 0 ($item-size/10) map-get($color, item-color);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        padding-top: 200px;
+        h1{
+          text-align: center;
+        }
+        form{
+          margin: 20px 0;
+          input[type = "text"]{
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            border: none;
+            border-bottom: 1px solid #ccc;
+          }
+          input[type = "submit"], input[type = "reset"]{
+            width: 100px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+          }
+        }
+        #result{
+          border: 1px solid #ccc;
+          padding: 20px;
+          border-radius: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="container">
+      <h1>당첨자 발표</h1>
+      <form action="httml://localhost:3000" , method="get">
+        <label for="number01"
+          ><input type="text" name="number01" id="number01" />명 중에서</label
+        >
+        <label for="number02"
+          ><input type="text" name="number02" id="number02" />명 뽑기</label
+        >
+        <input type="submit" value="추첨" />
+        <input type="reset" value="지우기" />
+      </form>
+      <div id="result">출력공간</div>
+    </main>
+  </body>
+</html>

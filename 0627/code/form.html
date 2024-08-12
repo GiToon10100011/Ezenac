@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Form 양식</legend>
+      <!-- 사용자에게 값을 받으면 localhost:3000에 값을 보내겠다. -->
+      <form action="https://localhost:3000" method="get">
+        <label for="userId">아이디 : </label>
+        <input type="text" name="userId" id="userId" /><br />
+        <label for="userPW">
+          비밀번호 :
+        </label>
+        <input type="password" name="userPW" id="userPW" /><br />
+        <input type="submit" value="Submit" />
+        <input type="file" name="" id="">
+    </fieldset>
+
+    <fieldset>
+      <legend>유의사항</legend>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam atque natus esse consequatur reprehenderit fugiat quidem! Quaerat assumenda fuga distinctio exercitationem eveniet explicabo quibusdam illum velit dolorum dolores, quos aliquid.
+        Iure iste blanditiis reiciendis dolor molestias adipisci est ratione sit libero, laborum doloribus amet praesentium incidunt totam necessitatibus esse fugit repellendus placeat. Quaerat eveniet laudantium magni animi veritatis tenetur laborum!
+        Beatae itaque rem dignissimos eligendi obcaecati assumenda unde aliquid doloribus veniam! Numquam nulla, iure eveniet excepturi expedita, molestiae rem aperiam voluptates fugit deleniti fuga reprehenderit sapiente ea aliquam mollitia. Earum.
+        Illo rem maxime assumenda! Consectetur facilis expedita ipsum quo omnis temporibus, est et explicabo, dignissimos accusamus impedit reprehenderit praesentium, iste nobis. Eos ullam error aut quo esse voluptas dolorum veritatis.
+        Excepturi obcaecati nostrum optio distinctio molestiae et ipsa nesciunt perferendis provident, omnis animi at eligendi reiciendis saepe magni eum labore error aliquid? Praesentium exercitationem amet laborum iure eos expedita maxime?
+        Qui nisi aliquid delectus corporis, nam molestias nobis hic aspernatur voluptatibus incidunt tempora omnis repellendus quisquam repudiandae ea fuga placeat rerum perferendis veniam? Voluptatum, est corporis. Minus deserunt aspernatur eveniet!
+        Dolorem enim dolor libero blanditiis tempore iste neque illum laudantium, consectetur, itaque ipsam dignissimos quae animi facilis aliquid! Suscipit impedit, hic illo vitae commodi iure unde expedita veniam eos perspiciatis.
+        At error itaque beatae id sequi consequatur suscipit? Quisquam eius necessitatibus sapiente minima distinctio vero sunt, officia iure eos ab architecto, eaque corporis nesciunt autem quae officiis repellendus! Nemo, deserunt.
+        Minus distinctio reprehenderit voluptates nesciunt officia deserunt libero velit cumque dignissimos, atque facere error quibusdam quis vel suscipit inventore, incidunt sapiente dolorem quasi ad magni. Expedita ratione veniam asperiores nam.
+      </p>
+    </fieldset>
+      <hr>
+      <h2>당신이 좋아하는 가수를 선택하세요!</h2>
+      <label for="iu">
+        아이유
+        <input type="checkbox" name="iu" id="iu">
+      </label>
+      <label for="hot">
+        hot
+        <input type="checkbox" name="hot" id="hot">
+      <label for="aespa">
+        윈터
+        <input type="checkbox" name="aespa" id="aespa">
+      <label for="nj">
+        NewJeans
+        <input type="checkbox" name="nj" id="nj">
+      <label for="Kenshi">
+        YK
+        <input type="checkbox" name="Kenshi" id="Kenshi">
+      </label>
+      <hr>
+      <h2>당신이 살고 있는 도시이름을 선택하세요</h2>
+      <p>단, 현재 주민등록등본상의 도시 한군데만 선택가능</p>
+      <label for = "seoul">
+        <input type="radio" name="city" id = "seoul">서울
+      </label>
+      <label for = "Busan">
+        <input type="radio" name="city" id = "Busan">부산
+      </label>
+      <label for = "Jeju">
+        <input type="radio" name="city" id = "Jeju">제주
+      </label>
+      <label for = "Daegu">
+        <input type="radio" name="city" id = "Daegu">대구
+      </label>
+      <hr>
+      <!-- 이 이후는 알아만 둬도 됨(많이 안쓰임) -->
+      <h2>기타 입력양식 태그 모음</h2>
+      <input type="color" name="" id="">
+      <input type="date" name="" id="">
+      <input type="number" name="" id="">
+      <input type="range" name="" id=""><br>
+      <textarea cols = "100" rows = "10" name="" id=""></textarea><br>
+      <select name="food" id="food">
+        <option value="none" disabled selected>메뉴선택</option>
+        <optgroup label = "분식류">
+          <option value="food1">김밥</option>
+          <option value="food2">라면</option>
+          <option value="food3">떡볶이</option>
+        </optgroup>
+        <optgroup label = "패스트푸드">
+          <option value="food4">치킨</option>
+          <option value="food5">피자</option>
+        </optgroup>
+      </select>
+    </form>
+  </body>
+</html>

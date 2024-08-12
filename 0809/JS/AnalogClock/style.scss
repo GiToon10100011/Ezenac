@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes rotate {
+  to{
+    transform: translate(-50%, -50%) rotate(360deg);
+    transform-origin: center;
+  }
+}
+
+//Variables
+$main-bg: #ea7612;
+$main-dark-color: #000;
+
+// common
+html {
+  font-size: 13px;
+}
+
+// body
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: $main-bg;
+}
+
+//Analog
+.clock-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 8px solid $main-dark-color;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
+    url(./KakaoTalk_20240807_163214071.png) center/cover;
+  .number {
+    color: white;
+    position: absolute;
+    font-size: 2rem;
+    &#num3 {
+      top: 50%;
+      right: 4px;
+      transform: translateY(-50%);
+      font-weight: bold;
+    }
+    &#num6 {
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+    }
+    &#num9 {
+      top: 50%;
+      left: 4px;
+      transform: translateY(-50%);
+      font-weight: bold;
+    }
+    &#num12 {
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+    }
+  }
+  #dot {
+    animation: rotate linear 2s infinite;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: url(./KakaoTalk_20240807_163214071.png) center/cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 2;
+  }
+  #hour {
+    width: 7px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(./KakaoTalk_20240807_163214071.png) center/contain;
+    margin-top: -60px;
+    transform-origin: center bottom;
+  }
+  #minute {
+    width: 2px;
+    height: 95px;
+    background: url(./KakaoTalk_20240807_163214071.png) center/contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -94px;
+    transform-origin: center bottom;
+  }
+  #second {
+    width: 2px;
+    height: 80px;
+    background: url(./KakaoTalk_20240807_163214071.png) center/contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -80px;
+    transform-origin: center bottom;
+  }
+}
+
+// Digital
+.digital-clock{
+  margin-top: 20px;
+  font-size: 2rem;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(180deg, #dce35b, #45b649);
+    }
+    .gnb{
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      padding-bottom: 10px;
+      overflow: hidden;
+      a{
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        text-align: center;
+        /*lh를 height값만큼주면 유사 가운데 정렬이 됨.*/
+        line-height: 30px;
+        position: relative;
+        &::before{
+          top: 0;
+          left: 0;
+        }
+        &:hover::before{
+          opacity: 0;
+          top: -100%;
+        }
+        &::after{
+          /*전체높이만큼 내려보냄*/
+          top: 100%;
+          left: 0;
+          color: #45b649;
+          opacity: 0;
+        }
+        &:hover::after{
+          top: 0;
+          opacity: 1;
+        }
+        &::before, &::after{
+          content: attr(data-link);
+          position: absolute;
+          width: 100%;
+          transition: all 0.3s;
+        }
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="gnb">
+    <!-- 실무의 정석은 a태그 안에 내용을 넣지않고 data-link 로 속성을 따로 만들어서 관리한다. -->
+    <a href="#none" data-link = "메일"></a>
+    <a href="#none" data-link = "카페"></a>
+    <a href="#none" data-link = "블로그"></a>
+    <a href="#none" data-link = "지식in"></a>
+    <a href="#none" data-link = "쇼핑"></a>
+    <a href="#none" data-link = "Pay"></a>
+    <a href="#none" data-link = "사전"></a>
+    <a href="#none" data-link = "뉴스"></a>
+  </main>
+</body>
+</html>

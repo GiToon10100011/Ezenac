@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 300px;
+  height: 350px;
+  /* overflow: hidden; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  position: relative;
+  input[name="tabmenu"] {
+    display: none;
+  }
+  .content {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .heading{
+    .text1, .text2, .text3{
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      background-color: crimson;
+      color: white;
+      font-size: 30px;
+      text-align: center;
+      font-weight: bold;
+      padding-top: 15px;
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: all 0.5s;
+      span{
+        /* color: white; */
+        display: block;
+        font-size: 20px;
+      }
+    }
+    .text2{
+      background-color: dodgerblue;
+    }
+    .text3{
+      background-color: yellowgreen;
+    }
+  }
+
+  .btn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+    bottom : 10px;
+    label{
+      width: 20px;
+      height: 20px;
+      background-color: lightgray;
+      border-radius: 100%;
+      cursor: pointer;
+      text-indent: -9999px;
+    }
+  }
+  input[id = "tab1"]:checked ~ .btn label:first-child{
+    background-color: crimson;
+  }
+  input[id = "tab2"]:checked ~ .btn label:nth-child(2){
+    background-color: crimson;
+  }
+  input[id = "tab3"]:checked ~ .btn label:last-child{
+    background-color: crimson;
+  }
+  input[id = "tab1"]:checked ~ .slide1{
+    opacity: 1;
+    left: 0;
+  }
+  input[id = "tab2"]:checked ~ .slide2{
+    opacity: 1;
+    left: 0;
+  }
+  input[id = "tab3"]:checked ~ .slide3{
+    opacity: 1;
+    left: 0;
+  }
+  /* 내 방법
+  input[id = "tab1"]:checked ~ .heading div:nth-child(1){
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.5s;
+  }
+  input[id = "tab2"]:checked ~ .heading div:nth-child(2){
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.5s;
+  }
+  input[id = "tab3"]:checked ~ .heading div:nth-child(3){
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.5s;
+  } */
+
+  /* 선생님 방법 */
+  input[id = "tab1"]:checked ~ .heading .text1, input[id = "tab2"]:checked ~ .heading .text2, input[id = "tab3"]:checked ~ .heading .text3{
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.5s;
+  } 
+}

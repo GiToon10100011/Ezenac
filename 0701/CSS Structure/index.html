@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ol, ul, li{
+      list-style-type: square;
+    }
+
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, p{
+      color: rgb(189, 189, 233);
+    }
+
+    .Content_box{
+      color: #aaa;
+    }
+
+    ul > li{
+      color: turquoise;
+    }
+
+    input[type = "password"]{
+      background: black;
+      color: white;
+    }
+
+    #same-position > h1 + h2{
+      color: #00f;
+    }
+    
+    #same-position > h1~h2{
+      color: turquoise;
+    }
+
+    .btn:hover{
+      color: #aaa;
+    }
+    
+    .btn:active{
+      color: lemonchiffon;
+    }
+
+    .items{
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      .item{
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border: 1px solid #ddd;
+        &:hover .caption{
+            opacity: 1;
+        }
+      }
+      img{
+        width: 290px;
+      }
+      .caption{
+        width: 300px;
+        height: 300px;
+        background-color: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        padding-top: 40px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        p{
+          margin: 10px 0;
+          color: white;
+        }
+        a{
+          background-color: teal;
+          color: white;
+          display: inline-block;
+          margin-top: 10px;
+          padding: 7px;
+          border-radius: 3px;
+          transition: all 0.3s;
+          &:hover{
+            background-color: white;
+            color: teal;
+          }
+        }
+      }
+    }
+
+  input[type = "text"]:enabled{
+    background-color: #ff0;
+  }
+  
+  input[type = "text"]:disabled{
+    background-color: rgb(189, 189, 233);
+    ;
+  }
+
+  .check{
+    width: 650px;
+    height: 600px;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+
+  input[type = "checkbox"]:checked + div{
+    height: 0;
+  }
+
+  </style>
+</head>
+<body>
+  <h1 id = "Logo">Lorem Ipsum</h1>
+  <p class = "Content_box">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure modi debitis corporis incidunt provident dignissimos necessitatibus, tempore sit impedit quo quibusdam dolor tempora ratione est nisi, fugiat aut dolorem? Nemo?
+    Aspernatur voluptatibus similique consectetur inventore dicta, reiciendis veritatis tempora eaque provident architecto blanditiis molestias veniam soluta beatae sunt ullam repellat officia, modi, nostrum consequuntur labore laborum pariatur distinctio. Sapiente, soluta?
+    Distinctio adipisci eius earum ad, at quo alias eaque dignissimos consectetur dolor repellendus tempore exercitationem aperiam laudantium repellat? Vitae repellendus sunt delectus veniam nostrum quaerat minima doloremque enim. Vitae, id.
+  </p>
+  <h1>Lorem Ipsum x :re</h1>
+  <p class = "Content_box">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel neque natus ut aliquam mollitia nemo, iusto eligendi numquam! Deserunt officia itaque voluptates earum repellat sed architecto iusto praesentium beatae minus.
+  Excepturi corporis deleniti optio distinctio autem expedita ad dolores maxime dolor veniam voluptate ea corrupti consectetur rem voluptates, quis odio inventore, iure nam, eum neque alias harum reprehenderit ducimus! Dolorum.
+  Cupiditate quae tempora, aliquid ipsa soluta deserunt quod inventore explicabo porro omnis nam. Nisi, tenetur. Eveniet quisquam hic expedita dolore aspernatur, explicabo atque nostrum est, quidem tempore possimus iusto nobis?</p>
+  <ul>
+    <li>
+      <a href="">Menu 1</a>
+      <ol>
+        <li>
+          <a href="">detail 1</a>
+        </li>
+        <li>
+          <a href="">detail 2</a>
+        </li>
+        <li>
+          <a href="">detail 3</a>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <a href="">Menu 2</a>
+    </li>
+    <li>
+      <a href="">Menu 3</a>
+    </li>
+  </ul>
+  <form action="#" method="get">
+    <input type="text">
+    <input type="password">
+  </form>
+  <div id="same-position">
+    <h1>Header 1</h1>
+    <h2>Header 2</h2>
+    <h2>Header 2</h2>
+    <h2>Header 2</h2>
+    <h2>Header 2</h2>
+  </div>
+  <h1 class="btn">User Action Event</h1>
+  <div class="items">
+    <div class="item">
+      <img src="./images/product-01.png" alt="product01">
+      <div class="caption">
+        <h2>Rirakuma Doll 25cm</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, magni magnam tenetur quibusdam aperiam  </p>
+        <p>Price : <s>$12</s> → $10</p>
+        <a href="#none">View Details</a>
+      </div>
+    </div>
+    <div class="item">
+      <img src="./images/product-03.png" alt="product03">
+      <div class="caption">
+        <h2>Cacao Doll 55cm</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, magni magnam tenetur quibusdam aperiam , </p>
+        <p>Price : <s>$32</s> → $30</p>
+        <a href="#none">View Details</a>
+      </div>
+    </div>
+    <div class="item">
+      <img src="./images/product-02.png" alt="product02">
+      <div class="caption">
+        <h2>Connie Doll 110cm</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, magni magnam tenetur quibusdam aperiam  </p>
+        <p>Price : <s>$42</s> → $40</p>
+        <a href="#none">View Details</a>
+      </div>
+    </div>
+  </div>
+  <form action="/" method="get">
+    <h2>Enabled</h2>
+    <input type="text" name="enable" id="enable">
+    <h2>Disabled</h2>
+    <input type="text" name="disable" id="disable" disabled = "disabled">
+  </form>
+
+  <input type="checkbox" name="check" id="check">
+  <div class = "check">
+    <h1>Lorem Ipsum</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolore cumque impedit minima dolorem recusandae. Non amet sit placeat, rem deserunt fuga quis! Vel sapiente exercitationem necessitatibus sunt dolorum voluptatem!
+      Ut accusantium eveniet id nesciunt possimus voluptatem excepturi ratione. Architecto, sint doloremque dignissimos excepturi eveniet voluptas! Modi aut aliquid facere, ipsum magnam quos blanditiis, perferendis, voluptate est saepe rem nemo?
+      Reiciendis, labore est iste dolorem nihil unde voluptates! Doloremque iste est autem minima, ipsa accusantium fugit praesentium natus voluptas nemo quo quis animi laboriosam. Sed quisquam ea magni autem deleniti!
+      Dolorum saepe esse nostrum in, eaque veritatis, ut quod aperiam nesciunt voluptatem animi sequi itaque illo! Quae unde esse dolorum maiores non neque eum quibusdam error, animi quam. Earum, illo?
+      Modi blanditiis possimus illum, minima fugiat distinctio atque. Quod dicta voluptatem error! Officia assumenda ut soluta? Aut, accusamus, laudantium molestias, eaque dicta provident qui perspiciatis magni voluptatum dolor eveniet maiores!
+      Nihil provident reiciendis ipsa ea dolor odio laboriosam qui culpa accusantium optio? Animi nam magnam molestias voluptas perferendis est ducimus
+    </p>
+  </div>
+</body>
+</html>

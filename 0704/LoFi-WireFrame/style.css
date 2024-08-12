@@ -1,0 +1,101 @@
+@import url("./reset.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap");
+
+/* Header */
+#main_header {
+  position: relative;
+  width: 960px;
+  height: 160px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  .title {
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    font-family: "Baskervville SC", serif;
+  }
+  #main_gnb {
+    position: absolute;
+    right: 0;
+    top: 0;
+    ul {
+      display: flex;
+      a{
+        display: inline-block;
+        padding: 2px 10px;
+        border: 1px solid;
+        transition: all 0.3s;
+        &:hover{
+          background: #000;
+          color: white;
+        }
+      }
+      li:first-child > a{
+        /* border-radius: 5px 0 0 5px; */
+      }
+      li:last-child > a{
+        /* border-radius: 0 5px 5px 0; */
+      }
+    }
+  }
+  #main_lnb {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    ul {
+      display: flex;
+      a{
+        display: inline-block;
+        padding: 2px 10px;
+        border: 1px solid;
+        transition: all 0.3s;
+        &:hover{
+          background: #000;
+          color: white;
+        }
+      }
+      li:first-child > a{
+        /* border-radius: 5px 0 0 5px; */
+      }
+      li:last-child > a{
+        /* border-radius: 0 5px 5px 0; */
+      }
+    }
+  }
+}
+
+/* main */
+#main_content{
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+  /* gap+section+aside = 750+10+200 = 960 */
+  gap: 10px;
+  #main_section{
+    width: 750px;
+    .main_article{
+      margin-bottom: 10px;
+      padding: 20px;
+      border: 1px solid;
+    }
+  }
+  #main_aside{
+    width: 200px;
+    .buttons label{
+      cursor: pointer;
+    }
+    input[type = "radio"]{
+      display: none;
+      &:first-of-type:checked ~ div:first-of-type{
+        display: block;
+      }
+      &:last-of-type:checked ~ div:last-of-type{
+        display: block;
+      }
+    }
+    div{
+      display: none;
+    }
+  }
+}

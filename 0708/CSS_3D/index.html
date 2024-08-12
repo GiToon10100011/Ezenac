@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Spinner</title>
+  <style>
+    body{
+      width: 200px;
+      height: 200px;
+      margin: 200px auto;
+      section{
+        position: relative;
+        width: 200px;
+        height: 200px;
+        transform-style: preserve-3d;
+        animation: rotate 3s linear infinite;
+        div{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 200px;
+          height: 200px;
+          color: white;
+          font-size: 10px;
+          text-align: center;
+          line-height: 200px;
+          opacity: 0.7;
+          /*정육면체이므로 각 모든 z축에 100px만큼의 공간을 할당(풀 너비가 200px이기 때문에 절반을 부여해서 공간이 서로 안겹치게끔 함)*/
+          &:nth-child(1){
+            transform: rotateY(0deg) translate3d(0, 0, 100px);
+            background: red;
+          }
+          &:nth-child(2){
+            transform: rotateY(90deg) translate3d(0, 0, 100px);
+            background: green;
+          }
+          &:nth-child(3){
+            transform: rotateY(180deg) translate3d(0, 0, 100px);
+            background: blue;
+          }
+          &:nth-child(4){
+            transform: rotateY(270deg) translate3d(0, 0, 100px);
+            background: yellow;
+          }
+          &:nth-child(5){
+            transform: rotateX(90deg) translate3d(0, 0, 100px);
+            background: orange;
+          }
+          &:nth-child(6){
+            transform: rotateX(270deg) translate3d(0, 0, 100px);
+            background: rgb(225, 0, 255);
+          }
+        }
+      }
+    }
+
+    @keyframes rotate {
+      from{
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); 
+      }
+
+      to{
+        transform: rotateX(720deg) rotateY(720deg) rotateZ(720deg); 
+      }
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div>오빠 왤케 그지야?</div>
+    <div>오빠 왤케 그지야?</div>
+    <div>오빠 왤케 그지야?</div>
+    <div>오빠 왤케 그지야?</div>
+    <div>오빠 왤케 그지야?</div>
+    <div>오빠 왤케 그지야?</div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,136 @@
+@import url("./reset.css");
+
+body{
+  height: 2000px;
+  font-family: Montserrat;
+  background: #ddd;
+}
+
+.inner{
+  width: 1300px;
+  margin: 0 auto;
+}
+
+/* Header */
+header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100000;
+  .banner{
+    background: #000;
+    height: 40px;
+    transition: all 0.5s;
+    .lnb{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      a{
+        color: #ddd;
+        margin-right: 10px;
+        em{
+          color: #bbb;
+        }
+      }
+    }
+  }
+  nav{
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .gnb{
+      display: flex;
+      gap: 10px;
+      li{
+        text-transform: uppercase;
+        a{
+          color: white;
+          transition: all 0.3s;
+          &:hover{
+            color: crimson;
+          }
+        }
+      }
+    }
+  }
+  .trigger{
+    display: none;
+  }
+  &.active{
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    .gnb li a{
+      color: #000;
+    }
+    .banner{
+      height: 0;
+      overflow: hidden;
+    }
+    nav{
+      padding-bottom: 20px;
+    }
+  }
+}
+
+/* Intro */
+.intro{
+  height: 100vh;
+  background: url("./images/intro.jpg") center/cover no-repeat; 
+  display: flex;
+  align-items: center;
+  text-align: center;
+  .heading{
+    color: white;
+    h1{
+      font-size: 70px;
+      margin-bottom: 40px;
+    }
+    p{
+      font-size: 22px;
+      line-height: 1.5rem;
+      padding: 0 150px;
+    }
+  }
+}
+
+/* About */
+.about{
+  .about_contents{
+    display: flex;
+    padding: 150px 0;
+    div{
+      padding: 30px;
+      &.desc{
+        text-align: center;
+        flex: 3;
+        h2{
+          font-size: 30px;
+          margin-bottom: 30px;
+        }
+        p{
+          font-size: 16px;
+          line-height: 1.7rem;
+        }
+        a{
+          color: crimson;
+          font-weight: bold;
+          &:hover{
+            text-decoration: underline;
+          }
+      }
+      }
+      &.photo{
+        flex: 2;
+        img{
+          width: 100%;  
+          border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
+        }
+      }
+    }
+  }
+}

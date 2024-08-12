@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .parent{
+      border: 5px solid #0f0;
+      display: flex;
+      div{
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        background: crimson;
+        &:nth-child(1){
+          /* 1/6 */
+          order: 3;
+          background: crimson;
+        }
+        &:nth-child(2){
+          /* 2/6 */
+          order: 2;
+          background: dodgerblue;
+        }
+        &:nth-child(3){
+          /* 3/6 */
+          order: 1; 
+          background: burlywood;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child1">1</div>
+    <div class="child2">2</div>
+    <div class="child3">3</div>
+  </div>
+</body>
+</html>

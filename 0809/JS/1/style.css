@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes pika {
+  to {
+    transform: rotate(1000000deg);
+  }
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+    transform-origin: center;
+    opacity: 1;
+  }
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body .character {
+  animation: pika 100s infinite;
+  width: 100px;
+  height: 100px;
+  opacity: 100%;
+  background: url("./KakaoTalk_20240807_163214071.png") center/contain no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body .age {
+  animation: rotate 1s infinite alternate;
+  position: absolute;
+  color: crimson;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+}

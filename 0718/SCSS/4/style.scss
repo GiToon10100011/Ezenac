@@ -1,0 +1,83 @@
+// variables
+$complete-btn: royalblue;
+$loading-btn: green;
+$error-btn: crimson;
+$notice-btn-hover: #000;
+$notice-btn-fs: 18px;
+
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// MixIn
+@mixin notice-button {
+  width: 150px;
+  padding: 7px;
+  background: white;
+  font-size: $notice-btn-fs;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &.complete:hover{
+    color: white;
+    background: $complete-btn;
+    border: 3px solid transparent;
+  }
+  &.loading:hover{
+    color: white;
+    background: $loading-btn;
+    border: 3px solid transparent;
+  }
+  &.error:hover{
+    color: white;
+    background: $error-btn;
+    border: 3px solid transparent;
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .btns {
+    button {
+      &.complete {
+        @include notice-button();
+        color: $complete-btn;
+        border: 3px solid $complete-btn;
+      }
+
+      &.loading {
+        @include notice-button();
+        color: $loading-btn;
+        border: 3px solid $loading-btn;
+      }
+
+      &.error {
+        @include notice-button();
+        color: $error-btn;
+        border: 3px solid $error-btn;
+      }
+      // &.complete{
+      //   width: 150px;
+      //   padding: 7px;
+      //   background: white;
+      //   font-size: $notice-btn-fs;
+      //   border-radius: 5px;
+      //   cursor: pointer;
+      //   transition: all 0.3s;
+      //   color: $complete-btn;
+      //   border: 3px solid $complete-btn;
+      //   &:hover{
+      //     color: white;
+      //     background: $complete-btn;
+      //     border: 3px solid transparent;
+      //   }
+      // }
+    }
+  }
+}

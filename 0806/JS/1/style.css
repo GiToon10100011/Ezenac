@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body .container {
+  display: flex;
+  gap: 10px;
+  height: 220px;
+  border: 2px solid;
+  padding: 15px;
+  font-size: 20px;
+  text-align: center;
+}
+body .container div.out {
+  background: #d6edfc;
+  width: 230px;
+  height: 230px;
+}
+body .container div.out p:last-of-type {
+  font-size: 10px;
+}
+body .container div.in {
+  width: 60%;
+  height: 50%;
+  background: #fc0;
+  margin: 0 auto;
+}

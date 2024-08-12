@@ -1,0 +1,135 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .wrapper {
+    width: 540px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgb(170, 205, 255);
+    border-radius: 20px;
+    padding: 60px;
+    box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.3);
+    .error {
+      width: 100%;
+      padding-left: 18px;
+      color: #f00;
+      height: 10px;
+      font-size: 11px;
+    }
+    h3 {
+      text-align: center;
+      color: #0068ff;
+      font: bold 28px/1.4 arial;
+      margin-bottom: 10px;
+    }
+    label {
+      width: 100%;
+      margin-top: 14px;
+      display: inline-block;
+    }
+    .inputbox {
+      width: 380px;
+      height: 60px;
+      border: none;
+      border-bottom: 1px solid #d2d2d2;
+      padding-left: 18px;
+      &::placeholder {
+        font-size: 16px;
+        color: #797979;
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
+      &:focus {
+        outline: none;
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+    .phone_wrapper {
+      display: flex;
+      /* justify-content: center; */
+      gap: 16px;
+      width: 380px;
+      height: 40px;
+      margin-top: 20px;
+      .phoneNum {
+        width: 100px;
+        border: 1px solid #d2d2d2;
+        border-radius: 7px;
+        font-size: 16px;
+        text-align: center;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .token_wrapper {
+      width: 380px;
+      height: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 18px;
+      margin-top: 20px;
+      #token{
+        transition : all 0.3s;
+      }
+      #token,
+      #token_timer {
+        font-size: 18px;
+        color: #0068ff;
+      }
+      #token_button,
+      #token_timer_confirmBtn {
+        width: 120px;
+        height: 40px;
+        border: 1px solid #d2d2d2;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+    }
+    #location {
+      margin-top: 20px;
+      width: 380px;
+      height: 40px;
+      border: 1px solid #d2d2d2;
+      border-radius: 7px;
+      padding-left: 18px;
+      font-size: 14px;
+      color: #797979;
+      &:focus{
+        outline: none;
+      }
+    }
+    .gender_wrapper{
+      display: flex;
+      width: 380px;
+      gap: 20px;
+      justify-content: center;
+    }
+    hr{
+      width: 380px;
+      border: 1px solid #e6e6e6;
+      margin: 20px 0;
+    }
+    #signup_button{
+      width: 380px;
+      height: 50px;
+      font-size: 18px;
+      border: 1px solid #d2d2d2;
+      border-radius: 10px;
+    }
+  }
+}

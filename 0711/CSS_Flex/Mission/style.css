@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  transition: all 0.6s;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+
+  header {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    background: dodgerblue;
+    .logo {
+      /* 1/8 */
+      flex: 1;
+      img{
+        filter: invert();
+      }
+    }
+    .gnb {
+      /* 6/8 */
+      flex: 6;
+      ul {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        li {
+          color: white;
+        }
+      }
+    }
+    .search {
+      /* 1/6 */
+      flex: 1;
+      text-align: right;
+      i {
+        color: white;
+      }
+    }
+    .fa-bars {
+      display: none;
+    }
+  }
+}
+
+.gnb_mobile {
+  display: none;
+}
+
+#toggleX{
+  display: none;
+  &.active{
+    display: block;
+  }
+}
+
+/* screen || all */
+/* 780이하의 사이즈에서만 스타일 부여 */
+
+@media screen and (max-width: 780px) {
+  body {
+    header {
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      .gnb {
+        ul {
+          display: none;
+        }
+      }
+      .search {
+        display: none;
+      }
+      .fa-bars {
+        display: block;
+        color: white;
+        font-size: 24px;
+        &.active{
+          display: none;
+        }
+      }
+
+      .fa-x{
+        display: none;
+      }
+    }
+  }
+}
+
+.mobile_container {
+  z-index: -1;
+  transition: all 0.6s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: -100%;
+  &.active{
+    top: 60px;
+  }
+  .gnb_mobile {
+    width: 100%;
+    background: dodgerblue;
+    display: block;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      li{
+        color: white;
+        transition: all 0.3s;
+        &:hover{
+          color: black;
+        }
+      }
+    }
+  }
+  .search_mobile {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: royalblue;
+    i{
+      transition: all 0.3s;
+      &:hover{
+        color: white;
+      }
+    }
+  }
+}
+
+#toggleX{
+  opacity: 0;
+  &.active{
+    opacity: 1;
+  }
+}

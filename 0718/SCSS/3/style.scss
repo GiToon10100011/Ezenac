@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.frame {
+  padding: 20px;
+  border: 1px solid;
+  text-align: center;
+  @at-root.heading {
+    color: crimson;
+    font-size: 36px;
+  }
+}
+
+// .heading {
+//   color: crimson;
+//   font-size: 36px;
+// }

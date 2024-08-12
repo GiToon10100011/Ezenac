@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a7e457e146.js" crossorigin="anonymous"></script>
+  <title>Document</title>
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul, ol, li{
+      list-style-type: none;
+    }
+
+    a{
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      padding-left: 30px;
+      &::before{
+        /*unicode 삽입. 사용시에는 항상 \사용하는것을 명심*/
+        content: "\f054";
+        /*unicode 사용을 위해 이게 어떤 문자인지 정의*/
+        font-family: fontawesome;
+        font-size: 24px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+    }
+
+    body{
+      background: royalblue;
+    }
+
+    .gnb{
+      position: absolute;
+      top: 50%;
+      left: 50px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      color: white;
+      font-size: 52px;
+      gap: 10px;
+      margin: 10px 0;
+      transition: all 0.3s;
+      &:hover a{
+        opacity: 70%;
+      }
+      a{
+        transition: all 0.3s;
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="gnb">
+    <a href="#none">New Arrivals</a>
+    <a href="#none">Summer Collection</a>
+    <a href="#none">Winter Collection</a>
+    <a href="#none">Special Offers</a>
+    <a href="#none">Trends</a>
+  </div>
+</body>
+</html>

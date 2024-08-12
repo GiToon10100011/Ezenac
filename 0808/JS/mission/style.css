@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 20px;
+}
+
+form {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+form > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+form > div input {
+  width: 90%;
+  padding: 10px;
+}
+form input[type=submit] {
+  padding: 20px;
+}
+
+table {
+  width: 480px;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+table th, table tr, table td {
+  padding: 20px;
+}

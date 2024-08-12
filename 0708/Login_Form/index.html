@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <form action="https://localhost:3000" method="post">
+      <div class="wrapper">
+        <h3>회원가입을 위해<br />정보를 입력해주세요.</h3>
+        <label for="email">* 이메일</label>
+        <input
+          class="inputbox"
+          type="text"
+          name="email"
+          id="email"
+          placeholder="이메일을 입력해주세요."
+        />
+        <div id="error_email" class="error"></div>
+        <label for="name">* 이름</label>
+        <input
+          class="inputbox"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="이름을 입력해주세요."
+        />
+        <div id="error_writer" class="error"></div>
+        <label for="pw1">* 비밀번호</label>
+        <input
+          class="inputbox"
+          type="password"
+          name="pw1"
+          id="pw1"
+          placeholder="비밀번호를 입력해주세요."
+        />
+        <div id="error_pw1" class="error"></div>
+        <label for="pw2">* 비밀번호 확인</label>
+        <input
+          class="inputbox"
+          type="password"
+          name="pw2"
+          id="pw2"
+          placeholder="비밀번호를 다시 입력해주세요."
+        />
+        <div id="error_pw2" class="error"></div>
+        <div class="phone_wrapper">
+          <input type="number" name="firstNum" id="phone1" class="phoneNum" onkeyup = "onchange()"
+          onchange = "changePhone1()"/>-
+          <input type="number" name="secondNum" id="phone2" class="phoneNum" onkeyup = "onchange()"
+          onchange = "changePhone2()" />-
+          <input type="number" name="lastNum" id="phone3" class="phoneNum" onkeyup = "onchange()"
+          onchange = "changePhone3()"/>
+        </div>
+        <div class="token_wrapper">
+          <div id="token">000000</div>
+          <button id="token_button" disabled>인증번호 전송</button>
+        </div>
+        <div class="token_wrapper">
+          <div id="token_timer">3:00</div>
+          <button id="token_timer_confirmBtn" disabled>인증완료</button>
+        </div>
+        <div class="location_wrapper">
+          <select name="" id="location">
+            <option value="none" selected disabled>지역을 선택하세요.</option>
+            <option>서울</option>
+            <option>경기</option>
+            <option>인천</option>
+            <option>대구</option>
+            <option>마산</option>
+            <option>부산</option>
+          </select>
+        </div>
+        <div id="error_location" class="error"></div>
+        <div class="gender_wrapper">
+          <div class="gender">
+            <label for="gender_woman">
+              <input
+                type="radio"
+                name="gender"
+                id="gender_woman"
+                class="gender_radio"
+              />
+              여성</label
+            >
+          </div>
+          <div class="gender">
+            <label for="gender_man">
+              <input
+                type="radio"
+                name="gender"
+                id="gender_man"
+                class="gender_radio"
+              />
+              남성</label
+            >
+          </div>
+        </div>
+        <div id="error_gender" class="error"></div>
+        <hr>
+        <div class="footer">
+          <button id="signup_button" disabled>가입하기</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

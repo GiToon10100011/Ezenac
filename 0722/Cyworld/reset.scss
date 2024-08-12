@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, li, ol{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+$color: (
+  accent-color: crimson,
+  bg-dark-color: #000,
+  bg-light-color: #fff,
+  bg-grey-color: #808080,
+  theme-color: #55b2e4,
+);
+
+$size: (
+  small: 13px,
+  medium: 14px
+);

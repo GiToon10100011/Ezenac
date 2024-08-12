@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        /*position: relative;
+        height: 3000px;
+        background-image: url("./ch_4/BackgroundFront.png") , url("./ch_4/BackgroundBack.png");
+        background-size: 100%;
+        background-position: bottom;
+        background-attachment: fixed;
+        background-repeat: no-repeat;*/
+        height: 3000px;
+        position: relative;
+        background: url("./ch_4/BackgroundFront.png") bottom/100% fixed no-repeat, url("./ch_4/BackgroundBack.png") bottom/100% fixed no-repeat;
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="container">
+      <h1>Lorem Ipsum</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est recusandae
+        itaque optio maxime, perspiciatis enim hic pariatur voluptatum?
+        Architecto exercitationem eaque mollitia non doloremque voluptates vitae
+        doloribus aut saepe a. Maxime ducimus esse aperiam quidem eum porro
+        veniam exercitationem animi, accusamus labore facilis libero modi
+        laboriosam. Necessitatibus, molestiae sed at veniam esse eveniet,
+        suscipit consectetur error repellat est rem quos! Laborum quaerat quod
+        atque quidem, inventore qui eos maiores quae quia, mollitia nisi, unde
+        ex dolor. Maiores est corporis aut neque temporibus provident laudantium
+        similique excepturi natus, culpa ut commodi. Voluptas magni aut ullam
+        natus, dignissimos ad, nulla exercitationem est quae, eum blanditiis.
+        Incidunt dignissimos assumenda molestias in sit voluptates facilis
+        quasi, quaerat sed repellat esse soluta porro blanditiis totam! Magnam,
+        consequatur. Fuga mollitia voluptatum natus dolorum repellat praesentium
+        autem, voluptas quaerat ratione! Fuga cumque rerum adipisci voluptatibus
+        aspernatur pariatur repellendus saepe sapiente, nam, cupiditate ipsum
+        illum harum quod hic! Fugit non ut quo soluta qui laborum optio rem
+        libero ipsam voluptas dolor aperiam distinctio perspiciatis et,
+        exercitationem iusto, eius dolorem odio deserunt cum officiis aut
+        impedit incidunt! Nam, voluptas. Dicta, adipisci delectus? Similique
+        voluptatum quibusdam modi, facere iusto a minima sequi quos consequuntur
+        omnis expedita distinctio labore ad atque ipsam, velit dignissimos
+        voluptas architecto! Soluta animi dolorem a dolore. Assumenda doloremque
+        tempora aperiam eaque expedita! Laborum repellat velit repellendus
+        beatae. Laudantium ipsum, excepturi sapiente, tenetur alias quidem
+        tempore nesciunt minus cupiditate perferendis omnis, optio architecto at
+        quae cum eum! Laborum error totam earum ex repellat id, molestiae
+        doloremque est, vel accusamus dicta rerum quos eum sapiente aut quidem
+        nostrum fugit nisi nemo vero, autem quo ipsam cum? Beatae, earum.
+        Tempora eveniet repellendus adipisci voluptatibus, ut quidem aspernatur
+        nam voluptas? Temporibus molestias a sequi impedit voluptate vero nam
+        consequuntur est itaque debitis, saepe expedita animi placeat sapiente,
+        minima similique. Fugit.
+      </p>
+    </main>
+  </body>
+</html>

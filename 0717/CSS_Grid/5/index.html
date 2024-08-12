@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .parent {
+        background: khaki;
+        border: 5px solid;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 10px;
+        div {
+          border: 1px solid white;
+          background: crimson;
+          height: 100px;
+          &.item{
+            background-color: dodgerblue;
+            /*grid-column-start: 1;
+            grid-column-end: 3;*/
+            grid-column-start: 2;
+            grid-row: 1/span 4;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="item">1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </body>
+</html>

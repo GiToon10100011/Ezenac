@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src = "./script.js"></script>
+</head>
+<body>
+  <main class = "container">
+    <section class = "topMenu">
+      <div class="saleImg">
+        <img src="../sale-badge-tag-3d-icon-render-illustration-png.webp" alt="">
+      </div>
+      <div class = "formArea">
+        <form name = "priceCalc" action = "https://localhost:3000" method="get">
+          <ul>
+            <li>
+              <label for="price">원래가격</label>
+              <input type="text" name="price" id="price"> 원
+            </li>
+            <li>
+              <label for="rate">할인률</label>
+              <input type="text" name="rate" id="rate"> %
+            </li>
+          </ul>
+          <input type="button" value="할인가격 계산하기" class = "btn">
+        </form>
+      </div>
+    </section>
+    <section class="bottomInfo">
+      <p> </p>
+    </section>
+  </main>
+</body>
+</html>

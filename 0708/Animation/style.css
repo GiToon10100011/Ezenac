@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
+
+/* reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* animations */
+@keyframes sun {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+  25% {
+    opacity: 1;
+    transform: rotate(-30deg);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: rotate(30deg);
+  }
+
+  75% {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  to {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes flow {
+  from {
+    opacity: 0;
+    left: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    left: 90%;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes day {
+  from {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* overflow: hidden; */
+  background: #000000;
+  h1 {
+    font-family: "Creepster", system-ui;
+    background: linear-gradient(red, rgb(24, 24, 24));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: rgb(184, 12, 12);
+    font-size: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 150%);
+  }
+  section {
+    border: 1px solid red;
+    width: 1000px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .sky {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      .sun {
+        position: absolute;
+        top: -150px;
+        left: 50%;
+        transform-origin: center 600px;
+        animation: sun 10s linear infinite;
+      }
+      .cloud1 {
+        position: absolute;
+        top: -30px;
+        left: 10%;
+        animation: flow 10s linear infinite;
+      }
+      .cloud2 {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        animation: flow 20s linear infinite;
+      }
+    }
+    .town {
+      .circle {
+        position: absolute;
+        bottom: 104px;
+        left: 34%;
+        opacity: 0.7;
+        animation: rotation linear 20s infinite;
+      }
+      .townNight {
+        position: absolute;
+        bottom: 0;
+        left: 40px;
+      }
+      .townDay {
+        position: absolute;
+        bottom: 0;
+        left: 40px;
+        filter: grayscale(1);
+        animation: day linear 20s infinite;
+      }
+    }
+    .people{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: day linear 20s infinite;
+      .man{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        animation: flow linear 7s infinite;
+      }
+      .family{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        animation: flow linear 20s infinite;
+      }
+    }
+  }
+}

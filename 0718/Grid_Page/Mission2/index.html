@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        display: grid;
+        grid-template-rows: repeat(10, auto);
+        width: 1000px;
+        div {
+          &.items {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(3, auto);
+            span {
+              color: dodgerblue;
+            }
+            .item {
+              border-bottom: 1px solid #eee;
+              display: grid;
+              grid-template-columns: repeat(2, auto);
+              p {
+                display: grid;
+              }
+            }
+          }
+          &.etc {
+            margin-top: 10px;
+            text-align: right;
+            color: crimson;
+          }
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .container {
+          grid-template-rows: repeat(10, auto);
+          width: 700px;
+          div {
+            &.items {
+              display: grid;
+              grid-template-columns: repeat(2, auto);
+              span {
+                color: dodgerblue;
+              }
+              .item {
+                display: grid;
+                grid-template-columns: repeat(2, auto);
+                p {
+                  display: grid;
+                }
+              }
+            }
+            &.etc {
+              text-align: right;
+              color: crimson;
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: 390px) {
+        .container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: none;
+          grid-template-rows: repeat(10, auto);
+          width: 100%;
+          div {
+            &.items {
+              display: grid;
+              grid-template-columns: repeat(1, auto);
+              span {
+                color: dodgerblue;
+              }
+              .item {
+                display: grid;
+                grid-template-columns: repeat(1, auto);
+                p {
+                  display: grid;
+                }
+              }
+            }
+            &.etc {
+              text-align: right;
+              color: crimson;
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title"><h1>Best Sellers</h1></div>
+      <div class="items">
+        <div class="item 1">
+          <img src="./images/best-item-01.png" alt="" />
+          <p>
+            Best Home Appliances 01
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 2">
+          <img src="./images/best-item-02.png" alt="" />
+          <p>
+            Best Home Appliances 02
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 3">
+          <img src="./images/best-item-03.png" alt="" />
+          <p>
+            Best Home Appliances 03
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 4">
+          <img src="./images/best-item-04.png" alt="" />
+          <p>
+            Best Home Appliances 04
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 5">
+          <img src="./images/best-item-05.png" alt="" />
+          <p>
+            Best Home Appliances 05
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 6">
+          <img src="./images/best-item-06.png" alt="" />
+          <p>
+            Best Home Appliances 06
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 7">
+          <img src="./images/best-item-07.png" alt="" />
+          <p>
+            Best Home Appliances 07
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 8">
+          <img src="./images/best-item-08.png" alt="" />
+          <p>
+            Best Home Appliances 08
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 9">
+          <img src="./images/best-item-09.png" alt="" />
+          <p>
+            Best Home Appliances 09
+            <span>$259</span>
+          </p>
+        </div>
+        <div class="item 10">
+          <img src="./images/best-item-10.png" alt="" />
+          <p>Best Home Appliances 10 <span>$259</span></p>
+        </div>
+        <div class="item 11">
+          <img src="./images/best-item-11.png" alt="" />
+          <p>Best Home Appliances 11 <span>$259</span></p>
+        </div>
+        <div class="item 12">
+          <img src="./images/best-item-12.png" alt="" />
+          <p>Best Home Appliances 12 <span>$259</span></p>
+        </div>
+      </div>
+      <div class="etc">view more</div>
+    </div>
+  </body>
+</html>
