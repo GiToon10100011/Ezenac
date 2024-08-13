@@ -1,0 +1,260 @@
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 16px;
+}
+
+// Variables
+$mono-font: "Monoton";
+$raleway-font: "Raleway";
+$monts-font: "Montserrat";
+
+// Video
+.video-frame {
+  // width: 100vw;
+  // height: 100vh;
+  // position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-135deg, crimson, transparent);
+  }
+  video {
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+}
+
+// logo
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}
+
+// heading
+.heading {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  width: 700px;
+  animation: show linear 1.6s 1s both;
+  font-family: $monts-font;
+  h1 {
+    font-size: 4rem;
+    color: white;
+    span {
+      display: block;
+      color: crimson;
+    }
+  }
+  p {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .buttons {
+    a {
+      display: inline-block;
+      width: 150px;
+      padding: 7px;
+      margin-top: 14px;
+      margin-right: 8px;
+      background: #fff;
+      color: #222;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: $monts-font;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      transition: all 0.3s;
+      cursor: pointer;
+      &.btn-learn {
+        background: transparent;
+        color: white;
+        &:hover {
+          background: #fff;
+          color: #000;
+        }
+      }
+      &.btn-book:hover {
+        background: #000;
+        color: white;
+        border: 2px solid #000;
+      }
+    }
+  }
+}
+
+// Anniversary
+.anniversary {
+  animation: show2 linear 1.6s 1s both;
+  position: absolute;
+  bottom: 50px;
+  right: 100px;
+  text-align: center;
+  em {
+    display: block;
+    font-family: $monts-font;
+    font-size: 2.2rem;
+    font-style: normal;
+    letter-spacing: 5px;
+    margin-bottom: -10px;
+  }
+  span {
+    font-family: $mono-font;
+    font-size: 10rem;
+  }
+}
+
+// trigger
+.trigger {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 10;
+  span {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: black;
+    transition: all 0.3s;
+    &:first-child {
+      top: 0;
+      left: 0;
+    }
+    &:nth-child(2) {
+      top: 50%;
+      width: 80%;
+    }
+    &:last-child {
+      top: 100%;
+    }
+  }
+  &.active span {
+    background: #fff;
+    &:nth-child(1) {
+      top: 50%;
+      transform: rotate(45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:last-child {
+      top: 50%;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// modal
+.modal-gnb {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  background: rgba($color: #000000, $alpha: 0.9);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s ease-in-out;
+  ul {
+    color: white;
+    font-size: 4rem;
+    font-family: $raleway-font;
+    li {
+      a {
+        display: inline-block;
+        padding-bottom: 20px;
+        transition: all 0.3s;
+
+        &:hover {
+          color: crimson;
+        }
+      }
+    }
+  }
+  &.active {
+    left: 0;
+    li {
+      animation: gnb 0.5s linear both;
+      &:nth-of-type(1) {
+        animation-delay: 0.5s;
+      }
+      &:nth-of-type(2) {
+        animation-delay: 0.7s;
+      }
+      &:nth-of-type(3) {
+        animation-delay: 0.9s;
+      }
+      &:nth-of-type(4) {
+        animation-delay: 1.1s;
+      }
+      &:nth-of-type(5) {
+        animation-delay: 1.3s;
+      }
+    }
+  }
+}
+
+// animations
+@keyframes show {
+  from {
+    opacity: 0;
+    margin-left: -100px;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+@keyframes show2 {
+  from {
+    opacity: 0;
+    margin-right: -100px;
+  }
+  to {
+    opacity: 1;
+    margin-right: 0;
+  }
+}
+
+@keyframes gnb {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

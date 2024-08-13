@@ -1,0 +1,71 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, li{
+  list-style: none;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding-top: 100px;
+  .container{
+    h2{
+      text-align: center;
+      color: dodgerblue;
+    }
+    form{
+      margin: 20px 0;
+      input[type = "text"]{
+        border: none;
+        border-bottom: 1px solid #ccc;
+        padding: 8px;
+        &:focus{
+          outline: none;
+        }
+      }
+      input[type = "submit"]{
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover{
+          background: dodgerblue;
+          color: #fff;
+        }
+      }
+    }
+    ul{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 18px;
+        button{
+          border: none;
+          padding: 6px;
+          background: dodgerblue;
+          border: 1px solid transparent;
+          color: #fff;
+          border-radius: 8px;
+          transition: all 0.3s;
+          cursor: pointer;
+          &:hover{
+            color: dodgerblue;
+            background: #fff;
+            border: 1px solid dodgerblue;
+          }
+        }
+      }
+    }
+  }
+}
