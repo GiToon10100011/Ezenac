@@ -1,0 +1,101 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dots span {
+  display: inline-block;
+  width: 30px;
+  margin-right: 10px;
+  height: 30px;
+  background: #000;
+  border-radius: 50%;
+  animation: loading 0.5s linear alternate infinite both;
+}
+.dots span:nth-child(1) {
+  animation-delay: 0.1s;
+  background: rgba(255, 153, 0, 0.8);
+}
+.dots span:nth-child(2) {
+  animation-delay: 0.3s;
+  background: rgba(255, 153, 0, 0.9);
+}
+.dots span:nth-child(3) {
+  animation-delay: 0.5s;
+  background: #ff9900;
+}
+
+@keyframes loading {
+  from {
+    opacity: 0;
+    scale: 0;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+/* 정답지
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dots {
+  span {
+    display: inline-block;
+    width: 30px;
+    margin-right: 10px;
+    height: 30px;
+    background: #000;
+    border-radius: 50%;
+    animation: loading 1s linear infinite both;
+    &:nth-child(1){
+      animation-delay: 0.1s;
+      background: rgba($color: #ff9900, $alpha: 0.8);
+    }
+    &:nth-child(2){
+      animation-delay: 0.3s;
+      background: rgba($color: #ff9900, $alpha: 0.9);
+    }
+    &:nth-child(3){
+      animation-delay: 0.5s;
+      background: rgba($color: #ff9900, $alpha: 1);
+    }
+  }
+}
+
+@keyframes loading {
+  from{
+    opacity: 0;
+    scale: 0.5;
+  }
+
+  50%{
+    opacity: 1;
+    scale: 1.2;
+  }
+
+  to{
+    opacity: 0;
+    scale: 0.5;
+  }
+}
+  */

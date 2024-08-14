@@ -1,0 +1,158 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading {
+  position: relative;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+}
+.loading span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background: #000;
+  animation: loading 0.12s linear infinite;
+}
+.loading span:first-child {
+  top: 0;
+  left: 0;
+  background: crimson;
+}
+.loading span:last-child {
+  background: url(./KakaoTalk_20240807_163214071.png) center/cover no-repeat;
+}
+.loading span::before {
+  content: "못잡죠?";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 8px;
+}
+.loading span::after {
+  content: "약오르죠?";
+  position: absolute;
+  left: 0;
+  top: -10px;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 8px;
+}
+
+@keyframes loading {
+  from {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 0;
+    left: calc(100% - 10px);
+  }
+  50% {
+    top: calc(100% - 10px);
+    left: calc(100% - 10px);
+  }
+  75% {
+    top: calc(100% - 10px);
+    left: 0;
+  }
+  to {
+    top: 0;
+    left: 0;
+  }
+}
+@keyframes rotate2 {
+  50% {
+    right: 100%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+/*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background: #000;
+    animation: loading 1.5s linear infinite;
+    &:first-child {
+      top: 0;
+      left: 0;
+      background: crimson;
+    }
+    &:last-child {
+      background: dodgerblue;
+      animation-delay: 0.8s;
+    }
+  }
+}
+
+@keyframes loading {
+  from {
+    top: 0;
+    left: 0;
+  }
+
+  25% {
+    top: 0;
+    left: calc(100% - 10px);
+  }
+
+  50% {
+    top: calc(100% - 10px);
+    left: calc(100% - 10px);
+  }
+
+  75% {
+    top: calc(100% - 10px);
+    left: 0;
+  }
+
+  to {
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes rotate2 {
+  50% {
+    right: 100%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+*/
