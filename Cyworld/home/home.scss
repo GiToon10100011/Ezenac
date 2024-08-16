@@ -49,8 +49,14 @@ body {
     .video {
       width: 100%;
       height: 240px;
-      background: url("../contents/persona.avif") center/cover no-repeat;
       margin-top: 10px;
+      video{
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        box-shadow: 0 0 30px 2px rgba($color: map-get($color, accent-color), $alpha: 0.7);
+      }
     }
   }
 }

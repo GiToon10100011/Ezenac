@@ -62,3 +62,63 @@ modes.forEach((mode, index) => {
   });
 });
 
+//setTime
+setInterval(() => {
+  const today = new Date();
+  let hrs = today.getHours();
+  let mins = today.getMinutes();
+  let secs = today.getSeconds();
+
+  hrs < 10 ? (hrs = `0${hrs}`) : (hrs = hrs);
+  mins < 10 ? (mins = `0${mins}`) : (mins = mins);
+  secs < 10 ? (secs = `0${secs}`) : (secs = secs);
+
+  const timeDisplay = document.querySelector(".clock .time");
+  timeDisplay.innerText = `${hrs}:${mins}:${secs}`;
+
+  if (hrs === "00" && mins === "00" && secs === "00") {
+    updateDate(today);
+  }
+}, 1000);
+
+updateDate(new Date());
+
+function updateDate(todayDate) {
+  const year = todayDate.getFullYear();
+  let month = todayDate.getMonth() + 1;
+  let date = todayDate.getDate();
+  let day = todayDate.getDay();
+
+  // Format month and date
+  month < 10 ? (month = `0${month}`) : (month = month);
+  date < 10 ? (date = `0${date}`) : (date = date);
+
+  // Get day string
+  switch (day) {
+    case 0:
+      day = "SUN";
+      break;
+    case 1:
+      day = "MON";
+      break;
+    case 2:
+      day = "TUE";
+      break;
+    case 3:
+      day = "WED";
+      break;
+    case 4:
+      day = "THU";
+      break;
+    case 5:
+      day = "FRI";
+      break;
+    case 6:
+      day = "SAT";
+      break;
+  }
+
+  // Display date
+  const dateDisplay = document.querySelector(".clock .date");
+  dateDisplay.innerText = `${year}/${month}/${date}/${day}`;
+}

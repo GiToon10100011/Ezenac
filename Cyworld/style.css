@@ -237,18 +237,29 @@ body {
   margin: 12px 0;
   width: 90%;
 }
-.wrapper_left .wrapper_left_body .left_body_profile {
-  width: 100%;
-  height: 100%;
+.wrapper_left .wrapper_left_body .navigation {
   display: flex;
   flex-direction: column;
-  padding-left: 8px;
-  gap: 18px;
+  gap: 14px;
 }
-.wrapper_left .wrapper_left_body .left_body_profile .profile_detail {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.wrapper_left .wrapper_left_body .navigation .navigation_item {
+  width: 100%;
+  height: 33px;
+  color: #fff;
+  text-align: center;
+  line-height: 33px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.wrapper_left .wrapper_left_body .navigation .navigation_item.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+.wrapper_left .wrapper_left_body .left_body_footer {
+  width: 100%;
+  height: 100%;
 }
 .wrapper_left .wrapper_left_body .left_body_footer .wrapper_feel {
   display: flex;
@@ -260,10 +271,24 @@ body {
   font-weight: bold;
   font-size: 20px;
 }
+.wrapper_left .wrapper_left_body .left_body_footer .wrapper_feel form #emotion {
+  padding: 4px 10px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: white;
+}
+.wrapper_left .wrapper_left_body .left_body_footer .wrapper_feel form #emotion:focus {
+  outline: none;
+}
+.wrapper_left .wrapper_left_body .left_body_footer .wrapper_feel form #emotion option {
+  color: #333;
+}
 
 .wrapper_right {
-  width: 524px;
-  height: 472px;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -279,6 +304,9 @@ body {
 .wrapper_right .wrapper_right_header .right_header {
   font-size: 13px;
 }
+.wrapper_right .wrapper_right_header .right_header a:hover:not(i) {
+  text-decoration: underline;
+}
 .wrapper_right .wrapper_right_body {
   width: 100%;
   height: 445px;
@@ -289,31 +317,4 @@ body {
   border-radius: 7px;
   border: none;
   background: transparent !important;
-}
-
-.navigation {
-  width: 70px;
-  height: 110px;
-  position: absolute;
-  top: 20%;
-  right: -68px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.navigation .navigation_item {
-  width: 100%;
-  height: 33px;
-  color: #fff;
-  text-align: center;
-  line-height: 33px;
-  border-radius: 0 10px 10px 0;
-  font-size: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.navigation .navigation_item.active {
-  color: black;
-  background: white;
 }
