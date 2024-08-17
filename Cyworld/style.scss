@@ -230,12 +230,15 @@ body {
       flex-direction: column;
       gap: 14px;
       .navigation_item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
         width: 100%;
         height: 33px;
         background: map-get($map: $color, $key: theme-color);
         color: map-get($map: $color, $key: bg-light-color);
         text-align: center;
-        line-height: 33px;
         border-radius: 10px;
         font-size: map-get($map: $size, $key: medium);
         border: 1px solid rgba(255, 255, 255, 0.2);
@@ -243,6 +246,9 @@ body {
         transition: all 0.3s;
         &.active {
           background: rgba($color: #000, $alpha: 0.1);
+        }
+        span{
+          font-size: 16px;
         }
       }
     }
@@ -261,6 +267,7 @@ body {
         }
         form {
           #emotion {
+            text-align: center;
             padding: 4px 10px;
             width: 100%;
             border-radius: 8px;

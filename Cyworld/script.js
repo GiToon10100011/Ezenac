@@ -1,8 +1,9 @@
+localStorage.removeItem("bias");
+
 const modes = document.querySelectorAll(".navigation div");
 const frame = document.querySelector("#contentFrame");
 const bgVideo1 = document.querySelector(".background video:first-child");
 const bgVideo2 = document.querySelector(".background video:nth-child(2)");
-console.log(bgVideo2);
 const bgVideo3 = document.querySelector(".lastVideo");
 
 const gek = document.querySelector(".background img");
@@ -43,8 +44,9 @@ bgVideo3.addEventListener("ended", () => {
 
 const frames = [
   "./home/home.html",
-  "./game/game.html",
+  "./about/about.html",
   "./jukebox/jukebox.html",
+  "./game/game.html",
 ];
 
 modes[0].classList.add("active");
@@ -122,3 +124,18 @@ function updateDate(todayDate) {
   const dateDisplay = document.querySelector(".clock .date");
   dateDisplay.innerText = `${year}/${month}/${date}/${day}`;
 }
+const bias = document.querySelector("select");
+bias.addEventListener("change", (e) => {
+  const iframe = document.querySelector("iframe");
+  localStorage.setItem("bias", bias.value);
+  //소스를 넣어줌으로써 리로드와 같은 유사한 역할을 수행하도록 함.
+  iframe.src = "./home/home.html";
+
+  modes.forEach((mode, index) => {
+    if (index !== 0) {
+      mode.classList.remove("active");
+    } else {
+      modes[0].classList.add("active");
+    }
+  });
+});
