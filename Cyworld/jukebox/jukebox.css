@@ -64,7 +64,20 @@ body {
   font-size: 20px;
 }
 .wrapper-left .contents .album-controls span {
+  padding: 4px;
   cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+.wrapper-left .contents .album-controls span:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.wrapper-left .contents .album-controls .fa-backward, .wrapper-left .contents .album-controls .fa-forward {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.wrapper-left .contents .album-controls .fa-backward:hover, .wrapper-left .contents .album-controls .fa-forward:hover {
+  color: rgba(0, 0, 214, 0.6);
 }
 .wrapper-left .contents .album-controls .play-btn {
   display: flex;

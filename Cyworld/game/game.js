@@ -24,11 +24,11 @@ const word_start = (e) => {
   let firstword = myword[0];
   let lastword = word[word.length-1];
   if(firstword === lastword){
-    document.querySelector("#result").innerHTML = "정답입니다!";
+    document.querySelector("#result").innerHTML = "You Win!";
     document.querySelector("#word").innerText = myword;
     document.querySelector("#myword").value = "";
   } else{
-    document.querySelector("#result").innerHTML = "틀렸습니다..";
+    document.querySelector("#result").innerHTML = "You Lost.. Try again?";
   };
 };
 
@@ -69,7 +69,7 @@ const lotto_start = () => {
     // 전개연산자를 통해 객체를 문자열로 바뀌게끔함
     lotto_result.innerText = `${[...myNumber]}`;
   } else{
-    lotto_result.innerText = "재추첨하겠습니다!"
+    lotto_result.innerText = "Press again to Reroll.."
   }
 }
 

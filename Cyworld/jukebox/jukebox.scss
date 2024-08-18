@@ -64,7 +64,20 @@ body {
       color: map-get($map: $color, $key: bg-light-color);
       font-size: 20px;
       span {
+        padding: 4px;
         cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.3s;
+        &:hover{
+          background: rgba($color: #fff, $alpha: 0.1);
+        }
+      }
+      .fa-backward, .fa-forward{
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover{
+          color: rgba($color: map-get($color, accent-color), $alpha: 0.6);
+        }
       }
       .play-btn {
         display: flex;
