@@ -51,8 +51,21 @@ const frames = [
 
 modes[0].classList.add("active");
 
+const titleIndicators = ["MAIN", "ABOUT", "OST", "GAME"];
+
 modes.forEach((mode, index) => {
   mode.addEventListener("click", () => {
+    heading.classList.remove("active")
+    setTimeout(() => {
+      heading.classList.add("active");
+    }, 200)
+    heading.innerHTML = `<span>0${index + 1}</span>${
+      titleIndicators[index]
+    }`;
+
+    if (index === 1) {
+      heading.style.fontSize = "170px";
+    } else heading.style.fontSize = "200px";
     frame.setAttribute("src", frames[index]);
     modes.forEach((item, i) => {
       if (index === i) {

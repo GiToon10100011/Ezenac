@@ -118,12 +118,21 @@ const characterKeys = ["episodeAigis", "persona3", "persona4", "persona5"]
 characterBtns.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     const overlay = document.querySelector(".overlay");
+    const characters = document.querySelectorAll(".character");
     overlay.style.background = `url(${overlayBgs[index]}) center/cover
     no-repeat`;
     overlay.classList.add("active");
     setTimeout(() => {
       overlay.classList.remove("active");
     }, 2100);
+    characters.forEach((character) => {
+      character.classList.add("active");
+    })
+    setTimeout(() => {
+      characters.forEach((character) => {
+        character.classList.remove("active");
+      })
+    }, 2400);
     const characterImgs = document.querySelectorAll(".character img");
     const characterNames = document.querySelectorAll(".character span:first-of-type");
     const characterPersonas = document.querySelectorAll(".character span:last-of-type");
