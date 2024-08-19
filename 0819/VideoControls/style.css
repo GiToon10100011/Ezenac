@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+.player {
+  width: 80%;
+  max-width: 550px;
+  position: relative;
+  overflow: hidden;
+}
+.player video {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+.player:hover .controls {
+  transform: translateY(0);
+}
+.player:hover .controls .progress .bar .circle {
+  opacity: 1;
+}
+.player .controls {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transform: translateY(100%) translateY(-6px);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.6s;
+}
+.player .controls .progress {
+  width: 100%;
+  height: 6px;
+  display: flex;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.player .controls .progress .bar {
+  width: 50%;
+  height: 100%;
+  background: #dc143c;
+  position: relative;
+}
+.player .controls .progress .bar .circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #dc143c;
+  position: absolute;
+  top: -6px;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.player .controls .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.player .controls .buttons .menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.player .controls .buttons .menu button {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  line-height: 3px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #dc143c;
+  color: #fff;
+  padding-left: 3px;
+  cursor: pointer;
+}
+.player .controls .buttons .menu span {
+  font-size: 90%;
+  cursor: pointer;
+}
+.player .controls .buttons .menu:nth-child(2) {
+  display: flex;
+}
+.player .controls .buttons .menu:nth-child(2) input[type=range] {
+  width: 100px;
+  height: 6px;
+  background: #fff;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.player .controls .buttons .menu:nth-child(2) input[type=range]::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+}
+.player .controls .buttons .menu:nth-child(2) .time {
+  display: flex;
+  gap: 8px;
+  font-size: 90%;
+}
