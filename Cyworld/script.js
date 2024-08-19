@@ -55,13 +55,11 @@ const titleIndicators = ["MAIN", "ABOUT", "OST", "GAME"];
 
 modes.forEach((mode, index) => {
   mode.addEventListener("click", () => {
-    heading.classList.remove("active")
+    heading.classList.remove("active");
     setTimeout(() => {
       heading.classList.add("active");
-    }, 200)
-    heading.innerHTML = `<span>0${index + 1}</span>${
-      titleIndicators[index]
-    }`;
+    }, 200);
+    heading.innerHTML = `<span>0${index + 1}</span>${titleIndicators[index]}`;
 
     if (index === 1) {
       heading.style.fontSize = "170px";
@@ -149,6 +147,11 @@ bias.addEventListener("change", (e) => {
       mode.classList.remove("active");
     } else {
       modes[0].classList.add("active");
+      heading.classList.remove("active");
+      setTimeout(() => {
+        heading.classList.add("active");
+      }, 200);
+      heading.innerHTML = `<span>01</span>${titleIndicators[0]}`;
     }
   });
 });
