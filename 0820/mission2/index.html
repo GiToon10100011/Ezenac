@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+    <style>
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url("./background.jpg") center/cover no-repeat;
+      }
+
+      .container{
+        width: 900px;
+        height: 500px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .box{
+          width: 80%;
+          height: 60%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          .btns{
+            display: flex;
+            button{
+              padding: 10px;
+              background: rgba(0, 0,0, 0.5);
+              color: white;
+            }
+          }
+          .result{
+            width: 60%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            text-align: center;
+            ul{
+              li{
+                margin-bottom: 20px;
+              }
+            }
+          }
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="box">
+        <div class = "btns">
+          <button>20세 이상</button>
+          <button>30세 이상</button>
+          <button>40세 이상</button>
+        </div>
+        <div class="result">
+          
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
