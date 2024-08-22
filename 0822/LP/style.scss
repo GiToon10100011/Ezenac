@@ -1,0 +1,312 @@
+// reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@keyframes ani {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ani2 {
+  from {
+    transform: translateY(10%) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// common
+body {
+  overflow: hidden;
+}
+main {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(25deg, black, transparent),
+    url("./ydhbg.jpg") 390px -360px / cover no-repeat;
+  overflow: hidden;
+  color: white;
+  h1 {
+    position: absolute;
+    top: 7vh;
+    left: 4vw;
+    font-size: 0;
+    strong {
+      line-height: 1.4;
+      letter-spacing: 1px;
+      font-size: 36px;
+    }
+    span {
+      line-height: 1;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  }
+  .menu {
+    position: absolute;
+    top: 8vh;
+    right: 4vw;
+    i {
+      font-size: 24px;
+    }
+  }
+  & > p {
+    position: absolute;
+    bottom: 7vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 2px;
+    opacity: 0.8;
+  }
+  section {
+    width: 20vw;
+    height: 65vh;
+    position: absolute;
+    left: 50%;
+    top: 140%;
+    margin-top: -25vh;
+    margin-left: -10vw;
+    transition: all 1s;
+    article {
+      color: #000;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      &:hover .inner {
+        background-size: 200% 200%;
+      }
+      .inner {
+        width: 100%;
+        height: 100%;
+        background: #f0f7ff;
+        background: url("./pushydh.jpg") center/cover no-repeat;
+        background-size: 100% 100%;
+        padding: 5vh 2.5vw 8vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-between;
+        box-shadow: 10px 10px 20px rgba($color: #000000, $alpha: 0.1);
+        opacity: 0.6;
+        transform: scale(0.8);
+        transition: opacity 1s, transform 1s, background-size 0.3s;
+        .pic {
+          position: relative;
+          width: 15vw;
+          //정원을 만들기 위해 높이도 vh가 아닌 vw로 줌
+          height: 15vw;
+          border: 1px solid aqua;
+          border-radius: 50%;
+          margin: 0 auto;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &::before,
+          &::after {
+            content: "";
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: inherit;
+            background-position: inherit;
+            background-size: inherit;
+            transform-origin: center center;
+          }
+          &::before {
+            transform: translateY(10%);
+            filter: blur(20px) brightness(1.6);
+          }
+          .dot {
+            width: 3vw;
+            height: 3vw;
+            background: #e4f1ff;
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: inset 5px 5px 10px rgba($color: #000000, $alpha: 0.1);
+          }
+          &.on::after {
+            animation: ani 0.01s linear infinite;
+          }
+          &.on::before {
+            animation: ani2 4s linear infinite;
+          }
+        }
+        .txt {
+          position: relative;
+          text-align: center;
+          color: white;
+          padding: 10px;
+          backdrop-filter: blur(10px);
+          h2 {
+            font-size: 20px;
+            margin-bottom: 2vh;
+          }
+          p {
+            font-size: 12px;
+            margin: 2vh 0 3vh;
+          }
+          ul {
+            display: flex;
+            justify-content: space-around;
+            li {
+              opacity: 0.6;
+              transition: all 0.3s;
+              cursor: pointer;
+              &:hover {
+                opacity: 1;
+                transform: scale(1.3);
+              }
+              &:nth-child(2) {
+                opacity: 1;
+                transform: scale(1.3);
+                &:hover {
+                  transform: scale(1.5);
+                }
+              }
+            }
+          }
+        }
+      }
+      &.on .inner {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  }
+  .btnPrev {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20vw, -50%);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    span {
+      font-size: 11px;
+      line-height: 1;
+      opacity: 1;
+      transform: translateX(30%);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: white;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform-origin: left center;
+      transform: rotate(-180deg);
+      transition: transform 0.3s;
+    }
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: white;
+      position: absolute;
+      bottom: 50%;
+      left: 0;
+      transform-origin: left center;
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+    &:hover span {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    &:hover::before {
+      transform: rotate(-30deg);
+    }
+    &:hover::after {
+      transform: rotate(30deg);
+    }
+  }
+  .btnNext {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(20vw, -50%);
+    display: flex;
+    align-items: center;
+    text-align: right;
+    cursor: pointer;
+    span {
+      font-size: 11px;
+      line-height: 1;
+      opacity: 1;
+      transform: translateX(-30%);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: white;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform-origin: right center;
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background: white;
+      position: absolute;
+      bottom: 50%;
+      right: 0;
+      transform-origin: right center;
+      transform: rotate(-180deg);
+      transition: transform 0.3s;
+    }
+    &:hover span {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    &:hover::before {
+      transform: rotate(30deg);
+    }
+    &:hover::after {
+      transform: rotate(-30deg);
+    }
+  }
+}
