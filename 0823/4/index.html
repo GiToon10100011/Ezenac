@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="./script.js"></script>
+  <title>Document</title>
+  <style>
+    #result{
+      font-size: 18px;
+      &.done{
+        text-decoration: line-through;
+        color: crimson;
+      }
+    }
+    #end{
+      font-size: 18px;
+      transition: all 0.3s;
+      &.active{
+        color: white;
+        background: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="result"></div>
+  <div id="end"></div>
+</body>
+</html>
