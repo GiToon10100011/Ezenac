@@ -1,0 +1,78 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)), url("./IMG_7765.jpg") center -900px/cover no-repeat;
+}
+
+.cursorItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cursorItem .circle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0.6;
+  background: url(./ydhdot-removebg-preview.png) center/cover no-repeat;
+  margin: 6px 6px;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+.cursorItem .circle::before {
+  content: "으흐흐";
+  position: absolute;
+  bottom: -120px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  width: 400px;
+  color: white;
+  font-size: 20px;
+}
+.container .top {
+  border: 2px solid white;
+  text-align: center;
+  padding: 20px;
+}
+.container .bottom {
+  border: 2px solid white;
+  border-top: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+.container .bottom a {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  transition: all 0.3s;
+}
+.container .bottom a:hover {
+  background: #fff;
+  color: #000;
+}
+.container .bottom .line {
+  border: 2px solid #fff;
+}
