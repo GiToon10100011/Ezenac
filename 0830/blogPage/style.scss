@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    .headerWrapper {
+      position: relative;
+      padding: 10px 20px;
+      h1 {
+        color: #fff;
+        font-size: 15px;
+      }
+    }
+    .progressWrapper {
+      position: relative;
+      width: 100%;
+      height: 1px;
+      background: #d0d0d0;
+      display: none;
+      .bar {
+        width: 0;
+        height: inherit;
+        position: absolute;
+        background: black;
+        transition: width 0.4s ease-out;
+      }
+    }
+    &.fixed {
+      position: fixed;
+      background: rgba($color: #fff, $alpha: 0.8);
+      .progressWrapper {
+        display: block;
+      }
+      .headerWrapper h1 {
+        color: #000;
+      }
+    }
+  }
+  .coverWrapper {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: url("./IMG_7765-removebg-preview.png") center / 50% no-repeat,
+      url("../images/bg.jpg") center top/cover no-repeat;
+    // ;
+    // z-index: 100;
+    // display: none;
+    .dimmed {
+      position: absolute;
+      width: 100%;
+      height: inherit;
+      background: rgba($color: #000000, $alpha: 0.9);
+    }
+    .coverTitle {
+      position: relative;
+      text-align: center;
+      h1 {
+        color: white;
+      }
+      p {
+        color: white;
+      }
+    }
+  }
+  .contentWrapper {
+    position: relative;
+    background: white;
+    .contentInnerWrapper {
+      width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      h4 {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
