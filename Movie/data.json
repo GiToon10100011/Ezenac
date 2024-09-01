@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Interstellar : Humanity's Last Hope.",
+      "desc": "Interstellar is an epic sci-fi film where a team of astronauts travels through a wormhole in search of a new home for humanity, blending emotional depth with scientific adventure."
+    },
+    {
+      "id": 2,
+      "title": "Martian : Survival on Mars",
+      "desc": "Martian is a gripping sci-fi novel by Andy Weir, detailing astronaut Mark Watney's survival after being stranded on Mars, blending humor and science in a tale of ingenuity and resilience."
+    },
+    {
+      "id": 3,
+      "title": "Gravity : A drift in Space",
+      "desc": "Gravity is a thrilling sci-fi film where two astronauts struggle for survival after a devastating accident leaves them adrift in space, highlighting human perseverance against the void."
+    },
+    {
+      "id": 4,
+      "title": "Star Wars - A Galactic Battle: Destiny",
+      "desc": "Star Wars is an iconic sci-fi saga that follows the epic battle between the Rebel Alliance and the Galactic Empire, featuring timeless characters and adventures in a galaxy far, far away."
+    },
+    {
+      "id": 5,
+      "title": "E.T. the Extra-Terrestrial",
+      "desc": "E.T. is a heartwarming sci-fi film about a young boy who befriends a stranded alien and helps him find his way home, capturing the magic of friendship and adventure."
+    }
+  ]
+}
