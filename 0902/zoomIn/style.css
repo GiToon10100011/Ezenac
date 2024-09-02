@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background: linear-gradient(to bottom, #4b0220, #691c46);
+}
+body main section {
+  width: 100%;
+  position: relative;
+}
+body main section.mainPage {
+  position: fixed;
+  top: 0;
+  padding-bottom: 50px;
+}
+body main section.mainPage .imageWrapper {
+  height: 100vh;
+  perspective: 400px;
+}
+body main section.mainPage .imageWrapper .parallaxImg {
+  position: fixed;
+  width: 100%;
+  height: inherit;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+body main section.mainPage .imageWrapper .parallaxImg:nth-child(1) {
+  background-image: url("../images/main_0.png");
+}
+body main section.mainPage .imageWrapper .parallaxImg:nth-child(2) {
+  background-image: url("../images/main_1.png");
+}
+body main section.mainPage .imageWrapper .parallaxImg:nth-child(3) {
+  background-image: url("../images/main_2.png");
+}
+body main section.mainPage .imageWrapper .parallaxImg:nth-child(4) {
+  background-image: url("../images/main_3.png");
+}
+body main section.mainPage .imageWrapper .parallaxImg:nth-child(5) {
+  background-image: url("../images/main_4.png");
+}
+body main section.mainPage .imageWrapper .parallaxImg:nth-child(6) {
+  background-image: url("../images/main_5.png");
+}
+body main section.mainPage .imageWrapper .parallaxImg:nth-child(7) {
+  background-image: url("../images/main_6.png");
+}
+body main section.subPage {
+  padding-top: 100vh;
+  height: 60vh;
+}
+body main section.subPage .innerWrapper {
+  position: relative;
+  color: white;
+}
+body main section.subPage .innerWrapper .contentWrapper {
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.6);
+}
+body main section.subPage .innerWrapper .contentWrapper p {
+  font-size: 20px;
+  color: #f3f3f3;
+  line-height: 36px;
+}

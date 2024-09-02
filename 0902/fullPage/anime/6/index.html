@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Anime.js -->
+    <script defer src="./anime.js"></script>
+    <!-- Custom js -->
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background: brown;
+        color: #fff;
+        h1 {
+          font-size: 50px;
+          color: #fff;
+          margin-bottom: 20px;
+        }
+        ul {
+          display: flex;
+          width: 400px;
+          flex-wrap: wrap;
+          li {
+            width: calc(100% / 9 - 4px);
+            height: 30px;
+            background: url("./DFCD48BF-6209-4FD8-B385-F8E06C2D1B34.jpg") center/cover no-repeat;
+            margin: 0 2px 2px;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>You can't do it.</h1>
+      <ul></ul>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Anime.js -->
+    <script defer src="./anime.js"></script>
+    <!-- Custom js -->
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      section {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .circle {
+          position: absolute;
+          top: calc(50% - 308px);
+          left: calc(50% - 604px);
+          width: 10px;
+          height: 10px;
+          background: white;
+          border-radius: 50%;
+        }
+        .eye {
+          position: absolute;
+          bottom: 400px;
+          left: 360px;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: #fff;
+          animation: ani 1s infinite alternate ease-in-out;
+        }
+        svg {
+          fill: none;
+          stroke: white;
+          stroke-width: 2;
+          width: 1200px;
+        }
+      }
+
+      @keyframes ani {
+        from {
+          height: 20px;
+          transform: skew(0deg);
+        }
+
+        to {
+          height: 10px;
+          transform: skew(20deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="circle"></div>
+      <div class="eye"></div>
+      <svg class="svg" viewBox="0 0 912 461">
+        <path
+          d="M66 45L1 250L14 268L52 284L150 304L267 315H359L394 304L477 268L520 245L548 230L585 235L626 250H688L723 235H694L646 206L607 172L567 162L557 125L520 89L509 45V19L485 45L477 96L490 172L477 191L459 186L414 154L323 89L235 38L150 1H105L66 45Z"
+        />
+        <path d="M7 230L55 248L109 256H158L182 248" />
+      </svg>
+    </section>
+  </body>
+</html>
