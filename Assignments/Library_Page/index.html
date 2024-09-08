@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- jQuery -->
+    <script defer src="Libraries/PSE/jquery-2.1.4.js"></script>
+
+    <!-- PageScrollEffects -->
+    <link rel="stylesheet" href="./Libraries/PSE/velocity.css" />
+    <script defer src="Libraries/PSE/modernizr.js"></script>
+    <script defer src="Libraries/PSE/velocity.min.js"></script>
+    <script defer src="Libraries/PSE/velocity.ui.min.js"></script>
+    <script defer src="Libraries/PSE/main.js"></script>
+
+    <!-- scrollTo -->
+    <script defer src="Libraries/scrollTo/jquery.scrollTo.js"></script>
+
+    <!-- SlickSlider -->
+    <link rel="stylesheet" href="./Libraries/Slick/slick.css" />
+    <link rel="stylesheet" href="./Libraries/Slick/slick-theme.css" />
+    <script defer src="Libraries/Slick/slick.js"></script>
+
+    <!-- FeatherLight -->
+    <link rel="stylesheet" href="./Libraries/Feather/featherlight.css" />
+    <script defer src="Libraries/Feather/featherlight.js"></script>
+
+    <!-- FontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/a7e457e146.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom CSS & JS -->
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <!-- hijacking: on/off - animation:
+  none/scaleDown/rotate/gallery/catch/opacity/fixed/parallax -->
+  <body data-hijacking="on" data-animation="gallery">
+    <div class="container">
+      <section class="cd-section visible" id="home">
+        <div>
+          <div class="content">
+            <div class="home-inner">
+              <h3 class="welcome-text">
+                <span>
+                  You can't do it. <i class="fa-regular fa-thumbs-down"></i>
+                </span>
+                <br />
+                <span>- Ezen Academy -</span>
+              </h3>
+              <div class="opacity-image"></div>
+              <div class="home-heading">
+                <span>Creative</span>
+                <span>Architecture</span>
+                <span>Specialists</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cd-section" id="about">
+        <div>
+          <div class="content">
+            <div class="about-inner">
+              <div class="about-items">
+                <div class="item">
+                  <img src="./images/careers-main-01.png" alt="career01" />
+                  <span>
+                    <h3>Together We can make an impact</h3>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Ut cumque labore consectetur
+                    </p>
+                  </span>
+                </div>
+                <div class="item">
+                  <img src="./images/careers-main-02.png" alt="career02" />
+                  <span>
+                    <h3>We're always looking for talent</h3>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Ut cumque labore consectetur
+                    </p>
+                  </span>
+                </div>
+                <div class="item">
+                  <img src="./images/careers-main-03.png" alt="career03" />
+                  <span>
+                    <h3>Fellowship</h3>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Ut cumque labore consectetur
+                    </p>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cd-section" id="project">
+        <div>
+          <div class="content">
+            <div class="project-inner">
+              <input type="radio" name="tabmenu" id="tab1" checked />
+              <input type="radio" name="tabmenu" id="tab2" />
+              <input type="radio" name="tabmenu" id="tab3" />
+              <div class="tabs">
+                <div class="tab">
+                  <div class="project-info" data-text="01">
+                    <h3>Project : Glass Wall Architecture</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Repellat consectetur fugiat sunt veniam! Non nisi magnam
+                      consequatur tenetur maxime laudantium inventore ab nostrum
+                      aliquam. Debitis sunt voluptate autem fuga laudantium!
+                    </p>
+                    <ul>
+                      <li><b>Area</b> : 1670m<sup>2</sup></li>
+                      <li><b>Completed Date</b> : July 2024</li>
+                      <li><b>Architect</b> : Andrew Yu</li>
+                    </ul>
+                    <div class="detail">
+                      <div><span>225</span>working day</div>
+                      <div><span>320</span>members</div>
+                      <div><span>3M</span>budget</div>
+                    </div>
+                    <a
+                      href="./project-detail-01.html"
+                      class="view-project"
+                      data-featherlight="iframe"
+                      >view project <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </div>
+                  <div class="project-photo">
+                    <img
+                      src="./images/project-main-01-01.jpg"
+                      alt="project01-01"
+                    />
+                    <img
+                      src="./images/project-main-01-02.jpg"
+                      alt="project01-02"
+                    />
+                    <img
+                      src="./images/project-main-01-03.jpg"
+                      alt="project01-03"
+                    />
+                    <img
+                      src="./images/project-main-01-04.jpg"
+                      alt="project01-04"
+                    />
+                  </div>
+                </div>
+                <div class="tab">
+                  <div class="project-info" data-text="02">
+                    <h3>Project : Hallway of Architecture</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Repellat consectetur fugiat sunt veniam! Non nisi magnam
+                      consequatur tenetur maxime laudantium inventore ab nostrum
+                      aliquam. Debitis sunt voluptate autem fuga laudantium!
+                    </p>
+                    <ul>
+                      <li><b>Area</b> : 1670m<sup>2</sup></li>
+                      <li><b>Completed Date</b> : July 2024</li>
+                      <li><b>Architect</b> : Andrew Yu</li>
+                    </ul>
+                    <div class="detail">
+                      <div><span>225</span>working day</div>
+                      <div><span>320</span>members</div>
+                      <div><span>3M</span>budget</div>
+                    </div>
+                    <a
+                      href="#none"
+                      class="view-project"
+                      data-featherlight="iframe"
+                      >view project <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </div>
+                  <div class="project-photo">
+                    <img
+                      src="./images/project-main-02-01.jpg"
+                      alt="project02-01"
+                    />
+                    <img
+                      src="./images/project-main-02-02.jpg"
+                      alt="project02-02"
+                    />
+                    <img
+                      src="./images/project-main-02-03.jpg"
+                      alt="project02-03"
+                    />
+                    <img
+                      src="./images/project-main-02-04.jpg"
+                      alt="project02-04"
+                    />
+                  </div>
+                </div>
+                <div class="tab">
+                  <div class="project-info" data-text="03">
+                    <h3>Project : Outside Stairs Architecture</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Repellat consectetur fugiat sunt veniam! Non nisi magnam
+                      consequatur tenetur maxime laudantium inventore ab nostrum
+                      aliquam. Debitis sunt voluptate autem fuga laudantium!
+                    </p>
+                    <ul>
+                      <li><b>Area</b> : 1670m<sup>2</sup></li>
+                      <li><b>Completed Date</b> : July 2024</li>
+                      <li><b>Architect</b> : Andrew Yu</li>
+                    </ul>
+                    <div class="detail">
+                      <div><span>225</span>working day</div>
+                      <div><span>320</span>members</div>
+                      <div><span>3M</span>budget</div>
+                    </div>
+                    <a
+                      href="./project-detail-01.html"
+                      class="view-project"
+                      data-featherlight="iframe"
+                      >view project <i class="fa-solid fa-arrow-right"></i
+                    ></a>
+                  </div>
+                  <div class="project-photo">
+                    <img
+                      src="./images/project-main-03-01.jpg"
+                      alt="project03-01"
+                    />
+                    <img
+                      src="./images/project-main-03-02.jpg"
+                      alt="project03-02"
+                    />
+                    <img
+                      src="./images/project-main-03-03.jpg"
+                      alt="project03-03"
+                    />
+                    <img
+                      src="./images/project-main-03-04.jpg"
+                      alt="project03-04"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="btn">
+                <label for="tab1"></label>
+                <label for="tab2"></label>
+                <label for="tab3"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cd-section" id="plan">
+        <div>
+          <div class="content">
+            <div class="plan-inner">
+              <div class="plan-feature">
+                <div class="plan-info">
+                  <div class="plan-heading">
+                    <h2>Planning <br />for the Next Project</h2>
+                    <hr class="bar" />
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ducimus placeat, dolore dignissimos corrupti numquam
+                      maxime! Quasi molestias numquam, cumque omnis ipsum
+                      voluptatibus aperiam tenetur harum? Cumque molestiae ullam
+                      eum hic?
+                    </p>
+                  </div>
+                  <div class="plan-photo">
+                    <img src="./images/plan-main-01.jpg" alt="" />
+                  </div>
+                </div>
+                <div class="history-info">
+                  <h2>History</h2>
+                  <hr class="bar" />
+                  <div class="history-slider">
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2024</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2023</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2022</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2021</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2020</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2019</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2018</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        The Project <br />
+                        of Architect for the <span>2017</span>
+                      </h4>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Sed quos dicta, nam alias maxime architecto
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cd-section" id="awards">
+        <div>
+          <div class="content">
+            <div class="awards-inner">
+              <div class="about-awards">
+                <div class="about-heading">
+                  <h2>
+                    2024 <br />
+                    Architecture Award <br />
+                    Winner
+                  </h2>
+                  <hr class="bar" />
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquid amet itaque molestias animi eveniet dolore velit
+                    corporis. Dicta distinctio enim, vel debitis harum, tenetur
+                    reprehenderit omnis perspiciatis iusto voluptate minima
+                  </p>
+                  <a href="#none" class="view-awards">VIEW THE AWARDS</a>
+                </div>
+              </div>
+              <div class="victory">
+                <img src="images/victory-jump.png" alt="victory" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cd-section" id="location">
+        <div>
+          <div class="content">
+            <div class="location-inner">
+              <div class="feature">
+                <div class="office">
+                  <div class="hq">
+                    <b>creative design group</b>
+                    <h2>Headquarters</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas necessitatibus ipsa amet reiciendis fugiat. Ipsa
+                      consequuntur eligendi distinctio, illo laudantium quae
+                      reprehenderit magnam quia amet molestiae, praesentium,
+                      vitae voluptates et!
+                    </p>
+                    <span>
+                      Address : 309, New Cavendish St, ECiY 3WK / Tel :
+                      0800-214-5252
+                    </span>
+                  </div>
+                  <div class="cs">
+                    <b>the perfect way</b>
+                    <h2>Customer Service</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas necessitatibus ipsa amet reiciendis fugiat. Ipsa
+                      consequuntur eligendi distinctio, illo laudantium quae
+                      reprehenderit magnam quia amet molestiae, praesentium,
+                      vitae voluptates et!
+                    </p>
+                    <span>
+                      Address : 309, New Cavendish St, ECiY 3WK / Tel :
+                      0800-214-3400
+                    </span>
+                  </div>
+                </div>
+                <div class="service">
+                  <div class="service-item">
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3>Built and Natural Contexts</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rem provident atque est voluptate
+                    </p>
+                  </div>
+                  <div class="service-item">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h3>Landscape Design</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rem provident atque est voluptate
+                    </p>
+                  </div>
+                  <div class="service-item">
+                    <i class="fa-solid fa-cube"></i>
+                    <h3>Every Building Site Unique</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rem provident atque est voluptate
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cd-section" id="contact">
+        <div>
+          <div class="content">
+            <div class="contact-inner">
+              <div class="contact-feature">
+                <div class="contact-form">
+                  <h3><b>Contact</b> Us</h3>
+                  <p>Feel free to ask for details, don't save any questions.</p>
+                  <form
+                    action="https://localhost:3000"
+                    method="get"
+                    class="send-box"
+                  >
+                    <label for="email">Email <span>*</span></label>
+                    <input id="email" type="text" />
+                    <label for="subject">Subject <span>*</span></label>
+                    <input id="subject" type="text" />
+                    <label for="message">Message <span>*</span></label>
+                    <input id="message" type="text" />
+                    <textarea
+                      name="message"
+                      id="message"
+                      cols="30"
+                      rows="10"
+                    ></textarea>
+                    <input type="submit" value="SEND MESSAGE" />
+                  </form>
+                </div>
+                <div class="contact-info">
+                  <h4>Our <b>Office</b></h4>
+                  <ul>
+                    <li>Address : Address 309, New Cavendish St. EC1Y 3WK</li>
+                    <li>Phone : 0800-214-5252</li>
+                    <li>Email : Ezenac@ezen.co.kr</li>
+                  </ul>
+                  <h4>Business <b>Hours</b></h4>
+                  <ul>
+                    <li>
+                      <i class="fa-regular fa-clock"></i> Monday - Friday : 9am
+                      to 5pm
+                    </li>
+                    <li>
+                      <i class="fa-regular fa-clock"></i> Saturday : 9am to 2pm
+                    </li>
+                    <li><i class="fa-regular fa-clock"></i> Sunday : Closed</li>
+                  </ul>
+                  <h4>Get in <b>Touch</b></h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quibusdam eligendi iure cumque amet. Nostrum corporis quod
+                    aliquam excepturi dolor id, minima quae sit quidem
+                    reiciendis quaerat vitae. Eaque, nulla natus?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <header>
+        <div class="gnb-inner">
+          <div class="logo">
+            <a href="#none">
+              <img src="./images/logo.png" alt="logo" />
+            </a>
+          </div>
+          <div class="gnb">
+            <div class="slogan">We design places, not projects.</div>
+            <ul class="menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#project">Project</a></li>
+              <li><a href="#plan">Plan & History</a></li>
+              <li><a href="#awards">Awards</a></li>
+              <li><a href="#location">Location</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </header>
+    </div>
+  </body>
+</html>
