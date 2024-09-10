@@ -1,13 +1,21 @@
+//Fullpage.js
+new fullpage("#fullpage", {
+  autoScrolling: true, // Enable auto-scrolling
+  scrollHorizontally: true, // Enable horizontal scrolling
+  slidesNavigation: true, // Show navigation dots for horizontal slides
+  controlArrows: true, // Show control arrows for slides
+});
+
 ///Header
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
   let scrollY = window.scrollY;
-  if(scrollY > 60){
-    header.classList.add("active")
-  } else{
-    header.classList.remove("active")
+  if (scrollY > 60) {
+    header.classList.add("active");
+  } else {
+    header.classList.remove("active");
   }
-})
+});
 
 //trigger
 const trigger = document.querySelector(".trigger");
@@ -26,9 +34,9 @@ trigger.addEventListener("click", () => {
 });
 
 // scrollTo
-$(".menu a").click(function() {
-  $.scrollTo(this.hash || 0, 600)
-})
+$(".menu a").click(function () {
+  $.scrollTo(this.hash || 0, 600);
+});
 
 //Slick Slider : Project
 $(".project-photo").slick({
@@ -73,5 +81,3 @@ $(".history-slider").slick({
     },
   ],
 });
-
-
