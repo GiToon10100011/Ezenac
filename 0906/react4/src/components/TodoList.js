@@ -1,8 +1,12 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
+import { TodoContext } from "../App";
 
-const TodoList = ({ todo, onUpdate, onDelete }) => {
+const TodoList = () => {
+  const storeData = useContext(TodoContext);
+  //이런식으로도 디폴트 값 지정이 가능하다. 이걸 더 애용하자. 
+  const { todo = [] } = storeData;
   const [search, setSearch] = useState("");
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -46,16 +50,15 @@ const TodoList = ({ todo, onUpdate, onDelete }) => {
           <TodoItem key={it.id} {...it} />
         ))} */}
         {getSearchResult().map((it) => (
-          <TodoItem
-            key={it.id}
-            {...it}
-            onUpdate={onUpdate}
-            onDelete={onDelete}
-          />
+          <TodoItem key={it.id} {...it} />
         ))}
       </div>
     </div>
   );
 };
+
+// TodoList.defaultProps = {
+//   todo: [],
+// };
 
 export default TodoList;
