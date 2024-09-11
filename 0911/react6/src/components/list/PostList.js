@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PostListItem from "./PostListItem";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,10 +12,17 @@ const Wrapper = styled.div`
 const PostList = ({ posts, onClickItem }) => {
   return (
     <Wrapper>
-      <div>리엑트 컴포넌트 렌더링하기</div>
-      <div>리엑트 컴포넌트 개념 소개</div>
-      <div>리엑트와 자바스크립트의 상관관계</div>
-      <div>제 이름은 염동훈입니다. 나이는 9824세입니다.</div>
+      {posts.map((post) => {
+        return (
+          <PostListItem
+            key={post.id}
+            post={post}
+            onClick={() => {
+              onClickItem(post);
+            }}
+          />
+        );
+      })}
     </Wrapper>
   );
 };
