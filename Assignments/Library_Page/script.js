@@ -6,7 +6,6 @@ new fullpage("#fullpage", {
   controlArrows: true, // Show control arrows for slides
 });
 
-<<<<<<< HEAD
 console.log(fullpage_api);
 
 window.addEventListener("wheel", (e) => {
@@ -18,8 +17,6 @@ window.addEventListener("wheel", (e) => {
   }
 });
 
-=======
->>>>>>> 036d7c0028afff3c6d1a85db2289d5ae2edf0564
 ///Header
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");

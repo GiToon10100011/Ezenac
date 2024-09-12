@@ -14,13 +14,10 @@ a {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 @font-face {
   font-family: "HyliaSerif";
   src: url("./fonts/HyliaSerifBeta-Regular.otf");
 }
-=======
->>>>>>> 036d7c0028afff3c6d1a85db2289d5ae2edf0564
 @keyframes overlay {
   from {
     width: 0;
@@ -68,7 +65,6 @@ a {
     width: 100%;
   }
 }
-<<<<<<< HEAD
 .fp-controlArrow {
   display: none;
 }
@@ -90,8 +86,6 @@ a {
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
-=======
->>>>>>> 036d7c0028afff3c6d1a85db2289d5ae2edf0564
 body {
   font-family: Montserrat;
   color: #222;
@@ -128,12 +122,9 @@ header .gnb-inner {
   justify-content: space-between;
   align-items: center;
 }
-<<<<<<< HEAD
 header .gnb-inner .logo a img {
   width: 160px;
 }
-=======
->>>>>>> 036d7c0028afff3c6d1a85db2289d5ae2edf0564
 header .gnb-inner .gnb .slogan {
   font-size: 16px;
   font-style: italic;
@@ -177,11 +168,7 @@ header .gnb-inner .trigger {
 .home-inner .opacity-image {
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
   background: url("./images/totkbg/loztotk-key-art-background.jpg") center/cover no-repeat;
-=======
-  background: url("./images/section-bg-01.jpg") center/cover no-repeat;
->>>>>>> 036d7c0028afff3c6d1a85db2289d5ae2edf0564
   opacity: 0;
   animation: opacity-image 1s 2.5s ease-in both;
 }
@@ -196,11 +183,7 @@ header .gnb-inner .trigger {
   overflow: hidden;
   display: block;
   font-size: 115px;
-<<<<<<< HEAD
   font-family: "HyliaSerif";
-=======
-  font-weight: 600;
->>>>>>> 036d7c0028afff3c6d1a85db2289d5ae2edf0564
   color: #fff;
   animation: reveal 1s 3s ease-in-out both;
 }
