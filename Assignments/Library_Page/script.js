@@ -6,6 +6,7 @@ new fullpage("#fullpage", {
   controlArrows: true, // Show control arrows for slides
 });
 
+//test
 console.log(fullpage_api);
 
 window.addEventListener("wheel", (e) => {
