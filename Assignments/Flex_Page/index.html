@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      defer
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      defer
+      src="//code.jquery.com/jquery-m igrate-1.2.1.min.js"
+    ></script>
+    <!-- SlickSlider -->
+    <link rel="stylesheet" href="./Libraries/Slick_Sliders/slick.css" />
+    <link rel="stylesheet" href="./Libraries/Slick_Sliders/slick-theme.css" />
+    <script defer src="Libraries/Slick_Sliders/slick.js"></script>
+    <!-- scrollTo -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"
+    ></script>
+    <!-- FontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/a7e457e146.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom CSS & JS -->
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <div class="intro_video">
+      <video src="./images/Intro1.mp4" autoplay muted></video>
+    </div>
+    <div class="container">
+      <header>
+        <div class="banner">
+          <ul class="lnb">
+            <li>
+              <a href="#none"><em>for</em> Nintendo</a>
+            </li>
+            <li>
+              <a href="#none"><em>for</em> PlayStation</a>
+            </li>
+            <li>
+              <a href="#none"><em>for</em> Xbox</a>
+            </li>
+          </ul>
+        </div>
+        <nav>
+          <div class="logo">
+            <a href="">
+              <img src="./images/Logo1.png" alt="logo" />
+            </a>
+          </div>
+          <ul class="gnb">
+            <li><a href="#">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#ranking">ranking</a></li>
+            <li><a href="#product">product</a></li>
+            <li><a href="#characters">characters</a></li>
+          </ul>
+        </nav>
+        <div class="trigger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </header>
+      <main class="intro">
+        <div class="inner">
+          <div class="heading">
+            <h1>The World's Best Games</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
+              quidem at repudiandae numquam consectetur distinctioctetur.
+            </p>
+          </div>
+        </div>
+      </main>
+      <section class="about" id="about">
+        <div class="inner">
+          <div class="about_contents">
+            <div class="desc">
+              <h2>About The Best Games in the world</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+                pariatur est odit ipsum ex illo optio. Rem accusamus iure qui,
+                provident unde deserunt, autem distinctio neque ipsam fugit,
+                vero excepturi.<br /><br />
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa,
+                nemo commodi distinctio voluptates vitae quod accusamus totam.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </p>
+              <a href="#none">Check for more information</a>
+            </div>
+            <div class="photo">
+              <img src="./images/about1.jpg" alt="about01" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="ranking" class="ranking">
+        <div class="inner">
+          <div class="ranking_contents">
+            <h2>The World's Best Games of All Time</h2>
+            <div class="items">
+              <div class="item">
+                <div class="up-image">
+                  <img src="./images/N_ranking1.avif" alt="ranking01" />
+                </div>
+                <div class="down-desc">
+                  <span class="badge must">Must Play</span>
+                  <h3>The Legend of Zelda, TotK</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Praesentium atque asperiores, aut, error itaque neque rem,
+                    debitis voluptatibus eligendi cumque molestias! Quam, odit
+                    esse eveniet optio labore excepturi incidunt culpa?
+                  </p>
+                  <a class="btn-explore" href="#none"
+                    >Learn More </a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="up-image">
+                  <img src="./images/N_ranking2.avif" alt="ranking02" />
+                </div>
+                <div class="down-desc">
+                  <span class="badge good">Available Now</span>
+                  <h3>Super Mario Odyssey</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Praesentium atque asperiores, aut, error itaque neque rem,
+                    debitis voluptatibus eligendi cumque molestias! Quam, odit
+                    esse eveniet optio labore excepturi incidunt culpa?
+                  </p>
+                  <a class="btn-explore" href="#none"
+                    >Learn More </a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="up-image">
+                  <img src="./images/N_ranking3.avif" alt="ranking03" />
+                </div>
+                <div class="down-desc">
+                  <span class="badge good">Available Now</span>
+                  <h3>Splatoon 3</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Praesentium atque asperiores, aut, error itaque neque rem,
+                    debitis voluptatibus eligendi cumque molestias! Quam, odit
+                    esse eveniet optio labore excepturi incidunt culpa?
+                  </p>
+                  <a class="btn-explore" href="#none"
+                    >Learn More 
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="product" class="product">
+        <div class="inner">
+          <div class="product_contents">
+            <h2><b>Console</b></h2>
+            <p>Browse other console systems and bundles.</p>
+            <div class="myslider">
+              <div>
+                <p class="console">
+                  <img src="./images/N_console1.avif" alt="console01" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console2.avif" alt="console02" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console3.avif" alt="console03" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console4.avif" alt="console04" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console5.avif" alt="console05" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console6.avif" alt="console06" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console7.avif" alt="console07" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="console">
+                  <img src="./images/N_console8.avif" alt="console08" class = "console-img"/>
+                  <span class = "product_title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+                  <span>24/07/20</span>
+                  <span><b>$349.99</b></span>
+                  <span class="category">
+                    <span>| Hardware</span>
+                    <i class="fa-regular fa-heart"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="callaction">
+        <div class="callaction_heading">
+          <h2>
+            Check out our <b>Recent Releases</b> <br />
+            on our <b>Website</b>
+          </h2>
+          <a href="#none">Yeah, Take me there</a>
+        </div>
+      </section>
+      <section id="characters" class="characters">
+        <div class="inner">
+          <div class="characters_contents">
+            <hr class="divider" />
+            <h1>Characters</h1>
+            <div class="items">
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character1.avif" alt="character1">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character2.avif" alt="character2">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character3.avif" alt="character3">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character4.avif" alt="character4">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character5.avif" alt="character5">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character6.avif" alt="character6">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character7.avif" alt="character7">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+              <div class="item">
+                <div class="img_container">
+                  <img src="./images/N_character8.avif" alt="character8">
+                </div>
+                <span class="characterTitle">Lorem ipsum</span>
+              </div>
+            </div>    
+            <hr class="divider" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="sns">
+        <div class="inner">
+          <div class="sns_heading">
+            <div class="sns_logo">
+              <img src="./images/Logo1.png" alt="">
+            </div>
+            <div class="btns">
+              <a href="#none"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#none"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#none"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#none"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="inner">
+          <div class="footer_content">
+            <ul class="community">
+              <li>Community</li>
+              <li><a href="#none">Subscribe</a></li>
+              <li><a href="#none">Give a Gift</a></li>
+              <li><a href="#none">Customer Service FAQ</a></li>
+              <li><a href="#none">Access Your Subscription</a></li>
+            </ul>
+            <ul class="network">
+              <li>Network</li>
+              <li><a href="#none">Privacy Policy</a></li>
+              <li><a href="#none">Terms Of Service</a></li>
+              <li><a href="#none">Advertise</a></li>
+              <li><a href="#none">Jobs</a></li>
+            </ul>
+            <ul class="help">
+              <li>Help Us Preserve This Project</li>
+              <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
+              <li>Copyright &copy; 2024 EZEN. All rights reserved</li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <a class="Top" href="#">
+      <i class="fa-solid fa-chevron-up"></i>
+    </a>
+  </body>
+</html>
