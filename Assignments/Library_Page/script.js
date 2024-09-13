@@ -6,8 +6,24 @@ new fullpage("#fullpage", {
   controlArrows: true, // Show control arrows for slides
 });
 
-//test
-console.log(fullpage_api);
+// console.log(fullpage_api);
+
+const animationTrigger = (e) => {
+  const overlay = document.querySelector(".home-inner");
+  const welcomeText = document.querySelector(".welcome-text");
+
+  overlay.classList.add("active");
+  welcomeText.classList.add("fade");
+
+  setTimeout(() => {
+    const slideNav = document.querySelector(".fp-slidesNav");
+    slideNav.style.opacity = 1;
+    e.target.style.display = "none";
+  }, 3000);
+};
+
+const welcomeImage = document.querySelector(".welcome-text img");
+welcomeImage.addEventListener("click", animationTrigger);
 
 window.addEventListener("wheel", (e) => {
   if (e.deltaY > 0) {
