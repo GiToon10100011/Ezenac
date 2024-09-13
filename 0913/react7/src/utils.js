@@ -17,7 +17,46 @@ export const getEmotionImgById = (emotionId) => {
       return emotion4;
     case "5":
       return emotion5;
-    default: 
+    default:
       return null;
   }
 };
+
+export const getFormattedDate = (targetDate) => {
+  const year = targetDate.getFullYear();
+  let month = targetDate.getMonth() + 1;
+  let date = targetDate.getDate();
+
+  month < 10 ? (month = `0${month}`) : month;
+  date < 10 ? (date = `0${date}`) : date;
+
+  return `${year}-${month}-${date}`;
+};
+
+export const emotionList = [
+  {
+    id: 1,
+    name: "매우 좋음",
+    img: getEmotionImgById(1)
+  },
+  {
+    id: 2,
+    name: "좋음",
+    img: getEmotionImgById(2)
+  },
+  {
+    id: 3,
+    name: "보통",
+    img: getEmotionImgById(3)
+  },
+  {
+    id: 4,
+    name: "나쁨",
+    img: getEmotionImgById(4)
+  },
+  {
+    id: 5,
+    name: "매우 나쁨",
+    img: getEmotionImgById(5)
+  }
+];

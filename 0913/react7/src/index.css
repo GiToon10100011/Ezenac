@@ -3,8 +3,21 @@
 body {
   margin: 0;
   font-family: "Merriweather";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  background: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  background: #fff;
+  box-shadow: 0 7px 29px rgba(100, 100, 100, 0.2);
 }
 
 code {
