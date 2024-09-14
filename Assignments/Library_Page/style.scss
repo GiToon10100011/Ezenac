@@ -11,18 +11,10 @@
 // Animations
 @keyframes overlay {
   from {
-    width: 0;
-    left: 0;
+    opacity: 1;
   }
-
-  50% {
-    width: 100%;
-    left: 0;
-  }
-
   to {
-    width: 0;
-    left: 100%;
+    opacity: 0;
   }
 }
 
@@ -62,6 +54,15 @@
   }
   to {
     width: 100%;
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    transform: translateZ(250px);
+  }
+  to {
+    transform: translateZ(0);
   }
 }
 
@@ -188,15 +189,19 @@ header {
 .home-inner {
   background: #000;
   height: 100%;
+  perspective: 400px;
+  transform-style: preserve-3d;
+  position: relative;
   &::before {
     // animation: overlay 1s 2s ease-in-out;
+    opacity: 0;
     content: "";
     width: 100%;
     height: 100%;
-    background: map-get($map: $color, $key: main-font-color);
+    background: #000;
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     z-index: 1;
   }
   .welcome-text {
@@ -212,7 +217,7 @@ header {
     img {
       width: 400px;
       border-radius: 50%;
-      transition: all 2s;
+      transition: all 3s;
       cursor: pointer;
       &:hover {
         box-shadow: 0 0 200px 4px
@@ -237,7 +242,11 @@ header {
     background: url("./images/totkbg/loztotk-key-art-background.jpg")
       center/cover no-repeat;
     opacity: 0;
+    transform: translateZ(250px);
     // animation: opacity-image 1s 2.5s ease-in both;
+    &.zoomOut{
+      animation: zoom-out linear 2s 5s both;
+    }
   }
   .home-heading {
     position: absolute;

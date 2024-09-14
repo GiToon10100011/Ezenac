@@ -11,9 +11,11 @@ new fullpage("#fullpage", {
 const animationTrigger = (e) => {
   const overlay = document.querySelector(".home-inner");
   const welcomeText = document.querySelector(".welcome-text");
+  const opacityImg = document.querySelector(".opacity-image");
 
   overlay.classList.add("active");
   welcomeText.classList.add("fade");
+  opacityImg.classList.add("zoomOut");
 
   setTimeout(() => {
     const slideNav = document.querySelector(".fp-slidesNav");

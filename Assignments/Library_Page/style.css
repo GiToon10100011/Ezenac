@@ -20,16 +20,10 @@ a {
 }
 @keyframes overlay {
   from {
-    width: 0;
-    left: 0;
-  }
-  50% {
-    width: 100%;
-    left: 0;
+    opacity: 1;
   }
   to {
-    width: 0;
-    left: 100%;
+    opacity: 0;
   }
 }
 @keyframes logoup {
@@ -63,6 +57,14 @@ a {
   }
   to {
     width: 100%;
+  }
+}
+@keyframes zoom-out {
+  from {
+    transform: translateZ(250px);
+  }
+  to {
+    transform: translateZ(0);
   }
 }
 .fp-controlArrow {
@@ -141,15 +143,19 @@ header .gnb-inner .trigger {
 .home-inner {
   background: #000;
   height: 100%;
+  perspective: 400px;
+  transform-style: preserve-3d;
+  position: relative;
 }
 .home-inner::before {
+  opacity: 0;
   content: "";
   width: 100%;
   height: 100%;
-  background: #222;
+  background: #000;
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   z-index: 1;
 }
 .home-inner .welcome-text {
@@ -166,7 +172,7 @@ header .gnb-inner .trigger {
 .home-inner .welcome-text img {
   width: 400px;
   border-radius: 50%;
-  transition: all 2s;
+  transition: all 3s;
   cursor: pointer;
 }
 .home-inner .welcome-text img:hover {
@@ -186,6 +192,10 @@ header .gnb-inner .trigger {
   height: 100%;
   background: url("./images/totkbg/loztotk-key-art-background.jpg") center/cover no-repeat;
   opacity: 0;
+  transform: translateZ(250px);
+}
+.home-inner .opacity-image.zoomOut {
+  animation: zoom-out linear 2s 5s both;
 }
 .home-inner .home-heading {
   position: absolute;
