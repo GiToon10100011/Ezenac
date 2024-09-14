@@ -40,14 +40,16 @@ a {
   }
   to {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(3) rotate(60deg);
+    transform: translate(-50%, -50%) scale(1.1);
   }
 }
-@keyframes opacity-image {
+@keyframes image-reveal {
   from {
+    margin-top: 50px;
     opacity: 0;
   }
   to {
+    margin: 0;
     opacity: 1;
   }
 }
@@ -65,6 +67,17 @@ a {
   }
   to {
     transform: translateZ(0);
+  }
+}
+@keyframes rotate {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+    transform: rotate(360deg);
   }
 }
 .fp-controlArrow {
@@ -140,14 +153,16 @@ header .gnb-inner .trigger {
   display: none;
 }
 
-.home-inner {
+.content {
+  position: relative;
+}
+.content .home-inner {
   background: #000;
   height: 100%;
   perspective: 400px;
-  transform-style: preserve-3d;
   position: relative;
 }
-.home-inner::before {
+.content .home-inner::before {
   opacity: 0;
   content: "";
   width: 100%;
@@ -158,7 +173,7 @@ header .gnb-inner .trigger {
   left: 0;
   z-index: 1;
 }
-.home-inner .welcome-text {
+.content .home-inner .welcome-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -169,41 +184,125 @@ header .gnb-inner .trigger {
   animation: logoup linear 2s both;
   opacity: 0;
 }
-.home-inner .welcome-text img {
+.content .home-inner .welcome-text img {
   width: 400px;
   border-radius: 50%;
-  transition: all 3s;
+  transition: all 1.5s;
   cursor: pointer;
 }
-.home-inner .welcome-text img:hover {
-  box-shadow: 0 0 200px 4px rgba(76, 214, 158, 0.4);
+.content .home-inner .welcome-text img:hover {
+  filter: drop-shadow(0 0 0.75rem #4cd69e);
 }
-.home-inner .welcome-text span:nth-of-type(1) {
+.content .home-inner .welcome-text span:nth-of-type(1) {
   font-size: 26px;
 }
-.home-inner .welcome-text span .fa-thumbs-down {
+.content .home-inner .welcome-text span .fa-thumbs-down {
   color: #4cd69e;
 }
-.home-inner .welcome-text.fade {
-  animation: logodown linear 2s both;
+.content .home-inner .welcome-text.fade {
+  animation: logodown cubic-bezier(0, 0.55, 0.45, 1) 2s both;
 }
-.home-inner .opacity-image {
+.content .home-inner .opacity-image {
   width: 100%;
   height: 100%;
   background: url("./images/totkbg/loztotk-key-art-background.jpg") center/cover no-repeat;
   opacity: 0;
-  transform: translateZ(250px);
+  transform: translateZ(0px);
 }
-.home-inner .opacity-image.zoomOut {
+.content .home-inner .opacity-image img {
+  position: absolute;
+  width: 1200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+}
+.content .home-inner .opacity-image img.link-main {
+  top: 0;
+  right: 0;
+}
+.content .home-inner .opacity-image img.floating-islands {
+  left: 0;
+}
+.content .home-inner .opacity-image .main-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 100px;
+  top: 80px;
+  z-index: 5;
+}
+.content .home-inner .opacity-image .main-logo .img-container {
+  width: 100%;
+  height: 100%;
+}
+.content .home-inner .opacity-image .main-logo .img-container img {
+  margin-top: 50px;
+  width: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+  filter: drop-shadow(0 0 0.75rem #327087);
+}
+.content .home-inner .opacity-image .main-logo .img-container img.logo-ouroboros {
+  opacity: 0;
+  z-index: -1;
+}
+.content .home-inner .opacity-image .main-logo p {
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  font-family: "HyliaSerif";
+  color: #faf7dc;
+  opacity: 0;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.content .home-inner .opacity-image .main-logo p:hover {
+  color: #4cd69e;
+  text-shadow: 2px 2px 4px #4cd69e;
+  transform: scale(1.02);
+}
+.content .home-inner .opacity-image .main-logo p:hover ~ .img-container img.logo-ouroboros {
+  animation-play-state: paused;
+}
+.content .home-inner .opacity-image.images-reveal img {
+  animation: image-reveal linear 0.6s both;
+}
+.content .home-inner .opacity-image.images-reveal img.link-main {
+  animation-delay: 0s;
+}
+.content .home-inner .opacity-image.images-reveal img.floating-islands {
+  animation-delay: 0.4s;
+}
+.content .home-inner .opacity-image.images-reveal img.logo-ouroboros {
+  animation-delay: 0.8s;
+}
+.content .home-inner .opacity-image.images-reveal img.zelda-logo {
+  animation: image-reveal linear 0.6s 1.2s both;
+}
+.content .home-inner .opacity-image.images-reveal .main-logo p {
+  animation: image-reveal linear 0.6s 1.4s both;
+}
+.content .home-inner .opacity-image.zoomOut {
   animation: zoom-out linear 2s 5s both;
 }
-.home-inner .home-heading {
+.content .home-inner .home-heading {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.home-inner .home-heading span {
+.content .home-inner .home-heading span {
   width: 0;
   overflow: hidden;
   display: block;
@@ -212,20 +311,61 @@ header .gnb-inner .trigger {
   color: #fff;
   animation: reveal 1s 3s ease-in-out both;
 }
-.home-inner .home-heading span:first-child {
+.content .home-inner .home-heading span:first-child {
   animation-delay: 3s;
 }
-.home-inner .home-heading span:nth-child(2) {
+.content .home-inner .home-heading span:nth-child(2) {
   animation-delay: 3.2s;
 }
-.home-inner .home-heading span:last-child {
+.content .home-inner .home-heading span:last-child {
   animation-delay: 3.4s;
 }
-.home-inner.active .opacity-image {
-  animation: opacity-image 1s 2.5s ease-in both;
+.content .home-inner.active .opacity-image {
+  animation: logoup 1s 2.5s ease-in both;
 }
-.home-inner.active::before {
+.content .home-inner.active::before {
   animation: overlay 1s 2s ease-in-out;
+}
+.content .home-inner.off::before {
+  display: none;
+}
+.content .trailer-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transition: all 0.6s;
+}
+.content .trailer-modal .trailer-close {
+  position: absolute;
+  z-index: 10;
+  top: 30px;
+  right: 70px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+.content .trailer-modal .bg-filter {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+}
+.content .trailer-modal .modal {
+  z-index: 10;
+  margin-bottom: 100px;
+}
+.content .trailer-modal.on {
+  opacity: 1;
+  top: 0;
 }
 
 .about-inner {

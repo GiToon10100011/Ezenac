@@ -7,22 +7,60 @@ new fullpage("#fullpage", {
 });
 
 // console.log(fullpage_api);
+const overlay = document.querySelector(".home-inner");
+const welcomeText = document.querySelector(".welcome-text");
+const opacityImg = document.querySelector(".opacity-image");
+const ouroboros = document.querySelector(".logo-ouroboros");
+
+const removalDelay = () => {
+  const slideNav = document.querySelector(".fp-slidesNav");
+  slideNav.style.opacity = 1;
+  overlay.classList.add("off");
+  opacityImg.classList.add("images-reveal");
+};
 
 const animationTrigger = (e) => {
-  const overlay = document.querySelector(".home-inner");
-  const welcomeText = document.querySelector(".welcome-text");
-  const opacityImg = document.querySelector(".opacity-image");
-
   overlay.classList.add("active");
   welcomeText.classList.add("fade");
   opacityImg.classList.add("zoomOut");
 
   setTimeout(() => {
-    const slideNav = document.querySelector(".fp-slidesNav");
-    slideNav.style.opacity = 1;
     e.target.style.display = "none";
   }, 3000);
+
+  setTimeout(removalDelay, 3000);
+  setTimeout(() => {
+    ouroboros.style.animation = `none`;
+    ouroboros.style.animation = `rotate 20s linear infinite both`;
+  }, 4800);
 };
+
+//Trailer Event
+const trailerModal = document.querySelector(".trailer-modal");
+const trailerTrigger = document.querySelector(".opacity-image p");
+const trailerOff = document.querySelector(".bg-filter");
+const trailerOff2 = document.querySelector(".trailer-close");
+
+trailerTrigger.addEventListener("mouseover", () => {
+  ouroboros.style.animationPlayState = "paused";
+});
+trailerTrigger.addEventListener("mouseout", () => {
+  ouroboros.style.animationPlayState = "running";
+});
+
+trailerTrigger.addEventListener("click", () => {
+  trailerModal.classList.add("on");
+  ouroboros.style.animationPlayState = "paused";
+});
+
+trailerOff.addEventListener("click", () => {
+  trailerModal.classList.remove("on");
+  ouroboros.style.animationPlayState = "running";
+});
+trailerOff2.addEventListener("click", () => {
+  trailerModal.classList.remove("on");
+  ouroboros.style.animationPlayState = "running";
+});
 
 const welcomeImage = document.querySelector(".welcome-text img");
 welcomeImage.addEventListener("click", animationTrigger);

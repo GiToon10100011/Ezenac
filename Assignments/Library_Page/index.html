@@ -55,6 +55,9 @@
     <!-- Custom CSS & JS -->
     <link rel="stylesheet" href="./style.css" />
     <script defer src="script.js"></script>
+
+    <!-- Youtube iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
   </head>
   <!-- hijacking: on/off - animation:
   none/scaleDown/rotate/gallery/catch/opacity/fixed/parallax -->
@@ -92,10 +95,57 @@
             <div class="content">
               <div class="home-inner">
                 <h3 class="welcome-text">
-                  <img src="./images/totkbg/obj_loading_2.webp" alt="zelda-logo">
+                  <img
+                    src="./images/totkbg/obj_loading_2.webp"
+                    alt="zelda-logo"
+                  />
                 </h3>
-                <div class="opacity-image"></div>
-                <div class="home-heading">
+                <div class="opacity-image">
+                  <img
+                    class="link-main"
+                    src="./images/totkbg/hero-fg-xlarge-up-2x.webp"
+                    alt="link"
+                  />
+                  <div class="main-logo">
+                    <div class="img-container">
+                      <img
+                        class="zelda-logo"
+                        src="./images/totkbg/LogoZelda.png"
+                        alt="ZeldaLogo"
+                      />
+                      <img
+                        class="logo-ouroboros"
+                        src="./images/totkbg/ZeldaTOAK-OuroborosLogo-1200x1104.png"
+                        alt="ouroboros"
+                      />
+                    </div>
+                    <p>Watch Trailer ></p>
+                  </div>
+                  <img
+                    class="floating-islands"
+                    src="./images/totkbg/hero-mg-xlarge-up.webp"
+                    alt="islands"
+                  />
+                </div>
+                <div class="home-heading"></div>
+              </div>
+              <div class="trailer-modal">
+                <div class="trailer-close">
+                  <i class = "fa-solid fa-x"></i>
+                </div>
+                <div class="bg-filter"></div>
+                <div class="modal">
+                  <iframe
+                  id="youtube-video"
+                    width="1060"
+                    height="615"
+                    src="https://www.youtube.com/embed/uHGShqcAHlQ?enablejsapi=1&si=Zvz0Y6EYuuvY6J8h"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </div>
             </div>
