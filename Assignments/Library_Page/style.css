@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -37,9 +38,11 @@ a {
 @keyframes logodown {
   from {
     opacity: 1;
+    filter: drop-shadow(0 0 0.75rem #4cd69e);
   }
   to {
     opacity: 0;
+    filter: drop-shadow(0 0 1.4rem #4cd69e) blur(2px);
     transform: translate(-50%, -50%) scale(1.1);
   }
 }
@@ -203,11 +206,13 @@ header .gnb-inner .trigger {
   animation: logodown cubic-bezier(0, 0.55, 0.45, 1) 2s both;
 }
 .content .home-inner .opacity-image {
+  position: relative;
   width: 100%;
   height: 100%;
   background: url("./images/totkbg/loztotk-key-art-background.jpg") center/cover no-repeat;
   opacity: 0;
-  transform: translateZ(0px);
+  transform-origin: center;
+  transform: translateZ(250px);
 }
 .content .home-inner .opacity-image img {
   position: absolute;
@@ -293,9 +298,6 @@ header .gnb-inner .trigger {
 .content .home-inner .opacity-image.images-reveal .main-logo p {
   animation: image-reveal linear 0.6s 1.4s both;
 }
-.content .home-inner .opacity-image.zoomOut {
-  animation: zoom-out linear 2s 5s both;
-}
 .content .home-inner .home-heading {
   position: absolute;
   top: 50%;
@@ -321,7 +323,7 @@ header .gnb-inner .trigger {
   animation-delay: 3.4s;
 }
 .content .home-inner.active .opacity-image {
-  animation: logoup 1s 2.5s ease-in both;
+  animation: logoup 1s 2.5s ease-in both, zoom-out cubic-bezier(0.36, 0, 0.66, -0.56) 1.4s 2.8s both;
 }
 .content .home-inner.active::before {
   animation: overlay 1s 2s ease-in-out;
@@ -369,50 +371,166 @@ header .gnb-inner .trigger {
 }
 
 .about-inner {
-  background: #4cd69e url("./images/line-drawing.png") right bottom no-repeat;
+  position: relative;
+  background: #faf7dc;
   height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
+.about-inner .dividers {
+  margin: 20px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.about-inner .dividers img {
+  width: 100%;
+  height: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.about-inner .dividers img:last-child {
+  margin-bottom: 40px;
+}
 .about-inner .about-items {
-  width: 45%;
-  margin-left: 150px;
+  position: relative;
+  width: calc(100% - 100px);
+  height: calc(100% - 140px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
+  align-content: center;
+  grid-gap: 20px;
 }
 .about-inner .about-items .item {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.about-inner .about-items .item svg {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  fill: #cbb687;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.about-inner .about-items .item svg:last-of-type {
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%) rotate(180deg);
+}
+.about-inner .about-items .item:first-child {
+  grid-area: 1/1/1/3;
 }
 .about-inner .about-items .item img {
-  height: 100px;
-  filter: invert(1);
+  width: 100%;
+  height: 373px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: blur(10px);
   transition: all 0.3s;
   cursor: pointer;
 }
-.about-inner .about-items .item:hover img {
-  filter: invert(0);
-}
-.about-inner .about-items .item:hover span {
-  color: #000;
-}
 .about-inner .about-items .item span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: all 0.3s;
+  font-family: "HyliaSerif";
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 0.6px;
+  color: #faf7dc;
+}
+.about-inner .about-items .item span .divider {
+  width: 0;
+  margin: -10px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.6s;
+}
+.about-inner .about-items .item span .divider.top {
+  top: 0;
+}
+.about-inner .about-items .item span .divider.bottom {
+  bottom: 0;
+}
+.about-inner .about-items .item span .divider img {
+  width: 30px;
+  height: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.about-inner .about-items .item span .divider .middle-bar {
+  width: 100%;
+  height: 2px;
+  background: #faf7dc;
 }
 .about-inner .about-items .item span h3 {
-  font-size: 28px;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 .about-inner .about-items .item span p {
+  width: 100%;
   font-size: 18px;
-  margin-top: 5px;
+  font-family: "Merriweather";
+}
+.about-inner .about-items .item:hover svg {
+  opacity: 1;
+  top: 10px;
+  left: 10px;
+}
+.about-inner .about-items .item:hover svg:last-of-type {
+  top: calc(100% - 10px);
+  left: calc(100% - 10px);
+}
+.about-inner .about-items .item:hover img {
+  filter: blur(0);
+}
+.about-inner .about-items .item:hover span {
+  color: #4cd69e;
+  text-shadow: 2px 2px 4px #222;
+  transform: translate(-50%, -50%) scale(1.02);
+  background: linear-gradient(to right, transparent, rgba(50, 112, 135, 0.2), transparent);
+}
+.about-inner .about-items .item:hover span .divider {
+  width: 80%;
+  opacity: 1;
 }
 
 .project-inner {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #fff;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("./images/totkbg/pattern-circles-ivory.png") center/cover no-repeat;
   border: 1px solid #ddd;
   position: relative;
+  color: #222;
+  font-family: "Merriweather";
 }
 .project-inner input[name=tabmenu] {
   display: none;
@@ -427,13 +545,13 @@ header .gnb-inner .trigger {
   margin-left: -200%;
 }
 .project-inner input[id=tab1]:checked ~ .btn label:first-child {
-  background: #ccc;
+  background: #327087;
 }
 .project-inner input[id=tab2]:checked ~ .btn label:nth-child(2) {
-  background: #ccc;
+  background: #327087;
 }
 .project-inner input[id=tab3]:checked ~ .btn label:last-child {
-  background: #ccc;
+  background: #327087;
 }
 .project-inner .tabs {
   width: 300%;
@@ -454,13 +572,26 @@ header .gnb-inner .trigger {
   padding: 50px;
   position: relative;
 }
-.project-inner .tabs .tab > div.project-info::before {
-  content: attr(data-text);
-  font-size: 130px;
+.project-inner .tabs .tab > div.project-info .dia-divider {
   position: absolute;
-  top: -10px;
-  left: 10px;
-  color: #eee;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.project-inner .tabs .tab > div.project-info .dia-divider img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.project-inner .tabs .tab > div.project-info .dia-divider.top {
+  transform: scaleY(-1);
+  top: 0;
+}
+.project-inner .tabs .tab > div.project-info .dia-divider.bottom {
+  bottom: 0;
 }
 .project-inner .tabs .tab > div.project-info h3 {
   position: relative;
@@ -468,7 +599,7 @@ header .gnb-inner .trigger {
 }
 .project-inner .tabs .tab > div.project-info p {
   position: relative;
-  font: normal 16px/2.4rem Montserrat;
+  font: normal 16px/2.4rem "Merriweather";
   margin: 20px 0;
 }
 .project-inner .tabs .tab > div.project-info ul {
@@ -512,6 +643,12 @@ header .gnb-inner .trigger {
 }
 .project-inner .tabs .tab > div.project-photo {
   width: 75%;
+}
+.project-inner .tabs .tab > div.project-photo .slick-track {
+  height: 886px !important;
+}
+.project-inner .tabs .tab > div.project-photo .slick-track .slick-slide > div {
+  height: 886px !important;
 }
 .project-inner .tabs .tab > div.project-photo img {
   width: 100%;
@@ -966,6 +1103,7 @@ header .gnb-inner .trigger {
     margin-left: 0;
   }
   .about-inner .about-items .item {
+    position: relative;
     flex-direction: column;
     align-items: center;
     text-align: center;

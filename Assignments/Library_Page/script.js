@@ -4,6 +4,7 @@ new fullpage("#fullpage", {
   scrollHorizontally: true, // Enable horizontal scrolling
   slidesNavigation: true, // Show navigation dots for horizontal slides
   controlArrows: true, // Show control arrows for slides
+  responsiveWidth: 768,
 });
 
 // console.log(fullpage_api);
@@ -28,11 +29,11 @@ const animationTrigger = (e) => {
     e.target.style.display = "none";
   }, 3000);
 
-  setTimeout(removalDelay, 3000);
+  setTimeout(removalDelay, 3800);
   setTimeout(() => {
     ouroboros.style.animation = `none`;
     ouroboros.style.animation = `rotate 20s linear infinite both`;
-  }, 4800);
+  }, 5500);
 };
 
 //Trailer Event
@@ -41,23 +42,32 @@ const trailerTrigger = document.querySelector(".opacity-image p");
 const trailerOff = document.querySelector(".bg-filter");
 const trailerOff2 = document.querySelector(".trailer-close");
 
+let isModalOn = false;
+
 trailerTrigger.addEventListener("mouseover", () => {
-  ouroboros.style.animationPlayState = "paused";
+  if (!isModalOn) {
+    ouroboros.style.animationPlayState = "paused";
+  }
 });
 trailerTrigger.addEventListener("mouseout", () => {
-  ouroboros.style.animationPlayState = "running";
+  if (!isModalOn) {
+    ouroboros.style.animationPlayState = "running";
+  }
 });
 
 trailerTrigger.addEventListener("click", () => {
+  isModalOn = true;
   trailerModal.classList.add("on");
   ouroboros.style.animationPlayState = "paused";
 });
 
 trailerOff.addEventListener("click", () => {
+  isModalOn = false;
   trailerModal.classList.remove("on");
   ouroboros.style.animationPlayState = "running";
 });
 trailerOff2.addEventListener("click", () => {
+  isModalOn = false;
   trailerModal.classList.remove("on");
   ouroboros.style.animationPlayState = "running";
 });
@@ -109,6 +119,7 @@ $(".menu a").click(function () {
 //Slick Slider : Project
 $(".project-photo").slick({
   dots: true,
+  arrows: false,
   infinite: true,
   speed: 500,
   autoplay: true,

@@ -3,10 +3,31 @@
 // font
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
 @font-face {
   font-family: "HyliaSerif";
   src: url("./fonts/HyliaSerifBeta-Regular.otf");
 }
+
+// variables
+$color: (
+  main-font-color: #222,
+  main-light-bg: #fff,
+  main-item-border: #ddd,
+  main-red-color: #dc143c,
+  point-color: #4cd69e,
+  logo-color: #faf7dc,
+  dark-logo-color: #cbb687,
+  dark-point-color: #327087,
+);
+
+$family: (
+  montserrat: Montserrat,
+  manrope: Manrope,
+  scp: Source Code Pro,
+  overpass: Overpass,
+);
 
 // Animations
 @keyframes overlay {
@@ -31,10 +52,13 @@
 @keyframes logodown {
   from {
     opacity: 1;
+    filter: drop-shadow((0 0 0.75rem map-get($map: $color, $key: point-color)));
   }
 
   to {
     opacity: 0;
+    filter: drop-shadow(0 0 1.4rem map-get($map: $color, $key: point-color))
+      blur(2px);
     transform: translate(-50%, -50%) scale(1.1);
   }
 }
@@ -79,23 +103,6 @@
     transform: rotate(360deg);
   }
 }
-
-// variables
-$color: (
-  main-font-color: #222,
-  main-light-bg: #fff,
-  main-item-border: #ddd,
-  main-red-color: #dc143c,
-  point-color: #4cd69e,
-  logo-color: #faf7dc,
-);
-
-$family: (
-  montserrat: Montserrat,
-  manrope: Manrope,
-  scp: Source Code Pro,
-  overpass: Overpass,
-);
 
 // mixin
 @mixin formStyle {
@@ -253,12 +260,14 @@ header {
       }
     }
     .opacity-image {
+      position: relative;
       width: 100%;
       height: 100%;
       background: url("./images/totkbg/loztotk-key-art-background.jpg")
         center/cover no-repeat;
       opacity: 0;
-      transform: translateZ(0px);
+      transform-origin: center;
+      transform: translateZ(250px);
       img {
         position: absolute;
         width: 1200px;
@@ -347,7 +356,6 @@ header {
         }
       }
       &.zoomOut {
-        animation: zoom-out linear 2s 5s both;
       }
     }
     .home-heading {
@@ -376,7 +384,8 @@ header {
     }
     &.active {
       .opacity-image {
-        animation: logoup 1s 2.5s ease-in both;
+        animation: logoup 1s 2.5s ease-in both,
+          zoom-out cubic-bezier(0.36, 0, 0.66, -0.56) 1.4s 2.8s both;
       }
       &::before {
         animation: overlay 1s 2s ease-in-out;
@@ -429,38 +438,154 @@ header {
 
 // About
 .about-inner {
-  background: map-get($map: $color, $key: point-color)
-    url("./images/line-drawing.png") right bottom no-repeat;
+  position: relative;
+  background: map-get($map: $color, $key: logo-color);
   height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
+  .dividers {
+    margin: 20px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 20px;
+      object-fit: cover;
+      &:last-child {
+        margin-bottom: 40px;
+      }
+    }
+  }
   .about-items {
-    width: 45%;
-    margin-left: 150px;
+    position: relative;
+    width: calc(100% - 100px);
+    height: calc(100% - 140px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    align-content: center;
+    grid-gap: 20px;
     .item {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 30px;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      svg {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        fill: map-get($map: $color, $key: dark-logo-color);
+        opacity: 0;
+        transition: all 0.3s;
+        &:last-of-type {
+          top: 100%;
+          left: 100%;
+          transform: translate(-100%, -100%) rotate(180deg);
+        }
+      }
+      &:first-child {
+        grid-area: 1 / 1 / 1 / 3;
+      }
       img {
-        height: 100px;
-        filter: invert(1);
+        width: 100%;
+        height: 373px;
+        object-fit: cover;
+        filter: blur(10px);
         transition: all 0.3s;
         cursor: pointer;
       }
-      &:hover img {
-        filter: invert(0);
-      }
-      &:hover span {
-        color: #000;
-      }
+
       span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        height: 120px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         transition: all 0.3s;
+        font-family: "HyliaSerif";
+        font-weight: 200;
+        text-align: center;
+        letter-spacing: 0.6px;
+        color: map-get($map: $color, $key: logo-color);
+        .divider {
+          width: 0;
+          margin: -10px;
+          position: absolute;
+          display: flex;
+          align-items: center;
+          z-index: 10;
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0;
+          transition: all 0.6s;
+          &.top {
+            top: 0;
+          }
+          &.bottom {
+            bottom: 0;
+          }
+          img {
+            width: 30px;
+            height: 6px;
+            object-fit: cover;
+          }
+          .middle-bar {
+            width: 100%;
+            height: 2px;
+            background: map-get($map: $color, $key: logo-color);
+          }
+        }
         h3 {
-          font-size: 28px;
+          font-size: 40px;
+          text-align: center;
+          margin-bottom: 10px;
         }
         p {
+          width: 100%;
           font-size: 18px;
-          margin-top: 5px;
+          font-family: "Merriweather";
+        }
+      }
+      &:hover svg {
+        opacity: 1;
+        top: 10px;
+        left: 10px;
+        &:last-of-type {
+          top: calc(100% - 10px);
+          left: calc(100% - 10px);
+        }
+      }
+      &:hover img {
+        filter: blur(0);
+      }
+      &:hover span {
+        color: map-get($map: $color, $key: point-color);
+        text-shadow: 2px 2px 4px map-get($map: $color, $key: main-font-color);
+        transform: translate(-50%, -50%) scale(1.02);
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(#327087, 0.2),
+          transparent
+        );
+        .divider {
+          width: 80%;
+          opacity: 1;
         }
       }
     }
@@ -472,9 +597,12 @@ header {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: map-get($map: $color, $key: main-light-bg);
+  background: linear-gradient(to right, rgba(#000, 0.1), rgba(#000, 0.1)),
+    url("./images/totkbg/pattern-circles-ivory.png") center/cover no-repeat;
   border: 1px solid map-get($map: $color, $key: main-item-border);
   position: relative;
+  color: map-get($map: $color, $key: main-font-color);
+  font-family: "Merriweather";
   input[name="tabmenu"] {
     display: none;
   }
@@ -488,13 +616,13 @@ header {
     margin-left: -200%;
   }
   input[id="tab1"]:checked ~ .btn label:first-child {
-    background: #ccc;
+    background: map-get($map: $color, $key: dark-point-color);
   }
   input[id="tab2"]:checked ~ .btn label:nth-child(2) {
-    background: #ccc;
+    background: map-get($map: $color, $key: dark-point-color);
   }
   input[id="tab3"]:checked ~ .btn label:last-child {
-    background: #ccc;
+    background: map-get($map: $color, $key: dark-point-color);
   }
   .tabs {
     width: 300%;
@@ -511,13 +639,25 @@ header {
           width: 25%;
           padding: 50px;
           position: relative;
-          &::before {
-            content: attr(data-text);
-            font-size: 130px;
+          .dia-divider {
             position: absolute;
-            top: -10px;
-            left: 10px;
-            color: #eee;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              height: 100%;
+              object-fit: cover;
+            }
+            &.top {
+              transform: scaleY(-1);
+              top: 0;
+            }
+            &.bottom {
+              bottom: 0;
+            }
           }
           h3 {
             position: relative;
@@ -525,7 +665,7 @@ header {
           }
           p {
             position: relative;
-            font: normal 16px/2.4rem map-get($map: $family, $key: montserrat);
+            font: normal 16px/2.4rem "Merriweather";
             margin: 20px 0;
           }
           ul {
@@ -570,6 +710,12 @@ header {
         }
         &.project-photo {
           width: 75%;
+          .slick-track {
+            height: 886px !important;
+            .slick-slide > div {
+              height: 886px !important;
+            }
+          }
           img {
             width: 100%;
             height: 100%;
@@ -1045,6 +1191,7 @@ header {
       position: static;
       margin-left: 0;
       .item {
+        position: relative;
         flex-direction: column;
         align-items: center;
         text-align: center;
