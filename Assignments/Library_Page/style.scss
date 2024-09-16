@@ -12,6 +12,7 @@
 
 // variables
 $color: (
+  main-dark-bg: #000,
   main-font-color: #222,
   main-light-bg: #fff,
   main-item-border: #ddd,
@@ -101,6 +102,29 @@ $family: (
     margin-top: 0;
     opacity: 1;
     transform: rotate(360deg);
+  }
+}
+
+@keyframes letters {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes curtains {
+  to {
+    height: 0;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
@@ -639,6 +663,9 @@ header {
           width: 25%;
           padding: 50px;
           position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
           .dia-divider {
             position: absolute;
             left: 0;
@@ -661,7 +688,33 @@ header {
           }
           h3 {
             position: relative;
-            font-size: 20px;
+            font-size: 70px;
+            font-family: "HyliaSerif";
+            letter-spacing: 1px;
+            color: map-get($map: $color, $key: logo-color);
+            text-shadow: 0 0 10px #000;
+            .divider {
+              width: 100%;
+              margin: -10px;
+              position: absolute;
+              display: flex;
+              align-items: center;
+              z-index: 11;
+              left: 50%;
+              bottom: -20px;
+              transform: translateX(-50%);
+              transition: all 0.6s;
+              img {
+                width: 30px;
+                height: 6px;
+                object-fit: cover;
+              }
+              .middle-bar {
+                width: 100%;
+                height: 2px;
+                background: map-get($map: $color, $key: dark-logo-color);
+              }
+            }
           }
           p {
             position: relative;
@@ -703,8 +756,8 @@ header {
             text-transform: uppercase;
             transition: all 0.3s;
             &:hover {
-              background: map-get($map: $color, $key: main-item-border);
-              color: map-get($map: $color, $key: main-font-color);
+              background: map-get($map: $color, $key: dark-logo-color);
+              color: map-get($map: $color, $key: main-light-bg);
             }
           }
         }
@@ -1025,12 +1078,15 @@ header {
 
 // Modal
 .modal {
-  font-family: map-get($map: $family, $key: scp);
+  font-family: "HyliaSerif";
+  color: map-get($map: $color, $key: logo-color);
   .header {
     position: fixed;
     width: 100%;
     background: map-get($map: $color, $key: main-light-bg);
     z-index: 1000000;
+    font-family: Merriweather;
+    color: map-get($map: $color, $key: main-dark-bg);
     .header-inner {
       display: flex;
       align-items: center;
@@ -1043,84 +1099,207 @@ header {
       }
     }
   }
-  .hiring-main {
-    height: 600px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    &.project-main1 {
-      background: url("./images/project-main-01-01.jpg") center/cover no-repeat;
-      height: 100vh;
-    }
-    .hiring-heading {
-      span {
-        color: map-get($map: $color, $key: main-light-bg);
-        font-size: 20px;
+  .article-wrapper {
+    .main-content {
+      position: relative;
+      width: 100%;
+      height: fit-content;
+      padding-bottom: 100px;
+      background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.6)
+        ),
+        url("./images/totkmodal/totk-material-1_basecolor.webp") center
+          center/cover no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+      z-index: 1;
+      cursor: none;
+      .lumos {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 1) 20%,
+          transparent 60%
+        );
+        mix-blend-mode: overlay;
+        border-radius: 50%;
       }
-      h1 {
-        font-size: 60px;
-        font-weight: 300;
-      }
-      color: white;
     }
-  }
-  .hiring-info {
-    margin-bottom: 30px;
-    display: flex;
-    & > div {
-      flex: 1;
+    .modal-main {
       height: 600px;
-      &.center-parent {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .center-child {
-          width: 70%;
-          h2 {
-            font: normal 36px/3.2rem map-get($map: $family, $key: scp);
-          }
-          p {
-            font: 300 22px/2rem map-get($map: $family, $key: scp);
-          }
-        }
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      &.project-main1 {
+        background: url("./images/totkmodal/bg_page.webp") center/cover
+          no-repeat;
+        height: 100vh;
+        transition: all 1s;
       }
-      &.photo {
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+      .modal-heading {
+        span {
+          display: inline-block;
+          color: map-get($map: $color, $key: main-light-bg);
+          font-size: 20px;
+          font-family: "Merriweather";
+          animation: letters 0.6s ease-in-out;
         }
-        &.project-info {
+        h1 {
+          font-size: 60px;
+          font-weight: 300;
+        }
+        color: white;
+      }
+    }
+    .modal-info {
+      margin-bottom: 30px;
+      display: flex;
+      & > div {
+        flex: 1;
+        height: 600px;
+        &.center-parent {
+          position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 24px;
-          margin-left: 100px;
+          .center-child {
+            width: 70%;
+            h2 {
+              font: normal 36px/3.2rem Merriweather;
+              margin-bottom: 20px;
+              path {
+                fill: none;
+                stroke: map-get($map: $color, $key: logo-color);
+                stroke-width: 1.8;
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 1000;
+              }
+            }
+            p {
+              opacity: 0;
+              font: 300 20px/2rem Merriweather;
+            }
+          }
+        }
+        &.photo {
+          position: relative;
+          img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            object-fit: cover;
+            transition: all 1s;
+            &.modal-link {
+              width: 80%;
+              height: 80%;
+              object-fit: contain;
+              opacity: 1;
+              transition: opacity 0.6s ease-in-out;
+              &.fade-out {
+                opacity: 0;
+              }
+            }
+          }
+          &.project-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-left: 100px;
+          }
+          &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #0e0a07;
+            z-index: 3;
+          }
         }
       }
+      &.active {
+        .photo::before {
+          animation: curtains ease-in 0.6s both;
+        }
+        .center-child {
+          p {
+            animation: image-reveal linear 1.4s 0.3s both;
+          }
+
+          h2 path {
+            animation: draw 10s ease-out forwards;
+          }
+        }
+      }
+      .project-info.photo::before {
+        display: none;
+      }
     }
-  }
-  .hiring-slogan {
-    padding: 100px 0;
-    p {
+    .modal-footer {
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
       position: relative;
-      width: 70%;
-      text-align: center;
-      margin: 0 auto;
-      font-size: 32px;
-      &::before {
-        content: ",,";
-        z-index: -1;
+      background: url("./images/totkmodal/masterswordbg.avif") center/cover
+        no-repeat;
+      color: #0e0a07;
+      font-family: "Merriweather";
+      .footer-divider {
+        width: 100%;
+        overflow-x: hidden;
         position: absolute;
-        top: -80px;
-        left: -40px;
-        font-size: 200px;
-        color: #ddd;
-        font-family: map-get($map: $family, $key: overpass);
-        transform: rotate(180deg);
+        z-index: 10;
+        display: flex;
+        top: -40px;
+        img {
+          height: 40px;
+          object-fit: cover;
+        }
+      }
+      .footer-title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+        }
+        h4 {
+          font-size: 22px;
+        }
+      }
+      .trailers {
+        display: flex;
+        gap: 40px;
+        .trailer {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          iframe {
+            width: 400px;
+            height: 270px;
+          }
+        }
       }
     }
   }

@@ -83,6 +83,26 @@ a {
     transform: rotate(360deg);
   }
 }
+@keyframes letters {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes curtains {
+  to {
+    height: 0;
+  }
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 .fp-controlArrow {
   display: none;
 }
@@ -571,6 +591,9 @@ header .gnb-inner .trigger {
   width: 25%;
   padding: 50px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .project-inner .tabs .tab > div.project-info .dia-divider {
   position: absolute;
@@ -595,7 +618,34 @@ header .gnb-inner .trigger {
 }
 .project-inner .tabs .tab > div.project-info h3 {
   position: relative;
-  font-size: 20px;
+  font-size: 70px;
+  font-family: "HyliaSerif";
+  letter-spacing: 1px;
+  color: #faf7dc;
+  text-shadow: 0 0 10px #000;
+}
+.project-inner .tabs .tab > div.project-info h3 .divider {
+  width: 100%;
+  margin: -10px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 11;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  transition: all 0.6s;
+}
+.project-inner .tabs .tab > div.project-info h3 .divider img {
+  width: 30px;
+  height: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.project-inner .tabs .tab > div.project-info h3 .divider .middle-bar {
+  width: 100%;
+  height: 2px;
+  background: #cbb687;
 }
 .project-inner .tabs .tab > div.project-info p {
   position: relative;
@@ -638,8 +688,8 @@ header .gnb-inner .trigger {
   transition: all 0.3s;
 }
 .project-inner .tabs .tab > div.project-info .view-project:hover {
-  background: #ddd;
-  color: #222;
+  background: #cbb687;
+  color: #fff;
 }
 .project-inner .tabs .tab > div.project-photo {
   width: 75%;
@@ -948,13 +998,16 @@ header .gnb-inner .trigger {
 }
 
 .modal {
-  font-family: Source Code Pro;
+  font-family: "HyliaSerif";
+  color: #faf7dc;
 }
 .modal .header {
   position: fixed;
   width: 100%;
   background: #fff;
   z-index: 1000000;
+  font-family: Merriweather;
+  color: #000;
 }
 .modal .header .header-inner {
   display: flex;
@@ -967,7 +1020,30 @@ header .gnb-inner .trigger {
 .modal .header .header-inner .modal-display {
   font-size: 18px;
 }
-.modal .hiring-main {
+.modal .article-wrapper .main-content {
+  position: relative;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 100px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./images/totkmodal/totk-material-1_basecolor.webp") center center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  z-index: 1;
+  cursor: none;
+}
+.modal .article-wrapper .main-content .lumos {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgb(255, 255, 255) 20%, transparent 60%);
+  mix-blend-mode: overlay;
+  border-radius: 50%;
+}
+.modal .article-wrapper .modal-main {
   height: 600px;
   position: relative;
   display: flex;
@@ -975,77 +1051,164 @@ header .gnb-inner .trigger {
   align-items: center;
   text-align: center;
 }
-.modal .hiring-main.project-main1 {
-  background: url("./images/project-main-01-01.jpg") center/cover no-repeat;
+.modal .article-wrapper .modal-main.project-main1 {
+  background: url("./images/totkmodal/bg_page.webp") center/cover no-repeat;
   height: 100vh;
+  transition: all 1s;
 }
-.modal .hiring-main .hiring-heading {
+.modal .article-wrapper .modal-main .modal-heading {
   color: white;
 }
-.modal .hiring-main .hiring-heading span {
+.modal .article-wrapper .modal-main .modal-heading span {
+  display: inline-block;
   color: #fff;
   font-size: 20px;
+  font-family: "Merriweather";
+  animation: letters 0.6s ease-in-out;
 }
-.modal .hiring-main .hiring-heading h1 {
+.modal .article-wrapper .modal-main .modal-heading h1 {
   font-size: 60px;
   font-weight: 300;
 }
-.modal .hiring-info {
+.modal .article-wrapper .modal-info {
   margin-bottom: 30px;
   display: flex;
 }
-.modal .hiring-info > div {
+.modal .article-wrapper .modal-info > div {
   flex: 1;
   height: 600px;
 }
-.modal .hiring-info > div.center-parent {
+.modal .article-wrapper .modal-info > div.center-parent {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.modal .hiring-info > div.center-parent .center-child {
+.modal .article-wrapper .modal-info > div.center-parent .center-child {
   width: 70%;
 }
-.modal .hiring-info > div.center-parent .center-child h2 {
-  font: normal 36px/3.2rem Source Code Pro;
+.modal .article-wrapper .modal-info > div.center-parent .center-child h2 {
+  font: normal 36px/3.2rem Merriweather;
+  margin-bottom: 20px;
 }
-.modal .hiring-info > div.center-parent .center-child p {
-  font: 300 22px/2rem Source Code Pro;
+.modal .article-wrapper .modal-info > div.center-parent .center-child h2 path {
+  fill: none;
+  stroke: #faf7dc;
+  stroke-width: 1.8;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
 }
-.modal .hiring-info > div.photo img {
+.modal .article-wrapper .modal-info > div.center-parent .center-child p {
+  opacity: 0;
+  font: 300 20px/2rem Merriweather;
+}
+.modal .article-wrapper .modal-info > div.photo {
+  position: relative;
+}
+.modal .article-wrapper .modal-info > div.photo img {
   width: 100%;
   height: 100%;
+  position: relative;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: all 1s;
 }
-.modal .hiring-info > div.photo.project-info {
+.modal .article-wrapper .modal-info > div.photo img.modal-link {
+  width: 80%;
+  height: 80%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+}
+.modal .article-wrapper .modal-info > div.photo img.modal-link.fade-out {
+  opacity: 0;
+}
+.modal .article-wrapper .modal-info > div.photo.project-info {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   margin-left: 100px;
 }
-.modal .hiring-slogan {
-  padding: 100px 0;
-}
-.modal .hiring-slogan p {
-  position: relative;
-  width: 70%;
-  text-align: center;
-  margin: 0 auto;
-  font-size: 32px;
-}
-.modal .hiring-slogan p::before {
-  content: ",,";
-  z-index: -1;
+.modal .article-wrapper .modal-info > div.photo::before {
+  content: "";
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: -80px;
-  left: -40px;
-  font-size: 200px;
-  color: #ddd;
-  font-family: Overpass;
-  transform: rotate(180deg);
+  top: 0;
+  left: 0;
+  background: #0e0a07;
+  z-index: 3;
+}
+.modal .article-wrapper .modal-info.active .photo::before {
+  animation: curtains ease-in 0.6s both;
+}
+.modal .article-wrapper .modal-info.active .center-child p {
+  animation: image-reveal linear 1.4s 0.3s both;
+}
+.modal .article-wrapper .modal-info.active .center-child h2 path {
+  animation: draw 10s ease-out forwards;
+}
+.modal .article-wrapper .modal-info .project-info.photo::before {
+  display: none;
+}
+.modal .article-wrapper .modal-footer {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  background: url("./images/totkmodal/masterswordbg.avif") center/cover no-repeat;
+  color: #0e0a07;
+  font-family: "Merriweather";
+}
+.modal .article-wrapper .modal-footer .footer-divider {
+  width: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  top: -40px;
+}
+.modal .article-wrapper .modal-footer .footer-divider img {
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.modal .article-wrapper .modal-footer .footer-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.modal .article-wrapper .modal-footer .footer-title img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.modal .article-wrapper .modal-footer .footer-title h4 {
+  font-size: 22px;
+}
+.modal .article-wrapper .modal-footer .trailers {
+  display: flex;
+  gap: 40px;
+}
+.modal .article-wrapper .modal-footer .trailers .trailer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.modal .article-wrapper .modal-footer .trailers .trailer iframe {
+  width: 400px;
+  height: 270px;
 }
 
 .featherlight .featherlight-content {
