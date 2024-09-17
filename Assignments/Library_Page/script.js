@@ -129,13 +129,15 @@ $(".project-photo").slick({
 
 //Slick Slider : History
 $(".history-slider").slick({
-  arrows: false,
+  arrows: true,
   dots: true,
   infinite: true,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 2,
+  speed: 600,
+  slidesToShow: 1,
+  slidesToScroll: 1,
   autoplay: true,
+  cssEase: "ease-out",
+  pauseOnHover: true,
   responsive: [
     {
       breakpoint: 1024,
@@ -159,4 +161,61 @@ $(".history-slider").slick({
       },
     },
   ],
+});
+
+$(".victory").slick({
+  arrows: false,
+  dots: false,
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  slidesToScroll: 1,
+  slidesToShow: 1,
+  vertical: true,
+  lazyLoad: "ondemand",
+  verticalSwiping: true,
+  pauseOnHover: true,
+});
+
+const abilities = document.querySelectorAll(
+  ".history-slider .item foreignObject video"
+);
+abilities.forEach((video) => {
+  video.addEventListener("mouseover", function () {
+    this.play();
+  });
+  video.addEventListener("mouseout", function () {
+    this.pause();
+  });
+});
+
+// Before slide changes
+$(".history-slider").on(
+  "beforeChange",
+  function (event, slick, currentSlide, nextSlide) {
+    $(".history-slider .item .video-container").css("transform", "scale(0.9)");
+
+    $(".history-slider .item .video-container")
+      .eq(nextSlide)
+      .css("transform", "scale(0.9)");
+  }
+);
+
+// After slide changes
+$(".history-slider").on("afterChange", function (event, slick, currentSlide) {
+  $(".history-slider .item .video-container").css("transform", "scale(1)");
+  abilities.forEach((video) => (video.currentTime = 0));
+});
+
+const awards = document.querySelectorAll(".victory .slick-slide div");
+
+awards.forEach((award) => {
+  award.addEventListener("mouseover", () => {
+    const victory = document.querySelector(".victory");
+    victory.classList.add("hovering");
+  });
+  award.addEventListener("mouseout", () => {
+    const victory = document.querySelector(".victory");
+    victory.classList.remove("hovering");
+  });
 });

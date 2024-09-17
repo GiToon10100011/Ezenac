@@ -19,6 +19,38 @@ a {
   font-family: "HyliaSerif";
   src: url("./fonts/HyliaSerifBeta-Regular.otf");
 }
+@keyframes scale-easeOutBounce {
+  0% {
+    transform: scale(1);
+  }
+  12% {
+    transform: scale(0.89);
+  }
+  24% {
+    transform: scale(0.56);
+  }
+  36% {
+    transform: scale(0.02);
+  }
+  54% {
+    transform: scale(0.25);
+  }
+  74% {
+    transform: scale(0.02);
+  }
+  82% {
+    transform: scale(0.06);
+  }
+  92% {
+    transform: scale(0.01);
+  }
+  96% {
+    transform: scale(0.02);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
 @keyframes overlay {
   from {
     opacity: 1;
@@ -294,7 +326,7 @@ header .gnb-inner .trigger {
 }
 .content .home-inner .opacity-image .main-logo p:hover {
   color: #4cd69e;
-  text-shadow: 2px 2px 4px #4cd69e;
+  text-shadow: 2px 2px 4px #327087;
   transform: scale(1.02);
 }
 .content .home-inner .opacity-image .main-logo p:hover ~ .img-container img.logo-ouroboros {
@@ -751,7 +783,7 @@ header .gnb-inner .trigger {
 .awards-inner > div.about-awards .about-heading .bar {
   width: 50px;
   height: 4px;
-  background: #dc143c;
+  background: #4cd69e;
   border: none;
   margin: 30px auto;
 }
@@ -768,18 +800,107 @@ header .gnb-inner .trigger {
   transition: all 0.6s;
 }
 .awards-inner > div.about-awards .about-heading .view-awards:hover {
-  background: #31c0ce;
+  background: #4cd69e;
   color: #fff;
   border: 1px solid transparent;
 }
+.awards-inner > div.about-awards .vertical-divider {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  transform-origin: top;
+  transform: translateX(470px) rotate(90deg);
+}
+.awards-inner > div.about-awards .vertical-divider img {
+  margin-right: -6px;
+  height: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .awards-inner > div.victory {
-  background: #fff;
+  background: url("./images/totkbg/bg-black.png") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.awards-inner > div.victory .slick-list {
+  position: relative;
+  z-index: 1;
+  width: 80% !important;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+.awards-inner > div.victory .slick-list::before {
+  display: none;
+}
+.awards-inner > div.victory div {
+  position: relative;
+}
+.awards-inner > div.victory div::before {
+  content: attr(data-content);
+  width: 646px;
+  height: 320px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -40%);
+  background: #333;
+  opacity: 0;
+  transition: all 0.3s;
+  color: #fff;
+  padding: 20px;
+  white-space: pre-wrap;
+  font-size: 20px;
+}
+.awards-inner > div.victory div:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+.awards-inner > div.victory div:hover img {
+  filter: grayscale(1);
 }
 .awards-inner > div.victory img {
-  width: 80%;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.3s;
+}
+.awards-inner > div.victory::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: url("./images/totksvgs/corner-cloud.svg") center/cover no-repeat;
+  transform: translateX(60%) translateY(190%);
+  transition: all 0.3s;
+}
+.awards-inner > div.victory::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: url("./images/totksvgs/corner-cloud.svg") center/cover no-repeat;
+  transform: translate(-50%, -200%) rotate(180deg);
+  transition: all 0.3s;
+}
+.awards-inner > div.victory.hovering::before {
+  top: 6px;
+  left: 6px;
+}
+.awards-inner > div.victory.hovering::after {
+  bottom: 6px;
+  right: 6px;
 }
 
 .location-inner {
@@ -928,73 +1049,205 @@ header .gnb-inner .trigger {
   line-height: 2.4rem;
 }
 
-.plan-inner {
-  background: #222;
+.ability-inner {
+  background: url("./images/totkbg/pattern-circles-ocher.png");
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.plan-inner .plan-feature {
+.ability-inner .ability-feature {
   width: 80%;
+  font-family: "Merriweather";
 }
-.plan-inner .plan-feature > div {
+.ability-inner .ability-feature > div {
   color: #ddd;
-  height: 300px;
 }
-.plan-inner .plan-feature > div.plan-info {
+.ability-inner .ability-feature > div.ability-info {
   display: flex;
-  gap: 50px;
 }
-.plan-inner .plan-feature > div.plan-info .plan-heading {
+.ability-inner .ability-feature > div.ability-info .ability-heading {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  text-align: center;
   flex: 2;
 }
-.plan-inner .plan-feature > div.plan-info .plan-heading h2 {
+.ability-inner .ability-feature > div.ability-info .ability-heading h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   color: #fff;
 }
-.plan-inner .plan-feature > div.plan-info .plan-heading .bar {
-  background: #4cd69e;
-  width: 100px;
-  height: 4px;
-  border: none;
-  margin: 20px 0;
+.ability-inner .ability-feature > div.ability-info .ability-heading h2 img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.plan-inner .plan-feature > div.plan-info .plan-heading p {
-  font: normal 16px/2.4rem Montserrat;
+.ability-inner .ability-feature > div.ability-info .ability-heading p {
+  font: normal 16px/2.4rem Merriweather;
 }
-.plan-inner .plan-feature > div.plan-info .plan-photo {
-  flex: 1;
+.ability-inner .ability-feature > div.history-info {
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 900px;
 }
-.plan-inner .plan-feature > div.plan-info .plan-photo img {
-  height: 265px;
-}
-.plan-inner .plan-feature > div.history-info h2 {
+.ability-inner .ability-feature > div.history-info h2 {
   color: #fff;
 }
-.plan-inner .plan-feature > div.history-info .bar {
-  background: #4cd69e;
-  width: 100px;
-  height: 4px;
-  border: none;
-  margin: 20px 0;
+.ability-inner .ability-feature > div.history-info .history-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
 }
-.plan-inner .plan-feature > div.history-info .history-slider div {
+.ability-inner .ability-feature > div.history-info .history-slider .slick-list {
+  width: 900px;
+}
+.ability-inner .ability-feature > div.history-info .history-slider .slick-list .slick-track {
+  height: 700px !important;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2px;
+  position: relative;
 }
-.plan-inner .plan-feature > div.history-info .history-slider div h4 {
-  color: #fff;
-  font: normal 20px/2.4rem Montserrat;
+.ability-inner .ability-feature > div.history-info .history-slider div.item {
+  width: 900px;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.plan-inner .plan-feature > div.history-info .history-slider div h4 span {
-  color: #4cd69e;
+.ability-inner .ability-feature > div.history-info .history-slider div.item .video-container {
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s;
 }
-.plan-inner .plan-feature > div.history-info .history-slider div p {
-  font: normal 16px/2.4rem Montserrat;
+.ability-inner .ability-feature > div.history-info .history-slider div .rune-corners {
+  position: absolute;
+  width: 818px;
+  height: 462px;
 }
-.plan-inner .plan-feature > div.history-info .history-slider .slick-dots li button:before {
-  top: 20px;
+.ability-inner .ability-feature > div.history-info .history-slider div .rune-corners svg {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  fill: #2b2322;
+  transition: all 0.3s;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .rune-corners svg:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .rune-corners svg:nth-child(2) {
+  top: 0;
+  right: -2px;
+  transform: rotate(90deg);
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .rune-corners svg:nth-child(3) {
+  bottom: 0;
+  left: -2px;
+  transform: rotate(-90deg);
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .rune-corners svg:nth-child(4) {
+  bottom: 0;
+  right: -2px;
+  transform: rotate(180deg);
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .svg-container {
+  position: relative;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .svg-container svg {
+  position: absolute;
+  fill: none;
+  stroke: #2b2322;
+  stroke-width: 2;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .svg-container svg.outer-border {
+  transform: scale(1.02, 1.04);
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .svg-container svg video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: grayscale(1);
+  transition: all 1s;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .ability-desc {
+  margin-top: 20px;
+  width: 840px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  text-align: center;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .ability-desc h4 {
+  color: #faf7dc;
+  font-weight: 600;
+  font-size: 18px;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div .ability-desc p {
+  font-size: 14px;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div:hover .rune-corners svg:nth-child(1) {
+  fill: #4cd69e;
+  transition-delay: 0s;
+  transform: scale(1.2);
+}
+.ability-inner .ability-feature > div.history-info .history-slider div:hover .rune-corners svg:nth-child(2) {
+  top: 0;
+  right: -2px;
+  transform: rotate(90deg) scale(1.2);
+  fill: #4cd69e;
+  transition-delay: 0.1s;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div:hover .rune-corners svg:nth-child(3) {
+  bottom: 0;
+  left: -2px;
+  transform: rotate(-90deg) scale(1.2);
+  fill: #4cd69e;
+  transition-delay: 0.3s;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div:hover .rune-corners svg:nth-child(4) {
+  bottom: 0;
+  right: -2px;
+  transform: rotate(180deg) scale(1.2);
+  fill: #4cd69e;
+  transition-delay: 0.2s;
+}
+.ability-inner .ability-feature > div.history-info .history-slider div:hover .svg-container svg video {
+  filter: grayscale(0);
+}
+.ability-inner .ability-feature > div.history-info .history-slider .slick-dots li button:before {
+  top: 40px;
   font-size: 40px;
   color: #fff;
+}
+.ability-inner .ability-feature > div.history-info .history-slider .slick-arrow {
+  width: 50px;
+  height: 50px;
+}
+.ability-inner .ability-feature > div.history-info .history-slider .slick-prev {
+  transform: translateX(-4px);
+}
+.ability-inner .ability-feature > div.history-info .history-slider .slick-arrow::before {
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: 1px solid;
+  transition: all 0.3s;
+}
+.ability-inner .ability-feature > div.history-info .history-slider .slick-arrow:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+  animation: scale-easeOutBounce linear 0.6s;
 }
 
 .modal {
@@ -1307,26 +1560,26 @@ header .gnb-inner .trigger {
   .project-inner .btn {
     display: none;
   }
-  .plan-inner {
+  .ability-inner {
     height: auto;
     padding: 20px;
     padding-bottom: 40px;
   }
-  .plan-inner .plan-feature {
+  .ability-inner .ability-feature {
     width: 100%;
     position: static;
   }
-  .plan-inner .plan-feature > div {
+  .ability-inner .ability-feature > div {
     height: auto;
   }
-  .plan-inner .plan-feature > div.plan-info {
+  .ability-inner .ability-feature > div.ability-info {
     margin-bottom: 40px;
     flex-direction: column;
   }
-  .plan-inner .plan-feature > div.plan-info .plan-photo {
+  .ability-inner .ability-feature > div.ability-info .ability-photo {
     width: 100%;
   }
-  .plan-inner .plan-feature > div.plan-info .plan-photo img {
+  .ability-inner .ability-feature > div.ability-info .ability-photo img {
     width: 100%;
     height: auto;
   }
