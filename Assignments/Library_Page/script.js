@@ -219,3 +219,50 @@ awards.forEach((award) => {
     victory.classList.remove("hovering");
   });
 });
+
+const characters = document.querySelectorAll(".character");
+const characterBg = document.querySelector(".characters-inner");
+
+characters.forEach((character, index, arr) => {
+  character.addEventListener("mouseover", () => {
+    arr.forEach((item, i) => {
+      if (index !== i) {
+        characters[i].style.flex = 0;
+        characters[i].style.opacity = 0;
+      }
+      if (index === characters.length - 1) {
+        characterBg.style.background = `url("./images/totkmodal/bg_page_ganondorf.webp") center/cover no-repeat`;
+      }
+    });
+    setTimeout(() => {
+      const photos = document.querySelector(".photos");
+      const quotes = document.querySelector(".quotes");
+      photos.classList.add("active");
+      quotes.classList.add("active");
+    }, 2600);
+  });
+  character.addEventListener("mouseout", () => {
+    arr.forEach((item, i) => {
+      characters[i].style.flex = "";
+      characters[i].style.opacity = "";
+      characterBg.style.background = ``;
+    });
+    setTimeout(() => {
+      const photos = document.querySelector(".photos");
+      const quotes = document.querySelector(".quotes");
+      photos.classList.remove("active");
+      quotes.classList.remove("active");
+    }, 2600);
+  });
+});
+
+const contactTitle = [
+  ...document.querySelectorAll(".merch h1 svg path"),
+].reverse();
+console.log(contactTitle);
+
+contactTitle.forEach((letter, index) => {
+  letter.style.animation = `wave-animation 1.4s ${
+    index / 10
+  }s ease-out both alternate infinite`;
+});

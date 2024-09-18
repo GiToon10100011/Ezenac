@@ -51,6 +51,34 @@ a {
     transform: scale(0);
   }
 }
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateY(4px); /* Modify this to control wave intensity */
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 @keyframes overlay {
   from {
     opacity: 1;
@@ -769,12 +797,25 @@ header .gnb-inner .trigger {
   position: relative;
 }
 .awards-inner > div.about-awards {
-  background: #1a1f24;
+  background: url("./images/totkbg/pattern-runes-brown.png") center/cover no-repeat;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+.awards-inner > div.about-awards .divider {
+  width: 100%;
+  height: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 14px;
+  white-space: nowrap;
+}
+.awards-inner > div.about-awards .divider svg {
+  height: 100%;
+  margin-right: -6px;
 }
 .awards-inner > div.about-awards .about-heading {
   text-align: center;
@@ -783,7 +824,7 @@ header .gnb-inner .trigger {
 .awards-inner > div.about-awards .about-heading .bar {
   width: 50px;
   height: 4px;
-  background: #4cd69e;
+  background: #cbb687;
   border: none;
   margin: 30px auto;
 }
@@ -800,7 +841,7 @@ header .gnb-inner .trigger {
   transition: all 0.6s;
 }
 .awards-inner > div.about-awards .about-heading .view-awards:hover {
-  background: #4cd69e;
+  background: #cbb687;
   color: #fff;
   border: 1px solid transparent;
 }
@@ -903,69 +944,168 @@ header .gnb-inner .trigger {
   right: 6px;
 }
 
-.location-inner {
+.characters-inner {
   position: relative;
-  background: url("./images/background-location.jpg") center/cover no-repeat;
+  background: url("./images/totkmodal/bg_page.webp") center/cover no-repeat;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 2s;
 }
-.location-inner::before {
-  content: "";
+.characters-inner .character {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  transition: flex 2s 0.6s cubic-bezier(0.45, 0, 0.55, 1), opacity 1s, background 2s 0.6s;
+  opacity: 1;
+}
+.characters-inner .character.zelda {
+  background: url("./images/totkcharacters/chara_zelda.webp") 100% -140px/160% no-repeat;
+}
+.characters-inner .character.zelda:hover {
+  background-position: 40% 20%;
+  background-size: 60%;
+}
+.characters-inner .character.zelda:hover ~ .photos .mini-zelda {
+  animation: image-reveal 0.6s 0.1s linear both;
+}
+.characters-inner .character.zelda:hover ~ .quotes .quote.zelda {
+  animation: logoup 0.6s 0.8s linear both;
+}
+.characters-inner .character.link {
+  background: url("./images/totkcharacters/chara_link.webp") center 20px/180% no-repeat;
+}
+.characters-inner .character.link:hover {
+  background-size: 90%;
+  background-position: center;
+}
+.characters-inner .character.link:hover ~ .photos .mini-link {
+  animation: image-reveal 0.6s linear both;
+}
+.characters-inner .character.link:hover ~ .quotes .quote.link {
+  animation: logoup 0.6s 0.76s linear both;
+}
+.characters-inner .character.ganon {
+  background: url("./images/totkcharacters/chara_ganondorf.webp") 80% 100px/190% no-repeat;
+}
+.characters-inner .character.ganon:hover {
+  background-size: 90%;
+  background-position: center -40px;
+}
+.characters-inner .character.ganon:hover ~ .photos .mini-ganon {
+  animation: image-reveal 0.6s 0.1s linear both;
+}
+.characters-inner .character.ganon:hover ~ .quotes .quote.ganon {
+  animation: logoup 0.6s 0.8s linear both;
+}
+.characters-inner .character:not(.ganon)::after {
+  content: "1";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background: linear-gradient(to bottom, white, transparent);
+}
+.characters-inner .character:hover {
+  flex: 10;
+  opacity: 0.4;
+}
+.characters-inner .character:hover ~ .intro {
+  opacity: 0;
+}
+.characters-inner .intro {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  transition: all 0.6s;
+}
+.characters-inner .intro img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.characters-inner .photos {
+  display: none;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
 }
-.location-inner .feature {
-  position: relative;
-  color: #ddd;
-  display: flex;
-  gap: 100px;
-  width: 70%;
+.characters-inner .photos img {
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+  transition: all 0.6s;
 }
-.location-inner .feature .office {
+.characters-inner .photos img.mini-zelda {
+  width: 450px;
+  top: 0;
+  left: 28%;
+}
+.characters-inner .photos img.mini-link {
+  width: 840px;
+  top: 60px;
+  right: 10%;
+}
+.characters-inner .photos img.mini-ganon {
+  width: 800px;
+  top: 60px;
+  left: 24%;
+}
+.characters-inner .photos.active {
+  display: block;
+}
+.characters-inner .quotes {
+  position: absolute;
+  display: none;
+}
+.characters-inner .quotes .quote {
+  opacity: 0;
+  position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  flex: 3;
-}
-.location-inner .feature .office b {
-  text-transform: uppercase;
+  gap: 20px;
+  font-family: "Merriweather";
   font-weight: normal;
+  font-size: 20px;
+  color: #faf7dc;
 }
-.location-inner .feature .office h2 {
-  color: #4cd69e;
-  font-weight: 500;
-  margin-top: 5px;
+.characters-inner .quotes .quote.zelda {
+  bottom: -60px;
+  left: 80px;
 }
-.location-inner .feature .office p {
-  font: normal 16px/2.4rem Montserrat;
-  margin: 10px 0;
+.characters-inner .quotes .quote.link {
+  bottom: -40px;
+  left: -400px;
 }
-.location-inner .feature .office span {
-  color: #fff;
+.characters-inner .quotes .quote.ganon {
+  top: 200px;
+  left: 360px;
 }
-.location-inner .feature .service {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+.characters-inner .quotes .quote.ganon > img {
+  position: absolute;
+  top: -500px;
+  left: -1000px;
 }
-.location-inner .feature .service .service-item .fa-solid {
-  color: #4cd69e;
-  font-size: 40px;
+.characters-inner .quotes .quote img {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 76px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.location-inner .feature .service .service-item h3 {
-  color: #fff;
-  font-size: 22px;
-  margin: 10px 0;
+.characters-inner .quotes .quote p {
+  width: 560px;
+  line-height: 34px;
+  text-shadow: 0 0 10px #000;
 }
-.location-inner .feature .service .service-item p {
-  font: normal 16px/2.4rem Montserrat;
+.characters-inner .quotes.active {
+  display: block;
 }
 
 .contact-inner {
@@ -975,78 +1115,136 @@ header .gnb-inner .trigger {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-.contact-inner .contact-feature {
-  width: 70%;
+.contact-inner .merch {
+  overflow-x: hidden;
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  flex: 2;
+  background: url("./images/totkbg/pattern-circles-ivory.png") center/cover no-repeat;
 }
-.contact-inner .contact-feature > div {
+.contact-inner .merch h1 svg path {
+  fill: #18473d;
+  margin-right: 1px;
+}
+.contact-inner .merch .title-divider {
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+.contact-inner .merch .title-divider img {
+  width: 30px;
+  height: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.contact-inner .merch .title-divider .middle-bar {
+  width: 100%;
+  height: 2px;
+  background: #cbb687;
+}
+.contact-inner .merch p {
+  font-family: Merriweather;
+  font-size: 24px;
+  color: #2b2322;
+}
+.contact-inner .merch .products {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.contact-inner .merch .products img:hover {
+  animation: tilt-shaking linear 0.3s 2 both;
+}
+.contact-inner .merch .divider {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  display: flex;
+  white-space: nowrap;
+}
+.contact-inner .merch .divider img {
+  height: 24px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.contact-inner .contact-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
   flex: 1;
-}
-.contact-inner .contact-feature > div.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.contact-inner .contact-feature > div.contact-form h3 {
-  font: normal 30px/1rem Montserrat;
-}
-.contact-inner .contact-feature > div.contact-form .send-box {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.contact-inner .contact-feature > div.contact-form .send-box label {
-  font: bold 16px/1rem Montserrat;
-}
-.contact-inner .contact-feature > div.contact-form .send-box label span {
-  color: #dc143c;
-  font-weight: normal;
-}
-.contact-inner .contact-feature > div.contact-form .send-box input[type=text],
-.contact-inner .contact-feature > div.contact-form .send-box textarea {
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  padding: 10px;
-}
-.contact-inner .contact-feature > div.contact-form .send-box input[type=text]:focus,
-.contact-inner .contact-feature > div.contact-form .send-box textarea:focus {
-  outline: none;
-  border: 1px solid #4cd69e;
-  box-shadow: 0 0 5px #4cd69e;
-}
-.contact-inner .contact-feature > div.contact-form .send-box input[type=submit] {
-  background: #4cd69e;
+  background: url("./images/totkbg/pattern-circles-dark-green.png") center/cover no-repeat;
   color: #fff;
-  width: 318px;
-  justify-content: start;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 3px;
-  margin-top: 10px;
+}
+.contact-inner .contact-content .logo {
+  width: 220px;
+}
+.contact-inner .contact-content .logo img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.contact-inner .contact-content .footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-inner .contact-content .footer-content .followers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.contact-inner .contact-content .footer-content .followers img {
   transition: all 0.3s;
-  cursor: pointer;
 }
-.contact-inner .contact-feature > div.contact-form .send-box input[type=submit]:hover {
-  background: #222;
+.contact-inner .contact-content .footer-content .followers img:hover {
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.3);
 }
-.contact-inner .contact-feature > div.contact-info h4 {
-  font: normal 20px/1rem Montserrat;
+.contact-inner .contact-content .footer-content .followers .sns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
-.contact-inner .contact-feature > div.contact-info ul {
-  margin: 20px 0;
+.contact-inner .contact-content .footer-content .followers .sns .icons {
+  display: flex;
+  gap: 20px;
 }
-.contact-inner .contact-feature > div.contact-info ul li {
-  line-height: 2.4rem;
+.contact-inner .contact-content .footer-content .followers .esrb {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
-.contact-inner .contact-feature > div.contact-info ul li .fa-regular {
-  display: inline-block;
-  margin-right: 6px;
+.contact-inner .contact-content .footer-content .followers .esrb img {
+  width: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.contact-inner .contact-feature > div.contact-info p {
-  margin-top: 20px;
-  line-height: 2.4rem;
+.contact-inner .contact-content .policy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-inner .contact-content .policy a:not(:last-child) {
+  border-right: 1px solid;
+  padding-right: 10px;
+}
+.contact-inner .contact-content .policy a:not(:first-child) {
+  padding-left: 10px;
+}
+.contact-inner .contact-content .policy a:hover {
+  text-decoration: underline;
 }
 
 .ability-inner {
@@ -1599,15 +1797,15 @@ header .gnb-inner .trigger {
     padding: 40px 20px;
     height: auto;
   }
-  .location-inner {
+  .characters-inner {
     height: auto;
   }
-  .location-inner .feature {
+  .characters-inner .feature {
     gap: 0;
     flex-direction: column;
     width: 100%;
   }
-  .location-inner .feature > div {
+  .characters-inner .feature > div {
     padding: 30px;
     width: 100%;
   }

@@ -74,6 +74,36 @@ $family: (
   }
 }
 
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateY(4px); /* Modify this to control wave intensity */
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 @keyframes overlay {
   from {
     opacity: 1;
@@ -853,19 +883,32 @@ header {
     height: 100%;
     position: relative;
     &.about-awards {
-      background: #1a1f24;
+      background: url("./images/totkbg/pattern-runes-brown.png") center/cover
+        no-repeat;
       color: map-get($map: $color, $key: main-light-bg);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
+      .divider {
+        width: 100%;
+        height: 12px;
+        object-fit: cover;
+        position: absolute;
+        top: 14px;
+        white-space: nowrap;
+        svg {
+          height: 100%;
+          margin-right: -6px;
+        }
+      }
       .about-heading {
         text-align: center;
         width: 70%;
         .bar {
           width: 50px;
           height: 4px;
-          background: map-get($map: $color, $key: point-color);
+          background: map-get($map: $color, $key: dark-logo-color);
           border: none;
           margin: 30px auto;
         }
@@ -881,7 +924,7 @@ header {
           padding: 5px 15px;
           transition: all 0.6s;
           &:hover {
-            background: map-get($map: $color, $key: point-color);
+            background: map-get($map: $color, $key: dark-logo-color);
             color: map-get($map: $color, $key: main-light-bg);
             border: 1px solid transparent;
           }
@@ -911,7 +954,7 @@ header {
         z-index: 1;
         width: 80% !important;
         box-shadow: 0 0 30px rgba($color: #fff, $alpha: 0.3);
-        &::before{
+        &::before {
           display: none;
         }
       }
@@ -979,12 +1022,12 @@ header {
         transform: translate(-50%, -200%) rotate(180deg);
         transition: all 0.3s;
       }
-      &.hovering{
-        &::before{
+      &.hovering {
+        &::before {
           top: 6px;
           left: 6px;
         }
-        &::after{
+        &::after {
           bottom: 6px;
           right: 6px;
         }
@@ -993,72 +1036,167 @@ header {
   }
 }
 
-// Location
-.location-inner {
+// characters
+.characters-inner {
   position: relative;
-  background: url("./images/background-location.jpg") center/cover no-repeat;
+  background: url("./images/totkmodal/bg_page.webp") center/cover no-repeat;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &::before {
-    content: "";
+  transition: all 2s;
+  .character {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    transition: flex 2s 0.6s cubic-bezier(0.45, 0, 0.55, 1), opacity 1s,
+      background 2s 0.6s;
+    opacity: 1;
+    &.zelda {
+      background: url("./images/totkcharacters/chara_zelda.webp") 100% -140px/160%
+        no-repeat;
+      &:hover {
+        background-position: 40% 20%;
+        background-size: 60%;
+        & ~ .photos .mini-zelda {
+          animation: image-reveal 0.6s 0.1s linear both;
+        }
+        & ~ .quotes .quote.zelda {
+          animation: logoup 0.6s 0.8s linear both;
+        }
+      }
+    }
+    &.link {
+      background: url("./images/totkcharacters/chara_link.webp") center 20px/180%
+        no-repeat;
+      &:hover {
+        background-size: 90%;
+        background-position: center;
+        & ~ .photos .mini-link {
+          animation: image-reveal 0.6s linear both;
+        }
+        & ~ .quotes .quote.link {
+          animation: logoup 0.6s 0.76s linear both;
+        }
+      }
+    }
+    &.ganon {
+      background: url("./images/totkcharacters/chara_ganondorf.webp") 80% 100px/190%
+        no-repeat;
+      &:hover {
+        background-size: 90%;
+        background-position: center -40px;
+        & ~ .photos .mini-ganon {
+          animation: image-reveal 0.6s 0.1s linear both;
+        }
+        & ~ .quotes .quote.ganon {
+          animation: logoup 0.6s 0.8s linear both;
+        }
+      }
+    }
+    &:not(.ganon)::after {
+      content: "1";
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      background: linear-gradient(to bottom, white, transparent);
+    }
+    &:hover {
+      flex: 10;
+      opacity: 0.4;
+      & ~ .intro {
+        opacity: 0;
+      }
+    }
+  }
+  .intro {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    transition: all 0.6s;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .photos {
+    display: none;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-  }
-
-  .feature {
-    position: relative;
-    color: map-get($map: $color, $key: main-item-border);
-    display: flex;
-    gap: 100px;
-    width: 70%;
-    .office {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      flex: 3;
-      b {
-        text-transform: uppercase;
-        font-weight: normal;
+    img {
+      position: absolute;
+      object-fit: cover;
+      opacity: 0;
+      transition: all 0.6s;
+      &.mini-zelda {
+        width: 450px;
+        top: 0;
+        left: 28%;
       }
-      h2 {
-        color: map-get($map: $color, $key: point-color);
-        font-weight: 500;
-        margin-top: 5px;
+      &.mini-link {
+        width: 840px;
+        top: 60px;
+        right: 10%;
       }
-      p {
-        font: normal 16px/2.4rem map-get($map: $family, $key: montserrat);
-        margin: 10px 0;
-      }
-      span {
-        color: map-get($map: $color, $key: main-light-bg);
+      &.mini-ganon {
+        width: 800px;
+        top: 60px;
+        left: 24%;
       }
     }
-    .service {
-      flex: 2;
+    &.active {
+      display: block;
+    }
+  }
+  .quotes {
+    position: absolute;
+    display: none;
+    .quote {
+      opacity: 0;
+      position: absolute;
       display: flex;
       flex-direction: column;
-      gap: 40px;
-      .service-item {
-        .fa-solid {
-          color: map-get($map: $color, $key: point-color);
-          font-size: 40px;
-        }
-        h3 {
-          color: map-get($map: $color, $key: main-light-bg);
-          font-size: 22px;
-          margin: 10px 0;
-        }
-        p {
-          font: normal 16px/2.4rem map-get($map: $family, $key: montserrat);
+      gap: 20px;
+      font-family: "Merriweather";
+      font-weight: normal;
+      font-size: 20px;
+      color: map-get($map: $color, $key: logo-color);
+      &.zelda {
+        bottom: -60px;
+        left: 80px;
+      }
+      &.link {
+        bottom: -40px;
+        left: -400px;
+      }
+      &.ganon {
+        top: 200px;
+        left: 360px;
+        & > img {
+          position: absolute;
+          top: -500px;
+          left: -1000px;
         }
       }
+      img {
+        width: fit-content;
+        height: 76px;
+        object-fit: cover;
+      }
+      p {
+        width: 560px;
+        line-height: 34px;
+        text-shadow: 0 0 10px #000;
+      }
+    }
+    &.active {
+      display: block;
     }
   }
 }
@@ -1071,68 +1209,138 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  .contact-feature {
-    width: 70%;
+  flex-direction: column;
+  .merch {
+    overflow-x: hidden;
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    & > div {
-      flex: 1;
-      &.contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        h3 {
-          font: normal 30px/1rem map-get($map: $family, $key: montserrat);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    flex: 2;
+    background: url("./images/totkbg/pattern-circles-ivory.png") center/cover
+      no-repeat;
+    h1 {
+      svg {
+        path {
+          fill: #18473d;
+          margin-right: 1px;
         }
-        .send-box {
+      }
+    }
+    .title-divider {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      img {
+        width: 30px;
+        height: 6px;
+        object-fit: cover;
+      }
+      .middle-bar {
+        width: 100%;
+        height: 2px;
+        background: map-get($map: $color, $key: dark-logo-color);
+      }
+    }
+    p {
+      font-family: Merriweather;
+      font-size: 24px;
+      color: map-get($map: $color, $key: dark-brown);
+    }
+    .products {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+      img {
+        &:hover {
+          animation: tilt-shaking linear 0.3s 2 both;
+        }
+      }
+    }
+    .divider {
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      display: flex;
+      white-space: nowrap;
+      img {
+        height: 24px;
+        object-fit: cover;
+      }
+    }
+  }
+  .contact-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+    flex: 1;
+    background: url("./images/totkbg/pattern-circles-dark-green.png")
+      center/cover no-repeat;
+    color: map-get($map: $color, $key: main-light-bg);
+    .logo {
+      width: 220px;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .footer-content{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .followers{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        img{
+          transition: all 0.3s;
+          &:hover{
+            box-shadow: 0 0 14px rgba($color: #fff, $alpha: .3);
+          }
+        }
+        .sns{
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          align-items: center;
           gap: 20px;
-          label {
-            font: bold 16px/1rem map-get($map: $family, $key: montserrat);
-            span {
-              color: map-get($map: $color, $key: main-red-color);
-              font-weight: normal;
-            }
+          .icons{
+            display: flex;
+            gap: 20px;
           }
-          input[type="text"],
-          textarea {
-            @include formStyle;
-          }
-          input[type="submit"] {
-            background: map-get($map: $color, $key: point-color);
-            color: map-get($map: $color, $key: main-light-bg);
-            width: 318px;
-            justify-content: start;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 3px;
-            margin-top: 10px;
-            transition: all 0.3s;
-            cursor: pointer;
-            &:hover {
-              background: map-get($map: $color, $key: main-font-color);
-            }
+        }
+        .esrb{
+          display: flex;
+          gap: 20px;
+          align-items: center;
+          img{
+            width: 60px;
+            object-fit: cover;
           }
         }
       }
-      &.contact-info {
-        h4 {
-          font: normal 20px/1rem map-get($map: $family, $key: montserrat);
+    }
+    .policy {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        &:not(:last-child) {
+          border-right: 1px solid;
+          padding-right: 10px;
         }
-        ul {
-          margin: 20px 0;
-          li {
-            line-height: 2.4rem;
-            .fa-regular {
-              display: inline-block;
-              margin-right: 6px;
-            }
-          }
+        &:not(:first-child) {
+          padding-left: 10px;
         }
-        p {
-          margin-top: 20px;
-          line-height: 2.4rem;
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
@@ -1732,8 +1940,8 @@ header {
     }
   }
 
-  //Location
-  .location-inner {
+  //characters
+  .characters-inner {
     height: auto;
     .feature {
       gap: 0;
