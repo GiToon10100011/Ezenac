@@ -1,11 +1,41 @@
 //Fullpage.js
-new fullpage("#fullpage", {
-  autoScrolling: true, // Enable auto-scrolling
-  scrollHorizontally: true, // Enable horizontal scrolling
-  slidesNavigation: true, // Show navigation dots for horizontal slides
-  controlArrows: true, // Show control arrows for slides
-  responsiveWidth: 768,
-});
+// Flag to track if fullpage is active
+let isFullpageActive = false;
+
+function initializeFullpage() {
+  if (!isFullpageActive) {
+    new fullpage("#fullpage", {
+      autoScrolling: true, // Enable auto-scrolling
+      scrollHorizontally: true, // Enable horizontal scrolling
+      slidesNavigation: true, // Show navigation dots for horizontal slides
+      controlArrows: true, // Show control arrows for slides
+      responsiveWidth: 768,
+    });
+    isFullpageActive = true;
+  }
+}
+
+function destroyFullpage() {
+  if (isFullpageActive) {
+    fullpage_api.destroy("all"); // Destroys fullpage.js
+    isFullpageActive = false;
+  }
+}
+
+function checkWindowSize() {
+  const windowWidth = window.innerWidth;
+  if (windowWidth <= 768) {
+    destroyFullpage();
+  } else {
+    initializeFullpage();
+  }
+}
+
+// Check window size on load
+checkWindowSize();
+
+// Listen for window resize events
+window.addEventListener("resize", checkWindowSize);
 
 // console.log(fullpage_api);
 const overlay = document.querySelector(".home-inner");
