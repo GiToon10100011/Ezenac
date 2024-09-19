@@ -1028,6 +1028,7 @@ header .gnb-inner .trigger {
      object-fit: cover;
 }
 .characters-inner .photos {
+  pointer-events: none;
   display: none;
   width: 100%;
   height: 100%;
@@ -1061,6 +1062,7 @@ header .gnb-inner .trigger {
   display: block;
 }
 .characters-inner .quotes {
+  pointer-events: none;
   position: absolute;
   display: none;
 }

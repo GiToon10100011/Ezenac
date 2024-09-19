@@ -239,7 +239,7 @@ characters.forEach((character, index, arr) => {
       const quotes = document.querySelector(".quotes");
       photos.classList.add("active");
       quotes.classList.add("active");
-    }, 2600);
+    }, 2700);
   });
   character.addEventListener("mouseout", () => {
     arr.forEach((item, i) => {
