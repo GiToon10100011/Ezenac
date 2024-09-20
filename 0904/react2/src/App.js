@@ -11,6 +11,9 @@ import SubBody5 from "./components/SubBody5.js";
 const ChildComp = () => {
   return <div>child component</div>;
 };
+const ChildComp2 = () => {
+  return <div>child component2</div>;
+};
 
 function App() {
   return (
@@ -19,6 +22,7 @@ function App() {
         <Header />
         <Body>
           <ChildComp />
+          <ChildComp2 />
         </Body>
         <SubBody1 />
         {/* <SubBody2 /> */}

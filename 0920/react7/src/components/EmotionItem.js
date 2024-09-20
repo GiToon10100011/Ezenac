@@ -15,7 +15,7 @@ const EmotionContent = styled.div`
     margin-bottom: 10px;
   }
   & span {
-    font-size: 18px;
+    font-size: 14px;
   }
   &.EmotionItem_off {
     background: #cecece;

@@ -58,6 +58,7 @@ const ContentItem = styled.div`
 `;
 
 const DiaryItem = ({ id, date, content, emotionId }) => {
+  console.log(typeof content);
   const navigate = useNavigate();
   const goDetail = () => {
     navigate(`/diary/${id}`);

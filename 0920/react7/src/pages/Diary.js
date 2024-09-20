@@ -14,6 +14,7 @@ const Diary = () => {
     return <div>일기를 불러오는 중입니다...</div>;
   } else {
     const { date, emotionId, content } = data;
+    console.log(data);
     const headerTitle = `${getFormattedDate(new Date(parseInt(date)))} 기록`;
 
     const goBack = () => {
@@ -31,7 +32,7 @@ const Diary = () => {
           title={headerTitle}
           rightChild={<Button title={"수정하기 "} onClick={goEdit} />}
         />
-        <Viewer />
+        <Viewer content={content} emotionId={emotionId} />
       </div>
     );
   }

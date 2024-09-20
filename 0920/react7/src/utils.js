@@ -27,8 +27,8 @@ export const getFormattedDate = (targetDate) => {
   let month = targetDate.getMonth() + 1;
   let date = targetDate.getDate();
 
-  month < 10 ? (month = `0${month}`) : month;
-  date < 10 ? (date = `0${date}`) : date;
+  month = month < 10 ? (month = `0${month}`) : month;
+  date = date < 10 ? (date = `0${date}`) : date;
 
   return `${year}-${month}-${date}`;
 };

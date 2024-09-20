@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #e2e2e2;
+  font-family: "Noto Serif KR";
 `;
 
 const LeftChild = styled.div``;

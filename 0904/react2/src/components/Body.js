@@ -27,7 +27,7 @@ const Body = ({ children }) => {
 
   return (
     <div>
-      <h1>{children}</h1>
+      <h1>{children.map((child) => child)}</h1>
     </div>
   );
 };

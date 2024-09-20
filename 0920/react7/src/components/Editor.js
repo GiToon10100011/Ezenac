@@ -25,7 +25,7 @@ const Textarea = styled.textarea`
   color: white;
   font-size: 20px;
   font-family: "Noto Serif KR";
-  width: 100%;
+  width: 93%;
   min-height: 700px;
   resize: none;
   &:focus {
@@ -90,6 +90,7 @@ const Editor = ({ initData = "", onSubmit }) => {
 
   const handleSubmit = () => {
     onSubmit(state);
+    navigate("/");
   };
 
   const handleGoBack = () => {
@@ -131,7 +132,7 @@ const Editor = ({ initData = "", onSubmit }) => {
         </EmotionGroup>
       </EditorSection>
       <EditorSection>
-        <LightH4>동훈의 일기</LightH4>
+        <LightH4>동훈이의 일기</LightH4>
         <div>
           <Textarea
             placeholder="오늘은 어땠나요?"
