@@ -1,33 +1,35 @@
 //Fullpage.js
 // Flag to track if fullpage is active
-let isFullpageActive = false;
+// let isFullpageActive = false;
 
-function initializeFullpage() {
-  if (!isFullpageActive) {
-    new fullpage("#fullpage", {
-      autoScrolling: true, // Enable auto-scrolling
-      scrollHorizontally: true, // Enable horizontal scrolling
-      slidesNavigation: true, // Show navigation dots for horizontal slides
-      controlArrows: true, // Show control arrows for slides
-      responsiveWidth: 768,
-    });
-    isFullpageActive = true;
-  }
-}
+// function initializeFullpage() {
+//   if (!isFullpageActive) {
+//   }
+  new fullpage("#fullpage", {
+    autoScrolling: true, // Enable auto-scrolling
+    scrollHorizontally: true, // Enable horizontal scrolling
+    slidesNavigation: true, // Show navigation dots for horizontal slides
+    controlArrows: true, // Show control arrows for slides
+    responsiveWidth: 768,
+  });
+//   isFullpageActive = true;
+// }
 
-function destroyFullpage() {
-  if (isFullpageActive) {
-    fullpage_api.destroy("all"); // Destroys fullpage.js
-    isFullpageActive = false;
-  }
-}
+// function destroyFullpage() {
+//   if (isFullpageActive) {
+//     fullpage_api.destroy("all"); // Destroys fullpage.js
+//     isFullpageActive = false;
+//   }
+// }
 
 function checkWindowSize() {
   const windowWidth = window.innerWidth;
   if (windowWidth <= 768) {
-    destroyFullpage();
+    document.querySelector(".modal iframe").setAttribute("width", 300)
+    document.querySelector(".modal iframe").setAttribute("height", 200)
   } else {
-    initializeFullpage();
+    document.querySelector(".modal iframe").setAttribute("width", 1060)
+    document.querySelector(".modal iframe").setAttribute("height", 615)
   }
 }
 
