@@ -1,35 +1,22 @@
 //Fullpage.js
-// Flag to track if fullpage is active
-// let isFullpageActive = false;
-
-// function initializeFullpage() {
-//   if (!isFullpageActive) {
-//   }
-  new fullpage("#fullpage", {
-    autoScrolling: true, // Enable auto-scrolling
-    scrollHorizontally: true, // Enable horizontal scrolling
-    slidesNavigation: true, // Show navigation dots for horizontal slides
-    controlArrows: true, // Show control arrows for slides
-    responsiveWidth: 768,
-  });
-//   isFullpageActive = true;
-// }
-
-// function destroyFullpage() {
-//   if (isFullpageActive) {
-//     fullpage_api.destroy("all"); // Destroys fullpage.js
-//     isFullpageActive = false;
-//   }
-// }
+new fullpage("#fullpage", {
+  autoScrolling: true, // Enable auto-scrolling
+  scrollHorizontally: true, // Enable horizontal scrolling
+  slidesNavigation: true, // Show navigation dots for horizontal slides
+  controlArrows: true, // Show control arrows for slides
+  anchors: [
+    "home",
+  ],
+});
 
 function checkWindowSize() {
   const windowWidth = window.innerWidth;
   if (windowWidth <= 768) {
-    document.querySelector(".modal iframe").setAttribute("width", 300)
-    document.querySelector(".modal iframe").setAttribute("height", 200)
+    document.querySelector(".modal iframe").setAttribute("width", 300);
+    document.querySelector(".modal iframe").setAttribute("height", 200);
   } else {
-    document.querySelector(".modal iframe").setAttribute("width", 1060)
-    document.querySelector(".modal iframe").setAttribute("height", 615)
+    document.querySelector(".modal iframe").setAttribute("width", 1060);
+    document.querySelector(".modal iframe").setAttribute("height", 615);
   }
 }
 
@@ -143,11 +130,6 @@ trigger.addEventListener("click", () => {
   });
 });
 
-// scrollTo
-$(".menu a").click(function () {
-  $.scrollTo(this.hash || 0, 600);
-});
-
 //Slick Slider : Project
 $(".project-photo").slick({
   dots: true,
@@ -172,24 +154,13 @@ $(".history-slider").slick({
   pauseOnHover: true,
   responsive: [
     {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 480,
+      breakpoint: 768,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        arrows: false,
+        speed: 600,
+        autoplaySpeed: 4000,
       },
     },
   ],
@@ -291,7 +262,6 @@ characters.forEach((character, index, arr) => {
 const contactTitle = [
   ...document.querySelectorAll(".merch h1 svg path"),
 ].reverse();
-console.log(contactTitle);
 
 contactTitle.forEach((letter, index) => {
   letter.style.animation = `wave-animation 1.4s ${

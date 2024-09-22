@@ -1,3 +1,34 @@
+function checkWindowSize() {
+  const windowWidth = window.innerWidth;
+  if (windowWidth <= 768) {
+    $(".trailers").slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      pauseOnHover: true,
+      pauseOnFocus: true,
+    });
+    $(window).on("load", function () {
+      $(".trailers").slick("setPosition");
+    });
+  } else {
+    $(".trailers").slick("unslick");
+  }
+}
+
+// Check window size on load
+setTimeout(function() {
+  checkWindowSize();
+}, 300);
+
+// Listen for window resize events
+window.addEventListener("resize", checkWindowSize);
+
 const modalLogo = [...document.querySelectorAll("#modal-logo path")].reverse();
 
 modalLogo.forEach((letter, index) => {
@@ -73,7 +104,6 @@ const options = {
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      console.log(entry.target);
       const currentSection = entry.target;
       currentSection.classList.add("active");
     }
