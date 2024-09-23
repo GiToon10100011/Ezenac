@@ -14,43 +14,29 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "INIT":
       return action.data;
-    case "CREATE":
-      return [action.data, ...state];
-    case "UPDATE":
-      return state.map((item) =>
+    case "CREATE": {
+      const newState = [action.data, ...state];
+      localStorage.setItem("diary", JSON.stringify(newState));
+      return newState;
+    }
+    case "UPDATE": {
+      const newState = state.map((item) =>
         String(item.id) === String(action.data.id) ? { ...action.data } : item
       );
-    case "DELETE":
-      return state.filter(
+      localStorage.setItem("diary", JSON.stringify(newState));
+      return newState;
+    }
+    case "DELETE": {
+      const newState = state.filter(
         (item) => String(item.id) !== String(action.targetId)
       );
+      localStorage.setItem("diary", JSON.stringify(newState));
+      return newState;
+    }
     default:
       return state;
   }
 };
-
-//정렬을 위해 의도적으로 시간을 각각 다르게 빼줌.
-
-const mockData = [
-  {
-    id: "mock1",
-    date: new Date().getTime() - 1,
-    content: "mock1",
-    emotionId: 1,
-  },
-  {
-    id: "mock2",
-    date: new Date().getTime() - 2,
-    content: "mock2",
-    emotionId: 2,
-  },
-  {
-    id: "mock3",
-    date: new Date().getTime() - 3,
-    content: "mock3",
-    emotionId: 3,
-  },
-];
 
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
@@ -61,9 +47,26 @@ const App = () => {
   const idRef = useRef(0);
 
   useEffect(() => {
+    const rawData = localStorage.getItem("diary");
+    //정상적인 페이지로 넘어가기 위한 조건문
+    if (!rawData) {
+      setIsDataLoaded(true);
+      return;
+    }
+    const localData = JSON.parse(rawData);
+    //진짜 일기가 없을때 검사문
+    if (localData.length === 0) {
+      setIsDataLoaded(true);
+      return;
+    }
+
+    localData.sort((a, b) => Number(b.id) - Number(a.id));
+    //최초의 아이디값 세팅
+    idRef.current = localData[0].id + 1;
+
     dispatch({
       type: "INIT",
-      data: mockData,
+      data: localData,
     });
     setIsDataLoaded(true);
   }, []);

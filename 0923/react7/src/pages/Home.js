@@ -3,7 +3,7 @@ import { DiaryStateContext } from "../App";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import DiaryList from "../components/DiaryList";
-import { getMonthRangeByDate } from "../utils";
+import { getMonthRangeByDate, setPageTitle } from "../utils";
 
 const Home = () => {
   const [pivotDate, setPivotDate] = useState(new Date());
@@ -22,6 +22,10 @@ const Home = () => {
       setFilteredData([]);
     }
   }, [data, pivotDate]);
+
+  useEffect(() => {
+    setPageTitle("어서와 동훈아");
+  }, []);
 
   const headerTitle = `${pivotDate.getFullYear()}년 ${
     pivotDate.getMonth() + 1
