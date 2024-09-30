@@ -3,6 +3,9 @@ import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import { motion } from "framer-motion";
 import MusicList from "./components/MusicList";
+import CircleAudioVisualizer from "./CircleAudioVisualizer";
+import DGS from "../public/DGS1-confess.mp3";
+import logo from "../public/vite.svg";
 
 const Wrapper = styled.div`
   position: relative;
@@ -29,11 +32,12 @@ const MenuBar = styled(motion.div)`
   justify-content: center;
   align-items: center;
   position: fixed;
-  width: 60px;
-  height: 40vh;
+  width: 80px;
+  height: 50vh;
   background: var(--point-color);
   left: 30px;
   top: 50%;
+  z-index: 10;
   transform: translateY(-50%);
 `;
 
@@ -70,7 +74,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Wrapper>
+      {/* <Wrapper>
         <TitleContainer>
           <MainTitle>AA Music Collection</MainTitle>
           <SubTitle>Prosecutorial Prodigy.</SubTitle>
@@ -82,9 +86,15 @@ function App() {
             <span></span>
           </MenuBtn>
         </MenuBar>
-        <CopyRight>2024 Designed by &copy; Toon</CopyRight>
+        <CopyRight>2024 Designed by &copy; CAPCOM</CopyRight>
         <MusicList></MusicList>
-      </Wrapper>
+      </Wrapper> */}
+      <CircleAudioVisualizer
+        audioUrl={DGS}
+        albumArt={logo}
+        artistName={"Capcom"}
+        songName={"DGS1 - Confess teh Truth"}
+      />
     </>
   );
 }
