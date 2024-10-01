@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MusicCard from "./MusicCard";
 import { data } from "../data.json";
+import CircularAudioVisualizer from "./CircleAudioVisualizer";
 
 const deg = 30;
 
@@ -31,11 +32,25 @@ const MusicList: React.FC = () => {
   return (
     <Wrapper>
       {data.map((item, index) => (
-        <MusicCard
-          key={index}
-          cardData={item}
-          style={{ transform: `rotate(${deg * index}deg) translateY(-150vh)` }}
-        />
+        <>
+          <MusicCard
+            key={index}
+            cardData={item}
+            style={{
+              transform: `rotate(${deg * index}deg) translateY(-150vh)`,
+            }}
+          />
+          <CircularAudioVisualizer
+            key={index - 1}
+            audioUrl={item.audio}
+            albumArt={"/ydhdot.jpg"}
+            artistName={item.game}
+            songName={item.title}
+            rotate={{
+              transform: `rotate(${deg * index}deg) translateY(-150vh)`,
+            }}
+          />
+        </>
       ))}
     </Wrapper>
   );

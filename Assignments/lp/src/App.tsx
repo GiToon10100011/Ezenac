@@ -3,7 +3,7 @@ import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import { motion } from "framer-motion";
 import MusicList from "./components/MusicList";
-import CircleAudioVisualizer from "./CircleAudioVisualizer";
+import CircleAudioVisualizer from "./components/CircleAudioVisualizer";
 import DGS from "../public/DGS1-confess.mp3";
 import logo from "../public/vite.svg";
 
@@ -74,7 +74,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      {/* <Wrapper>
+      <Wrapper>
         <TitleContainer>
           <MainTitle>AA Music Collection</MainTitle>
           <SubTitle>Prosecutorial Prodigy.</SubTitle>
@@ -88,13 +88,7 @@ function App() {
         </MenuBar>
         <CopyRight>2024 Designed by &copy; CAPCOM</CopyRight>
         <MusicList></MusicList>
-      </Wrapper> */}
-      <CircleAudioVisualizer
-        audioUrl={DGS}
-        albumArt={logo}
-        artistName={"Capcom"}
-        songName={"DGS1 - Confess teh Truth"}
-      />
+      </Wrapper>
     </>
   );
 }
