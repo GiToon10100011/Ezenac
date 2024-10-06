@@ -1,17 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import { motion } from "framer-motion";
 import MusicList from "./components/MusicList";
-import CircleAudioVisualizer from "./components/CircleAudioVisualizer";
-import DGS from "../public/DGS1-confess.mp3";
-import logo from "../public/vite.svg";
 
 const Wrapper = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100vh;
+  /* background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("/images/AA1-2.jpg") center/cover no-repeat; */
 `;
 
 const TitleContainer = styled.div`

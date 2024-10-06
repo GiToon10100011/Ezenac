@@ -1,88 +1,136 @@
 {
   "data": [
     {
+      "id": "AA1",
+      "relatedId": "phoenix_wright_ace_attorney",
       "audio": "/AA1-pursuit.mp3",
       "title": "Pressing Pursuit ~ Cornered",
       "game": "Phoenix Wright Ace Attorney",
       "date": "2001-10-12",
-      "website": "https://www.ace-attorney.com/trilogy/uk/"
+      "website": "https://www.ace-attorney.com/trilogy/uk/",
+      "albumCoverPath": "/images/AA1.jpg",
+      "backgroundImgPath": "/images/AA1.jpg"
     },
     {
+      "id": "AA2",
+      "relatedId": "phoenix_wright_ace_attorney_justice_for_all",
       "audio": "/AA2-pursuit.mp3",
       "title": "Pressing Pursuit ~ Cross-Examine",
       "game": "Phoenix Wright Ace Attorney: Justice For All",
       "date": "2002-10-18",
-      "website": "https://www.ace-attorney.com/trilogy/uk/"
+      "website": "https://www.ace-attorney.com/trilogy/uk/",
+      "albumCoverPath": "/images/AA2.jpg",
+      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_justice_for_all_bg.jpg"
     },
     {
+      "id": "AA3",
+      "relatedId": "phoenix_wright_ace_attorney_trials_and_tribulations",
       "audio": "/AA3-godot.mp3",
       "title": "Godot ~ The Fragrance of Dark Coffee",
       "game": "Phoenix Wright Ace Attorney: Trials and Tribulations",
       "date": "2004-10-23",
-      "website": "https://www.ace-attorney.com/trilogy/uk/"
+      "website": "https://www.ace-attorney.com/trilogy/uk/",
+      "albumCoverPath": "/images/AA3.jpg",
+      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_trials_and_tribulations_bg.jpg"
     },
     {
+      "id": "AA4",
+      "relatedId": "apollo_justice_ace_attorney_trilogy",
       "audio": "/AA4-main.mp3",
       "title": "Apollo Justice - A New Era Begins! 2024",
       "game": "Apollo Justice: Ace Attorney Trilogy",
       "date": "2024-01-25",
-      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/"
+      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
+      "albumCoverPath": "/images/AA4.avif",
+      "backgroundImgPath": "/images/apollo_justice_ace_attorney_trilogy_bg.jpg"
     },
     {
+      "id": "AA4-2",
+      "relatedId": "apollo_justice_ace_attorney",
       "audio": "/AA4-garyu.mp3",
       "title": "Klavier Gavin ~ Guilty Love",
       "game": "Apollo Justice: Ace Attorney",
       "date": "2007-04-12",
-      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/"
+      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
+      "albumCoverPath": "/images/AA4-Garyu.webp",
+      "backgroundImgPath": "/images/apollo_justice_ace_attorney_bg.jpg"
     },
     {
+      "id": "AA4-3",
+      "relatedId": "apollo_justice_ace_attorney_trucy",
       "audio": "/AA4-trucy.mp3",
       "title": "Trucy Wright ~ Little Magic Girl",
       "game": "Apollo Justice: Ace Attorney",
       "date": "2007-04-12",
-      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/"
+      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
+      "albumCoverPath": "/images/AA4-Trucy.jpg",
+      "backgroundImgPath": "/images/apollo_justice_ace_attorney_trucy_bg.jpg"
     },
     {
+      "id": "AA5",
+      "relatedId": "phoenix_wright_ace_attorney_dual_destinies",
       "audio": "/AA5-pursuit.mp3",
       "title": "Pursuit ~ Keep Pressing On",
       "game": "Phoenix Wright: Ace Attorney - Dual Destinies",
       "date": "2013-07-25",
-      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/"
+      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
+      "albumCoverPath": "/images/AA5.jpeg",
+      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_dual_destinies_bg.jpg"
     },
     {
+      "id": "AA6",
+      "relatedId": "phoenix_wright_ace_attorney_spirit_of_justice",
       "audio": "/AA6-objection.mp3",
       "title": "Objection! 2016",
       "game": "Phoenix Wright: Ace Attorney - Spirit of Justice",
       "date": "2016-06-09",
-      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/"
+      "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
+      "albumCoverPath": "/images/AA6.jpg",
+      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_spirit_of_justice_bg.jpg"
     },
     {
+      "id": "AAI",
+      "relatedId": "ace_attorney_investigations_miles_edgeworth",
       "audio": "/AAI-pursuit.mp3",
       "title": "Pursuit ~ Lying Coldly",
       "game": "Ace Attorney Investigations: Miles Edgeworth",
       "date": "2009-05-28",
-      "website": "https://www.ace-attorney.com/investigations1-2/en-us/"
+      "website": "https://www.ace-attorney.com/investigations1-2/en-us/",
+      "albumCoverPath": "/images/AAI.webp",
+      "backgroundImgPath": "/images/ace_attorney_investigations_miles_edgeworth_bg.jpg"
     },
     {
+      "id": "DGS1",
+      "relatedId": "the_great_ace_attorney_adventures",
       "audio": "/DGS1-confess.mp3",
       "title": "Confess the Truth 2015",
       "game": "The Great Ace Attorney: Adventures",
       "date": "2015-07-09",
-      "website": "https://www.ace-attorney.com/great1-2/en-asia/"
+      "website": "https://www.ace-attorney.com/great1-2/en-asia/",
+      "albumCoverPath": "/images/DGS1.jpg",
+      "backgroundImgPath": "/images/DGS1.jpg"
     },
     {
+      "id": "DGS1-2",
+      "relatedId": "the_great_ace_attorney_sherlock",
       "audio": "/DGS1-sh.mp3",
       "title": "Sherlock Holmes ~ Detective of the Foggy Town",
       "game": "The Great Ace Attorney: Adventures",
       "date": "2015-07-09",
-      "website": "https://www.ace-attorney.com/great1-2/en-asia/"
+      "website": "https://www.ace-attorney.com/great1-2/en-asia/",
+      "albumCoverPath": "/images/DGS1-sherlock.png",
+      "backgroundImgPath": "/images/the_great_ace_attorney_sherlock_bg.jpg"
     },
     {
+      "id": "DGS2",
+      "relatedId": "the_great_ace_attorney_partners",
       "audio": "/DGS2-partners.mp3",
       "title": "Partners ~ The Game is Afoot",
       "game": "The Great Ace Attorney 2: Resolve",
       "date": "2017-08-03",
-      "website": "https://www.ace-attorney.com/great1-2/en-asia/"
+      "website": "https://www.ace-attorney.com/great1-2/en-asia/",
+      "albumCoverPath": "/images/DGS2-1.png",
+      "backgroundImgPath": "/images/the_great_ace_attorney_partners_bg.jpg"
     }
   ]
 }

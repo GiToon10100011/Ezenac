@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import MusicCard from "./MusicCard";
 import styled, { CSSProperties } from "styled-components";
+import { IaudioPlayContext } from "./MusicList";
 
 interface CircularAudioVisualizerProps {
   audioUrl: string;
@@ -10,11 +11,21 @@ interface CircularAudioVisualizerProps {
   rotate: CSSProperties;
 }
 
+export const audioPlayContext = React.createContext<IaudioPlayContext>({
+  isPlaying: false,
+  setIsPlaying: () => {}, // A no-op function as a default
+});
+
 const Wrapper = styled.div`
-  position: relative;
-  width: 740px;
-  height: 740px;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  /* overflow: hidden; */
+  transform-origin: center bottom;
 `;
 
 const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
@@ -26,21 +37,27 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
+
+  const { isPlaying, setIsPlaying } = useContext(audioPlayContext);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    //Context for processing audio, webkit is for Safari and other older versions
     const context = new (window.AudioContext ||
       (window as any).webkitAudioContext)();
-    const analyserNode = context.createAnalyser();
-    analyserNode.fftSize = 1024; // Increased FFT size for smoother bars
 
+    //AnalyzerNode that provides real time frequenfcy and time domain data
+    const analyserNode = context.createAnalyser();
+    analyserNode.fftSize = 2048; // Increased FFT size for smoother bars. Fast Fourier Transform
+
+    //connects the audio element to the AudioContext created above
     const source = context.createMediaElementSource(audio);
     source.connect(analyserNode);
+    //connects the analyzer node to the audio output so the audio can be heard while its being analyzed
     analyserNode.connect(context.destination);
 
     setAudioContext(context);
@@ -59,6 +76,7 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    //half of the FFT (1024)
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
 
@@ -66,28 +84,10 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
     const height = canvas.height;
     const centerX = width / 2;
     const centerY = height / 2;
-    const radius = Math.min(width, height) / 2 - 30;
+    const radius = Math.min(width, height) / 2 - 80;
 
     const drawVisualizer = () => {
       ctx.clearRect(0, 0, width, height);
-
-      // Draw album art
-      const img = new Image();
-      img.src = albumArt;
-      img.onload = () => {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius - 30, 0, 2 * Math.PI);
-        ctx.clip();
-        ctx.drawImage(
-          img,
-          centerX - radius + 30,
-          centerY - radius + 30,
-          (radius - 30) * 2,
-          (radius - 30) * 2
-        );
-        ctx.restore();
-      };
 
       // Draw visualizer
       analyser.getByteFrequencyData(dataArray);
@@ -97,14 +97,15 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
 
       for (let i = 0; i < bufferLength; i++) {
         const value = dataArray[i];
-        const percent = value / 255;
+        const percent = value / 512;
 
-        // Apply logarithmic scaling for smoother bar height distribution
-        const barHeight = Math.log10(1 + percent) * 450;
+        // Logarithmic scaling
+        const logScale = Math.log10(1 + i); // Logarithmic scale for better distribution
+        const barHeight = percent * logScale * 100; // Height scaled logarithmically
 
         const theta = i * sliceAngle;
 
-        // Calculate start and end points for bars
+        // Calculate start and end points
         const x1 = centerX + Math.cos(theta) * (radius - 10);
         const y1 = centerY + Math.sin(theta) * (radius - 10);
         const x2 = centerX + Math.cos(theta) * (radius - 10 + barHeight);
@@ -122,14 +123,6 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
         ctx.lineTo(x2, y2);
         ctx.stroke();
       }
-
-      // Draw artist and song name
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "20px Arial";
-      ctx.textAlign = "center";
-      ctx.fillText(artistName, centerX, height - 60);
-      ctx.font = "16px Arial";
-      ctx.fillText(songName, centerX, height - 35);
 
       requestAnimationFrame(drawVisualizer);
     };
@@ -154,8 +147,8 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
     <Wrapper style={rotate}>
       <canvas
         ref={canvasRef}
-        width={740}
-        height={740}
+        width={900}
+        height={900}
         onClick={togglePlayPause}
         style={{ cursor: "pointer" }}
       />

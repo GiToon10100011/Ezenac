@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
 
   /* Variables */
   :root{
-    --point-color: #b3813b;
+    --point-color: rgb(179, 129, 59);
   }
 `;
 

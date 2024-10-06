@@ -1,8 +1,9 @@
-import React from "react";
+import React, { SetStateAction, useState } from "react";
 import styled from "styled-components";
 import MusicCard from "./MusicCard";
 import { data } from "../data.json";
 import CircularAudioVisualizer from "./CircleAudioVisualizer";
+import { audioPlayContext } from "./CircleAudioVisualizer";
 
 const deg = 30;
 
@@ -23,36 +24,51 @@ export interface cardDataProps {
     game: string;
     date: string;
     website: string;
+    id: string;
+    relatedId: string;
+    albumCoverPath: string;
+    backgroundImgPath: string;
   };
 }
 
 export interface cardDataProps extends React.HTMLAttributes<HTMLDivElement> {}
 
+export interface IaudioPlayContext {
+  isPlaying: boolean;
+  setIsPlaying: React.Dispatch<SetStateAction<boolean>>;
+}
+
 const MusicList: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  console.log(audioPlayContext);
+
   return (
-    <Wrapper>
-      {data.map((item, index) => (
-        <>
-          <MusicCard
-            key={index}
-            cardData={item}
-            style={{
-              transform: `rotate(${deg * index}deg) translateY(-150vh)`,
-            }}
-          />
-          <CircularAudioVisualizer
-            key={index - 1}
-            audioUrl={item.audio}
-            albumArt={"/ydhdot.jpg"}
-            artistName={item.game}
-            songName={item.title}
-            rotate={{
-              transform: `rotate(${deg * index}deg) translateY(-150vh)`,
-            }}
-          />
-        </>
-      ))}
-    </Wrapper>
+    <audioPlayContext.Provider value={{ isPlaying, setIsPlaying }}>
+      <Wrapper>
+        {data.map((item, index) => (
+          <React.Fragment key={index}>
+            <MusicCard
+              key={item.id}
+              cardData={item}
+              style={{
+                transform: `rotate(${deg * index}deg) translateY(-150vh)`,
+              }}
+            />
+            <CircularAudioVisualizer
+              key={`${item.id}-visualizer`}
+              audioUrl={item.audio}
+              albumArt={"/ydhdot.jpg"}
+              artistName={item.game}
+              songName={item.title}
+              rotate={{
+                transform: `rotate(${deg * index}deg) translateY(-150vh)`,
+              }}
+            />
+          </React.Fragment>
+        ))}
+      </Wrapper>
+    </audioPlayContext.Provider>
   );
 };
 
