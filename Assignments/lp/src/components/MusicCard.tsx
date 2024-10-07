@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { cardDataProps } from "./MusicList";
-import { audioPlayContext } from "./CircleAudioVisualizer";
+import { motion } from "framer-motion";
+import CircularAudioVisualizer from "./CircleAudioVisualizer";
 
 const rotation = keyframes`
   from{
@@ -75,13 +76,53 @@ const CardContents = styled.div`
   color: white;
 `;
 
+const PlayButton = styled.button`
+  width: 50px;
+  height: 50px;
+  margin-bottom: 100px;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background: #000;
+    border: 1px solid transparent;
+    i {
+      color: white;
+    }
+  }
+`;
+
 const AudioTitle = styled.h3``;
 const AudioGame = styled.span``;
 const AudioDate = styled.span``;
-const AudioWebsite = styled.a``;
+const AudioWebsite = styled(motion.a)`
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.3s;
+  &:hover {
+    padding-right: 18px;
+    i {
+      transform: translateX(4px);
+    }
+  }
+`;
+
+const RightArrowIcon = styled(motion.i)`
+  margin-left: 4px;
+  font-size: 14px;
+  transition: all 0.3s;
+`;
 
 const MusicCard = ({ cardData, style }: cardDataProps) => {
-  const { isPlaying } = useContext(audioPlayContext);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleOnPlay = () => {
+    setIsPlaying((current) => !current);
+  };
 
   return (
     <Wrapper style={style}>
@@ -90,13 +131,27 @@ const MusicCard = ({ cardData, style }: cardDataProps) => {
         rotate={String(isPlaying)}
       ></CardContainer>
       <CardContents>
+        <PlayButton onClick={handleOnPlay}>
+          <i
+            className={isPlaying ? "fa-solid fa-pause" : "fa-solid fa-play"}
+          ></i>
+        </PlayButton>
         <AudioTitle>{cardData.title}</AudioTitle>
         <AudioGame>{cardData.game}</AudioGame>
         <AudioDate>{cardData.date}</AudioDate>
         <AudioWebsite href={cardData.website} target="_blank">
-          Check out the Game
+          More Details
+          <RightArrowIcon className="fa-solid fa-arrow-right"></RightArrowIcon>
         </AudioWebsite>
       </CardContents>
+      <CircularAudioVisualizer
+        key={`${cardData.id}-visualizer`}
+        audioUrl={cardData.audio}
+        albumArt={"/ydhdot.jpg"}
+        artistName={cardData.game}
+        songName={cardData.title}
+        isAudioPlaying={isPlaying}
+      />
     </Wrapper>
   );
 };

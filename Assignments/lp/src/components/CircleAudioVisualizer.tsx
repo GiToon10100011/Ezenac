@@ -1,20 +1,13 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
-import MusicCard from "./MusicCard";
 import styled, { CSSProperties } from "styled-components";
-import { IaudioPlayContext } from "./MusicList";
 
 interface CircularAudioVisualizerProps {
   audioUrl: string;
   artistName: string;
   songName: string;
   albumArt: string;
-  rotate: CSSProperties;
+  isAudioPlaying: boolean;
 }
-
-export const audioPlayContext = React.createContext<IaudioPlayContext>({
-  isPlaying: false,
-  setIsPlaying: () => {}, // A no-op function as a default
-});
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,17 +23,12 @@ const Wrapper = styled.div`
 
 const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
   audioUrl,
-  artistName,
-  songName,
-  albumArt,
-  rotate,
+  isAudioPlaying,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
-
-  const { isPlaying, setIsPlaying } = useContext(audioPlayContext);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -128,31 +116,24 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
     };
 
     drawVisualizer();
-  }, [analyser, isPlaying, artistName, songName, albumArt]);
+  }, [analyser]);
 
-  const togglePlayPause = () => {
+  useEffect(() => {
+    console.log(isAudioPlaying);
     const audio = audioRef.current;
     if (!audio || !audioContext) return;
 
-    if (isPlaying) {
-      audio.pause();
-    } else {
+    if (isAudioPlaying) {
       audio.play();
       audioContext.resume();
+    } else {
+      audio.pause();
     }
-    setIsPlaying(!isPlaying);
-  };
+  }, [isAudioPlaying, audioContext]);
 
   return (
-    <Wrapper style={rotate}>
-      <canvas
-        ref={canvasRef}
-        width={900}
-        height={900}
-        onClick={togglePlayPause}
-        style={{ cursor: "pointer" }}
-      />
-
+    <Wrapper >
+      <canvas ref={canvasRef} width={900} height={900} />
       <audio ref={audioRef} src={audioUrl} />
     </Wrapper>
   );
