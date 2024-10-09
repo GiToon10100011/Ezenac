@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   height: 700px;
   border-radius: 50%;
   /* overflow: hidden; */
-  transform-origin: center bottom;
+  transform-origin: center;
 `;
 
 const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
@@ -132,7 +132,7 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
   }, [isAudioPlaying, audioContext]);
 
   return (
-    <Wrapper >
+    <Wrapper>
       <canvas ref={canvasRef} width={900} height={900} />
       <audio ref={audioRef} src={audioUrl} />
     </Wrapper>

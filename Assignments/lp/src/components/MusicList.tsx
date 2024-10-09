@@ -6,13 +6,12 @@ import { data } from "../data.json";
 const deg = 30;
 
 const Wrapper = styled.div`
-  position: absolute;
   width: 700px;
   height: 700px;
-  top: 200%;
-  left: 50%;
+  margin-top: 210vh;
+  margin-left: 33.3333333vw;
   border: 1px solid;
-  transform: translate(-50%, -50%);
+  transform: rotate(30deg);
   transform-origin: center;
 `;
 
@@ -46,7 +45,7 @@ const MusicList: React.FC = () => {
             key={item.id}
             cardData={item}
             style={{
-              transform: `rotate(${deg * index}deg) translateY(-150vh)`,
+              transform: `rotate(${deg * index}deg) translateY(200vh) `,
             }}
           />
         </React.Fragment>

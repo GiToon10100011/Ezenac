@@ -21,10 +21,10 @@ const Wrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  transform-origin: center bottom;
+  transform-origin: center;
   box-shadow: 0 0 140px rgba(0, 0, 0, 0.5);
   /* border: 5px solid rgba(255, 255, 255); */
   z-index: 2;
@@ -67,19 +67,19 @@ const CardContainer = styled.div<{
 `;
 
 const CardContents = styled.div`
+  height: 100%;
   z-index: 3;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 14px;
+  padding: 20px 0;
   color: white;
 `;
 
 const PlayButton = styled.button`
   width: 50px;
   height: 50px;
-  margin-bottom: 100px;
   border-radius: 50%;
   padding: 10px;
   display: flex;
@@ -96,15 +96,36 @@ const PlayButton = styled.button`
   }
 `;
 
-const AudioTitle = styled.h3``;
+const AudioDetails = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const AudioTitle = styled.h3`
+  width: 500px;
+  text-align: center;
+  font-size: 60px;
+`;
 const AudioGame = styled.span``;
-const AudioDate = styled.span``;
+const AudioDate = styled.span`
+  font-size: 20px;
+`;
 const AudioWebsite = styled(motion.a)`
-  padding: 6px 14px;
-  border-radius: 20px;
+  padding: 12px 24px;
+  border-radius: 30px;
   transition: all 0.3s;
+  background: white;
+  color: black;
+  i {
+    transition: all 0.3s;
+  }
   &:hover {
-    padding-right: 18px;
+    padding-right: 24px;
+    background: #000;
+    color: #fff;
     i {
       transform: translateX(4px);
     }
@@ -136,9 +157,11 @@ const MusicCard = ({ cardData, style }: cardDataProps) => {
             className={isPlaying ? "fa-solid fa-pause" : "fa-solid fa-play"}
           ></i>
         </PlayButton>
-        <AudioTitle>{cardData.title}</AudioTitle>
-        <AudioGame>{cardData.game}</AudioGame>
-        <AudioDate>{cardData.date}</AudioDate>
+        <AudioDetails>
+          <AudioDate>{cardData.date}</AudioDate>
+          <AudioTitle>{cardData.title}</AudioTitle>
+          <AudioGame>{cardData.game}</AudioGame>
+        </AudioDetails>
         <AudioWebsite href={cardData.website} target="_blank">
           More Details
           <RightArrowIcon className="fa-solid fa-arrow-right"></RightArrowIcon>
