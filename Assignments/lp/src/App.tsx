@@ -1,7 +1,9 @@
+import React, { Dispatch, SetStateAction, useReducer, useState } from "react";
 import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles.styles";
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 import MusicList from "./components/MusicList";
+import { view } from "framer-motion/client";
 
 const audioControlStyles = `
   display: flex;
@@ -41,7 +43,55 @@ const MainTitle = styled.h4`
 
 const SubTitle = styled.p``;
 
-const RPMBtn = styled.div``;
+const RPMBtnContainer = styled(motion.div)`
+  position: fixed;
+  width: 140px;
+  top: 40px;
+  right: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const RPMBtn = styled(motion.div)`
+  position: relative;
+
+  width: 36px;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 4px;
+  border-radius: 20px;
+  border: 1px solid;
+  transition: all 0.3s;
+  cursor: pointer;
+`;
+const Switch = styled.div<{ fastForward: boolean }>`
+  position: absolute;
+  top: 4px;
+  left: ${({ fastForward }) => (fastForward ? "16px" : "0")};
+  margin: 0 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #000;
+  transition: all 0.3s;
+`;
+
+const RPMTitle = styled.span`
+  font-size: 20px;
+`;
+const RPMValue = styled.span<{ fastForward: boolean }>`
+  &.low-speed {
+    color: ${({ fastForward }) =>
+      fastForward ? "#000" : "var(--point-color)"};
+  }
+  &.high-speed {
+    color: ${({ fastForward }) =>
+      fastForward ? "var(--point-color)" : "#000"};
+  }
+  transition: all 0.3s;
+`;
 
 const MenuBar = styled(motion.div)`
   display: flex;
@@ -116,61 +166,129 @@ const CopyRight = styled.span`
   opacity: 0.6;
 `;
 
+const menuVariants = {
+  expanded: {
+    width: "100vw",
+    height: "100vh",
+    left: 0,
+  },
+};
+
+export const resetContext = React.createContext<null | IresetAllContext>(null);
+
+interface IrotationActionObject {
+  type: string;
+  data: number;
+}
+
+export interface IresetAllContext {
+  resetAll: boolean;
+  setResetAll: Dispatch<SetStateAction<boolean>>;
+}
+
+const reducer = (state: number, action: IrotationActionObject): number => {
+  switch (action.type) {
+    case "INCREASE":
+      return state + action.data;
+    case "DECREASE":
+      return state - action.data;
+    default:
+      return state;
+  }
+};
+
 function App() {
+  const [rotation, dispatch] = useReducer(reducer, 0);
+  const [isPlaylistOn, setIsPlaylistOn] = useState(false);
+  const [resetAll, setResetAll] = useState(false);
+  const [fastForward, setFastForward] = useState(false);
+
   return (
     <>
-      <GlobalStyles />
-      <Wrapper>
-        <TitleContainer>
-          <MainTitle>AA Music Collection</MainTitle>
-          <SubTitle>Prosecutorial Prodigy.</SubTitle>
-        </TitleContainer>
-        <MenuBar>
-          <MenuBtn>
-            <span></span>
-            <span></span>
-            <span></span>
-          </MenuBtn>
-        </MenuBar>
-        <BottomFooter>
-          <PrevBtn>
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              viewBox="0 0 256 256"
+      <resetContext.Provider value={{ resetAll, setResetAll }}>
+        <GlobalStyles />
+        <Wrapper>
+          <TitleContainer>
+            <MainTitle>AA Music Collection</MainTitle>
+            <SubTitle>Prosecutorial Prodigy.</SubTitle>
+          </TitleContainer>
+          <MenuBar
+            onClick={() => setIsPlaylistOn((current) => !current)}
+            animate={isPlaylistOn ? "expanded" : {}}
+            transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
+            variants={menuVariants}
+          >
+            <MenuBtn>
+              <span></span>
+              <span></span>
+              <span></span>
+            </MenuBtn>
+          </MenuBar>
+          <RPMBtnContainer layout>
+            <RPMTitle>RPM</RPMTitle>
+            <RPMValue className="low-speed" fastForward={fastForward}>
+              33
+            </RPMValue>
+            <RPMBtn
+              layout
+              onClick={() => setFastForward((current) => !current)}
             >
-              <g>
-                <g>
-                  <path d="M10,123.8h219.1v8.4H10V123.8z" />
-                  <path d="M203.9,115.4L246,128l-42.1,12.6V115.4z" />
-                </g>
-              </g>
-            </svg>
-            Prev
-          </PrevBtn>
-          <CopyRight>2024 Designed by &copy; CAPCOM</CopyRight>
-          <NextBtn>
-            Next
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              viewBox="0 0 256 256"
+              <Switch fastForward={fastForward} />
+            </RPMBtn>
+            <RPMValue className="high-speed" fastForward={fastForward}>
+              45
+            </RPMValue>
+          </RPMBtnContainer>
+          <BottomFooter>
+            <PrevBtn
+              onClick={() => {
+                dispatch({ type: "INCREASE", data: 30 });
+                setResetAll(() => true);
+              }}
             >
-              <g>
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                viewBox="0 0 256 256"
+              >
                 <g>
-                  <path d="M10,123.8h219.1v8.4H10V123.8z" />
-                  <path d="M203.9,115.4L246,128l-42.1,12.6V115.4z" />
+                  <g>
+                    <path d="M10,123.8h219.1v8.4H10V123.8z" />
+                    <path d="M203.9,115.4L246,128l-42.1,12.6V115.4z" />
+                  </g>
                 </g>
-              </g>
-            </svg>
-          </NextBtn>
-        </BottomFooter>
-        <MusicList></MusicList>
-      </Wrapper>
+              </svg>
+              Prev
+            </PrevBtn>
+            <CopyRight>2024 Designed by &copy; CAPCOM</CopyRight>
+            <NextBtn
+              onClick={() => {
+                dispatch({ type: "DECREASE", data: 30 });
+                setResetAll(() => true);
+              }}
+            >
+              Next
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                viewBox="0 0 256 256"
+              >
+                <g>
+                  <g>
+                    <path d="M10,123.8h219.1v8.4H10V123.8z" />
+                    <path d="M203.9,115.4L246,128l-42.1,12.6V115.4z" />
+                  </g>
+                </g>
+              </svg>
+            </NextBtn>
+          </BottomFooter>
+          <MusicList rotation={rotation} fastForward={fastForward} />
+        </Wrapper>
+      </resetContext.Provider>
     </>
   );
 }

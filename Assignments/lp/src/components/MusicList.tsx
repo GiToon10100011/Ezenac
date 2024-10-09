@@ -1,18 +1,21 @@
-import React, { SetStateAction, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import MusicCard from "./MusicCard";
 import { data } from "../data.json";
 
 const deg = 30;
 
-const Wrapper = styled.div`
-  width: 700px;
-  height: 700px;
-  margin-top: 210vh;
-  margin-left: 33.3333333vw;
+const Wrapper = styled(motion.div)<{ rotation: number }>`
+  width: 36vw;
+  height: 72vh;
+  position: absolute;
+  top: 210%;
+  left: 50%;
+  margin-left: -19vw;
   border: 1px solid;
-  transform: rotate(30deg);
-  transform-origin: center;
+  transform: rotate(${({ rotation }) => rotation}deg) scaleX(-1) scaleY(-1);
+  transition: all 1s;
 `;
 
 export interface cardDataProps {
@@ -27,26 +30,28 @@ export interface cardDataProps {
     albumCoverPath: string;
     backgroundImgPath: string;
   };
+  fastForward: boolean;
 }
 
 export interface cardDataProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export interface IaudioPlayContext {
-  isAudioPlaying: boolean;
-  setIsAudioPlaying: React.Dispatch<SetStateAction<boolean>>;
-}
-
-const MusicList: React.FC = () => {
+const MusicList: React.FC<{ rotation: number; fastForward: boolean }> = ({
+  rotation,
+  fastForward,
+}) => {
   return (
-    <Wrapper>
+    <Wrapper rotation={rotation}>
       {data.map((item, index) => (
         <React.Fragment key={index}>
           <MusicCard
             key={item.id}
             cardData={item}
             style={{
-              transform: `rotate(${deg * index}deg) translateY(200vh) `,
+              transform: `rotate(${
+                deg * index
+              }deg) translateY(200vh) scaleX(-1) scaleY(-1)`,
             }}
+            fastForward={fastForward}
           />
         </React.Fragment>
       ))}

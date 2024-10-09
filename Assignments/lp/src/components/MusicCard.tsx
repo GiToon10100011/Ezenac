@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { cardDataProps } from "./MusicList";
 import { motion } from "framer-motion";
 import CircularAudioVisualizer from "./CircleAudioVisualizer";
+import { IresetAllContext, resetContext } from "../App";
 
 const rotation = keyframes`
   from{
@@ -21,18 +22,18 @@ const Wrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 700px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  transform-origin: center;
   box-shadow: 0 0 140px rgba(0, 0, 0, 0.5);
-  /* border: 5px solid rgba(255, 255, 255); */
   z-index: 2;
+  transform: scaleY(-1);
 `;
 
 const CardContainer = styled.div<{
   background: string;
   rotate: string;
+  fastForward: boolean;
 }>`
   position: absolute;
   top: 0;
@@ -44,6 +45,7 @@ const CardContainer = styled.div<{
     url(${({ background }) => background}) center/cover no-repeat;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
   animation: rotation linear 10s 0.6s infinite;
+  animation-duration: ${({ fastForward }) => (fastForward ? "5s" : "10s")};
   animation-play-state: ${({ rotate }) =>
     rotate === "true" ? "running" : "paused"};
   &::before,
@@ -80,6 +82,7 @@ const CardContents = styled.div`
 const PlayButton = styled.button`
   width: 50px;
   height: 50px;
+  border: none;
   border-radius: 50%;
   padding: 10px;
   display: flex;
@@ -87,9 +90,13 @@ const PlayButton = styled.button`
   align-items: center;
   transition: all 0.3s;
   cursor: pointer;
+  outline: none;
+  &:active,
+  &:focus {
+    outline: none;
+  }
   &:hover {
     background: #000;
-    border: 1px solid transparent;
     i {
       color: white;
     }
@@ -138,16 +145,26 @@ const RightArrowIcon = styled(motion.i)`
   transition: all 0.3s;
 `;
 
-const MusicCard = ({ cardData, style }: cardDataProps) => {
+const MusicCard = ({ cardData, style, fastForward }: cardDataProps) => {
+  const reset = useContext(resetContext);
+
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (reset?.resetAll) {
+      setIsPlaying(false);
+    }
+  }, [reset?.resetAll]);
 
   const handleOnPlay = () => {
     setIsPlaying((current) => !current);
+    reset?.setResetAll(false);
   };
 
   return (
     <Wrapper style={style}>
       <CardContainer
+        fastForward={fastForward}
         background={cardData.albumCoverPath}
         rotate={String(isPlaying)}
       ></CardContainer>
@@ -174,6 +191,8 @@ const MusicCard = ({ cardData, style }: cardDataProps) => {
         artistName={cardData.game}
         songName={cardData.title}
         isAudioPlaying={isPlaying}
+        setIsAudioPlaying={setIsPlaying}
+        fastForward={fastForward}
       />
     </Wrapper>
   );

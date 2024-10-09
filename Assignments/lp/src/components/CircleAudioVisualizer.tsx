@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useContext } from "react";
+import React, { useRef, useEffect, useState, Dispatch } from "react";
 import styled, { CSSProperties } from "styled-components";
 
 interface CircularAudioVisualizerProps {
@@ -7,6 +7,8 @@ interface CircularAudioVisualizerProps {
   songName: string;
   albumArt: string;
   isAudioPlaying: boolean;
+  setIsAudioPlaying: Dispatch<React.SetStateAction<boolean>>;
+  fastForward: boolean;
 }
 
 const Wrapper = styled.div`
@@ -14,16 +16,18 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 700px;
-  height: 700px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  /* overflow: hidden; */
-  transform-origin: center;
 `;
 
 const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
   audioUrl,
   isAudioPlaying,
+  setIsAudioPlaying,
+  fastForward,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -119,22 +123,27 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
   }, [analyser]);
 
   useEffect(() => {
-    console.log(isAudioPlaying);
     const audio = audioRef.current;
     if (!audio || !audioContext) return;
 
     if (isAudioPlaying) {
       audio.play();
       audioContext.resume();
+      if (fastForward) audio.playbackRate = 1.2;
+      else audio.playbackRate = 1;
     } else {
       audio.pause();
     }
-  }, [isAudioPlaying, audioContext]);
+  }, [isAudioPlaying, audioContext, fastForward]);
+
+  const onHandleAudioEnded = () => {
+    setIsAudioPlaying(false);
+  };
 
   return (
     <Wrapper>
       <canvas ref={canvasRef} width={900} height={900} />
-      <audio ref={audioRef} src={audioUrl} />
+      <audio ref={audioRef} src={audioUrl} onEnded={onHandleAudioEnded} />
     </Wrapper>
   );
 };
