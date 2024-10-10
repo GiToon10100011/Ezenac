@@ -1,5 +1,12 @@
-import React, { Dispatch, SetStateAction, useReducer, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import styled from "styled-components";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import { animate, motion } from "framer-motion";
 import MusicList from "./components/MusicList";
@@ -198,10 +205,24 @@ const reducer = (state: number, action: IrotationActionObject): number => {
 };
 
 function App() {
+  const navigate = useNavigate();
   const [rotation, dispatch] = useReducer(reducer, 0);
   const [isPlaylistOn, setIsPlaylistOn] = useState(false);
   const [resetAll, setResetAll] = useState(false);
   const [fastForward, setFastForward] = useState(false);
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  useEffect(() => {
+    navigate({
+      pathname: "/",
+      search: `?${createSearchParams({
+        index: String(currentIdx),
+      })}`,
+    });
+    if (currentIdx > 11) {
+      setCurrentIdx(0);
+    }
+  }, [currentIdx]);
 
   return (
     <>
@@ -243,6 +264,7 @@ function App() {
             <PrevBtn
               onClick={() => {
                 dispatch({ type: "INCREASE", data: 30 });
+                setCurrentIdx((current) => current - 1);
                 setResetAll(() => true);
               }}
             >
@@ -266,6 +288,7 @@ function App() {
             <NextBtn
               onClick={() => {
                 dispatch({ type: "DECREASE", data: 30 });
+                setCurrentIdx((current) => current + 1);
                 setResetAll(() => true);
               }}
             >

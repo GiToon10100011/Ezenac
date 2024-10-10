@@ -8,7 +8,7 @@ const deg = 30;
 
 const Wrapper = styled(motion.div)<{ rotation: number }>`
   width: 36vw;
-  height: 72vh;
+  height: 36vw;
   position: absolute;
   top: 210%;
   left: 50%;
@@ -31,6 +31,7 @@ export interface cardDataProps {
     backgroundImgPath: string;
   };
   fastForward: boolean;
+  index: number;
 }
 
 export interface cardDataProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -52,6 +53,7 @@ const MusicList: React.FC<{ rotation: number; fastForward: boolean }> = ({
               }deg) translateY(200vh) scaleX(-1) scaleY(-1)`,
             }}
             fastForward={fastForward}
+            index={index}
           />
         </React.Fragment>
       ))}

@@ -145,7 +145,7 @@ const RightArrowIcon = styled(motion.i)`
   transition: all 0.3s;
 `;
 
-const MusicCard = ({ cardData, style, fastForward }: cardDataProps) => {
+const MusicCard = ({ cardData, style, fastForward, index }: cardDataProps) => {
   const reset = useContext(resetContext);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -193,6 +193,7 @@ const MusicCard = ({ cardData, style, fastForward }: cardDataProps) => {
         isAudioPlaying={isPlaying}
         setIsAudioPlaying={setIsPlaying}
         fastForward={fastForward}
+        index={index}
       />
     </Wrapper>
   );

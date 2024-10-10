@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, Dispatch } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled, { CSSProperties } from "styled-components";
 
 interface CircularAudioVisualizerProps {
@@ -9,6 +10,7 @@ interface CircularAudioVisualizerProps {
   isAudioPlaying: boolean;
   setIsAudioPlaying: Dispatch<React.SetStateAction<boolean>>;
   fastForward: boolean;
+  index: number;
 }
 
 const Wrapper = styled.div`
@@ -28,11 +30,14 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
   isAudioPlaying,
   setIsAudioPlaying,
   fastForward,
+  index,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
+
+  const currentIdx = useSearchParams()[0].get("index");
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -126,6 +131,14 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
     const audio = audioRef.current;
     if (!audio || !audioContext) return;
 
+    // if (Number(currentIdx) === index) {
+    //   setIsAudioPlaying(true);
+    //   audio.play();
+    //   audioContext.resume();
+    // } else {
+    //   audio.pause();
+    // }
+
     if (isAudioPlaying) {
       audio.play();
       audioContext.resume();
@@ -134,7 +147,7 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
     } else {
       audio.pause();
     }
-  }, [isAudioPlaying, audioContext, fastForward]);
+  }, [isAudioPlaying, audioContext, fastForward, currentIdx]);
 
   const onHandleAudioEnded = () => {
     setIsAudioPlaying(false);
