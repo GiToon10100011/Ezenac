@@ -207,6 +207,7 @@ const MusicCard = ({ cardData, style, fastForward, index }: cardDataProps) => {
         isAudioPlaying={isPlaying}
         setIsAudioPlaying={setIsPlaying}
         fastForward={fastForward}
+        index={index}
       />
     </Wrapper>
   );

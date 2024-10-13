@@ -6,11 +6,11 @@ import React, {
   useState,
 } from "react";
 import styled from "styled-components";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import { animate, motion } from "framer-motion";
 import MusicList from "./components/MusicList";
 import { view } from "framer-motion/client";
-import { createSearchParams, useNavigate } from "react-router-dom";
 import MenuList from "./components/MenuList";
 
 const audioControlStyles = `
@@ -318,6 +318,7 @@ function App() {
               onClick={() => {
                 dispatch({ type: "INCREASE", data: 30 });
                 setCurrentIdx((current) => current - 1);
+                setCurrentIdx((current) => current - 1);
                 setResetAll(() => true);
               }}
             >
@@ -341,6 +342,7 @@ function App() {
             <NextBtn
               onClick={() => {
                 dispatch({ type: "DECREASE", data: 30 });
+                setCurrentIdx((current) => current + 1);
                 setCurrentIdx((current) => current + 1);
                 setResetAll(() => true);
               }}

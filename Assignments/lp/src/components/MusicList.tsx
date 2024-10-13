@@ -8,7 +8,7 @@ const deg = 30;
 
 const Wrapper = styled(motion.div)<{ rotation: number }>`
   width: 36vw;
-  height: 72vh;
+  height: 36vw;
   position: absolute;
   top: 210%;
   left: 50%;
