@@ -9,7 +9,7 @@
       "date": "2001-10-12",
       "website": "https://www.ace-attorney.com/trilogy/uk/",
       "albumCoverPath": "/images/AA1.jpg",
-      "backgroundImgPath": "/images/AA1.jpg"
+      "backgroundImgPath": "/images/AA1-2.jpg"
     },
     {
       "id": "AA2",
@@ -20,7 +20,7 @@
       "date": "2002-10-18",
       "website": "https://www.ace-attorney.com/trilogy/uk/",
       "albumCoverPath": "/images/AA2.jpg",
-      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_justice_for_all_bg.jpg"
+      "backgroundImgPath": "/images/AA2-2.jpg"
     },
     {
       "id": "AA3",
@@ -31,7 +31,7 @@
       "date": "2004-10-23",
       "website": "https://www.ace-attorney.com/trilogy/uk/",
       "albumCoverPath": "/images/AA3.jpg",
-      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_trials_and_tribulations_bg.jpg"
+      "backgroundImgPath": "/images/AA3-2.jpg"
     },
     {
       "id": "AA4",
@@ -42,7 +42,7 @@
       "date": "2024-01-25",
       "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
       "albumCoverPath": "/images/AA4.avif",
-      "backgroundImgPath": "/images/apollo_justice_ace_attorney_trilogy_bg.jpg"
+      "backgroundImgPath": "/images/AA4.avif"
     },
     {
       "id": "AA4-2",
@@ -53,7 +53,7 @@
       "date": "2007-04-12",
       "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
       "albumCoverPath": "/images/AA4-Garyu.webp",
-      "backgroundImgPath": "/images/apollo_justice_ace_attorney_bg.jpg"
+      "backgroundImgPath": "/images/AA4-Garyu.webp"
     },
     {
       "id": "AA4-3",
@@ -64,7 +64,7 @@
       "date": "2007-04-12",
       "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
       "albumCoverPath": "/images/AA4-Trucy.jpg",
-      "backgroundImgPath": "/images/apollo_justice_ace_attorney_trucy_bg.jpg"
+      "backgroundImgPath": "/images/AA4-Trucy.jpg"
     },
     {
       "id": "AA5",
@@ -75,7 +75,7 @@
       "date": "2013-07-25",
       "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
       "albumCoverPath": "/images/AA5.jpeg",
-      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_dual_destinies_bg.jpg"
+      "backgroundImgPath": "/images/AA5-2.jpg"
     },
     {
       "id": "AA6",
@@ -86,7 +86,7 @@
       "date": "2016-06-09",
       "website": "https://www.ace-attorney.com/aj-trilogy/en-us/",
       "albumCoverPath": "/images/AA6.jpg",
-      "backgroundImgPath": "/images/phoenix_wright_ace_attorney_spirit_of_justice_bg.jpg"
+      "backgroundImgPath": "/images/AA6-2.webp"
     },
     {
       "id": "AAI",
@@ -97,7 +97,7 @@
       "date": "2009-05-28",
       "website": "https://www.ace-attorney.com/investigations1-2/en-us/",
       "albumCoverPath": "/images/AAI.webp",
-      "backgroundImgPath": "/images/ace_attorney_investigations_miles_edgeworth_bg.jpg"
+      "backgroundImgPath": "/images/AAI-2.jpg"
     },
     {
       "id": "DGS1",
@@ -107,8 +107,8 @@
       "game": "The Great Ace Attorney: Adventures",
       "date": "2015-07-09",
       "website": "https://www.ace-attorney.com/great1-2/en-asia/",
-      "albumCoverPath": "/images/DGS1.jpg",
-      "backgroundImgPath": "/images/DGS1.jpg"
+      "albumCoverPath": "/images/DGS1.png",
+      "backgroundImgPath": "/images/DGS1.png"
     },
     {
       "id": "DGS1-2",
@@ -119,7 +119,7 @@
       "date": "2015-07-09",
       "website": "https://www.ace-attorney.com/great1-2/en-asia/",
       "albumCoverPath": "/images/DGS1-sherlock.png",
-      "backgroundImgPath": "/images/the_great_ace_attorney_sherlock_bg.jpg"
+      "backgroundImgPath": "/images/DGS1-sherlock.png"
     },
     {
       "id": "DGS2",
@@ -130,7 +130,7 @@
       "date": "2017-08-03",
       "website": "https://www.ace-attorney.com/great1-2/en-asia/",
       "albumCoverPath": "/images/DGS2-1.png",
-      "backgroundImgPath": "/images/the_great_ace_attorney_partners_bg.jpg"
+      "backgroundImgPath": "/images/DGS2-2.png"
     }
   ]
 }

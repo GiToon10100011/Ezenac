@@ -25,7 +25,8 @@ const GlobalStyles = createGlobalStyle`
 
   /* Variables */
   :root{
-    --point-color: rgb(179, 129, 59);
+    --point-color: #b3813b;
+    --sub-point-color: #2e1707;
   }
 `;
 

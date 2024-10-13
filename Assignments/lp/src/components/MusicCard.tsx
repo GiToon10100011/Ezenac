@@ -4,6 +4,7 @@ import { cardDataProps } from "./MusicList";
 import { motion } from "framer-motion";
 import CircularAudioVisualizer from "./CircleAudioVisualizer";
 import { IresetAllContext, resetContext } from "../App";
+import { useSearchParams } from "react-router-dom";
 
 const rotation = keyframes`
   from{
@@ -145,7 +146,9 @@ const RightArrowIcon = styled(motion.i)`
   transition: all 0.3s;
 `;
 
-const MusicCard = ({ cardData, style, fastForward }: cardDataProps) => {
+const MusicCard = ({ cardData, style, fastForward, index }: cardDataProps) => {
+  const currentIdx = useSearchParams()[0].get("index");
+
   const reset = useContext(resetContext);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -161,15 +164,26 @@ const MusicCard = ({ cardData, style, fastForward }: cardDataProps) => {
     reset?.setResetAll(false);
   };
 
+  const keyPlayToggle = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === "Space" && index === Number(currentIdx)) {
+      setIsPlaying((current) => !current);
+      reset?.setResetAll(false);
+    }
+  };
+
+  const preventSpace = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.code === "Space") e.preventDefault();
+  };
+
   return (
-    <Wrapper style={style}>
+    <Wrapper tabIndex={0} onKeyUp={keyPlayToggle} style={style}>
       <CardContainer
         fastForward={fastForward}
         background={cardData.albumCoverPath}
         rotate={String(isPlaying)}
       ></CardContainer>
       <CardContents>
-        <PlayButton onClick={handleOnPlay}>
+        <PlayButton onKeyUp={preventSpace} onClick={handleOnPlay}>
           <i
             className={isPlaying ? "fa-solid fa-pause" : "fa-solid fa-play"}
           ></i>

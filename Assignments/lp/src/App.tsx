@@ -1,9 +1,17 @@
-import React, { Dispatch, SetStateAction, useReducer, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import styled from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import { animate, motion } from "framer-motion";
 import MusicList from "./components/MusicList";
 import { view } from "framer-motion/client";
+import { createSearchParams, useNavigate } from "react-router-dom";
+import MenuList from "./components/MenuList";
 
 const audioControlStyles = `
   display: flex;
@@ -103,15 +111,16 @@ const MenuBar = styled(motion.div)`
   background: var(--point-color);
   left: 30px;
   top: 50%;
-  z-index: 10;
+  z-index: 100;
   transform: translateY(-50%);
 `;
 
-const MenuBtn = styled.div`
+const MenuBtn = styled(motion.div)`
   position: relative;
   width: 20px;
   height: 20px;
   cursor: pointer;
+  transition: background 0.6s;
   span {
     position: absolute;
     height: 100%;
@@ -123,6 +132,11 @@ const MenuBtn = styled.div`
     }
     &:last-child {
       right: 0;
+    }
+  }
+  &.on {
+    span {
+      display: none;
     }
   }
 `;
@@ -168,9 +182,10 @@ const CopyRight = styled.span`
 
 const menuVariants = {
   expanded: {
-    width: "100vw",
-    height: "100vh",
-    left: 0,
+    width: "80vw",
+    height: "80vw",
+    borderRadius: "50%",
+    left: -250,
   },
 };
 
@@ -192,33 +207,92 @@ const reducer = (state: number, action: IrotationActionObject): number => {
       return state + action.data;
     case "DECREASE":
       return state - action.data;
+    case "MANUAL":
+      return action.data;
     default:
       return state;
   }
 };
 
 function App() {
+  const navigate = useNavigate();
   const [rotation, dispatch] = useReducer(reducer, 0);
   const [isPlaylistOn, setIsPlaylistOn] = useState(false);
   const [resetAll, setResetAll] = useState(false);
   const [fastForward, setFastForward] = useState(false);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [menuBg, setMenuBg] = useState<null | string>(null);
+
+  const handleOnKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "ArrowRight") {
+      dispatch({ type: "DECREASE", data: 30 });
+      setCurrentIdx((current) => current + 1);
+      setResetAll(true);
+    }
+    if (e.key === "ArrowLeft") {
+      dispatch({ type: "INCREASE", data: 30 });
+      setCurrentIdx((current) => current - 1);
+      setResetAll(true);
+    }
+  };
+
+  useEffect(() => {
+    navigate({
+      pathname: "/",
+      search: `?${createSearchParams({
+        index: String(currentIdx),
+      })}`,
+    });
+
+    if (currentIdx > 11) setCurrentIdx(0);
+    if (currentIdx < 0) setCurrentIdx(11);
+  }, [currentIdx]);
+
+  const menuBtnVariants = {
+    menuBtn: {
+      width: "50vw",
+      height: "50vw",
+      border: "20px solid white",
+      borderRadius: "50%",
+      left: -250,
+      background:
+        menuBg !== null
+          ? `linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(${menuBg}) center/cover no-repeat`
+          : "#fff",
+    },
+  };
 
   return (
     <>
       <resetContext.Provider value={{ resetAll, setResetAll }}>
         <GlobalStyles />
-        <Wrapper>
+        <Wrapper tabIndex={0} onKeyUp={handleOnKeyUp}>
           <TitleContainer>
             <MainTitle>AA Music Collection</MainTitle>
             <SubTitle>Prosecutorial Prodigy.</SubTitle>
           </TitleContainer>
           <MenuBar
-            onClick={() => setIsPlaylistOn((current) => !current)}
             animate={isPlaylistOn ? "expanded" : {}}
             transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
             variants={menuVariants}
           >
-            <MenuBtn>
+            {isPlaylistOn && <MenuList menuBg={menuBg} setMenuBg={setMenuBg} />}
+            <MenuBtn
+              onClick={() => {
+                setIsPlaylistOn((current) => !current);
+                setResetAll(true);
+              }}
+              animate={isPlaylistOn ? "menuBtn" : {}}
+              transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
+              variants={menuBtnVariants}
+              className={isPlaylistOn ? "on" : ""}
+              style={{
+                background:
+                  isPlaylistOn || menuBg
+                    ? `url(${menuBg}) center/cover no-repeat `
+                    : "",
+              }}
+            >
               <span></span>
               <span></span>
               <span></span>
@@ -243,6 +317,7 @@ function App() {
             <PrevBtn
               onClick={() => {
                 dispatch({ type: "INCREASE", data: 30 });
+                setCurrentIdx((current) => current - 1);
                 setResetAll(() => true);
               }}
             >
@@ -266,6 +341,7 @@ function App() {
             <NextBtn
               onClick={() => {
                 dispatch({ type: "DECREASE", data: 30 });
+                setCurrentIdx((current) => current + 1);
                 setResetAll(() => true);
               }}
             >
@@ -286,7 +362,11 @@ function App() {
               </svg>
             </NextBtn>
           </BottomFooter>
-          <MusicList rotation={rotation} fastForward={fastForward} />
+          <MusicList
+            rotation={rotation}
+            fastForward={fastForward}
+            isPlaylistOn={isPlaylistOn}
+          />
         </Wrapper>
       </resetContext.Provider>
     </>
