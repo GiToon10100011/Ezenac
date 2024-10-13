@@ -8,9 +8,8 @@ import React, {
 import styled from "styled-components";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles.styles";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import MusicList from "./components/MusicList";
-import { view } from "framer-motion/client";
 import MenuList from "./components/MenuList";
 
 const audioControlStyles = `
@@ -134,6 +133,12 @@ const MenuBtn = styled(motion.div)`
       right: 0;
     }
   }
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   &.on {
     span {
       display: none;
@@ -191,7 +196,7 @@ const menuVariants = {
 
 export const resetContext = React.createContext<null | IresetAllContext>(null);
 
-interface IrotationActionObject {
+export interface IrotationActionObject {
   type: string;
   data: number;
 }
@@ -276,7 +281,15 @@ function App() {
             transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
             variants={menuVariants}
           >
-            {isPlaylistOn && <MenuList menuBg={menuBg} setMenuBg={setMenuBg} />}
+            {isPlaylistOn && (
+              <MenuList
+                menuBg={menuBg}
+                setMenuBg={setMenuBg}
+                setIsPlaylistOn={setIsPlaylistOn}
+                setRotation={dispatch}
+                setCurrentIdx={setCurrentIdx}
+              />
+            )}
             <MenuBtn
               onClick={() => {
                 setIsPlaylistOn((current) => !current);
@@ -296,6 +309,7 @@ function App() {
               <span></span>
               <span></span>
               <span></span>
+              {isPlaylistOn && menuBg === null && <p>"Scroll to Rotate.."</p>}
             </MenuBtn>
           </MenuBar>
           <RPMBtnContainer layout>

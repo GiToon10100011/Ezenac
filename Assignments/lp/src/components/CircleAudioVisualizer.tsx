@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, Dispatch } from "react";
 import { useSearchParams } from "react-router-dom";
-import styled, { CSSProperties } from "styled-components";
+import styled from "styled-components";
 
 interface CircularAudioVisualizerProps {
   audioUrl: string;
@@ -30,7 +30,6 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
   isAudioPlaying,
   setIsAudioPlaying,
   fastForward,
-  index,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);

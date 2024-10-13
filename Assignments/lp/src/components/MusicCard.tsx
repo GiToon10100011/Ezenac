@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { cardDataProps } from "./MusicList";
 import { motion } from "framer-motion";
 import CircularAudioVisualizer from "./CircleAudioVisualizer";
-import { IresetAllContext, resetContext } from "../App";
+import { resetContext } from "../App";
 import { useSearchParams } from "react-router-dom";
 
 const rotation = keyframes`
@@ -174,6 +174,8 @@ const MusicCard = ({ cardData, style, fastForward, index }: cardDataProps) => {
   const preventSpace = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     if (e.code === "Space") e.preventDefault();
   };
+
+  console.log(rotation);
 
   return (
     <Wrapper tabIndex={0} onKeyUp={keyPlayToggle} style={style}>

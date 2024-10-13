@@ -1,6 +1,4 @@
 import React, {
-  MutableRefObject,
-  RefObject,
   useEffect,
   useRef,
   useState,
@@ -15,8 +13,8 @@ const Wrapper = styled.div`
   height: 2000px;
   margin-top: -2000px;
   margin-left: -2000px;
-  /* border-right: 1px solid rgba(255, 255, 255, 0.2); */
-  /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   transform-origin: 100% 100%;
   display: flex;
   justify-content: flex-start;
@@ -62,7 +60,11 @@ const MenuItem: React.FC<ImenuProps> = ({
   index,
   audio,
   backgroundImgPath,
+  rotationValue,
   setMenuBg,
+  setIsPlaylistOn,
+  setRotation,
+  setCurrentIdx,
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -70,7 +72,6 @@ const MenuItem: React.FC<ImenuProps> = ({
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(audioRef?.current?.duration);
       if (audioRef?.current?.duration !== undefined) {
         const mins = Math.floor(audioRef?.current?.duration / 60);
         const secs = Math.floor(audioRef?.current?.duration % 60);
@@ -80,7 +81,12 @@ const MenuItem: React.FC<ImenuProps> = ({
     }, 400);
   }, []);
 
-  const handleSetAudio = () => {};
+  const handleSetAudio = () => {
+    setCurrentIdx(index);
+    setMenuBg(null);
+    setIsPlaylistOn(false);
+    setRotation({ type: "MANUAL", data: -rotationValue });
+  };
 
   const handleBgSetup = () => {
     setMenuBg(backgroundImgPath);
