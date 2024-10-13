@@ -138,6 +138,11 @@ const MenuBtn = styled(motion.div)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 18px;
+    &:last-child{
+      top: 54%;
+      font-size: 14px;
+    }
   }
   &.on {
     span {
@@ -309,7 +314,11 @@ function App() {
               <span></span>
               <span></span>
               <span></span>
-              {isPlaylistOn && menuBg === null && <p>"Scroll to Rotate.."</p>}
+              {isPlaylistOn && menuBg === null && (
+                <>
+                  <p>"Scroll to Rotate.."</p> <p>Click again to exit</p>
+                </>
+              )}
             </MenuBtn>
           </MenuBar>
           <RPMBtnContainer layout>
