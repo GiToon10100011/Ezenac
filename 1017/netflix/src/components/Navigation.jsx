@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Logo = styled.img`
@@ -15,6 +17,22 @@ const BtnItem = styled.span`
 `;
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleOnSearch = (e) => {
+    e.preventDefault();
+    dispatch({ type: "MOVIE_SEARCH", payload: { searchQuery } });
+    navigate({
+      pathname: "/search/",
+      search: `?${createSearchParams({
+        q: searchQuery,
+      })}`,
+    });
+    setSearchQuery("");
+  };
+
   return (
     <Navbar sticky="top" bg="dark" variant="dark" style={{ padding: "10px" }}>
       <Container fluid>
@@ -38,12 +56,14 @@ const Navigation = () => {
               <BtnItem>Movie</BtnItem>
             </Nav.Link>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleOnSearch}>
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              value={searchQuery}
             />
             <Button variant="outline-danger">Search</Button>
           </Form>
