@@ -8,6 +8,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   width: 300px;
   height: 200px;
+  overflow: hidden;
   cursor: pointer;
   &::before {
     content: "";
@@ -19,6 +20,11 @@ const Wrapper = styled.div`
     z-index: 1;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   }
+  &:hover{
+    img{
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const Img = styled.img`
@@ -26,6 +32,7 @@ const Img = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: top;
+  transition: all 0.3s;
 `;
 
 const Title = styled.h1`

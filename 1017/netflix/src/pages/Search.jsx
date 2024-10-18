@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.main`
@@ -88,6 +88,7 @@ const Vote = styled.span`
 `;
 
 const Search = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const datas = useSelector((state) => state.movie);
   const genres = useSelector((state) => state.movie.movieGenres);
@@ -129,7 +130,9 @@ const Search = () => {
     <Wrapper>
       <Inner>
         {filteredItems.map((item) => (
-          <SearchItem>
+          <SearchItem
+            onClick={() => navigate(`/movie/${item.id}/?type=popularMovies`)}
+          >
             <Img
               src={`https://media.themoviedb.org/t/p/original/${item.backdrop_path}`}
               alt="thumbnail"
