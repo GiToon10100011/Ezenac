@@ -5,7 +5,7 @@ import pokeAction from "./redux/actions/pokeAction";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(pokeAction.getPokemonData());
+    dispatch(pokeAction.getPokemonData());
   }, []);
   return <></>;
 }

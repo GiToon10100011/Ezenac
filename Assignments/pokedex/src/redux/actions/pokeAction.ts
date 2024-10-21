@@ -1,11 +1,32 @@
 import React from "react";
 import { pokeAPI } from "../api";
 import { Dispatch } from "redux";
+import { ThunkDispatch } from "redux-thunk";
+
+type pokemonData = {
+  name: string;
+  url: string;
+};
+
+export interface IPokeApiContent {
+  allPokemon: {
+    count: number;
+    next: string | null;
+    prev: string | null;
+    results: pokemonData[];
+  };
+}
 
 const getPokemonData = () => {
-  return async (dispatch: Dispatch) => {
-    const allPokemonApi = pokeAPI.get("pokemon/?limit=1302");
-    dispatch({ type: "GET_DATA_SUCCESS", payload: {} });
+  return async (dispatch: ThunkDispatch) => {
+    try {
+      const allPokemonApi = pokeAPI.get("pokemon/?limit=1302");
+      const allPokemon = await allPokemonApi.then((response) => response.data);
+      console.log(allPokemon);
+      dispatch({ type: "GET_DATA_SUCCESS", payload: { allPokemon } });
+    } catch (error) {
+      console.error(error);
+    }
   };
 };
 
