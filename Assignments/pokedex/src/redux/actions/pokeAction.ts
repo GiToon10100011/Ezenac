@@ -14,8 +14,7 @@ export interface IPokeApiContent {
     next: string | null;
     prev: string | null;
     results: pokemonData[];
-  };
-}
+ }
 
 const getPokemonData = () => {
   return async (dispatch: ThunkDispatch) => {
