@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    //컴파일링 될 파일들의 모듈 시스템을 정의
+    "module": "ESNext",
+    //컴파일될 파일들의 js버전을 정의
+    "target": "ESNext",
+    //컴파일링 될 파일들을 저장할 공간을 정의
+    "outDir": "dist",
+    //컴파일링 하고자 하는 파일의 타입을 업격하게 검사할것인지에 대한 여부
+    "strict": true,
+    //타입 지정 시, null 타입 사용에 대한 여부를 정의, false면 null이라는 타입을 완만하게 사용할 수 있게됨.
+    "strictNullChecks": true,
+    //타입스크립트 각 파일을 독립적인 모듈로 인식
+    "moduleDetection": "force",
+    //외부 라이브러리를 설치할 때, 타입지정 검사를 생략하고자 할때에 대한 여부
+    "skipLibCheck": true
+  },
+
+  //여긴 별로 안중요, 옵셔널한 세팅
+  //ts-node라는 컴파일러의 모듈을 설정하고자 할때
+  "ts-node": {
+    "esm": true
+  },
+  //src라는 폴더 안에 있는 파일들을 ts로 컴파일링하고자 할때
+  "include": ["src"]
+}
