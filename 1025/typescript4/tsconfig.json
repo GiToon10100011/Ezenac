@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "moduleDetection": "force"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

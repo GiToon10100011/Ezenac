@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "strictNullChecks": false,
+    "skipLibCheck": true,
+    "moduleDetection": "force",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
+  },
+}
