@@ -16,4 +16,4 @@ hashTable.set(14, "박리아");
 console.log(`1: ${hashTable.get(1)}`);
 hashTable.remove(1);
 console.log(`1: ${hashTable.get(1)}`);
-console.log(`21: ${hashTable.get(21)}`);
+console.log(`21:  ${hashTable.get(21)}`);
