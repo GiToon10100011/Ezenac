@@ -11,7 +11,7 @@ const SearchBar = () => {
       <input value={search} type="text" onChange={handleSearch} />
       <button>검색</button>
     </div>
-  );
+  );6
 };
 
 export default SearchBar;
