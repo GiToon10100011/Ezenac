@@ -1,7 +1,5 @@
-import React from "react";
-import { pokeAPI } from "../api";
 import { Dispatch } from "redux";
-import { ThunkDispatch } from "redux-thunk";
+import { pokeAPI } from "../api";
 
 type pokemonData = {
   name: string;
@@ -14,10 +12,11 @@ export interface IPokeApiContent {
     next: string | null;
     prev: string | null;
     results: pokemonData[];
- }
+  };
+}
 
 const getPokemonData = () => {
-  return async (dispatch: ThunkDispatch) => {
+  return async (dispatch: Dispatch) => {
     try {
       const allPokemonApi = pokeAPI.get("pokemon/?limit=1302");
       const allPokemon = await allPokemonApi.then((response) => response.data);
