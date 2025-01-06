@@ -1,8 +1,6 @@
-import { IPokeApiContent } from "../actions/pokeAction";
-
 interface IPokeAction {
   type: string;
-  payload: IPokeApiContent;
+  payload: { allPokemon: string[] };
 }
 
 let initialState = {

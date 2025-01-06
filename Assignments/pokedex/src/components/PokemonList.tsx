@@ -1,0 +1,118 @@
+import React, { useEffect, useState } from "react";
+import { useAppSelector } from "../redux/hooks";
+import { pokeAPI } from "../redux/api";
+import { AxiosResponse } from "axios";
+import styled from "styled-components";
+import PokemonItem from "./PokemonItem";
+
+const Container = styled.ul`
+  position: absolute;
+  top: 120px;
+  right: 0;
+  width: 40%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 30px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+`;
+
+interface IPokemonPartialData {
+  name: string;
+  url: string;
+}
+
+interface IPokemonMoves {
+  move: IPokemonPartialData;
+  version_group_details: {
+    level_learned_at: number;
+    version_group: IPokemonPartialData;
+    move_learn_method: IPokemonPartialData;
+  }[];
+}
+
+interface IPokemonSprites {
+  back_default?: string;
+  back_female?: string;
+  back_shiny?: string;
+  back_shiny_female?: string;
+  front_default?: string;
+  front_female?: string;
+  front_shiny?: string;
+  front_shiny_female?: string;
+  other?: any;
+}
+
+export interface IPokemonDetail {
+  id: number;
+  name: string;
+  base_experience: number;
+  height: number;
+  is_default: boolean;
+  order: number;
+  weight: number;
+  abilities: IPokemonPartialData;
+  forms: IPokemonPartialData[];
+  game_indices: {
+    game_index: number;
+    version: IPokemonPartialData;
+  }[];
+  held_items: {
+    item: IPokemonPartialData;
+    version_details: { rarity: number; version: IPokemonPartialData }[];
+  }[];
+  location_area_encounters: string;
+  moves: IPokemonMoves[];
+  species: IPokemonPartialData;
+  sprites: IPokemonSprites;
+  cries: {
+    latest: string;
+    legacy: string;
+  };
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: IPokemonPartialData;
+  }[];
+  types: {
+    slot: number;
+    type: IPokemonPartialData;
+  }[];
+  past_types: object;
+}
+
+const PokemonList = () => {
+  const [detailData, setDetailData] = useState<IPokemonDetail[]>([]);
+  const pokemonData = useAppSelector((state) => state.pokeReducer.data);
+  useEffect(() => {
+    const fetchPokemonDetails = async () => {
+      try {
+        const promises = pokemonData.map((pokemon) =>
+          pokeAPI.get(`/pokemon/${pokemon}`)
+        );
+        const results = await Promise.all(promises);
+        setDetailData(results.map((result: AxiosResponse) => result.data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (pokemonData.length > 0) {
+      fetchPokemonDetails();
+    }
+  }, [pokemonData]);
+  return (
+    <Container>
+      {detailData
+        .sort((a, b) =>
+          a.order >= 0 && b.order >= 0 ? a.order - b.order : b.order - a.order
+        )
+        .map((data, index) => (
+          <PokemonItem {...data} key={index} />
+        ))}
+    </Container>
+  );
+};
+
+export default PokemonList;

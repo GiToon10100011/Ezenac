@@ -6,7 +6,7 @@ type pokemonData = {
   url: string;
 };
 
-export interface IPokeApiContent {
+interface IPokeApiContent {
   allPokemon: {
     count: number;
     next: string | null;
@@ -19,9 +19,16 @@ const getPokemonData = () => {
   return async (dispatch: Dispatch) => {
     try {
       const allPokemonApi = pokeAPI.get("pokemon/?limit=1302");
-      const allPokemon = await allPokemonApi.then((response) => response.data);
-      console.log(allPokemon);
-      dispatch({ type: "GET_DATA_SUCCESS", payload: { allPokemon } });
+      const allPokemonData = await allPokemonApi.then(
+        (response) => response.data
+      );
+      const allPokemon = allPokemonData.results.map(
+        (pokemon: pokemonData) => pokemon.name
+      );
+      dispatch({
+        type: "GET_DATA_SUCCESS",
+        payload: { allPokemon },
+      });
     } catch (error) {
       console.error(error);
     }

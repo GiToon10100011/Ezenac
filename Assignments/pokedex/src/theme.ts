@@ -4,6 +4,9 @@ import reset from "styled-reset";
 export const theme: DefaultTheme = {
   colors: {
     background: "#333",
+    brightPoint: "#A1E64E",
+    darkPoint: "#157327",
+    text: "#fff",
   },
   fonts: {
     bits: "VT323",
@@ -31,6 +34,6 @@ export const GlobalStyles = createGlobalStyle`
   body{
     background: conic-gradient(from 90deg at 3px 3px,#1eca92 90deg,#049a6d 0) 
     0 0/20px 20px;
-    font-family: ${({ theme }) => theme.fonts.bits};
+    font-family: ${theme.fonts.bits};
   }
 `;

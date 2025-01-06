@@ -5,6 +5,7 @@ const Container = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   background: #000;
   width: 100%;
   padding: 20px;

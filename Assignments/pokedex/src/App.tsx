@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "./redux/hooks";
 import pokeAction from "./redux/actions/pokeAction";
-import Loading from "./components/Loading";
 import { GlobalStyles } from "./theme";
-import styled from "styled-components";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -14,7 +15,11 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Loading />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 }

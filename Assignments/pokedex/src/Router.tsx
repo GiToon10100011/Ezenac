@@ -1,12 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "./Layout";
 import Detail from "./pages/Detail";
+import App from "./App";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <App />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+      },
       {
         path: ":pokemonId",
         element: <Detail />,
