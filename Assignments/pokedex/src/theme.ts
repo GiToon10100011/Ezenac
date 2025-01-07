@@ -1,5 +1,6 @@
 import { createGlobalStyle, DefaultTheme } from "styled-components";
 import reset from "styled-reset";
+import { slideBackground } from "./components/PokemonSpotlight";
 
 export const theme: DefaultTheme = {
   colors: {
@@ -32,8 +33,9 @@ export const GlobalStyles = createGlobalStyle`
   ${reset}
 
   body{
-    background: conic-gradient(from 90deg at 3px 3px,#1eca92 90deg,#049a6d 0) 
+    background: conic-gradient(from 90deg at 3px 3px,#18B57E 90deg,#0F7656 0) 
     0 0/20px 20px;
     font-family: ${theme.fonts.bits};
+    animation: ${slideBackground} 30s linear reverse infinite;
   }
 `;

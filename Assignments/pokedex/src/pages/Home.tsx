@@ -1,4 +1,3 @@
-import React from "react";
 import PokemonSpotlight from "../components/PokemonSpotlight";
 import PokemonList from "../components/PokemonList";
 import styled from "styled-components";
@@ -13,11 +12,13 @@ const Container = styled.section`
 
 const Home = () => {
   return (
-    <Container>
-      <PokemonSpotlight />
-      <PokemonList />
-      <ListBackground />
-    </Container>
+    <>
+      <Container>
+        <PokemonSpotlight />
+        <PokemonList />
+        <ListBackground />
+      </Container>
+    </>
   );
 };
 

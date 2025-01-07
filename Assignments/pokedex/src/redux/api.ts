@@ -9,7 +9,7 @@ export const pokeAPI = axios.create({
 
 pokeAPI.interceptors.request.use(
   function (config) {
-    console.log(config);
+    // console.log(config);
     return config;
   },
   function (error) {
@@ -20,7 +20,7 @@ pokeAPI.interceptors.request.use(
 
 pokeAPI.interceptors.response.use(
   function (response) {
-    console.log(response);
+    // console.log(response);
     return response;
   },
   function (error) {

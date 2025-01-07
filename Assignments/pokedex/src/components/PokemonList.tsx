@@ -4,8 +4,10 @@ import { pokeAPI } from "../redux/api";
 import { AxiosResponse } from "axios";
 import styled from "styled-components";
 import PokemonItem from "./PokemonItem";
+import { AnimatePresence } from "motion/react";
+import Bootup from "./Bootup";
 
-const Container = styled.ul`
+const Container = styled.ul<{ $isLoading: boolean }>`
   position: absolute;
   top: 120px;
   right: 0;
@@ -15,7 +17,8 @@ const Container = styled.ul`
   flex-direction: column;
   gap: 20px;
   padding-right: 30px;
-  overflow-y: scroll;
+  ${({ $isLoading }) =>
+    $isLoading ? "overflow: visible" : "overflow-y: scroll"};
   scrollbar-width: none;
 `;
 
@@ -85,33 +88,66 @@ export interface IPokemonDetail {
 
 const PokemonList = () => {
   const [detailData, setDetailData] = useState<IPokemonDetail[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const pokemonData = useAppSelector((state) => state.pokeReducer.data);
+
+  const isBootupFinished = useAppSelector((state) => state.userReducer.bootup);
+
+  console.log(isBootupFinished);
+
   useEffect(() => {
     const fetchPokemonDetails = async () => {
+      setIsLoading(true);
       try {
         const promises = pokemonData.map((pokemon) =>
           pokeAPI.get(`/pokemon/${pokemon}`)
         );
-        const results = await Promise.all(promises);
+
+        let completed = 0;
+        const results = await Promise.all(
+          promises.map(async (promise) => {
+            const result = await promise;
+            completed++;
+            setLoadingProgress((completed / promises.length) * 100);
+            return result;
+          })
+        );
+
         setDetailData(results.map((result: AxiosResponse) => result.data));
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
       }
     };
+
     if (pokemonData.length > 0) {
       fetchPokemonDetails();
     }
   }, [pokemonData]);
   return (
-    <Container>
-      {detailData
-        .sort((a, b) =>
-          a.order >= 0 && b.order >= 0 ? a.order - b.order : b.order - a.order
-        )
-        .map((data, index) => (
-          <PokemonItem {...data} key={index} />
-        ))}
-    </Container>
+    <>
+      <AnimatePresence mode="wait">
+        {!isBootupFinished && (
+          <Bootup
+            key="bootup"
+            isLoading={isLoading}
+            progress={loadingProgress}
+          />
+        )}
+      </AnimatePresence>
+
+      <Container $isLoading={isLoading} key="pokemonList">
+        {detailData
+          .sort((a, b) =>
+            a.order >= 0 && b.order >= 0 ? a.order - b.order : b.order - a.order
+          )
+          .map((data, index) => (
+            <PokemonItem {...data} key={index} />
+          ))}
+      </Container>
+    </>
   );
 };
 
