@@ -7,7 +7,7 @@ export const theme: DefaultTheme = {
     background: "#333",
     brightPoint: "#A1E64E",
     darkPoint: "#157327",
-    text: "#fff",
+    text: "#F0F5F8",
   },
   fonts: {
     bits: "VT323",

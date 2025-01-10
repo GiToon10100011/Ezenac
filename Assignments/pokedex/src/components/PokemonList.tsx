@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useAppSelector } from "../redux/hooks";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { pokeAPI } from "../redux/api";
 import { AxiosResponse } from "axios";
 import styled from "styled-components";
 import PokemonItem from "./PokemonItem";
 import { AnimatePresence } from "motion/react";
 import Bootup from "./Bootup";
+import { motion } from "motion/react";
 
-const Container = styled.ul<{ $isLoading: boolean }>`
+const Container = styled(motion.ul)<{ $isLoading: boolean }>`
   position: absolute;
   top: 120px;
   right: 0;
@@ -22,7 +23,7 @@ const Container = styled.ul<{ $isLoading: boolean }>`
   scrollbar-width: none;
 `;
 
-interface IPokemonPartialData {
+export interface IPokemonPartialData {
   name: string;
   url: string;
 }
@@ -86,15 +87,32 @@ export interface IPokemonDetail {
   past_types: object;
 }
 
+export const pokemonVariants = {
+  pokemonList: {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.3, type: "tween", staggerChildren: 0.06 },
+    },
+  },
+  pokemonItem: {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, type: "tween" },
+    },
+  },
+};
+
 const PokemonList = () => {
+  const dispatch = useAppDispatch();
   const [detailData, setDetailData] = useState<IPokemonDetail[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const pokemonData = useAppSelector((state) => state.pokeReducer.data);
 
   const isBootupFinished = useAppSelector((state) => state.userReducer.bootup);
-
-  console.log(isBootupFinished);
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -126,6 +144,19 @@ const PokemonList = () => {
       fetchPokemonDetails();
     }
   }, [pokemonData]);
+
+  const isBootupCompleted = useAppSelector((state) => state.userReducer.bootup);
+
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    const animationTimeout = setTimeout(() => {
+      if (isBootupCompleted) setStartAnimation(true);
+    }, 400);
+
+    return () => clearTimeout(animationTimeout);
+  }, [isBootupCompleted]);
+
   return (
     <>
       <AnimatePresence mode="wait">
@@ -138,7 +169,13 @@ const PokemonList = () => {
         )}
       </AnimatePresence>
 
-      <Container $isLoading={isLoading} key="pokemonList">
+      <Container
+        $isLoading={isLoading}
+        key="pokemonList"
+        variants={pokemonVariants.pokemonList}
+        initial={"hidden"}
+        animate={startAnimation ? "visible" : undefined}
+      >
         {detailData
           .sort((a, b) =>
             a.order >= 0 && b.order >= 0 ? a.order - b.order : b.order - a.order

@@ -9,7 +9,6 @@ import { Outlet } from "react-router-dom";
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    console.log("mount");
     dispatch(pokeAction.getPokemonData());
   }, []);
   return (

@@ -1,11 +1,13 @@
-import React from "react";
 import styled from "styled-components";
+import { motion } from "motion/react";
+import { useAppSelector } from "../redux/hooks";
+import { useEffect, useState } from "react";
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   z-index: -1;
   width: 45%;
   height: 70%;
@@ -22,9 +24,25 @@ const Container = styled.div`
 `;
 
 const ListBackground = () => {
+  const isBootupCompleted = useAppSelector((state) => state.userReducer.bootup);
+
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    const animationTimeout = setTimeout(() => {
+      if (isBootupCompleted) setStartAnimation(true);
+    }, 350);
+
+    return () => clearTimeout(animationTimeout);
+  }, [isBootupCompleted]);
+
   return (
     <>
-      <Container />
+      <Container
+        initial={{ opacity: 0, x: 500, y: "-50%" }}
+        animate={startAnimation ? { opacity: 1, x: 0, y: "-50%" } : undefined}
+        transition={{ type: "tween", duration: 0.3 }}
+      />
     </>
   );
 };

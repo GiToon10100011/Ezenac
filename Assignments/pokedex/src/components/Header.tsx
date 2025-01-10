@@ -1,5 +1,6 @@
-import React from "react";
+import { useMatch } from "react-router-dom";
 import styled from "styled-components";
+import { FaChevronRight } from "react-icons/fa6";
 
 const Container = styled.header`
   position: fixed;
@@ -31,15 +32,29 @@ const Container = styled.header`
 `;
 
 const HeaderTitle = styled.h1`
+  display: flex;
+  gap: 4px;
+  align-items: center;
   font-size: 32px;
   color: white;
   text-transform: uppercase;
 `;
 
 const Header = () => {
+  const detailMatch = useMatch("/pokemon/:pokemonId");
+
   return (
     <Container>
-      <HeaderTitle>National Pokedex</HeaderTitle>
+      <HeaderTitle>
+        {detailMatch ? (
+          <>
+            <FaChevronRight color="#92c551" size={30} />
+            {detailMatch.params.pokemonId}
+          </>
+        ) : (
+          "National Pokedex"
+        )}
+      </HeaderTitle>
     </Container>
   );
 };

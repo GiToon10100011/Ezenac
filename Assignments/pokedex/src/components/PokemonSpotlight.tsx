@@ -4,6 +4,7 @@ import { pokeAPI } from "../redux/api";
 import { useEffect, useState } from "react";
 import { IPokemonDetail } from "./PokemonList";
 import { Typewriter } from "react-simple-typewriter";
+import { motion } from "motion/react";
 
 export const slideBackground = keyframes`
     to {
@@ -11,7 +12,7 @@ export const slideBackground = keyframes`
     }
 `;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -29,6 +30,7 @@ const Corners = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 3;
   img {
     position: absolute;
     object-fit: cover;
@@ -96,6 +98,18 @@ const PokemonSpotlight = () => {
     (state) => state.userReducer.selectedPokemon
   );
 
+  const isBootupCompleted = useAppSelector((state) => state.userReducer.bootup);
+
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    const animationTimeout = setTimeout(() => {
+      if (isBootupCompleted) setStartAnimation(true);
+    }, 300);
+
+    return () => clearTimeout(animationTimeout);
+  }, [isBootupCompleted]);
+
   const getPokemonSprites = async () => {
     const pokemon = await pokeAPI.get(`/pokemon/${selectedPokemon}`);
     setPokemon(pokemon.data);
@@ -106,7 +120,11 @@ const PokemonSpotlight = () => {
   }, [selectedPokemon]);
 
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0, x: -500 }}
+      animate={startAnimation ? { opacity: 1, x: 0 } : undefined}
+      transition={{ type: "tween", duration: 0.3 }}
+    >
       <Corners>
         <img src="/test.svg" alt="corner1" />
         <img src="/test.svg" alt="corner2" />
@@ -138,9 +156,13 @@ const PokemonSpotlight = () => {
           }}
         >
           {selectedPokemon && pokemon ? (
-            <Typewriter words={[pokemon.name]} key={pokemon.name} />
+            <Typewriter
+              words={[pokemon.name]}
+              key={pokemon.name}
+              typeSpeed={60}
+            />
           ) : (
-            "Select a Pokemon..."
+            "Hover over a Pokemon..."
           )}
         </span>
       }

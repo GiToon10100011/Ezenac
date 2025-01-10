@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import styled, { keyframes, useTheme } from "styled-components";
-import { IPokemonDetail } from "./PokemonList";
+import { IPokemonDetail, pokemonVariants } from "./PokemonList";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import { MdCatchingPokemon } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useNavigate } from "react-router-dom";
+import { formatOrderNumber } from "../utils";
 
 const liveSprites = keyframes`
   from{
@@ -70,7 +73,7 @@ const PokeId = styled.span`
 
 const PokeName = styled(PokeId)``;
 
-const Container = styled.li<{ $pokemon?: string }>`
+const Container = styled(motion.li)<{ $pokemon?: string }>`
   display: flex;
   gap: 40px;
   align-items: center;
@@ -109,16 +112,14 @@ const Container = styled.li<{ $pokemon?: string }>`
 `;
 
 const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
   const currentPokemon = useAppSelector(
     (state) => state.userReducer.selectedPokemon
   );
   const theme = useTheme();
   const [isHovering, setIsHovering] = useState(false);
-
-  const formatOrderNumber = (num: number): string => {
-    return String(num).padStart(3, "0");
-  };
 
   const selectPokemon = (name: string) => {
     dispatch({ type: "SELECT", payload: { name } });
@@ -129,10 +130,11 @@ const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
     <>
       <Container
         onMouseEnter={() => selectPokemon(name)}
-        className={
-          isHovering && currentPokemon === name ? currentPokemon : undefined
-        }
+        onClick={() => navigate(`/pokemon/${name}`)}
+        className={currentPokemon === name ? currentPokemon : undefined}
         $pokemon={currentPokemon}
+        key="pokemonItem"
+        variants={order < 20 ? pokemonVariants.pokemonItem : undefined}
       >
         <SpriteContainer>
           <FaChevronLeft
@@ -140,7 +142,10 @@ const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
             color={theme.colors.darkPoint}
             size={36}
           />
-          <Sprite src={sprites.front_default ?? "/MissingNo..webp"} alt="" />
+          <Sprite
+            src={sprites.front_default ?? "/MissingNo..webp"}
+            alt={`${name} mini sprite`}
+          />
           <FaChevronRight
             className="right-arr"
             color={theme.colors.darkPoint}
@@ -159,4 +164,4 @@ const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
   );
 };
 
-export default PokemonItem;
+export default React.memo(PokemonItem);
