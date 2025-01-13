@@ -158,6 +158,8 @@ const PreEvolutionBox = styled.div`
   }
 `;
 
+const NextEvolutionBox = styled(PreEvolutionBox)``;
+
 const EvolutionTrigger = styled.div`
   position: absolute;
   top: 20%;
@@ -180,16 +182,17 @@ const EvolutionTrigger = styled.div`
 
 const TriggerContent = styled.div`
   span {
+    width: fit-content;
     position: absolute;
     color: ${({ theme }) => theme.colors.text};
-    &:first-child{
-      top: 0;
-      left: 0;
+    &:first-child {
+      top: -10%;
+      left: 10%;
     }
 
-    &:last-child{
-      right: 0;
-      bottom: 0;
+    &:last-child {
+      right: 14%;
+      bottom: -10%;
     }
   }
 `;
@@ -217,6 +220,15 @@ const PokeMiniInfoBox1 = styled(PokeInfoBox)`
     transform: none;
     width: 100%;
   }
+  h2 {
+    width: 100%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    text-align: center;
+  }
 `;
 const PokeMiniInfoBox2 = styled(PokeMiniInfoBox1)`
   left: auto;
@@ -224,6 +236,19 @@ const PokeMiniInfoBox2 = styled(PokeMiniInfoBox1)`
   top: auto;
   bottom: -20%;
   width: 40%;
+  ${TriggerContent} {
+    span {
+      font-size: 20px;
+      &:first-child {
+        top: -5%;
+        left: 10%;
+      }
+      &:last-child {
+        right: 20%;
+        bottom: -5%;
+      }
+    }
+  }
 `;
 
 const PokeNumber = styled.span`
@@ -320,7 +345,8 @@ const Detail = () => {
   const [preEvolutionPokemon, setPreEvolutionPokemon] =
     useState<IPokemonDetail>();
 
-  const [nextEvolutionPokemon, setNextEvolutionPokemon] = useState();
+  const [nextEvolutionPokemon, setNextEvolutionPokemon] =
+    useState<IPokemonDetail>();
 
   const fetchPokemon = async () => {
     const targetPokemon = await pokeAPI.get(`/pokemon/${pokemonId}`);
@@ -352,9 +378,69 @@ const Detail = () => {
     pokemonEvolutionData
   );
 
-  const resolveRecursiveEvolution = (arr: IChain['evolves_to']) => {
+  const resolveEvolutionChain = (arr: IChain) => {
+    if (!arr) return null;
+    let currentChain: IChain = arr;
+    let evoChain = [];
 
-  }
+    while (currentChain?.evolves_to?.length > 0) {
+      evoChain.push({
+        name: currentChain.species.name,
+        trigger: currentChain.evolution_details?.[0]?.trigger?.name || null,
+      });
+
+      currentChain = currentChain.evolves_to[0];
+    }
+
+    if (currentChain) {
+      evoChain.push({
+        name: currentChain.species.name,
+        trigger: currentChain.evolution_details[0].trigger.name,
+      });
+    }
+
+    return evoChain;
+  };
+
+  console.log(
+    pokemonEvolutionData && resolveEvolutionChain(pokemonEvolutionData?.chain)
+  );
+
+  const resolvePreEvolution = (arr: IChain["evolves_to"]) => {
+    if (
+      pokemonData &&
+      arr.find(
+        (pokemon) =>
+          pokemon.species.name === pokemonData?.name ||
+          pokemon.species.name.includes(pokemonData?.name)
+      )?.evolution_details
+    ) {
+      return arr.find((pokemon) => pokemon.species.name === pokemonData?.name)
+        ?.evolution_details[0];
+    }
+    const nextLevel = arr[arr.length - 1].evolves_to;
+    if (!nextLevel || nextLevel.length === 0) return null;
+
+    return resolvePreEvolution(nextLevel);
+  };
+
+  const resolveNextEvolution = (arr: IChain["evolves_to"]) => {
+    if (!arr[arr.length - 1].evolves_to.length) {
+      pokeAPI
+        .get(`/pokemon/${arr[arr.length - 1].species.name}`)
+        .then(({ data }) => setNextEvolutionPokemon(data));
+
+      return arr[arr.length - 1];
+    }
+    const nextLevel = arr[arr.length - 1].evolves_to;
+    if (!nextLevel.length) return null;
+    return resolveNextEvolution(nextLevel);
+  };
+
+  useEffect(() => {
+    pokemonEvolutionData &&
+      resolveNextEvolution(pokemonEvolutionData?.chain.evolves_to);
+  }, [pokemonEvolutionData]);
 
   return (
     <Container>
@@ -369,23 +455,28 @@ const Detail = () => {
                 <InfoBoxHeading>
                   <span>Evolves From: </span>
                 </InfoBoxHeading>
-                <PreEvolutionBox>
-                  <EvolutionTrigger>
-                    <FaChevronLeft color="#737373" size={40} />
-                    <TriggerContent>
-                      <span>Evolves By: </span>
-                      <span>
-                        {
-                          pokemonEvolutionData?.chain.evolves_to[
-                            pokemonEvolutionData?.chain.evolves_to.length - 1
-                          ].species.name
-                        }
-                      </span>
-                    </TriggerContent>
-                  </EvolutionTrigger>
-                  <Sprite src={preEvolutionPokemon?.sprites.front_default} />
-                  <span>{preEvolutionPokemon && preEvolutionPokemon.name}</span>
-                </PreEvolutionBox>
+                {preEvolutionPokemon ? (
+                  <PreEvolutionBox>
+                    <EvolutionTrigger>
+                      <FaChevronLeft color="#737373" size={40} />
+                      <TriggerContent>
+                        <span>Evolves By: </span>
+                        <span>
+                          {pokemonEvolutionData &&
+                            resolvePreEvolution(
+                              pokemonEvolutionData.chain.evolves_to
+                            )?.trigger.name}
+                        </span>
+                      </TriggerContent>
+                    </EvolutionTrigger>
+                    <Sprite src={preEvolutionPokemon?.sprites.front_default} />
+                    <span>
+                      {preEvolutionPokemon && preEvolutionPokemon.name}
+                    </span>
+                  </PreEvolutionBox>
+                ) : (
+                  <h2>No Pre-Evolution</h2>
+                )}
               </PokeMiniInfoBox1>
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
@@ -419,6 +510,29 @@ const Detail = () => {
               </PokeSpecs>
               <PokeMiniInfoBox2>
                 <FileTop src="/assets/fileTop.svg" />
+                <InfoBoxHeading>
+                  <span>Evolves To: </span>
+                </InfoBoxHeading>
+                <NextEvolutionBox>
+                  <EvolutionTrigger>
+                    <FaChevronLeft color="#737373" size={40} />
+                    <TriggerContent>
+                      <span>Evolves By: </span>
+                      <span>
+                        {/* {pokemonEvolutionData &&
+                          resolveNextEvolution(
+                            pokemonEvolutionData.chain.evolves_to
+                          )?.evolution_details[
+                            resolveNextEvolution(
+                              pokemonEvolutionData.chain.evolves_to
+                            )?.evolution_details.length - 1
+                          ].trigger.name} */}
+                      </span>
+                    </TriggerContent>
+                  </EvolutionTrigger>
+                  <Sprite src={nextEvolutionPokemon?.sprites.front_default} />
+                  <span>{preEvolutionPokemon && preEvolutionPokemon.name}</span>
+                </NextEvolutionBox>
               </PokeMiniInfoBox2>
             </PokeInfoBox>
           </>
