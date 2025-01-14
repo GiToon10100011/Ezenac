@@ -75,6 +75,18 @@ interface IPokemonEvolutionChain {
   id: number;
 }
 
+interface IResolvedEvoChain {
+  name?: string | null;
+  trigger?: string | null;
+  trigger_details:
+    | ""
+    | IPokemonPartialData
+    | (string | number | boolean | IPokemonPartialData)[]
+    | null;
+  other: [string, number | boolean | string | IPokemonPartialData][][] | null;
+  level: number;
+}
+
 const Container = styled.main`
   position: relative;
   padding: 120px 0;
@@ -371,76 +383,155 @@ const Detail = () => {
     fetchPokemon();
   }, [pokemonId]);
 
-  console.log(
-    pokemonData,
-    pokemonSpecies,
-    preEvolutionPokemon,
-    pokemonEvolutionData
-  );
+  const resolveEvolutionChain = (chain: IChain) => {
+    if (!chain) return null;
+    let evoChain: IResolvedEvoChain[] = [];
+    let level = 0;
+    const processChain = (currentChain: IChain, level: number) => {
+      const trigger =
+        currentChain.evolution_details?.[0]?.trigger?.name || null;
 
-  const resolveEvolutionChain = (arr: IChain) => {
-    if (!arr) return null;
-    let currentChain: IChain = arr;
-    let evoChain = [];
+      let formattedTrigger;
 
-    while (currentChain?.evolves_to?.length > 0) {
+      switch (trigger) {
+        case null:
+          formattedTrigger = null;
+          break;
+        case "level-up":
+          formattedTrigger = "min_level";
+          break;
+        case "use-item":
+          formattedTrigger = "item";
+          break;
+        case "trade":
+          formattedTrigger = "trade_species";
+          break;
+        default:
+          formattedTrigger = null;
+          break;
+      }
       evoChain.push({
         name: currentChain.species.name,
-        trigger: currentChain.evolution_details?.[0]?.trigger?.name || null,
+        trigger,
+        trigger_details:
+          (trigger &&
+            currentChain.evolution_details.map(
+              (detail) =>
+                detail[formattedTrigger as keyof IPokemonEvolutionTriggers]
+            )) ||
+          null,
+        other: currentChain.evolution_details.map(
+          (detail) =>
+            Object.entries(detail).filter(([_, value]) => value !== null) as [
+              string,
+              number | boolean | string | IPokemonPartialData
+            ][]
+        ),
+        level,
       });
 
-      currentChain = currentChain.evolves_to[0];
-    }
-
-    if (currentChain) {
-      evoChain.push({
-        name: currentChain.species.name,
-        trigger: currentChain.evolution_details[0].trigger.name,
+      currentChain.evolves_to.forEach((nextChain) => {
+        processChain(nextChain, level + 1);
       });
-    }
+    };
+
+    processChain(chain, level);
 
     return evoChain;
   };
 
-  console.log(
-    pokemonEvolutionData && resolveEvolutionChain(pokemonEvolutionData?.chain)
-  );
+  const findPokemonTriggerOrder = () => {
+    if (!pokemonEvolutionData) return null;
 
-  const resolvePreEvolution = (arr: IChain["evolves_to"]) => {
-    if (
-      pokemonData &&
-      arr.find(
-        (pokemon) =>
-          pokemon.species.name === pokemonData?.name ||
-          pokemon.species.name.includes(pokemonData?.name)
-      )?.evolution_details
-    ) {
-      return arr.find((pokemon) => pokemon.species.name === pokemonData?.name)
-        ?.evolution_details[0];
+    const currentPokemonEvolutionDepth = resolveEvolutionChain(
+      pokemonEvolutionData.chain
+    )?.find((chain) => chain.name === pokemonData?.name)?.level;
+
+    const maxEvolutionDepths = Math.max(
+      ...(resolveEvolutionChain(pokemonEvolutionData.chain)?.map(
+        (data) => data.level
+      ) || [0])
+    );
+
+    if (currentPokemonEvolutionDepth === maxEvolutionDepths) {
+      const currentEvolutionTrigger = resolveEvolutionChain(
+        pokemonEvolutionData.chain
+      )?.find((chain) => chain.name === pokemonData?.name);
+
+      const nextEvolutionTrigger = resolveEvolutionChain(
+        pokemonEvolutionData.chain
+      )?.find((chain) => chain.level === currentPokemonEvolutionDepth + 1);
+
+      return {
+        isMaxEvoDepth: true,
+        currentPokemonEvolutionDepth,
+        preEvolutionTrigger: currentEvolutionTrigger,
+        nextEvolutionTrigger: nextEvolutionTrigger,
+      };
+    } else if (currentPokemonEvolutionDepth) {
+      const preEvolutionTrigger = resolveEvolutionChain(
+        pokemonEvolutionData.chain
+      )?.find((chain) => chain.level === currentPokemonEvolutionDepth - 1);
+
+      const currentEvolutionTrigger = resolveEvolutionChain(
+        pokemonEvolutionData.chain
+      )?.find((chain) => chain.name === pokemonData?.name);
+
+      const nextEvolutionTrigger = resolveEvolutionChain(
+        pokemonEvolutionData.chain
+      )?.find((chain) => chain.level === currentPokemonEvolutionDepth + 1);
+
+      return {
+        isMaxEvoDepth: false,
+        currentPokemonEvolutionDepth,
+        preEvolutionTrigger: currentEvolutionTrigger,
+        nextEvolutionTrigger,
+      };
+    } else {
+      const preEvolutionTrigger = null;
+      const nextEvolutionTrigger = resolveEvolutionChain(
+        pokemonEvolutionData.chain
+      )?.find((chain) => chain.level === 1);
+
+      return {
+        isMaxEvoDepth: false,
+        currentPokemonEvolutionDepth,
+        preEvolutionTrigger,
+        nextEvolutionTrigger,
+      };
     }
-    const nextLevel = arr[arr.length - 1].evolves_to;
-    if (!nextLevel || nextLevel.length === 0) return null;
-
-    return resolvePreEvolution(nextLevel);
   };
 
-  const resolveNextEvolution = (arr: IChain["evolves_to"]) => {
-    if (!arr[arr.length - 1].evolves_to.length) {
-      pokeAPI
-        .get(`/pokemon/${arr[arr.length - 1].species.name}`)
-        .then(({ data }) => setNextEvolutionPokemon(data));
+  console.log(findPokemonTriggerOrder());
 
-      return arr[arr.length - 1];
+  const formatTriggerDesc = (data: IResolvedEvoChain) => {
+    if (!data) return null;
+    let formattedDesc;
+    switch (data.trigger) {
+      case "level-up":
+        formattedDesc = `Level up to ${data.trigger_details}`;
+        break;
+      case "trade":
+        formattedDesc = data.trigger_details
+          ? `Trade while holding ${data.trigger_details}`
+          : `Trade`;
+        break;
+      case "use-item":
+        formattedDesc = `Use ${
+          (data.trigger_details as IPokemonPartialData[])[0].name
+        }`;
+        break;
+      default:
+        formattedDesc = "";
+        break;
     }
-    const nextLevel = arr[arr.length - 1].evolves_to;
-    if (!nextLevel.length) return null;
-    return resolveNextEvolution(nextLevel);
+
+    return formattedDesc;
   };
 
   useEffect(() => {
-    pokemonEvolutionData &&
-      resolveNextEvolution(pokemonEvolutionData?.chain.evolves_to);
-  }, [pokemonEvolutionData]);
+    findPokemonTriggerOrder();
+  }, [pokemonData, pokemonEvolutionData]);
 
   return (
     <Container>
@@ -462,10 +553,10 @@ const Detail = () => {
                       <TriggerContent>
                         <span>Evolves By: </span>
                         <span>
-                          {pokemonEvolutionData &&
-                            resolvePreEvolution(
-                              pokemonEvolutionData.chain.evolves_to
-                            )?.trigger.name}
+                          {formatTriggerDesc(
+                            findPokemonTriggerOrder()
+                              ?.preEvolutionTrigger as IResolvedEvoChain
+                          )}
                         </span>
                       </TriggerContent>
                     </EvolutionTrigger>
@@ -519,18 +610,14 @@ const Detail = () => {
                     <TriggerContent>
                       <span>Evolves By: </span>
                       <span>
-                        {/* {pokemonEvolutionData &&
-                          resolveNextEvolution(
-                            pokemonEvolutionData.chain.evolves_to
-                          )?.evolution_details[
-                            resolveNextEvolution(
-                              pokemonEvolutionData.chain.evolves_to
-                            )?.evolution_details.length - 1
-                          ].trigger.name} */}
+                        {formatTriggerDesc(
+                          findPokemonTriggerOrder()
+                            ?.nextEvolutionTrigger as IResolvedEvoChain
+                        )}
                       </span>
                     </TriggerContent>
                   </EvolutionTrigger>
-                  <Sprite src={nextEvolutionPokemon?.sprites.front_default} />
+                  <Sprite src={"/assets/MissingNo..webp"} />
                   <span>{preEvolutionPokemon && preEvolutionPokemon.name}</span>
                 </NextEvolutionBox>
               </PokeMiniInfoBox2>
