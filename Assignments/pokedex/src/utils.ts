@@ -11,5 +11,3 @@ export const formatTypeSprites = (
   const typeSprites = pokemonTypes.map((type) => `/assets/types/${type}.png`);
   return typeSprites;
 };
-
-export const formatMegaStoneSprites = () => {};

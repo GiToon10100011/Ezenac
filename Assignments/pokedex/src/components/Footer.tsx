@@ -4,6 +4,7 @@ import { MdCatchingPokemon } from "react-icons/md";
 import { LuChevronsLeft } from "react-icons/lu";
 import { LuChevronsRight } from "react-icons/lu";
 import { HiMiniArrowUturnLeft } from "react-icons/hi2";
+import { useMatch, useNavigate } from "react-router-dom";
 
 const Container = styled.footer`
   width: 100%;
@@ -119,6 +120,8 @@ const FavContainer = styled.div`
 `;
 
 const Footer = () => {
+  const detailMatch = useMatch("/pokemon/:pokemonId");
+  const navigate = useNavigate();
   return (
     <Container>
       <LeftArea>
@@ -142,7 +145,7 @@ const Footer = () => {
           </FavContainer>
           Add to Favorites
         </FavControls>
-        <BackControls>
+        <BackControls onClick={() => navigate(-1)}>
           <HiMiniArrowUturnLeft color="dodgerblue" strokeWidth={2} size={30} />
           Return
         </BackControls>

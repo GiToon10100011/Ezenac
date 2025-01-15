@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { useNavigate } from "react-router-dom";
 import { formatOrderNumber } from "../utils";
 
-const liveSprites = keyframes`
+export const liveSprites = keyframes`
   from{
     transform: translateY(0);
   }
@@ -129,6 +129,7 @@ const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
   return (
     <>
       <Container
+        id={name}
         onMouseEnter={() => selectPokemon(name)}
         onClick={() => navigate(`/pokemon/${name}`)}
         className={currentPokemon === name ? currentPokemon : undefined}
