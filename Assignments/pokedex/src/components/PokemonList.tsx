@@ -37,7 +37,7 @@ interface IPokemonMoves {
   }[];
 }
 
-interface IPokemonSprites {
+export interface IPokemonSprites {
   back_default?: string;
   back_female?: string;
   back_shiny?: string;
@@ -47,6 +47,7 @@ interface IPokemonSprites {
   front_shiny?: string;
   front_shiny_female?: string;
   other?: any;
+  versions?: any;
 }
 
 export interface IPokemonDetail {
@@ -57,7 +58,9 @@ export interface IPokemonDetail {
   is_default: boolean;
   order: number;
   weight: number;
-  abilities: IPokemonPartialData;
+  abilities: {
+    ability: IPokemonPartialData;
+  }[];
   forms: IPokemonPartialData[];
   game_indices: {
     game_index: number;

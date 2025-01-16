@@ -5,6 +5,7 @@ import { LuChevronsLeft } from "react-icons/lu";
 import { LuChevronsRight } from "react-icons/lu";
 import { HiMiniArrowUturnLeft } from "react-icons/hi2";
 import { useMatch, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 const Container = styled.footer`
   width: 100%;
@@ -27,10 +28,16 @@ const Container = styled.footer`
   border-top: 2px solid #000;
 `;
 
-const LeftArea = styled.div`
+const LeftArea = styled.div<{ $mode: string }>`
   display: flex;
   gap: 20px;
   align-items: center;
+  .${({ $mode }) => $mode} {
+    filter: brightness(1.5);
+    &::before {
+      background: #fff;
+    }
+  }
 `;
 
 const Search = styled.button`
@@ -57,6 +64,7 @@ const Search = styled.button`
     background: #ccc;
     z-index: -1;
     clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 55%);
+    transition: background 0.3s;
   }
 
   &::after {
@@ -119,20 +127,62 @@ const FavContainer = styled.div`
   }
 `;
 
+const SlotMenu = styled(Search)`
+  width: 100px;
+  transition: all 0.3s;
+  &::before,
+  &::after {
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
+  }
+`;
+
 const Footer = () => {
   const detailMatch = useMatch("/pokemon/:pokemonId");
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const currentMode = useAppSelector((state) => state.userReducer.menuMode);
+
+  const switchSlots = (mode: string) => {
+    dispatch({ type: "SLOT_MENU", payload: { mode } });
+  };
+
   return (
     <Container>
-      <LeftArea>
-        <Search>
-          <IoSearchOutline />
-          Search
-        </Search>
-        <MyFavs>
-          <MdCatchingPokemon />
-          Favorites
-        </MyFavs>
+      <LeftArea $mode={currentMode}>
+        {!detailMatch ? (
+          <>
+            <Search>
+              <IoSearchOutline />
+              Search
+            </Search>
+            <MyFavs>
+              <MdCatchingPokemon />
+              Favorites
+            </MyFavs>
+          </>
+        ) : (
+          <>
+            <SlotMenu
+              className={currentMode === "info" ? currentMode : undefined}
+              onClick={() => switchSlots("info")}
+            >
+              Info
+            </SlotMenu>
+            <SlotMenu
+              className={currentMode === "forms" ? currentMode : undefined}
+              onClick={() => switchSlots("forms")}
+            >
+              Forms
+            </SlotMenu>
+            <SlotMenu
+              className={currentMode === "stats" ? currentMode : undefined}
+              onClick={() => switchSlots("stats")}
+            >
+              Stats
+            </SlotMenu>
+          </>
+        )}
       </LeftArea>
       <RightArea>
         <ScrollControls>

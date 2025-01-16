@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
+    "apexcharts": "^4.3.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "motion": "^11.16.0",

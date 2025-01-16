@@ -129,6 +129,7 @@ const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
   return (
     <>
       <Container
+        data-sound-effect
         id={name}
         onMouseEnter={() => selectPokemon(name)}
         onClick={() => navigate(`/pokemon/${name}`)}

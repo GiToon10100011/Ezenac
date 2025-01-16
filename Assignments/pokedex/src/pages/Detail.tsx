@@ -1,11 +1,17 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { pokeAPI } from "../redux/api";
-import { IPokemonDetail, IPokemonPartialData } from "../components/PokemonList";
+import {
+  IPokemonDetail,
+  IPokemonPartialData,
+  IPokemonSprites,
+} from "../components/PokemonList";
 import { formatOrderNumber, formatTypeSprites } from "../utils";
 import { FaChevronLeft } from "react-icons/fa6";
 import { liveSprites } from "../components/PokemonItem";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { GiSpeaker } from "react-icons/gi";
 
 interface IPokemonSpeciesData {
   base_happiness: number;
@@ -162,6 +168,7 @@ const PreEvolutionBox = styled.div`
   width: 50%;
   bottom: 10px;
   margin-right: 30px;
+  cursor: pointer;
   span {
     width: 100%;
     position: absolute;
@@ -169,7 +176,6 @@ const PreEvolutionBox = styled.div`
     font-size: 28px;
     bottom: 0;
   }
-  cursor: pointer;
   ${Sprite} {
     &:hover {
       filter: brightness(1.2);
@@ -218,7 +224,7 @@ const TriggerContent = styled.div`
   }
 `;
 
-const PokeMiniInfoBox1 = styled(PokeInfoBox)`
+const PokeMiniInfoBox1 = styled(PokeInfoBox)<{ $spriteCount?: number }>`
   right: auto;
   left: -34%;
   top: 25%;
@@ -249,6 +255,18 @@ const PokeMiniInfoBox1 = styled(PokeInfoBox)`
     transform: translate(-50%, -50%);
     font-size: 40px;
     text-align: center;
+  }
+
+  &.forms {
+    width: fit-content;
+    height: fit-content;
+    min-height: 60%;
+    left: -30%;
+    left: ${({ $spriteCount }) =>
+      $spriteCount && $spriteCount <= 4 ? `${$spriteCount * -10}%` : "-45%"};
+  }
+
+  &.stats {
   }
 `;
 const PokeMiniInfoBox2 = styled(PokeMiniInfoBox1)`
@@ -354,10 +372,63 @@ const PokeDescBox = styled.section`
   line-height: 1.5;
 `;
 
+const FormsBox = styled(PreEvolutionBox)`
+  position: static;
+  width: 100%;
+  max-width: 450px;
+  align-self: normal;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-right: 0;
+  cursor: initial;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    span {
+      position: static;
+      font-size: 18px;
+    }
+    ${Sprite} {
+      width: 100px;
+      &:hover {
+        filter: none;
+        animation: none;
+      }
+    }
+  }
+`;
+
+const CriesBox = styled(FormsBox)`
+  gap: 10px;
+  & > div {
+    span {
+      font-size: 24px;
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
+`;
+
+const StatsBox = styled.div``;
+const AbilitiesBox = styled.div``;
+
 const Detail = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const currentMode = useAppSelector((state) => state.userReducer.menuMode);
 
   const { pokemonId } = useParams();
+
+  const audioRefs = {
+    legacy: useRef<HTMLAudioElement | null>(null),
+    latest: useRef<HTMLAudioElement | null>(null),
+  };
 
   const [pokemonData, setPokemonData] = useState<IPokemonDetail | null>(null);
 
@@ -373,6 +444,10 @@ const Detail = () => {
   const [nextEvolutionPokemon, setNextEvolutionPokemon] =
     useState<IPokemonDetail | null>(null);
 
+  const [pokemonAbilities, setPokemonAbilities] = useState<
+    IPokemonDetail["abilities"] | null
+  >(null);
+
   const fetchPokemon = async () => {
     const targetPokemon = await pokeAPI.get(`/pokemon/${pokemonId}`);
     setPokemonData(targetPokemon.data);
@@ -386,7 +461,7 @@ const Detail = () => {
       .then((data) => data)
       .catch((error) => console.error(error));
     setPokemonEvolutionData(evolutionData);
-    if (pokemonId?.includes("mega" || "gmax")) {
+    if (pokemonId?.includes("mega") || pokemonId?.includes("gmax")) {
       const target = pokemonId.split("-");
       const preEvolution = await pokeAPI.get(`/pokemon/${target[0]}`);
       setPreEvolutionPokemon(preEvolution.data);
@@ -465,17 +540,35 @@ const Detail = () => {
   const fetchNextPokemonEvolution = async (data?: IResolvedEvoChain | null) => {
     if (data && nextEvolutionPokemon?.name !== data.name) {
       const nextPokemon = await pokeAPI.get(`/pokemon/${data.name}`);
-      if (!pokemonId?.includes("mega" || "gmax"))
-        setNextEvolutionPokemon(nextPokemon.data);
+      if (pokemonId?.includes("mega") || pokemonId?.includes("gmax"))
+        setNextEvolutionPokemon(null);
+      setNextEvolutionPokemon(nextPokemon.data);
     }
   };
 
   const findPokemonTriggerOrder = () => {
-    if (!pokemonEvolutionData) return null;
+    if (!pokemonEvolutionData || !pokemonData) return null;
+
+    if (
+      pokemonData.name.includes("mega") ||
+      pokemonData.name.includes("gmax")
+    ) {
+      const basePokemonName = pokemonData.name.split("-")[0];
+      const currentEvolutionTrigger = resolveEvolutionChain(
+        pokemonEvolutionData.chain
+      )?.find((chain) => chain.name === basePokemonName);
+
+      return {
+        isMaxEvoDepth: true,
+        currentPokemonEvolutionDepth: currentEvolutionTrigger?.level,
+        preEvolutionTrigger: currentEvolutionTrigger,
+        nextEvolutionTrigger: null,
+      };
+    }
 
     const currentPokemonEvolutionDepth = resolveEvolutionChain(
       pokemonEvolutionData.chain
-    )?.find((chain) => chain.name === pokemonData?.name)?.level;
+    )?.find((chain) => chain.name === pokemonData.name)?.level;
 
     const maxEvolutionDepths = Math.max(
       ...(resolveEvolutionChain(pokemonEvolutionData.chain)?.map(
@@ -486,7 +579,7 @@ const Detail = () => {
     if (currentPokemonEvolutionDepth === maxEvolutionDepths) {
       const currentEvolutionTrigger = resolveEvolutionChain(
         pokemonEvolutionData.chain
-      )?.find((chain) => chain.name === pokemonData?.name);
+      )?.find((chain) => chain.name === pokemonData.name);
 
       const nextEvolutionTrigger = null;
 
@@ -501,7 +594,7 @@ const Detail = () => {
     } else if (currentPokemonEvolutionDepth) {
       const currentEvolutionTrigger = resolveEvolutionChain(
         pokemonEvolutionData.chain
-      )?.find((chain) => chain.name === pokemonData?.name);
+      )?.find((chain) => chain.name === pokemonData.name);
 
       const nextEvolutionTrigger = resolveEvolutionChain(
         pokemonEvolutionData.chain
@@ -535,26 +628,25 @@ const Detail = () => {
   const formatTriggerDesc = (data: IResolvedEvoChain) => {
     let formattedDesc;
 
-    if (!data) {
-      if (pokemonId?.includes("mega")) {
-        formattedDesc = "Mega stone";
-        return (
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Sprite
-              style={{ width: 20 }}
-              src={`/assets/megastones/${pokemonId}.png`}
-            />
-            {formattedDesc}
-          </div>
-        );
-      }
-      return null;
+    if (pokemonData?.name.includes("mega")) {
+      formattedDesc = "Mega stone";
+      return (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Sprite
+            style={{ width: 20 }}
+            src={`/assets/megastones/${pokemonData.name}.png`}
+          />
+          {formattedDesc}
+        </div>
+      );
     }
+
+    if (!data) return null;
+
     const heldItem = data.other
       ?.flatMap((arr) => arr)
       .find((obj) => obj.includes("held_item"));
-    console.log(heldItem);
-    console.log(data);
+
     switch (data.trigger) {
       case "level-up":
         formattedDesc = `Level up to ${data.trigger_details}`;
@@ -579,9 +671,228 @@ const Detail = () => {
 
   useEffect(() => {
     if (pokemonData && pokemonEvolutionData) {
-      findPokemonTriggerOrder();
+      const evolutionInfo = findPokemonTriggerOrder();
+      if (
+        pokemonData.name.includes("mega") ||
+        pokemonData.name.includes("gmax")
+      ) {
+        setNextEvolutionPokemon(null);
+      } else if (evolutionInfo?.nextEvolutionTrigger) {
+        fetchNextPokemonEvolution(evolutionInfo.nextEvolutionTrigger);
+      } else {
+        setNextEvolutionPokemon(null);
+      }
     }
-  }, [pokemonData, pokemonEvolutionData]);
+  }, [pokemonData, pokemonEvolutionData, pokemonId]);
+
+  useEffect(() => {
+    dispatch({ type: "SLOT_MENU", payload: { mode: "info" } });
+  }, []);
+
+  const SlotBoxes = () => {
+    switch (currentMode) {
+      case "info":
+        return (
+          <>
+            <PokeMiniInfoBox1>
+              <FileTop src="/assets/fileTop.svg" />
+              <InfoBoxHeading>
+                <span>Evolves From: </span>
+              </InfoBoxHeading>
+              {preEvolutionPokemon ? (
+                <PreEvolutionBox
+                  onClick={() =>
+                    navigate(`/pokemon/${preEvolutionPokemon.name}`)
+                  }
+                >
+                  <EvolutionTrigger>
+                    <FaChevronLeft color="#737373" size={40} />
+                    <TriggerContent>
+                      <span>Evolves By: </span>
+                      <span>
+                        {formatTriggerDesc(
+                          findPokemonTriggerOrder()
+                            ?.preEvolutionTrigger as IResolvedEvoChain
+                        )}
+                      </span>
+                    </TriggerContent>
+                  </EvolutionTrigger>
+                  <Sprite src={preEvolutionPokemon?.sprites.front_default} />
+                  <span>{preEvolutionPokemon && preEvolutionPokemon.name}</span>
+                </PreEvolutionBox>
+              ) : (
+                <h2>No Pre-Evolution</h2>
+              )}
+            </PokeMiniInfoBox1>
+            <PokeMiniInfoBox2>
+              <FileTop src="/assets/fileTop.svg" />
+              <InfoBoxHeading>
+                <span>Evolves To: </span>
+              </InfoBoxHeading>
+              {nextEvolutionPokemon ? (
+                <NextEvolutionBox
+                  onClick={() =>
+                    navigate(`/pokemon/${nextEvolutionPokemon.name}`)
+                  }
+                >
+                  <EvolutionTrigger>
+                    <FaChevronLeft color="#737373" size={40} />
+                    <TriggerContent>
+                      <span>Evolves By: </span>
+                      <span>
+                        {formatTriggerDesc(
+                          findPokemonTriggerOrder()
+                            ?.nextEvolutionTrigger as IResolvedEvoChain
+                        )}
+                      </span>
+                    </TriggerContent>
+                  </EvolutionTrigger>
+                  <Sprite
+                    src={
+                      nextEvolutionPokemon &&
+                      nextEvolutionPokemon.sprites.front_default
+                    }
+                  />
+                  <span>
+                    {nextEvolutionPokemon && nextEvolutionPokemon.name}
+                  </span>
+                </NextEvolutionBox>
+              ) : (
+                <h2>No further Evolutions</h2>
+              )}
+            </PokeMiniInfoBox2>
+          </>
+        );
+      case "forms":
+        const sprites =
+          pokemonData &&
+          (
+            Object.keys(pokemonData?.sprites) as Array<keyof IPokemonSprites>
+          ).filter((key) =>
+            key === "other" || key === "versions"
+              ? null
+              : pokemonData?.sprites[key]
+          );
+        const cries =
+          pokemonData &&
+          (
+            Object.keys(pokemonData?.cries) as Array<
+              keyof IPokemonDetail["cries"]
+            >
+          ).filter((key) => pokemonData?.cries[key]);
+        return (
+          <>
+            <PokeMiniInfoBox1
+              className={currentMode}
+              $spriteCount={sprites?.length}
+            >
+              <FileTop src="/assets/fileTop.svg" />
+              <InfoBoxHeading>
+                <span>Forms: </span>
+              </InfoBoxHeading>
+              {pokemonData?.sprites ? (
+                <FormsBox>
+                  {sprites?.map((spriteKey) => (
+                    <div key={`${spriteKey + 1}`}>
+                      <Sprite
+                        src={pokemonData.sprites[spriteKey]}
+                        alt={`${pokemonData.name + spriteKey}`}
+                      />
+                      <span>{spriteKey}</span>
+                    </div>
+                  ))}
+                </FormsBox>
+              ) : (
+                <h2>No Sprites</h2>
+              )}
+            </PokeMiniInfoBox1>
+            <PokeMiniInfoBox2>
+              <FileTop src="/assets/fileTop.svg" />
+              <InfoBoxHeading>
+                <span>Cries: </span>
+              </InfoBoxHeading>
+              {cries ? (
+                <CriesBox>
+                  {cries?.map((cry) => (
+                    <div key={cry}>
+                      <audio
+                        src={pokemonData?.cries[cry]}
+                        ref={audioRefs[cry]}
+                      ></audio>
+                      <GiSpeaker
+                        size={100}
+                        onClick={() => audioRefs[cry].current?.play()}
+                      />
+                      <span>{cry}</span>
+                    </div>
+                  ))}
+                </CriesBox>
+              ) : (
+                <h2>No Cries Available</h2>
+              )}
+            </PokeMiniInfoBox2>
+          </>
+        );
+      case "stats":
+        const abilities = pokemonData?.abilities;
+        const stats = pokemonData?.stats;
+        console.log(stats);
+        return (
+          <>
+            <PokeMiniInfoBox1>
+              <FileTop src="/assets/fileTop.svg" />
+              <InfoBoxHeading>
+                <span>Abilities: </span>
+              </InfoBoxHeading>
+              {abilities ? (
+                <AbilitiesBox>
+                  {abilities.map((ability) => ability.ability.name)}
+                </AbilitiesBox>
+              ) : (
+                <h2>No Abilities</h2>
+              )}
+            </PokeMiniInfoBox1>
+            <PokeMiniInfoBox2>
+              <FileTop src="/assets/fileTop.svg" />
+              <InfoBoxHeading>
+                <span>Evolves To: </span>
+              </InfoBoxHeading>
+              {nextEvolutionPokemon ? (
+                <NextEvolutionBox
+                  onClick={() =>
+                    navigate(`/pokemon/${nextEvolutionPokemon.name}`)
+                  }
+                >
+                  <EvolutionTrigger>
+                    <FaChevronLeft color="#737373" size={40} />
+                    <TriggerContent>
+                      <span>Evolves By: </span>
+                      <span>
+                        {formatTriggerDesc(
+                          findPokemonTriggerOrder()
+                            ?.nextEvolutionTrigger as IResolvedEvoChain
+                        )}
+                      </span>
+                    </TriggerContent>
+                  </EvolutionTrigger>
+                  <Sprite
+                    src={
+                      nextEvolutionPokemon &&
+                      nextEvolutionPokemon.sprites.front_default
+                    }
+                  />
+                  <span>
+                    {nextEvolutionPokemon && nextEvolutionPokemon.name}
+                  </span>
+                </NextEvolutionBox>
+              ) : (
+                <h2>No further Evolutions</h2>
+              )}
+            </PokeMiniInfoBox2>
+          </>
+        );
+    }
+  };
 
   return (
     <Container>
@@ -591,38 +902,7 @@ const Detail = () => {
             {" "}
             <Sprite src={pokemonData?.sprites.front_default} />
             <PokeInfoBox>
-              <PokeMiniInfoBox1>
-                <FileTop src="/assets/fileTop.svg" />
-                <InfoBoxHeading>
-                  <span>Evolves From: </span>
-                </InfoBoxHeading>
-                {preEvolutionPokemon ? (
-                  <PreEvolutionBox
-                    onClick={() =>
-                      navigate(`/pokemon/${preEvolutionPokemon.name}`)
-                    }
-                  >
-                    <EvolutionTrigger>
-                      <FaChevronLeft color="#737373" size={40} />
-                      <TriggerContent>
-                        <span>Evolves By: </span>
-                        <span>
-                          {formatTriggerDesc(
-                            findPokemonTriggerOrder()
-                              ?.preEvolutionTrigger as IResolvedEvoChain
-                          )}
-                        </span>
-                      </TriggerContent>
-                    </EvolutionTrigger>
-                    <Sprite src={preEvolutionPokemon?.sprites.front_default} />
-                    <span>
-                      {preEvolutionPokemon && preEvolutionPokemon.name}
-                    </span>
-                  </PreEvolutionBox>
-                ) : (
-                  <h2>No Pre-Evolution</h2>
-                )}
-              </PokeMiniInfoBox1>
+              <SlotBoxes />
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <PokeNumber>
@@ -653,43 +933,6 @@ const Detail = () => {
                   <span>{pokemonData.weight / 10}kg</span>
                 </Weight>
               </PokeSpecs>
-              <PokeMiniInfoBox2>
-                <FileTop src="/assets/fileTop.svg" />
-                <InfoBoxHeading>
-                  <span>Evolves To: </span>
-                </InfoBoxHeading>
-                {nextEvolutionPokemon ? (
-                  <NextEvolutionBox
-                    onClick={() =>
-                      navigate(`/pokemon/${nextEvolutionPokemon.name}`)
-                    }
-                  >
-                    <EvolutionTrigger>
-                      <FaChevronLeft color="#737373" size={40} />
-                      <TriggerContent>
-                        <span>Evolves By: </span>
-                        <span>
-                          {formatTriggerDesc(
-                            findPokemonTriggerOrder()
-                              ?.nextEvolutionTrigger as IResolvedEvoChain
-                          )}
-                        </span>
-                      </TriggerContent>
-                    </EvolutionTrigger>
-                    <Sprite
-                      src={
-                        nextEvolutionPokemon &&
-                        nextEvolutionPokemon.sprites.front_default
-                      }
-                    />
-                    <span>
-                      {nextEvolutionPokemon && nextEvolutionPokemon.name}
-                    </span>
-                  </NextEvolutionBox>
-                ) : (
-                  <h2>No further Evolutions</h2>
-                )}
-              </PokeMiniInfoBox2>
             </PokeInfoBox>
           </>
         )}
