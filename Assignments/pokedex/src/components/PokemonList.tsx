@@ -109,7 +109,6 @@ export const pokemonVariants = {
 };
 
 const PokemonList = () => {
-  const dispatch = useAppDispatch();
   const [detailData, setDetailData] = useState<IPokemonDetail[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);

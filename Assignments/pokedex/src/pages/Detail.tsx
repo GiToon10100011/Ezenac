@@ -12,6 +12,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { liveSprites } from "../components/PokemonItem";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { GiSpeaker } from "react-icons/gi";
+import StatChart from "../components/StatChart";
 
 interface IPokemonSpeciesData {
   base_happiness: number;
@@ -92,6 +93,23 @@ interface IResolvedEvoChain {
     | null;
   other: [string, number | boolean | string | IPokemonPartialData][][] | null;
   level: number;
+}
+
+export interface IPokemonAbilities {
+  effect_entries: {
+    effect: string;
+    language: IPokemonPartialData;
+    short_effect: string;
+  }[];
+  flavor_text_entries: {
+    flavor_text: string;
+    language: IPokemonPartialData;
+    version_group: IPokemonPartialData;
+  }[];
+  name: string;
+  pokemon: {
+    pokemon: IPokemonPartialData;
+  }[];
 }
 
 const Container = styled.main`
@@ -267,6 +285,14 @@ const PokeMiniInfoBox1 = styled(PokeInfoBox)<{ $spriteCount?: number }>`
   }
 
   &.stats {
+    top: 20%;
+    left: -40%;
+    width: 60%;
+    height: fit-content;
+    ${FileTop} {
+      top: -8%;
+      height: 8%;
+    }
   }
 `;
 const PokeMiniInfoBox2 = styled(PokeMiniInfoBox1)`
@@ -288,6 +314,14 @@ const PokeMiniInfoBox2 = styled(PokeMiniInfoBox1)`
         font-size: 12px;
       }
     }
+  }
+  &.stats {
+    top: -5%;
+    left: auto;
+    right: -25%;
+    width: 45%;
+    height: fit-content;
+    min-height: 60%;
   }
 `;
 
@@ -416,7 +450,18 @@ const CriesBox = styled(FormsBox)`
 `;
 
 const StatsBox = styled.div``;
-const AbilitiesBox = styled.div``;
+const AbilitiesBox = styled.div`
+  padding: 20px;
+  span {
+    text-transform: capitalize;
+    font-size: 24px;
+  }
+  p {
+    margin-bottom: 10px;
+    line-height: 1.2;
+    font-size: 18px;
+  }
+`;
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -445,7 +490,7 @@ const Detail = () => {
     useState<IPokemonDetail | null>(null);
 
   const [pokemonAbilities, setPokemonAbilities] = useState<
-    IPokemonDetail["abilities"] | null
+    IPokemonAbilities[] | null
   >(null);
 
   const fetchPokemon = async () => {
@@ -461,6 +506,15 @@ const Detail = () => {
       .then((data) => data)
       .catch((error) => console.error(error));
     setPokemonEvolutionData(evolutionData);
+    const abilityData = targetPokemon?.data.abilities.map(
+      async (ability: { ability: IPokemonPartialData }) =>
+        await fetch(ability.ability.url)
+          .then((response) => response.json())
+          .then((data) => data)
+          .catch((error) => console.error(error))
+    );
+    const resolvedAbilities = abilityData && (await Promise.all(abilityData));
+    setPokemonAbilities(resolvedAbilities);
     if (pokemonId?.includes("mega") || pokemonId?.includes("gmax")) {
       const target = pokemonId.split("-");
       const preEvolution = await pokeAPI.get(`/pokemon/${target[0]}`);
@@ -669,6 +723,8 @@ const Detail = () => {
     return formattedDesc;
   };
 
+  console.log(pokemonAbilities);
+
   useEffect(() => {
     if (pokemonData && pokemonEvolutionData) {
       const evolutionInfo = findPokemonTriggerOrder();
@@ -834,59 +890,44 @@ const Detail = () => {
           </>
         );
       case "stats":
-        const abilities = pokemonData?.abilities;
         const stats = pokemonData?.stats;
-        console.log(stats);
         return (
           <>
-            <PokeMiniInfoBox1>
+            <PokeMiniInfoBox1 className="stats">
+              <FileTop src="/assets/fileTop.svg" />
+              <InfoBoxHeading>
+                <span>Stats: </span>
+              </InfoBoxHeading>
+              {stats ? (
+                <StatsBox>
+                  <StatChart stats={stats} />
+                </StatsBox>
+              ) : (
+                <h2>No Stat Data</h2>
+              )}
+            </PokeMiniInfoBox1>
+            <PokeMiniInfoBox2 className="stats">
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <span>Abilities: </span>
               </InfoBoxHeading>
-              {abilities ? (
+              {pokemonAbilities ? (
                 <AbilitiesBox>
-                  {abilities.map((ability) => ability.ability.name)}
+                  {pokemonAbilities.map((ability) => (
+                    <>
+                      <span>{ability.name} : </span>
+                      <p>
+                        {
+                          ability.effect_entries.find(
+                            (lang) => lang.language.name === "en"
+                          )?.short_effect
+                        }
+                      </p>
+                    </>
+                  ))}
                 </AbilitiesBox>
               ) : (
                 <h2>No Abilities</h2>
-              )}
-            </PokeMiniInfoBox1>
-            <PokeMiniInfoBox2>
-              <FileTop src="/assets/fileTop.svg" />
-              <InfoBoxHeading>
-                <span>Evolves To: </span>
-              </InfoBoxHeading>
-              {nextEvolutionPokemon ? (
-                <NextEvolutionBox
-                  onClick={() =>
-                    navigate(`/pokemon/${nextEvolutionPokemon.name}`)
-                  }
-                >
-                  <EvolutionTrigger>
-                    <FaChevronLeft color="#737373" size={40} />
-                    <TriggerContent>
-                      <span>Evolves By: </span>
-                      <span>
-                        {formatTriggerDesc(
-                          findPokemonTriggerOrder()
-                            ?.nextEvolutionTrigger as IResolvedEvoChain
-                        )}
-                      </span>
-                    </TriggerContent>
-                  </EvolutionTrigger>
-                  <Sprite
-                    src={
-                      nextEvolutionPokemon &&
-                      nextEvolutionPokemon.sprites.front_default
-                    }
-                  />
-                  <span>
-                    {nextEvolutionPokemon && nextEvolutionPokemon.name}
-                  </span>
-                </NextEvolutionBox>
-              ) : (
-                <h2>No further Evolutions</h2>
               )}
             </PokeMiniInfoBox2>
           </>
