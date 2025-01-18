@@ -13,6 +13,7 @@ import { liveSprites } from "../components/PokemonItem";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { GiSpeaker } from "react-icons/gi";
 import StatChart from "../components/StatChart";
+import { AnimatePresence } from "framer-motion";
 
 interface IPokemonSpeciesData {
   base_happiness: number;
@@ -943,7 +944,9 @@ const Detail = () => {
             {" "}
             <Sprite src={pokemonData?.sprites.front_default} />
             <PokeInfoBox>
-              <SlotBoxes />
+              <AnimatePresence mode="wait">
+                <SlotBoxes/>
+              </AnimatePresence>
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <PokeNumber>
