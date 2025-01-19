@@ -6,15 +6,6 @@ type pokemonData = {
   url: string;
 };
 
-interface IPokeApiContent {
-  allPokemon: {
-    count: number;
-    next: string | null;
-    prev: string | null;
-    results: pokemonData[];
-  };
-}
-
 const getPokemonData = () => {
   return async (dispatch: Dispatch) => {
     try {

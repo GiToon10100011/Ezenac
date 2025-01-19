@@ -1,12 +1,16 @@
 import { useEffect, useRef } from "react";
-import { useAppDispatch } from "./redux/hooks";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import pokeAction from "./redux/actions/pokeAction";
 import { GlobalStyles } from "./theme";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Outlet } from "react-router-dom";
+import { AnimatePresence } from "motion/react";
+import Search from "./components/Search";
 
 function App() {
+  const isSearch = useAppSelector((state) => state.userReducer.isSearch);
+
   const clickEffect = useRef<HTMLAudioElement | null>(null);
 
   const dispatch = useAppDispatch();
@@ -34,6 +38,7 @@ function App() {
       <audio ref={clickEffect} src="/assets/clickSFX.mp3"></audio>
       <GlobalStyles />
       <Header />
+      <AnimatePresence mode="wait">{isSearch && <Search />}</AnimatePresence>
       <main>
         <Outlet />
       </main>

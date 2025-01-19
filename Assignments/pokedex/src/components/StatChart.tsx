@@ -55,7 +55,7 @@ const StatChart = ({ stats }: { stats: IPokemonDetail["stats"] }) => {
       labels: {
         style: {
           fontSize: "12px",
-          fontWeight: "bold",
+          fontWeight: "bold", 
         },
         formatter: function (value: any) {
           if (typeof value === "string") {

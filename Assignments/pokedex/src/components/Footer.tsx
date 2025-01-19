@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdCatchingPokemon } from "react-icons/md";
-import { LuChevronsLeft } from "react-icons/lu";
-import { LuChevronsRight } from "react-icons/lu";
 import { HiMiniArrowUturnLeft } from "react-icons/hi2";
-import { useMatch, useNavigate } from "react-router-dom";
+import { useMatch, useNavigate, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { IoMdRefresh } from "react-icons/io";
+import { IoIosHome } from "react-icons/io";
 
 const Container = styled.footer`
   width: 100%;
@@ -85,7 +85,7 @@ const RightArea = styled.div`
   align-items: center;
 `;
 
-const ScrollControls = styled.div`
+const Controls = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
@@ -94,7 +94,7 @@ const ScrollControls = styled.div`
   }
 `;
 
-const FavControls = styled(ScrollControls)`
+const FavControls = styled(Controls)`
   gap: 14px;
   color: #ccc;
   font-size: 20px;
@@ -138,8 +138,24 @@ const SlotMenu = styled(Search)`
 
 const Footer = () => {
   const detailMatch = useMatch("/pokemon/:pokemonId");
+  const favoritesMatch = useMatch("/favorites");
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const currentPokemon = useAppSelector(
+    (state) => state.userReducer.selectedPokemon
+  );
+  const favoriteList = useAppSelector(
+    (state) => state.userReducer.favoritePokemonList
+  );
+
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("pokemon");
+
+  const isSearch = useAppSelector((state) => state.userReducer.isSearch);
+
+  const isFavorites = favoriteList.find(
+    (pokemon) => pokemon === currentPokemon
+  );
 
   const currentMode = useAppSelector((state) => state.userReducer.menuMode);
 
@@ -147,18 +163,48 @@ const Footer = () => {
     dispatch({ type: "SLOT_MENU", payload: { mode } });
   };
 
+  const handleSearch = () => {
+    if (isSearch)
+      dispatch({ type: "SEARCH_MODE", payload: { isSearch: false } });
+    else dispatch({ type: "SEARCH_MODE", payload: { isSearch: true } });
+  };
+
+  const handleFavorites = () => {
+    if (isFavorites)
+      dispatch({ type: "REMOVE_FAVORITES", payload: { name: currentPokemon } });
+    else dispatch({ type: "ADD_FAVORITES", payload: { name: currentPokemon } });
+  };
+
+  const handleReset = () => {
+    navigate("/");
+  };
+
   return (
     <Container>
       <LeftArea $mode={currentMode}>
         {!detailMatch ? (
           <>
-            <Search>
+            <Search data-sound-effect onClick={handleSearch}>
               <IoSearchOutline />
-              Search
+              {isSearch ? "Cancel" : "Search"}
             </Search>
-            <MyFavs>
-              <MdCatchingPokemon />
-              Favorites
+            <MyFavs
+              data-sound-effect
+              onClick={() =>
+                !favoritesMatch ? navigate("/favorites") : navigate("/")
+              }
+            >
+              {!favoritesMatch ? (
+                <>
+                  <MdCatchingPokemon />
+                  Favorites
+                </>
+              ) : (
+                <>
+                  <IoIosHome />
+                  Home
+                </>
+              )}
             </MyFavs>
           </>
         ) : (
@@ -166,18 +212,21 @@ const Footer = () => {
             <SlotMenu
               className={currentMode === "info" ? currentMode : undefined}
               onClick={() => switchSlots("info")}
+              data-sound-effect
             >
               Info
             </SlotMenu>
             <SlotMenu
               className={currentMode === "forms" ? currentMode : undefined}
               onClick={() => switchSlots("forms")}
+              data-sound-effect
             >
               Forms
             </SlotMenu>
             <SlotMenu
               className={currentMode === "stats" ? currentMode : undefined}
               onClick={() => switchSlots("stats")}
+              data-sound-effect
             >
               Stats
             </SlotMenu>
@@ -185,17 +234,30 @@ const Footer = () => {
         )}
       </LeftArea>
       <RightArea>
-        <ScrollControls>
-          <LuChevronsLeft size={60} color="#888" />
-          <LuChevronsRight size={60} color="#888" />
-        </ScrollControls>
-        <FavControls>
+        {detailMatch && (
+          <BackControls data-sound-effect onClick={() => navigate("/")}>
+            <IoIosHome size={40} />
+            Home
+          </BackControls>
+        )}
+        {searchQuery && (
+          <BackControls data-sound-effect onClick={handleReset}>
+            {" "}
+            <IoMdRefresh color="#EE5054" strokeWidth={2} size={40} />
+            Reset
+          </BackControls>
+        )}
+        <FavControls data-sound-effect onClick={handleFavorites}>
           <FavContainer>
-            <MdCatchingPokemon color={"#EE5054"} size={60} />
+            {isFavorites && <MdCatchingPokemon color={"#EE5054"} size={60} />}
           </FavContainer>
-          Add to Favorites
+          {currentPokemon
+            ? `Add ${
+                currentPokemon[0].toUpperCase() + currentPokemon.substring(1)
+              } to Favorites`
+            : "Hover over a pokemon"}
         </FavControls>
-        <BackControls onClick={() => navigate(-1)}>
+        <BackControls data-sound-effect onClick={() => navigate(-1)}>
           <HiMiniArrowUturnLeft color="dodgerblue" strokeWidth={2} size={30} />
           Return
         </BackControls>

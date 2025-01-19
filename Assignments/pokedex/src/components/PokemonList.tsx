@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppSelector } from "../redux/hooks";
 import { pokeAPI } from "../redux/api";
 import { AxiosResponse } from "axios";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import PokemonItem from "./PokemonItem";
 import { AnimatePresence } from "motion/react";
 import Bootup from "./Bootup";
 import { motion } from "motion/react";
+import { useSearchParams } from "react-router-dom";
 
 const Container = styled(motion.ul)<{ $isLoading: boolean }>`
   position: absolute;
@@ -21,6 +22,17 @@ const Container = styled(motion.ul)<{ $isLoading: boolean }>`
   ${({ $isLoading }) =>
     $isLoading ? "overflow: visible" : "overflow-y: scroll"};
   scrollbar-width: none;
+  h2 {
+    font-size: 120px;
+  }
+`;
+
+const NoResults = styled.div`
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export interface IPokemonPartialData {
@@ -109,6 +121,8 @@ export const pokemonVariants = {
 };
 
 const PokemonList = () => {
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("pokemon");
   const [detailData, setDetailData] = useState<IPokemonDetail[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
@@ -179,12 +193,24 @@ const PokemonList = () => {
         animate={startAnimation ? "visible" : undefined}
       >
         {detailData
+          .filter((pokemon) =>
+            searchQuery
+              ? pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+              : true
+          )
           .sort((a, b) =>
             a.order >= 0 && b.order >= 0 ? a.order - b.order : b.order - a.order
           )
-          .map((data, index) => (
-            <PokemonItem {...data} key={index} />
-          ))}
+          .map((data, index, arr) =>
+            arr.length > 1 ? (
+              <PokemonItem {...data} key={index} index={index} />
+            ) : (
+              <NoResults>
+                <img src="/MissingNo..webp" alt="No Results" width={200} />
+                <h2>No Results</h2>
+              </NoResults>
+            )
+          )}
       </Container>
     </>
   );

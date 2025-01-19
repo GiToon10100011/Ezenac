@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { pokeAPI } from "../redux/api";
 import {
   IPokemonDetail,
@@ -9,11 +9,15 @@ import {
 } from "../components/PokemonList";
 import { formatOrderNumber, formatTypeSprites } from "../utils";
 import { FaChevronLeft } from "react-icons/fa6";
-import { liveSprites } from "../components/PokemonItem";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { GiSpeaker } from "react-icons/gi";
 import StatChart from "../components/StatChart";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  descBoxVariants,
+  infoBoxVariants1,
+  infoBoxVariants2,
+} from "../variants";
 
 interface IPokemonSpeciesData {
   base_happiness: number;
@@ -113,6 +117,18 @@ export interface IPokemonAbilities {
   }[];
 }
 
+const liveSprites = keyframes`
+  from{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-3px);
+  }
+  to{
+    transform: translateY(3px);
+  }
+`;
+
 const Container = styled.main`
   position: relative;
   padding: 120px 0;
@@ -129,7 +145,7 @@ const PokeBackground = styled.div`
     no-repeat;
 `;
 
-const Sprite = styled.img`
+const Sprite = styled(motion.img)`
   position: absolute;
   width: 20%;
   aspect-ratio: 1;
@@ -146,7 +162,7 @@ const FileTop = styled.img`
   object-fit: cover;
 `;
 
-const PokeInfoBox = styled.div`
+const PokeInfoBox = styled(motion.div)`
   position: absolute;
   right: 10%;
   width: 40%;
@@ -205,7 +221,7 @@ const PreEvolutionBox = styled.div`
 
 const NextEvolutionBox = styled(PreEvolutionBox)``;
 
-const EvolutionTrigger = styled.div`
+const EvolutionTrigger = styled(motion.div)`
   position: absolute;
   top: 20%;
   left: -120%;
@@ -392,7 +408,7 @@ const Height = styled.p`
 `;
 const Weight = styled(Height)``;
 
-const PokeDescBox = styled.section`
+const PokeDescBox = styled(motion.section)`
   position: absolute;
   bottom: 80px;
   width: 100%;
@@ -533,6 +549,7 @@ const Detail = () => {
     fetchPokemon();
     setNextEvolutionPokemon(null);
     setPreEvolutionPokemon(null);
+    dispatch({ type: "SELECT", payload: { name: pokemonId } });
   }, [pokemonId]);
 
   const resolveEvolutionChain = (chain: IChain) => {
@@ -751,7 +768,12 @@ const Detail = () => {
       case "info":
         return (
           <>
-            <PokeMiniInfoBox1>
+            <PokeMiniInfoBox1
+              variants={infoBoxVariants1}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <span>Evolves From: </span>
@@ -762,7 +784,12 @@ const Detail = () => {
                     navigate(`/pokemon/${preEvolutionPokemon.name}`)
                   }
                 >
-                  <EvolutionTrigger>
+                  <EvolutionTrigger
+                    variants={infoBoxVariants1}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
                     <FaChevronLeft color="#737373" size={40} />
                     <TriggerContent>
                       <span>Evolves By: </span>
@@ -774,14 +801,22 @@ const Detail = () => {
                       </span>
                     </TriggerContent>
                   </EvolutionTrigger>
-                  <Sprite src={preEvolutionPokemon?.sprites.front_default} />
+                  <Sprite
+                    src={preEvolutionPokemon?.sprites.front_default}
+                    data-sound-effect
+                  />
                   <span>{preEvolutionPokemon && preEvolutionPokemon.name}</span>
                 </PreEvolutionBox>
               ) : (
                 <h2>No Pre-Evolution</h2>
               )}
             </PokeMiniInfoBox1>
-            <PokeMiniInfoBox2>
+            <PokeMiniInfoBox2
+              variants={infoBoxVariants2}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <span>Evolves To: </span>
@@ -792,7 +827,12 @@ const Detail = () => {
                     navigate(`/pokemon/${nextEvolutionPokemon.name}`)
                   }
                 >
-                  <EvolutionTrigger>
+                  <EvolutionTrigger
+                    variants={infoBoxVariants1}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
                     <FaChevronLeft color="#737373" size={40} />
                     <TriggerContent>
                       <span>Evolves By: </span>
@@ -809,6 +849,7 @@ const Detail = () => {
                       nextEvolutionPokemon &&
                       nextEvolutionPokemon.sprites.front_default
                     }
+                    data-sound-effect
                   />
                   <span>
                     {nextEvolutionPokemon && nextEvolutionPokemon.name}
@@ -840,6 +881,10 @@ const Detail = () => {
         return (
           <>
             <PokeMiniInfoBox1
+              variants={infoBoxVariants1}
+              initial="initial"
+              animate="animate"
+              exit="exit"
               className={currentMode}
               $spriteCount={sprites?.length}
             >
@@ -863,7 +908,12 @@ const Detail = () => {
                 <h2>No Sprites</h2>
               )}
             </PokeMiniInfoBox1>
-            <PokeMiniInfoBox2>
+            <PokeMiniInfoBox2
+              variants={infoBoxVariants2}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <span>Cries: </span>
@@ -894,7 +944,13 @@ const Detail = () => {
         const stats = pokemonData?.stats;
         return (
           <>
-            <PokeMiniInfoBox1 className="stats">
+            <PokeMiniInfoBox1
+              variants={infoBoxVariants1}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="stats"
+            >
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <span>Stats: </span>
@@ -907,7 +963,13 @@ const Detail = () => {
                 <h2>No Stat Data</h2>
               )}
             </PokeMiniInfoBox1>
-            <PokeMiniInfoBox2 className="stats">
+            <PokeMiniInfoBox2
+              variants={infoBoxVariants2}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="stats"
+            >
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
                 <span>Abilities: </span>
@@ -942,10 +1004,14 @@ const Detail = () => {
         {pokemonData && (
           <>
             {" "}
-            <Sprite src={pokemonData?.sprites.front_default} />
+            <Sprite
+              src={pokemonData?.sprites.front_default}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            />
             <PokeInfoBox>
               <AnimatePresence mode="wait">
-                <SlotBoxes/>
+                <SlotBoxes key={currentMode} />
               </AnimatePresence>
               <FileTop src="/assets/fileTop.svg" />
               <InfoBoxHeading>
@@ -981,7 +1047,12 @@ const Detail = () => {
           </>
         )}
       </PokeBackground>
-      <PokeDescBox>
+      <PokeDescBox
+        variants={descBoxVariants}
+        initial="initial"
+        animate="animate"
+        className="stats"
+      >
         <FileTop src="/assets/fileTop.svg" />
         <p>
           {pokemonSpecies &&

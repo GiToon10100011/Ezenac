@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "motion/react";
 import styled, { keyframes, useTheme } from "styled-components";
 import { IPokemonDetail, pokemonVariants } from "./PokemonList";
@@ -9,7 +9,11 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { useNavigate } from "react-router-dom";
 import { formatOrderNumber } from "../utils";
 
-export const liveSprites = keyframes`
+interface IPokemonItemProps extends IPokemonDetail {
+  index: number;
+}
+
+const liveSprites = keyframes`
   from{
     transform: translateY(0);
   }
@@ -111,20 +115,30 @@ const Container = styled(motion.li)<{ $pokemon?: string }>`
   }
 `;
 
-const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
+const PokemonItem = ({ sprites, order, name, index }: IPokemonItemProps) => {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const currentPokemon = useAppSelector(
     (state) => state.userReducer.selectedPokemon
   );
+  const favoriteList = useAppSelector(
+    (state) => state.userReducer.favoritePokemonList
+  );
+
+  const isFavorite = favoriteList.find((pokemon) => pokemon === name);
+
   const theme = useTheme();
-  const [isHovering, setIsHovering] = useState(false);
 
   const selectPokemon = (name: string) => {
     dispatch({ type: "SELECT", payload: { name } });
-    setIsHovering(true);
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch({ type: "SELECT", payload: { name: "" } });
+    };
+  }, []);
 
   return (
     <>
@@ -136,7 +150,7 @@ const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
         className={currentPokemon === name ? currentPokemon : undefined}
         $pokemon={currentPokemon}
         key="pokemonItem"
-        variants={order < 20 ? pokemonVariants.pokemonItem : undefined}
+        variants={index < 20 ? pokemonVariants.pokemonItem : undefined}
       >
         <SpriteContainer>
           <FaChevronLeft
@@ -156,7 +170,7 @@ const PokemonItem = ({ sprites, order, name }: IPokemonDetail) => {
         </SpriteContainer>
         <PokeId className=" poke-fav">
           <FavContainer>
-            <MdCatchingPokemon color={"#EE5054"} />
+            {isFavorite && <MdCatchingPokemon color={"#EE5054"} />}
           </FavContainer>
           {formatOrderNumber(order)}
         </PokeId>

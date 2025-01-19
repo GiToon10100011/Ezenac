@@ -2,8 +2,9 @@ import PokemonSpotlight from "../components/PokemonSpotlight";
 import PokemonList from "../components/PokemonList";
 import styled, { keyframes } from "styled-components";
 import ListBackground from "../components/ListBackground";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { CiSpeaker } from "react-icons/ci";
+import { useAppSelector } from "../redux/hooks";
 
 const speakerPlaying = keyframes`
   from{
@@ -48,6 +49,7 @@ const PlayTheme = styled.div`
 `;
 
 const Home = () => {
+  const isSearch = useAppSelector((state) => state.userReducer.isSearch);
   const themeRef = useRef<HTMLAudioElement | null>(null);
 
   const [themePlay, setThemePlay] = useState(false);
@@ -80,7 +82,7 @@ const Home = () => {
         <p>{themeDesc}</p>
       </PlayTheme>
       <Container>
-        <PokemonSpotlight />
+        {!isSearch && <PokemonSpotlight />}
         <PokemonList />
         <ListBackground />
       </Container>

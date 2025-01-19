@@ -1,4 +1,4 @@
-import { useMatch } from "react-router-dom";
+import { useMatch, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { FaChevronRight } from "react-icons/fa6";
 
@@ -42,6 +42,9 @@ const HeaderTitle = styled.h1`
 
 const Header = () => {
   const detailMatch = useMatch("/pokemon/:pokemonId");
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("pokemon");
+  const favoriteMatch = useMatch("/favorites");
 
   return (
     <Container>
@@ -51,6 +54,10 @@ const Header = () => {
             <FaChevronRight color="#92c551" size={30} />
             {detailMatch.params.pokemonId}
           </>
+        ) : searchQuery ? (
+          `${searchQuery} Search Results`
+        ) : favoriteMatch ? (
+          "My Favorites"
         ) : (
           "National Pokedex"
         )}
