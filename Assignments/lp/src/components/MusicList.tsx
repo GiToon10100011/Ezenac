@@ -30,17 +30,19 @@ export interface cardDataProps {
     albumCoverPath: string;
     backgroundImgPath: string;
   };
-  fastForward: boolean;
+  $fastForward: boolean;
   index: number;
+  volume: number;
 }
 
 export interface cardDataProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const MusicList: React.FC<{
   rotation: number;
-  fastForward: boolean;
+  $fastForward: boolean;
   isPlaylistOn: boolean;
-}> = ({ rotation, fastForward, isPlaylistOn }) => {
+  volume: number;
+}> = ({ rotation, $fastForward, isPlaylistOn, volume }) => {
   return (
     <Wrapper
       style={{ filter: isPlaylistOn ? "blur(10px)" : "" }}
@@ -56,8 +58,9 @@ const MusicList: React.FC<{
                 deg * index
               }deg) translateY(200vh) scaleX(-1) scaleY(-1)`,
             }}
-            fastForward={fastForward}
+            $fastForward={$fastForward}
             index={index}
+            volume={volume}
           />
         </React.Fragment>
       ))}

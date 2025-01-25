@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 const CardContainer = styled.div<{
   background: string;
   rotate: string;
-  fastForward: boolean;
+  $fastForward: boolean;
 }>`
   position: absolute;
   top: 0;
@@ -45,8 +45,8 @@ const CardContainer = styled.div<{
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${({ background }) => background}) center/cover no-repeat;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
-  animation: rotation linear 10s 0.6s infinite;
-  animation-duration: ${({ fastForward }) => (fastForward ? "5s" : "10s")};
+  animation: ${rotation} linear 60s 0.6s infinite;
+  animation-duration: ${({ $fastForward }) => ($fastForward ? "30s" : "60s")};
   animation-play-state: ${({ rotate }) =>
     rotate === "true" ? "running" : "paused"};
   &::before,
@@ -146,7 +146,7 @@ const RightArrowIcon = styled(motion.i)`
   transition: all 0.3s;
 `;
 
-const MusicCard = ({ cardData, style, fastForward, index }: cardDataProps) => {
+const MusicCard = ({ cardData, style, $fastForward, index, volume }: cardDataProps) => {
   const currentIdx = useSearchParams()[0].get("index");
 
   const reset = useContext(resetContext);
@@ -175,12 +175,10 @@ const MusicCard = ({ cardData, style, fastForward, index }: cardDataProps) => {
     if (e.code === "Space") e.preventDefault();
   };
 
-  console.log(rotation);
-
   return (
     <Wrapper tabIndex={0} onKeyUp={keyPlayToggle} style={style}>
       <CardContainer
-        fastForward={fastForward}
+        $fastForward={$fastForward}
         background={cardData.albumCoverPath}
         rotate={String(isPlaying)}
       ></CardContainer>
@@ -208,8 +206,9 @@ const MusicCard = ({ cardData, style, fastForward, index }: cardDataProps) => {
         songName={cardData.title}
         isAudioPlaying={isPlaying}
         setIsAudioPlaying={setIsPlaying}
-        fastForward={fastForward}
+        $fastForward={$fastForward}
         index={index}
+        volume={volume}
       />
     </Wrapper>
   );

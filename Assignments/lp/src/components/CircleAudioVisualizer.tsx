@@ -9,8 +9,9 @@ interface CircularAudioVisualizerProps {
   albumArt: string;
   isAudioPlaying: boolean;
   setIsAudioPlaying: Dispatch<React.SetStateAction<boolean>>;
-  fastForward: boolean;
+  $fastForward: boolean;
   index: number;
+  volume: number;
 }
 
 const Wrapper = styled.div`
@@ -29,7 +30,8 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
   audioUrl,
   isAudioPlaying,
   setIsAudioPlaying,
-  fastForward,
+  $fastForward,
+  volume,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -141,16 +143,22 @@ const CircularAudioVisualizer: React.FC<CircularAudioVisualizerProps> = ({
     if (isAudioPlaying) {
       audio.play();
       audioContext.resume();
-      if (fastForward) audio.playbackRate = 1.2;
+      if ($fastForward) audio.playbackRate = 1.2;
       else audio.playbackRate = 1;
     } else {
       audio.pause();
     }
-  }, [isAudioPlaying, audioContext, fastForward, currentIdx]);
+  }, [isAudioPlaying, audioContext, $fastForward, currentIdx]);
 
   const onHandleAudioEnded = () => {
     setIsAudioPlaying(false);
   };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume]);
 
   return (
     <Wrapper>

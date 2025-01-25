@@ -73,10 +73,10 @@ const RPMBtn = styled(motion.div)`
   transition: all 0.3s;
   cursor: pointer;
 `;
-const Switch = styled.div<{ fastForward: boolean }>`
+const Switch = styled.div<{ $fastForward: boolean }>`
   position: absolute;
   top: 4px;
-  left: ${({ fastForward }) => (fastForward ? "16px" : "0")};
+  left: ${({ $fastForward }) => ($fastForward ? "16px" : "0")};
   margin: 0 4px;
   width: 10px;
   height: 10px;
@@ -88,14 +88,14 @@ const Switch = styled.div<{ fastForward: boolean }>`
 const RPMTitle = styled.span`
   font-size: 20px;
 `;
-const RPMValue = styled.span<{ fastForward: boolean }>`
+const RPMValue = styled.span<{ $fastForward: boolean }>`
   &.low-speed {
-    color: ${({ fastForward }) =>
-      fastForward ? "#000" : "var(--point-color)"};
+    color: ${({ $fastForward }) =>
+      $fastForward ? "#000" : "var(--point-color)"};
   }
   &.high-speed {
-    color: ${({ fastForward }) =>
-      fastForward ? "var(--point-color)" : "#000"};
+    color: ${({ $fastForward }) =>
+      $fastForward ? "var(--point-color)" : "#000"};
   }
   transition: all 0.3s;
 `;
@@ -139,7 +139,7 @@ const MenuBtn = styled(motion.div)`
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
-    &:last-child{
+    &:last-child {
       top: 54%;
       font-size: 14px;
     }
@@ -199,6 +199,38 @@ const menuVariants = {
   },
 };
 
+const VolumeContainer = styled(motion.div)`
+  position: fixed;
+  width: fit-content;
+  top: 90px;
+  right: 30px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+`;
+
+const VolumeSlider = styled.input`
+  -webkit-appearance: none;
+  width: 100px;
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+  outline: none;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--point-color);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+`;
+
+const VolumeTitle = styled.span`
+  font-size: 20px;
+`;
+
 export const resetContext = React.createContext<null | IresetAllContext>(null);
 
 export interface IrotationActionObject {
@@ -232,6 +264,7 @@ function App() {
   const [fastForward, setFastForward] = useState(false);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [menuBg, setMenuBg] = useState<null | string>(null);
+  const [volume, setVolume] = useState(50);
 
   const handleOnKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "ArrowRight") {
@@ -323,19 +356,29 @@ function App() {
           </MenuBar>
           <RPMBtnContainer layout>
             <RPMTitle>RPM</RPMTitle>
-            <RPMValue className="low-speed" fastForward={fastForward}>
+            <RPMValue className="low-speed" $fastForward={fastForward}>
               33
             </RPMValue>
             <RPMBtn
               layout
               onClick={() => setFastForward((current) => !current)}
             >
-              <Switch fastForward={fastForward} />
+              <Switch $fastForward={fastForward} />
             </RPMBtn>
-            <RPMValue className="high-speed" fastForward={fastForward}>
+            <RPMValue className="high-speed" $fastForward={fastForward}>
               45
             </RPMValue>
           </RPMBtnContainer>
+          <VolumeContainer layout>
+            <VolumeTitle>Volume</VolumeTitle>
+            <VolumeSlider
+              type="range"
+              min="0"
+              max="100"
+              value={volume}
+              onChange={(e) => setVolume(Number(e.target.value))}
+            />
+          </VolumeContainer>
           <BottomFooter>
             <PrevBtn
               onClick={() => {
@@ -389,8 +432,9 @@ function App() {
           </BottomFooter>
           <MusicList
             rotation={rotation}
-            fastForward={fastForward}
+            $fastForward={fastForward}
             isPlaylistOn={isPlaylistOn}
+            volume={volume}
           />
         </Wrapper>
       </resetContext.Provider>
